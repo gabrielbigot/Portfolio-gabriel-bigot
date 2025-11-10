@@ -3,7 +3,8 @@ import { getPersonalInfo, getSocialLinks, getWorkExperience, getSkills } from "@
 import PortfolioClient from "@/components/PortfolioClient"
 
 // Revalidate every hour (3600 seconds)
-export const revalidate = 3600
+const REVALIDATE_INTERVAL = 3600
+export const revalidate = REVALIDATE_INTERVAL
 
 export default async function PortfolioPage() {
   // Fetch personal data from Notion with fallback
