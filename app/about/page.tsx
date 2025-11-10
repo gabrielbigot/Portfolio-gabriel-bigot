@@ -2,7 +2,8 @@ import Link from "next/link"
 import { ArrowLeft, Award, Heart, Zap, TrendingUp, Target, Medal } from "lucide-react"
 import { getPersonalInfo, getTimeline, getAchievements, getInterests } from "@/lib/portfolio-data"
 
-export const revalidate = parseInt(process.env.REVALIDATE_INTERVAL || "3600")
+// Revalidate every hour (3600 seconds)
+export const revalidate = 3600
 
 export default async function AboutPage() {
   // Fetch data from Notion with fallback to local data
