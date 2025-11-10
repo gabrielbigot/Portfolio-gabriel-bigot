@@ -2,10 +2,6 @@ import { getBlogPostsFromNotion, getProjectsFromNotion } from "@/lib/notion-simp
 import { getPersonalInfo, getSocialLinks, getWorkExperience, getSkills } from "@/lib/portfolio-data"
 import PortfolioClient from "@/components/PortfolioClient"
 
-// Revalidate every hour (3600 seconds)
-const REVALIDATE_INTERVAL = 3600
-export const revalidate = REVALIDATE_INTERVAL
-
 export default async function PortfolioPage() {
   // Fetch personal data from Notion with fallback
   const [personalInfo, socialLinks, workExperience, skills] = await Promise.all([
