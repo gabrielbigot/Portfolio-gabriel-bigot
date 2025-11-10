@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
-import { personalInfo, workExperience, socialLinks, skills } from "@/lib/data"
 import ContactForm from "@/components/contact-form"
 
 interface BlogPost {
@@ -26,12 +25,79 @@ interface Project {
   featured: boolean
 }
 
+interface PersonalInfo {
+  name: string
+  firstName: string
+  lastName: string
+  title: string
+  tagline: string
+  location: string
+  email: string
+  phone: string
+  availability: string
+  currentRole: {
+    position: string
+    company: string
+    location: string
+    startDate: string
+    current: boolean
+  }
+}
+
+interface WorkExperience {
+  position: string
+  company: string
+  location: string
+  startDate: string
+  endDate?: string
+  current: boolean
+  description: string
+  achievements: string[]
+  technologies: string[]
+}
+
+interface SocialLink {
+  name: string
+  url: string
+  icon: string
+}
+
+interface Skills {
+  technical: Array<{
+    category: string
+    skills: Array<{
+      name: string
+      level: number
+      description: string
+    }>
+  }>
+  soft: Array<{
+    name: string
+    description: string
+  }>
+  languages: Array<{
+    name: string
+    level: string
+  }>
+}
+
 interface PortfolioClientProps {
+  personalInfo: PersonalInfo
+  socialLinks: SocialLink[]
+  workExperience: WorkExperience[]
+  skills: Skills
   blogPosts: BlogPost[]
   projects: Project[]
 }
 
-export default function PortfolioClient({ blogPosts, projects }: PortfolioClientProps) {
+export default function PortfolioClient({
+  personalInfo,
+  socialLinks,
+  workExperience,
+  skills,
+  blogPosts,
+  projects,
+}: PortfolioClientProps) {
   const [isDark, setIsDark] = useState(true)
   const [activeSection, setActiveSection] = useState("")
   const sectionsRef = useRef<(HTMLElement | null)[]>([])
