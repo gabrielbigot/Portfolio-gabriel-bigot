@@ -1,10 +1,19 @@
 import { getBlogPostsFromNotion, getProjectsFromNotion } from "@/lib/notion-simple"
+import { getPersonalInfo, getSocialLinks, getWorkExperience, getSkills } from "@/lib/portfolio-data"
 import PortfolioClient from "@/components/PortfolioClient"
 
 // Revalidate every hour
-export const revalidate = 3600
+export const revalidate = parseInt(process.env.REVALIDATE_INTERVAL || "3600")
 
 export default async function PortfolioPage() {
+  // Fetch personal data from Notion with fallback
+  const [personalInfo, socialLinks, workExperience, skills] = await Promise.all([
+    getPersonalInfo(),
+    getSocialLinks(),
+    getWorkExperience(),
+    getSkills(),
+  ])
+
   // Fetch blog posts from Notion
   let blogPosts = []
 
@@ -38,5 +47,14 @@ export default async function PortfolioPage() {
 
   console.log(`🎯 Passing ${blogPosts.length} blog posts and ${projects.length} projects to PortfolioClient`)
 
-  return <PortfolioClient blogPosts={blogPosts} projects={projects} />
+  return (
+    <PortfolioClient
+      personalInfo={personalInfo}
+      socialLinks={socialLinks}
+      workExperience={workExperience}
+      skills={skills}
+      blogPosts={blogPosts}
+      projects={projects}
+    />
+  )
 }
