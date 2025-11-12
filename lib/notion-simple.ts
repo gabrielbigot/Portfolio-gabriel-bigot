@@ -100,6 +100,7 @@ export async function getProjectsFromNotion() {
           shortDescription: extractPlainText(props.ShortDescription?.rich_text),
           fullDescription: extractPlainText(props.FullDescription?.rich_text),
           category: props.Category?.select?.name || "",
+          categories: props.Categories?.multi_select?.map((cat: any) => cat.name) || [],
           tags: props.Tags?.multi_select?.map((tag: any) => tag.name) || [],
           date: props.Date?.date?.start || "",
           company: extractPlainText(props.Company?.rich_text),

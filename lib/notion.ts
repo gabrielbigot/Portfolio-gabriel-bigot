@@ -52,6 +52,7 @@ export async function getProjectsFromNotion() {
           shortDescription: page.properties.ShortDescription?.rich_text[0]?.plain_text || "",
           fullDescription: page.properties.FullDescription?.rich_text[0]?.plain_text || "",
           category: page.properties.Category?.select?.name || "",
+          categories: page.properties.Categories?.multi_select?.map((cat: any) => cat.name) || [],
           tags: page.properties.Tags?.multi_select?.map((tag: any) => tag.name) || [],
           date: page.properties.Date?.date?.start || "",
           company: page.properties.Company?.rich_text[0]?.plain_text || "",

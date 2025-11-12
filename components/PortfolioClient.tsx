@@ -21,6 +21,7 @@ interface Project {
   slug: string
   shortDescription: string
   category: string
+  categories?: string[]
   tags: string[]
   featured: boolean
 }
@@ -282,16 +283,30 @@ export default function PortfolioClient({
                       </div>
                     </div>
 
-                    <div className="lg:col-span-6 space-y-3">
-                      <div>
-                        <h3 className="text-lg sm:text-xl font-medium group-hover:text-foreground transition-colors duration-300">
-                          {job.position}
-                        </h3>
-                        <div className="text-muted-foreground">{job.company}</div>
-                        <div className="text-xs text-muted-foreground/70 mt-1 hidden sm:block">
-                          {job.startDate} - {job.endDate}
+                    <div className="lg:col-span-10 space-y-3">
+                      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3">
+                        <div>
+                          <h3 className="text-lg sm:text-xl font-medium group-hover:text-foreground transition-colors duration-300">
+                            {job.position}
+                          </h3>
+                          <div className="text-muted-foreground">{job.company}</div>
+                          <div className="text-xs text-muted-foreground/70 mt-1 hidden sm:block">
+                            {job.startDate} - {job.endDate}
+                          </div>
+                        </div>
+
+                        <div className="flex flex-wrap gap-1.5 lg:justify-end items-start content-start max-w-xs">
+                          {job.technologies.map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-2 py-0.5 text-xs border border-border text-muted-foreground rounded group-hover:text-foreground group-hover:border-muted-foreground/50 transition-all duration-500 leading-tight whitespace-nowrap"
+                            >
+                              {tech}
+                            </span>
+                          ))}
                         </div>
                       </div>
+
                       <p className="text-muted-foreground leading-relaxed max-w-lg">{job.description}</p>
 
                       {job.achievements.length > 0 && (
@@ -304,17 +319,6 @@ export default function PortfolioClient({
                           ))}
                         </ul>
                       )}
-                    </div>
-
-                    <div className="lg:col-span-4 flex flex-wrap gap-2 lg:justify-end mt-2 lg:mt-0">
-                      {job.technologies.slice(0, 4).map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2 py-1 text-xs text-muted-foreground rounded group-hover:text-foreground/80 transition-colors duration-500"
-                        >
-                          {tech}
-                        </span>
-                      ))}
                     </div>
                   </div>
                 </div>
@@ -342,9 +346,22 @@ export default function PortfolioClient({
                     >
                       <div className="space-y-4">
                         <div className="flex items-center justify-between">
-                          <span className="text-xs px-2 py-1 bg-foreground/5 border border-border rounded">
-                            {project.category}
-                          </span>
+                          <div className="flex flex-wrap gap-1.5">
+                            {project.categories && project.categories.length > 0 ? (
+                              project.categories.slice(0, 2).map((cat) => (
+                                <span
+                                  key={cat}
+                                  className="text-xs px-2 py-1 bg-foreground/5 border border-border rounded"
+                                >
+                                  {cat}
+                                </span>
+                              ))
+                            ) : (
+                              <span className="text-xs px-2 py-1 bg-foreground/5 border border-border rounded">
+                                {project.category}
+                              </span>
+                            )}
+                          </div>
                           <span className="text-lg">⭐</span>
                         </div>
 

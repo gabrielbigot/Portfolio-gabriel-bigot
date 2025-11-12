@@ -10,6 +10,7 @@ interface Project {
   slug: string
   shortDescription: string
   category: string
+  categories: string[]
   tags: string[]
   date: string
   company: string
@@ -24,11 +25,13 @@ interface ProjectsPageClientProps {
 export default function ProjectsPageClient({ projects }: ProjectsPageClientProps) {
   const [filter, setFilter] = useState<string>("all")
 
-  const categories = ["all", ...Array.from(new Set(projects.map((p) => p.category)))]
+  // Extract all unique categories from all projects
+  const allCategories = projects.flatMap((p) => p.categories || [])
+  const categories = ["all", ...Array.from(new Set(allCategories))]
 
   const filteredProjects = filter === "all"
     ? projects
-    : projects.filter((p) => p.category === filter)
+    : projects.filter((p) => p.categories?.includes(filter))
 
   const featuredProjects = projects.filter((p) => p.featured)
 
@@ -130,9 +133,22 @@ export default function ProjectsPageClient({ projects }: ProjectsPageClientProps
 
                     <div className="space-y-6">
                       <div className="space-y-4">
-                        <span className="text-xs px-2 py-1 bg-foreground/5 border border-border rounded">
-                          {project.category}
-                        </span>
+                        <div className="flex flex-wrap gap-2">
+                          {project.categories && project.categories.length > 0 ? (
+                            project.categories.map((cat) => (
+                              <span
+                                key={cat}
+                                className="text-xs px-2 py-1 bg-foreground/5 border border-border rounded"
+                              >
+                                {cat}
+                              </span>
+                            ))
+                          ) : (
+                            <span className="text-xs px-2 py-1 bg-foreground/5 border border-border rounded">
+                              {project.category}
+                            </span>
+                          )}
+                        </div>
 
                         <h3 className="text-2xl sm:text-3xl font-light group-hover:text-muted-foreground transition-colors duration-300 pr-8">
                           {project.title}
@@ -203,9 +219,22 @@ export default function ProjectsPageClient({ projects }: ProjectsPageClientProps
               >
                 <div className="space-y-5">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs px-2 py-1 bg-foreground/5 border border-border rounded">
-                      {project.category}
-                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.categories && project.categories.length > 0 ? (
+                        project.categories.slice(0, 2).map((cat) => (
+                          <span
+                            key={cat}
+                            className="text-xs px-2 py-1 bg-foreground/5 border border-border rounded"
+                          >
+                            {cat}
+                          </span>
+                        ))
+                      ) : (
+                        <span className="text-xs px-2 py-1 bg-foreground/5 border border-border rounded">
+                          {project.category}
+                        </span>
+                      )}
+                    </div>
                     {project.featured && (
                       <span className="text-lg">⭐</span>
                     )}
