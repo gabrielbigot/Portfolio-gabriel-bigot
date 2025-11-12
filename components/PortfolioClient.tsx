@@ -91,6 +91,36 @@ interface PortfolioClientProps {
   projects: Project[]
 }
 
+// Utility function to extract year from date string
+const extractYear = (dateString: string): string => {
+  // Handle formats like "Juillet 2025", "2025", "Septembre 2025", etc.
+  const yearMatch = dateString.match(/\d{4}/)
+  return yearMatch ? yearMatch[0] : dateString
+}
+
+// Utility function to convert date to DD/MM/YYYY format
+const formatDateToDDMMYYYY = (dateString: string): string => {
+  // Map of French month names to month numbers
+  const monthMap: { [key: string]: string } = {
+    "janvier": "01", "février": "02", "mars": "03", "avril": "04",
+    "mai": "05", "juin": "06", "juillet": "07", "août": "08",
+    "septembre": "09", "octobre": "10", "novembre": "11", "décembre": "12"
+  }
+
+  // Try to parse "Juillet 2025" format
+  const parts = dateString.toLowerCase().trim().split(" ")
+  if (parts.length === 2) {
+    const month = monthMap[parts[0]]
+    const year = parts[1]
+    if (month && year) {
+      return `01/${month}/${year}`
+    }
+  }
+
+  // If it's already in a different format or just a year, return as is
+  return dateString
+}
+
 export default function PortfolioClient({
   personalInfo,
   socialLinks,
@@ -276,10 +306,10 @@ export default function PortfolioClient({
                   <div className="sm:pl-12 grid lg:grid-cols-12 gap-4 sm:gap-8">
                     <div className="lg:col-span-2">
                       <div className="text-xl sm:text-2xl font-light text-muted-foreground group-hover:text-foreground transition-colors duration-500">
-                        {job.startDate.split(" ")[0]}
+                        {extractYear(job.startDate)}
                       </div>
                       <div className="text-xs text-muted-foreground/70 mt-1 sm:hidden">
-                        {job.startDate} - {job.endDate}
+                        {formatDateToDDMMYYYY(job.startDate)} - {formatDateToDDMMYYYY(job.endDate || "Présent")}
                       </div>
                     </div>
 
@@ -291,7 +321,7 @@ export default function PortfolioClient({
                           </h3>
                           <div className="text-muted-foreground">{job.company}</div>
                           <div className="text-xs text-muted-foreground/70 mt-1 hidden sm:block">
-                            {job.startDate} - {job.endDate}
+                            {formatDateToDDMMYYYY(job.startDate)} - {formatDateToDDMMYYYY(job.endDate || "Présent")}
                           </div>
                         </div>
 
