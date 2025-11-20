@@ -41,16 +41,23 @@ export default function ContactForm() {
     setSubmitStatus("idle")
 
     try {
-      // Send to API route
-      const response = await fetch('/api/contact', {
+      // Send directly to Web3Forms
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          access_key: '228f3235-76b0-4af3-8b19-7de3dcd99644',
+          name: data.name,
+          email: data.email,
+          subject: `[Portfolio] ${data.subject}`,
+          message: data.message,
+        }),
       })
 
-      if (!response.ok) {
-        const error = await response.json()
-        console.error('API error:', error)
+      const result = await response.json()
+
+      if (!response.ok || !result.success) {
+        console.error('Web3Forms error:', result)
         throw new Error('Failed to send')
       }
 
