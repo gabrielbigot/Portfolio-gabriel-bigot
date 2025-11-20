@@ -43,9 +43,15 @@ export async function POST(request: Request) {
 
     // Send email using Resend
     console.log('📤 Attempting to send email via Resend...')
+
+    const fromEmail = process.env.FROM_EMAIL || 'onboarding@resend.dev'
+    const toEmail = process.env.CONTACT_EMAIL || 'gabriel.bigot2005@gmail.com'
+
+    console.log('Email config:', { from: fromEmail, to: toEmail })
+
     const { data, error } = await resend.emails.send({
-      from: 'Portfolio Contact <onboarding@resend.dev>', // This is Resend's test email
-      to: process.env.CONTACT_EMAIL || 'gabriel.bigot@exemple.com', // Your email
+      from: `Portfolio Contact <${fromEmail}>`,
+      to: toEmail,
       replyTo: validatedData.email, // Visitor's email for easy reply
       subject: `[Portfolio] ${validatedData.subject}`,
       html: `
