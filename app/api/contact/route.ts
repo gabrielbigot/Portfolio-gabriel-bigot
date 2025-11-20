@@ -1,9 +1,5 @@
 import { NextResponse } from 'next/server'
-import { Resend } from 'resend'
 import { z } from 'zod'
-
-// Initialize Resend with API key from environment variable
-const resend = new Resend(process.env.RESEND_API_KEY)
 
 // Validation schema
 const contactSchema = z.object({
@@ -21,8 +17,7 @@ export async function POST(request: Request) {
 
     console.log('📧 Contact form submission received')
     console.log('Environment variables check:', {
-      hasApiKey: !!process.env.RESEND_API_KEY,
-      contactEmail: process.env.CONTACT_EMAIL || 'NOT SET'
+      hasAccessKey: !!process.env.WEB3FORMS_ACCESS_KEY,
     })
 
     // Check honeypot
@@ -41,65 +36,35 @@ export async function POST(request: Request) {
       subject: validatedData.subject
     })
 
-    // Send email using Resend
-    console.log('📤 Attempting to send email via Resend...')
+    // Send email using Web3Forms
+    console.log('📤 Attempting to send email via Web3Forms...')
 
-    const fromEmail = process.env.FROM_EMAIL || 'onboarding@resend.dev'
-    const toEmail = process.env.CONTACT_EMAIL || 'gabriel.bigot2005@gmail.com'
+    const formData = new FormData()
+    formData.append('access_key', process.env.WEB3FORMS_ACCESS_KEY || '')
+    formData.append('name', validatedData.name)
+    formData.append('email', validatedData.email)
+    formData.append('subject', `[Portfolio] ${validatedData.subject}`)
+    formData.append('message', validatedData.message)
 
-    console.log('Email config:', { from: fromEmail, to: toEmail })
-
-    const { data, error } = await resend.emails.send({
-      from: `Portfolio Contact <${fromEmail}>`,
-      to: toEmail,
-      replyTo: validatedData.email, // Visitor's email for easy reply
-      subject: `[Portfolio] ${validatedData.subject}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #333; border-bottom: 2px solid #000; padding-bottom: 10px;">
-            Nouveau message depuis votre portfolio
-          </h2>
-
-          <div style="margin: 20px 0;">
-            <p style="margin: 10px 0;"><strong>De:</strong> ${validatedData.name}</p>
-            <p style="margin: 10px 0;"><strong>Email:</strong> ${validatedData.email}</p>
-            <p style="margin: 10px 0;"><strong>Sujet:</strong> ${validatedData.subject}</p>
-          </div>
-
-          <div style="background: #f5f5f5; padding: 20px; border-radius: 5px; margin: 20px 0;">
-            <p style="margin: 0; white-space: pre-wrap;">${validatedData.message}</p>
-          </div>
-
-          <p style="color: #666; font-size: 12px; margin-top: 30px;">
-            Ce message a été envoyé depuis le formulaire de contact de votre portfolio.
-          </p>
-        </div>
-      `,
-      text: `
-Nouveau message depuis votre portfolio
-
-De: ${validatedData.name}
-Email: ${validatedData.email}
-Sujet: ${validatedData.subject}
-
-Message:
-${validatedData.message}
-      `,
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
     })
 
-    if (error) {
-      console.error('❌ Resend error:', error)
+    const result = await response.json()
+
+    if (!response.ok || !result.success) {
+      console.error('❌ Web3Forms error:', result)
       return NextResponse.json(
-        { error: 'Failed to send email', details: error },
+        { error: 'Failed to send email', details: result },
         { status: 500 }
       )
     }
 
-    console.log('✅ Email sent successfully via Resend!')
-    console.log('Email ID:', data?.id)
+    console.log('✅ Email sent successfully via Web3Forms!')
 
     return NextResponse.json(
-      { message: 'Email sent successfully', id: data?.id },
+      { message: 'Email sent successfully' },
       { status: 200 }
     )
   } catch (error) {
