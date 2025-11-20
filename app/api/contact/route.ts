@@ -39,16 +39,19 @@ export async function POST(request: Request) {
     // Send email using Web3Forms
     console.log('📤 Attempting to send email via Web3Forms...')
 
-    const formData = new FormData()
-    formData.append('access_key', process.env.WEB3FORMS_ACCESS_KEY || '')
-    formData.append('name', validatedData.name)
-    formData.append('email', validatedData.email)
-    formData.append('subject', `[Portfolio] ${validatedData.subject}`)
-    formData.append('message', validatedData.message)
-
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      body: formData
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        access_key: process.env.WEB3FORMS_ACCESS_KEY,
+        name: validatedData.name,
+        email: validatedData.email,
+        subject: `[Portfolio] ${validatedData.subject}`,
+        message: validatedData.message
+      })
     })
 
     const result = await response.json()
