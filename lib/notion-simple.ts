@@ -515,9 +515,12 @@ export async function getSocialLinksFromNotion() {
 
     return data.results.map((page: any) => {
       const props = page.properties
+      // For URL property type in Notion, the value is directly in props.URL.url
+      const urlValue = props.URL?.url || extractPlainText(props.URL?.rich_text) || ""
+
       return {
         name: extractPlainText(props.Name?.title),
-        url: extractPlainText(props.URL?.url || props.URL?.rich_text),
+        url: urlValue,
         icon: extractPlainText(props.Icon?.rich_text),
         platform: props.Platform?.select?.name || "",
       }
