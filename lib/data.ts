@@ -35,12 +35,12 @@ Mon objectif est d'intégrer SKEMA Business School avec une spécialisation en I
 export const socialLinks = [
   {
     name: "GitHub",
-    url: "https://github.com/gabrielbigot", // À mettre à jour avec votre vrai GitHub
+    url: "https://github.com/gabrielbigot",
     icon: "github"
   },
   {
     name: "LinkedIn",
-    url: "https://linkedin.com/in/gabriel-bigot", // À mettre à jour avec votre vrai LinkedIn
+    url: "https://www.linkedin.com/in/gabriel-bigot-5149ab2a9/",
     icon: "linkedin"
   },
   {
