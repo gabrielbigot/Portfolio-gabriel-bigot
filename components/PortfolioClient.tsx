@@ -639,7 +639,7 @@ export default function PortfolioClient({
 
                   <div className="space-y-2">
                     {socialLinks.map((social) => (
-                      <Link
+                      <a
                         key={social.name}
                         href={social.url}
                         target="_blank"
@@ -660,7 +660,7 @@ export default function PortfolioClient({
                             d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                           />
                         </svg>
-                      </Link>
+                      </a>
                     ))}
                   </div>
                 </div>
