@@ -29,8 +29,8 @@ WEB3FORMS_ACCESS_KEY=228f3235-76b0-4af3-8b19-7de3dcd99644
 
 1. **Visiteur remplit le formulaire** sur votre portfolio
 2. **Données envoyées** à l'API Web3Forms
-3. **Email reçu** sur `gabriel.bigot2005@gmail.com`
-4. **Vous pouvez répondre** directement depuis Gmail
+3. **Email reçu** sur `gabriel1.bigot@skema.edu`
+4. **Vous pouvez répondre** directement depuis votre boîte SKEMA
 
 ## ✅ Avantages de Web3Forms
 
@@ -68,10 +68,11 @@ WEB3FORMS_ACCESS_KEY=228f3235-76b0-4af3-8b19-7de3dcd99644
 ## 🔧 Dépannage
 
 ### Email non reçu
-1. ✅ Vérifier les **spams** dans Gmail
+1. ✅ Vérifier les **spams** dans votre boîte SKEMA
 2. ✅ Vérifier que `WEB3FORMS_ACCESS_KEY` est bien ajoutée sur Vercel
 3. ✅ Vérifier les **logs Vercel** pour voir si l'envoi a réussi
 4. ✅ Vérifier le **dashboard Web3Forms** pour voir les soumissions
+5. ✅ Vérifier que l'email `gabriel1.bigot@skema.edu` est bien vérifié sur Web3Forms
 
 ### Variable d'environnement non trouvée
 → `hasAccessKey: false` dans les logs
@@ -79,20 +80,21 @@ WEB3FORMS_ACCESS_KEY=228f3235-76b0-4af3-8b19-7de3dcd99644
 
 ## 📝 Notes importantes
 
-- **Email de réception** : `gabriel.bigot2005@gmail.com` (configuré sur Web3Forms)
+- **Email de réception** : `gabriel1.bigot@skema.edu` (configuré sur Web3Forms)
 - **Pas besoin de domaine** : Web3Forms gère tout
 - **Gratuit à vie** : Aucun coût, aucune limite
 - **Spam protection** : Honeypot intégré dans le formulaire
 
 ## 🎯 Checklist de configuration
 
-- [x] Compte Web3Forms créé avec `gabriel.bigot2005@gmail.com`
+- [x] Compte Web3Forms créé
+- [x] Email `gabriel1.bigot@skema.edu` ajouté et vérifié
 - [x] Access Key récupérée : `228f3235-76b0-4af3-8b19-7de3dcd99644`
 - [x] Code mis à jour pour utiliser Web3Forms
-- [ ] Variable `WEB3FORMS_ACCESS_KEY` ajoutée sur Vercel
-- [ ] Application redéployée sur Vercel
+- [x] Variable `WEB3FORMS_ACCESS_KEY` ajoutée sur Vercel
+- [x] Application redéployée sur Vercel
 - [ ] Test du formulaire effectué
-- [ ] Email de test reçu sur Gmail
+- [ ] Email de test reçu sur boîte SKEMA
 
 ---
 
