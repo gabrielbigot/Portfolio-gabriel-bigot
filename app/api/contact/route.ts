@@ -19,9 +19,15 @@ export async function POST(request: Request) {
     // Parse and validate request body
     const body = await request.json()
 
+    console.log('📧 Contact form submission received')
+    console.log('Environment variables check:', {
+      hasApiKey: !!process.env.RESEND_API_KEY,
+      contactEmail: process.env.CONTACT_EMAIL || 'NOT SET'
+    })
+
     // Check honeypot
     if (body.website) {
-      console.log('Spam detected via honeypot')
+      console.log('⚠️ Spam detected via honeypot')
       return NextResponse.json(
         { error: 'Invalid submission' },
         { status: 400 }
@@ -29,8 +35,14 @@ export async function POST(request: Request) {
     }
 
     const validatedData = contactSchema.parse(body)
+    console.log('✅ Data validated:', {
+      name: validatedData.name,
+      email: validatedData.email,
+      subject: validatedData.subject
+    })
 
     // Send email using Resend
+    console.log('📤 Attempting to send email via Resend...')
     const { data, error } = await resend.emails.send({
       from: 'Portfolio Contact <onboarding@resend.dev>', // This is Resend's test email
       to: process.env.CONTACT_EMAIL || 'gabriel.bigot@exemple.com', // Your email
@@ -70,12 +82,15 @@ ${validatedData.message}
     })
 
     if (error) {
-      console.error('Resend error:', error)
+      console.error('❌ Resend error:', error)
       return NextResponse.json(
-        { error: 'Failed to send email' },
+        { error: 'Failed to send email', details: error },
         { status: 500 }
       )
     }
+
+    console.log('✅ Email sent successfully via Resend!')
+    console.log('Email ID:', data?.id)
 
     return NextResponse.json(
       { message: 'Email sent successfully', id: data?.id },
