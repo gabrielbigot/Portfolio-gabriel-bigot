@@ -513,15 +513,33 @@ export async function getSocialLinksFromNotion() {
       }),
     })
 
-    return data.results.map((page: any) => {
+    const socialLinks = data.results.map((page: any) => {
       const props = page.properties
+      const url = extractPlainText(props.URL?.url || props.URL?.rich_text)
+
+      // Validate URL - must be an absolute URL starting with http:// or https://
+      // If URL is relative (like /portfolio), filter it out
+      const isValidUrl = url && (url.startsWith('http://') || url.startsWith('https://'))
+
+      if (!isValidUrl) {
+        console.warn(`⚠️ Invalid or relative URL found in Notion Social Links: "${url}" for ${extractPlainText(props.Name?.title)}. URLs must be absolute (starting with http:// or https://)`)
+        return null
+      }
+
       return {
         name: extractPlainText(props.Name?.title),
-        url: extractPlainText(props.URL?.url || props.URL?.rich_text),
+        url,
         icon: extractPlainText(props.Icon?.rich_text),
         platform: props.Platform?.select?.name || "",
       }
-    })
+    }).filter(Boolean) // Remove null entries (invalid URLs)
+
+    // If no valid social links found in Notion, return empty array to trigger fallback
+    if (socialLinks.length === 0) {
+      console.warn("⚠️ No valid social links found in Notion (all URLs were invalid/relative). Will fall back to local data.")
+    }
+
+    return socialLinks
   } catch (error) {
     console.error("Error fetching social links from Notion:", error)
     return []
