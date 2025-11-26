@@ -265,7 +265,7 @@ async function parseBlocksToContent(blocks: any[]): Promise<ContentBlock[]> {
 export async function getArticleVersions(articleSlug: string): Promise<ArticleVersion[]> {
   try {
     if (!VERSIONS_DATABASE_ID || !NOTION_API_KEY) {
-      console.warn("Versions database not configured")
+      console.warn("Versions database not configured, returning empty array")
       return []
     }
 
@@ -332,8 +332,13 @@ export async function getArticleVersions(articleSlug: string): Promise<ArticleVe
     const publishedVersions = versions.filter((v) => v.status === "Published")
 
     return publishedVersions
-  } catch (error) {
-    console.error(`Error fetching versions for article ${articleSlug}:`, error)
+  } catch (error: any) {
+    // Don't log error if database doesn't exist or properties are missing (expected during setup)
+    if (error?.message?.includes('400') || error?.message?.includes('validation_error')) {
+      console.warn(`Versions database not set up yet for article ${articleSlug}. This is normal if you haven't created the database yet.`)
+    } else {
+      console.error(`Error fetching versions for article ${articleSlug}:`, error)
+    }
     return []
   }
 }
