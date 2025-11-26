@@ -1,0 +1,53 @@
+// Liste des images pour la galerie
+// Ce fichier est généré automatiquement par generate-images-list.js
+// Dernière mise à jour: 31/10/2025 18:36:40
+
+export interface ImageItem {
+    src: string;
+    alt: string;
+}
+
+export const galleryImages: ImageItem[] = [
+    { src: '/portfolio/37362834_2020050544991067_2388667480672305152_n.jpg', alt: '37362834_2020050544991067_2388667480672305152_n' },
+    { src: '/portfolio/37388555_2020043748325080_4283471227621736448_n.jpg', alt: '37388555_2020043748325080_4283471227621736448_n' },
+    { src: '/portfolio/460968232_3917956541867115_3586079804302855380_n.jpg', alt: '460968232_3917956541867115_3586079804302855380_n' },
+    { src: '/portfolio/461056645_3917591608570275_8286454974583269985_n.jpg', alt: '461056645_3917591608570275_8286454974583269985_n' },
+    { src: '/portfolio/461447162_3924599384536164_2810537887781340391_n.jpg', alt: '461447162_3924599384536164_2810537887781340391_n' },
+    { src: '/portfolio/461735800_3928639124132190_7176314174095183581_n.jpg', alt: '461735800_3928639124132190_7176314174095183581_n' },
+    { src: '/portfolio/461936519_3929857300677039_7253303486539886305_n.jpg', alt: '461936519_3929857300677039_7253303486539886305_n' },
+    { src: '/portfolio/461970234_3930862647243171_6355252259414852231_n.jpg', alt: '461970234_3930862647243171_6355252259414852231_n' },
+    { src: '/portfolio/462744188_3940926859570083_9110641958737421966_n.jpg', alt: '462744188_3940926859570083_9110641958737421966_n' },
+    { src: '/portfolio/462966812_3940926739570095_3541033964663735414_n.jpg', alt: '462966812_3940926739570095_3541033964663735414_n' },
+    { src: '/portfolio/53570318_2216017822061004_3527839270251266048_n.jpg', alt: '53570318_2216017822061004_3527839270251266048_n' },
+    { src: '/portfolio/54279383_2216017772061009_698524384280707072_n.jpg', alt: '54279383_2216017772061009_698524384280707072_n' },
+    { src: '/portfolio/54436365_2216021995393920_4409606419876151296_n.jpg', alt: '54436365_2216021995393920_4409606419876151296_n' },
+    { src: '/portfolio/54520125_2216018068727646_1295416055493033984_n.jpg', alt: '54520125_2216018068727646_1295416055493033984_n' },
+    { src: '/portfolio/55786305_2216018645394255_3208205124023353344_n.jpg', alt: '55786305_2216018645394255_3208205124023353344_n' },
+    { src: '/portfolio/56232406_2227054447624008_719207752777334784_n.jpg', alt: '56232406_2227054447624008_719207752777334784_n' },
+    { src: '/portfolio/IMG-20251024-WA0001.jpg', alt: 'IMG-20251024-WA0001' },
+    { src: '/portfolio/IMG-20251024-WA0002.jpg', alt: 'IMG-20251024-WA0002' },
+    { src: '/portfolio/IMG-20251024-WA0003.jpg', alt: 'IMG-20251024-WA0003' },
+    { src: '/portfolio/IMG-20251024-WA0004.jpg', alt: 'IMG-20251024-WA0004' },
+    { src: '/portfolio/IMG-20251024-WA0005.jpg', alt: 'IMG-20251024-WA0005' },
+    { src: '/portfolio/IMG-20251024-WA0006.jpg', alt: 'IMG-20251024-WA0006' },
+    { src: '/portfolio/IMG-20251024-WA0007.jpg', alt: 'IMG-20251024-WA0007' },
+    { src: '/portfolio/IMG-20251024-WA0008.jpg', alt: 'IMG-20251024-WA0008' },
+    { src: '/portfolio/IMG-20251024-WA0009.jpg', alt: 'IMG-20251024-WA0009' },
+    { src: '/portfolio/IMG-20251024-WA0010.jpg', alt: 'IMG-20251024-WA0010' },
+    { src: '/portfolio/IMG-20251024-WA0011.jpg', alt: 'IMG-20251024-WA0011' },
+    { src: '/portfolio/IMG-20251024-WA0012.jpg', alt: 'IMG-20251024-WA0012' },
+    { src: '/portfolio/IMG-20251024-WA0013.jpg', alt: 'IMG-20251024-WA0013' },
+    { src: '/portfolio/IMG-20251024-WA0014.jpg', alt: 'IMG-20251024-WA0014' },
+    { src: '/portfolio/IMG-20251024-WA0015.jpg', alt: 'IMG-20251024-WA0015' },
+    { src: '/portfolio/IMG-20251024-WA0016.jpg', alt: 'IMG-20251024-WA0016' },
+    { src: '/portfolio/IMG-20251024-WA0017.jpg', alt: 'IMG-20251024-WA0017' },
+    { src: '/portfolio/IMG-20251024-WA0018.jpg', alt: 'IMG-20251024-WA0018' },
+    { src: '/portfolio/IMG-20251024-WA0019.jpg', alt: 'IMG-20251024-WA0019' },
+    { src: '/portfolio/IMG-20251024-WA0020.jpg', alt: 'IMG-20251024-WA0020' },
+    { src: '/portfolio/IMG-20251024-WA0021.jpg', alt: 'IMG-20251024-WA0021' },
+    { src: '/portfolio/IMG-20251024-WA0022.jpg', alt: 'IMG-20251024-WA0022' },
+    { src: '/portfolio/IMG-20251024-WA0023.jpg', alt: 'IMG-20251024-WA0023' },
+    { src: '/portfolio/IMG-20251024-WA0024.jpg', alt: 'IMG-20251024-WA0024' },
+    { src: '/portfolio/IMG_7177.jpeg', alt: 'IMG_7177' },
+    { src: '/portfolio/image.webp', alt: 'image' }
+];
