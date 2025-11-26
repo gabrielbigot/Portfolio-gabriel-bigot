@@ -169,7 +169,7 @@ export default async function VersionPage({ params }: PageProps) {
         </header>
 
         {/* Article content */}
-        <article className="prose prose-lg dark:prose-invert max-w-none">
+        <article className="w-full">
           <NotionBlockRenderer content={version.content} />
         </article>
 
