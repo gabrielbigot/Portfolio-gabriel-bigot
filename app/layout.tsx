@@ -1,14 +1,8 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist } from "next/font/google"
+import { GeistSans } from "geist/font/sans"
 import "./globals.css"
 import { metadata as siteMetadata } from "@/lib/data"
-
-const geist = Geist({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-geist",
-})
 
 export const metadata: Metadata = {
   title: siteMetadata.siteTitle,
@@ -67,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="fr" className={`${geist.variable}`}>
+    <html lang="fr" className={GeistSans.variable}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   )
