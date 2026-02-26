@@ -12,6 +12,7 @@ const BLOG_DATABASE_ID = process.env.NOTION_BLOG_DATABASE_ID || ""
 const PERSONAL_INFO_DATABASE_ID = process.env.NOTION_PERSONAL_INFO_DATABASE_ID || ""
 const SOCIAL_LINKS_DATABASE_ID = process.env.NOTION_SOCIAL_LINKS_DATABASE_ID || ""
 const WORK_EXPERIENCE_DATABASE_ID = process.env.NOTION_WORK_EXPERIENCE_DATABASE_ID || ""
+const COMPANIES_DATABASE_ID = process.env.NOTION_COMPANIES_DATABASE_ID || WORK_EXPERIENCE_DATABASE_ID
 const EDUCATION_DATABASE_ID = process.env.NOTION_EDUCATION_DATABASE_ID || ""
 const SKILLS_DATABASE_ID = process.env.NOTION_SKILLS_DATABASE_ID || ""
 const TIMELINE_DATABASE_ID = process.env.NOTION_TIMELINE_DATABASE_ID || ""
@@ -104,6 +105,7 @@ export async function getProjectsFromNotion() {
           tags: props.Tags?.multi_select?.map((tag: any) => tag.name) || [],
           date: props.Date?.date?.start || "",
           company: extractPlainText(props.Company?.rich_text),
+          companySlug: extractPlainText(props.CompanySlug?.rich_text),
           featured: props.Featured?.checkbox || false,
           image: props.Image?.url || "",
           problem: extractPlainText(props.Problem?.rich_text),
@@ -768,6 +770,113 @@ export async function getAchievementsFromNotion() {
     })
   } catch (error) {
     console.error("Error fetching achievements from Notion:", error)
+    return []
+  }
+}
+
+/**
+ * Fetch all companies (work experiences) from Notion with full page content
+ * Reuses the Work Experience database, reads page blocks for rich content
+ */
+export async function getCompaniesFromNotion() {
+  try {
+    if (!COMPANIES_DATABASE_ID || !NOTION_API_KEY) {
+      console.warn("Companies database not configured")
+      return []
+    }
+
+    const data = await notionRequest(`/databases/${COMPANIES_DATABASE_ID}/query`, {
+      method: "POST",
+      body: JSON.stringify({
+        sorts: [{ property: "StartDate", direction: "descending" }],
+      }),
+    })
+
+    const companies = await Promise.all(
+      data.results.map(async (page: any) => {
+        const props = page.properties
+
+        // Fetch rich page content (free-form text written in Notion)
+        let blocks: any[] = []
+        try {
+          const blocksData = await notionRequest(`/blocks/${page.id}/children`)
+          const rawBlocks = blocksData.results || []
+          blocks = await Promise.all(
+            rawBlocks.map(async (block: any) => {
+              if (block.has_children) {
+                const children = await fetchBlockChildren(block.id)
+                return { ...block, children }
+              }
+              return block
+            })
+          )
+        } catch (error) {
+          console.error(`Error fetching blocks for company ${page.id}:`, error)
+        }
+
+        const content = await parseBlocksToContent(blocks)
+
+        return {
+          id: page.id,
+          // Support both "Title" (title type) and "Position" (title) as company name in database
+          company: extractPlainText(props.Company?.rich_text) || extractPlainText(props.Name?.title) || "",
+          slug: extractPlainText(props.Slug?.rich_text),
+          position: extractPlainText(props.Position?.title) || extractPlainText(props.Position?.rich_text),
+          location: extractPlainText(props.Location?.rich_text),
+          startDate: props.StartDate?.date?.start || extractPlainText(props.StartDate?.rich_text),
+          endDate: props.EndDate?.date?.start || extractPlainText(props.EndDate?.rich_text),
+          current: props.Current?.checkbox || false,
+          shortDescription: extractPlainText(props.ShortDescription?.rich_text),
+          description: extractPlainText(props.Description?.rich_text),
+          logo: props.Logo?.url || extractPlainText(props.Logo?.rich_text) || "",
+          companyUrl: props.CompanyURL?.url || extractPlainText(props.CompanyURL?.rich_text) || "",
+          type: props.Type?.select?.name || "",
+          featured: props.Featured?.checkbox || false,
+          technologies: props.Technologies?.multi_select?.map((tech: any) => tech.name) ||
+            extractPlainText(props.Technologies?.rich_text).split(",").map((t: string) => t.trim()).filter(Boolean),
+          achievements: extractPlainText(props.Achievements?.rich_text)
+            .split("\n")
+            .filter(Boolean),
+          content, // Free-form rich content from Notion page body
+        }
+      })
+    )
+
+    // Only return entries that have a slug (so only properly configured ones)
+    return companies.filter((c) => c.slug)
+  } catch (error) {
+    console.error("Error fetching companies from Notion:", error)
+    return []
+  }
+}
+
+/**
+ * Fetch a single company by slug
+ */
+export async function getCompanyBySlugFromNotion(slug: string) {
+  try {
+    const companies = await getCompaniesFromNotion()
+    return companies.find((c) => c.slug === slug) || null
+  } catch (error) {
+    console.error("Error fetching company by slug:", error)
+    return null
+  }
+}
+
+/**
+ * Fetch projects for a given company slug
+ * Matches on CompanySlug property (text), falls back to Company name match
+ */
+export async function getProjectsByCompanySlug(companySlug: string, companyName?: string) {
+  try {
+    const allProjects = await getProjectsFromNotion()
+    return allProjects.filter((p) => {
+      if (p.companySlug) return p.companySlug === companySlug
+      if (companyName && p.company) return p.company.toLowerCase() === companyName.toLowerCase()
+      return false
+    })
+  } catch (error) {
+    console.error("Error fetching projects by company:", error)
     return []
   }
 }

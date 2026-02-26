@@ -12,6 +12,9 @@ import {
   getTimelineFromNotion,
   getAchievementsFromNotion,
   getInterestsFromNotion,
+  getCompaniesFromNotion,
+  getCompanyBySlugFromNotion,
+  getProjectsByCompanySlug,
 } from "./notion-simple"
 
 import {
@@ -156,6 +159,47 @@ export async function getInterests() {
     console.warn("Failed to fetch interests from Notion, using local data")
   }
   return localInterests
+}
+
+/**
+ * Get all companies (work experiences with rich content)
+ * Tries Notion first, returns empty array as fallback
+ */
+export async function getCompanies() {
+  try {
+    const notionData = await getCompaniesFromNotion()
+    if (notionData && notionData.length > 0) {
+      return notionData
+    }
+  } catch (error) {
+    console.warn("Failed to fetch companies from Notion, using empty array")
+  }
+  return []
+}
+
+/**
+ * Get a single company by slug
+ */
+export async function getCompany(slug: string) {
+  try {
+    const company = await getCompanyBySlugFromNotion(slug)
+    return company
+  } catch (error) {
+    console.warn("Failed to fetch company from Notion")
+    return null
+  }
+}
+
+/**
+ * Get projects linked to a company
+ */
+export async function getCompanyProjects(companySlug: string, companyName?: string) {
+  try {
+    return await getProjectsByCompanySlug(companySlug, companyName)
+  } catch (error) {
+    console.warn("Failed to fetch company projects from Notion")
+    return []
+  }
 }
 
 /**
