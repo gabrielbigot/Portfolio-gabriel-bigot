@@ -1,7 +1,6 @@
 import Link from "next/link"
 import { getCompanies } from "@/lib/portfolio-data"
 import { ArrowLeft, ArrowRight, Building2, MapPin, Calendar, Briefcase } from "lucide-react"
-import { notFound } from "next/navigation"
 
 export const revalidate = 3600
 
@@ -65,88 +64,111 @@ export default async function WorkPage() {
           </div>
         ) : (
           <div className="py-12 sm:py-16 space-y-6">
-            {companies.map((company, index) => (
+            {companies.map((company) => (
               <Link
                 key={company.id}
                 href={`/work/${company.slug}`}
                 className="group block p-6 sm:p-8 border border-border rounded-xl hover:border-muted-foreground/50 hover:shadow-lg transition-all duration-300"
               >
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                  <div className="space-y-3 flex-1">
-                    {/* Company + type badge */}
-                    <div className="flex flex-wrap items-center gap-3">
-                      <h2 className="text-2xl sm:text-3xl font-light group-hover:text-muted-foreground transition-colors duration-300">
-                        {company.company}
-                      </h2>
-                      {company.type && (
-                        <span className="px-3 py-1 text-xs bg-foreground/5 border border-border rounded-full">
-                          {company.type}
-                        </span>
-                      )}
-                      {company.current && (
-                        <span className="px-3 py-1 text-xs bg-amber-500/10 text-amber-500 border border-amber-500/20 rounded-full">
-                          Poste actuel
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Position */}
-                    {company.position && (
-                      <div className="flex items-center gap-2 text-muted-foreground">
-                        <Briefcase className="w-4 h-4 flex-shrink-0" />
-                        <span>{company.position}</span>
+                <div className="flex gap-5 sm:gap-6">
+                  {/* Logo */}
+                  <div className="flex-shrink-0">
+                    {company.logo ? (
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg border border-border bg-background overflow-hidden flex items-center justify-center">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={company.logo}
+                          alt={`Logo ${company.company}`}
+                          className="w-full h-full object-contain p-1.5"
+                        />
                       </div>
-                    )}
-
-                    {/* Meta: location + dates */}
-                    <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-                      {company.location && (
-                        <div className="flex items-center gap-1.5">
-                          <MapPin className="w-3.5 h-3.5" />
-                          <span>{company.location}</span>
-                        </div>
-                      )}
-                      <div className="flex items-center gap-1.5">
-                        <Calendar className="w-3.5 h-3.5" />
-                        <span>
-                          {formatDate(company.startDate)}
-                          {" — "}
-                          {company.current ? "Aujourd'hui" : formatDate(company.endDate)}
+                    ) : (
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg border border-border bg-foreground/[0.03] flex items-center justify-center flex-shrink-0">
+                        <span className="text-lg font-light text-muted-foreground select-none">
+                          {company.company.charAt(0).toUpperCase()}
                         </span>
-                      </div>
-                    </div>
-
-                    {/* Short description */}
-                    {company.shortDescription && (
-                      <p className="text-muted-foreground leading-relaxed max-w-2xl">
-                        {company.shortDescription}
-                      </p>
-                    )}
-
-                    {/* Technologies */}
-                    {company.technologies && company.technologies.length > 0 && (
-                      <div className="flex flex-wrap gap-2 pt-1">
-                        {company.technologies.slice(0, 6).map((tech: string) => (
-                          <span
-                            key={tech}
-                            className="px-2.5 py-1 text-xs border border-border rounded-lg"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                        {company.technologies.length > 6 && (
-                          <span className="px-2.5 py-1 text-xs text-muted-foreground">
-                            +{company.technologies.length - 6}
-                          </span>
-                        )}
                       </div>
                     )}
                   </div>
 
-                  {/* Arrow */}
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300 self-end sm:self-center flex-shrink-0">
-                    <span>Voir le détail</span>
-                    <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                  {/* Content */}
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 flex-1 min-w-0">
+                    <div className="space-y-2.5 flex-1 min-w-0">
+                      {/* Company + badges */}
+                      <div className="flex flex-wrap items-center gap-2.5">
+                        <h2 className="text-xl sm:text-2xl font-light group-hover:text-muted-foreground transition-colors duration-300">
+                          {company.company}
+                        </h2>
+                        {company.type && (
+                          <span className="px-2.5 py-0.5 text-xs bg-foreground/5 border border-border rounded-full">
+                            {company.type}
+                          </span>
+                        )}
+                        {company.current && (
+                          <span className="px-2.5 py-0.5 text-xs bg-amber-500/10 text-amber-500 border border-amber-500/20 rounded-full">
+                            Poste actuel
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Position */}
+                      {company.position && (
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <Briefcase className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span>{company.position}</span>
+                        </div>
+                      )}
+
+                      {/* Meta */}
+                      <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+                        {company.location && (
+                          <div className="flex items-center gap-1.5">
+                            <MapPin className="w-3.5 h-3.5" />
+                            <span>{company.location}</span>
+                          </div>
+                        )}
+                        <div className="flex items-center gap-1.5">
+                          <Calendar className="w-3.5 h-3.5" />
+                          <span>
+                            {formatDate(company.startDate)}
+                            {" — "}
+                            {company.current ? "Aujourd'hui" : formatDate(company.endDate)}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Short description */}
+                      {company.shortDescription && (
+                        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
+                          {company.shortDescription}
+                        </p>
+                      )}
+
+                      {/* Technologies */}
+                      {company.technologies && company.technologies.length > 0 && (
+                        <div className="flex flex-wrap gap-1.5 pt-0.5">
+                          {company.technologies.slice(0, 6).map((tech: string) => (
+                            <span
+                              key={tech}
+                              className="px-2 py-0.5 text-xs border border-border rounded-md"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                          {company.technologies.length > 6 && (
+                            <span className="px-2 py-0.5 text-xs text-muted-foreground">
+                              +{company.technologies.length - 6}
+                            </span>
+                          )}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Arrow */}
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300 self-end sm:self-center flex-shrink-0">
+                      <span>Voir le détail</span>
+                      <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
                   </div>
                 </div>
               </Link>
