@@ -828,7 +828,7 @@ export async function getCompaniesFromNotion() {
           current: props.Current?.checkbox || false,
           shortDescription: extractPlainText(props.ShortDescription?.rich_text),
           description: extractPlainText(props.Description?.rich_text),
-          logo: props.Logo?.url || extractPlainText(props.Logo?.rich_text) || "",
+          logo: props.Logo?.files?.[0]?.file?.url || props.Logo?.files?.[0]?.external?.url || "",
           companyUrl: props.CompanyURL?.url || extractPlainText(props.CompanyURL?.rich_text) || "",
           type: props.Type?.select?.name || "",
           featured: props.Featured?.checkbox || false,
