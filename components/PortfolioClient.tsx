@@ -36,6 +36,8 @@ interface PersonalInfo {
   email: string
   phone: string
   availability: string
+  objectiveTitle?: string
+  objectiveText?: string
   currentRole: {
     position: string
     company: string
@@ -685,14 +687,18 @@ export default function PortfolioClient({
                   </div>
                 </div>
 
-                <div className="p-6 border border-border rounded-lg bg-foreground/[0.02]">
-                  <div className="space-y-3">
-                    <div className="text-sm font-mono text-muted-foreground">OBJECTIF 2026</div>
-                    <div className="text-sm text-muted-foreground leading-relaxed">
-                      Recherche activement un stage de 6 semaines (jan-fév 2026) en intégration IA/automatisation en PME ou développement produit IA.
+                {(personalInfo.objectiveTitle || personalInfo.objectiveText) && (
+                  <div className="p-6 border border-border rounded-lg bg-foreground/[0.02]">
+                    <div className="space-y-3">
+                      {personalInfo.objectiveTitle && (
+                        <div className="text-sm font-mono text-muted-foreground">{personalInfo.objectiveTitle}</div>
+                      )}
+                      {personalInfo.objectiveText && (
+                        <div className="text-sm text-muted-foreground leading-relaxed">{personalInfo.objectiveText}</div>
+                      )}
                     </div>
                   </div>
-                </div>
+                )}
 
                 <div className="pt-4">
                   <Link

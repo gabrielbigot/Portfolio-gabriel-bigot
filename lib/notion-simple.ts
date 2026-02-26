@@ -491,6 +491,8 @@ export async function getPersonalInfoFromNotion() {
         startDate: extractPlainText(props.CurrentStartDate?.rich_text || props.CurrentStartDate?.date),
         current: true,
       },
+      objectiveTitle: extractPlainText(props.ObjectiveTitle?.rich_text),
+      objectiveText: extractPlainText(props.ObjectiveText?.rich_text),
     }
   } catch (error) {
     console.error("Error fetching personal info from Notion:", error)
