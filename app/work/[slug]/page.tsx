@@ -91,19 +91,40 @@ export default async function CompanyPage({ params }: { params: Promise<{ slug: 
       <main className="max-w-5xl mx-auto px-6 sm:px-8 py-12 sm:py-20">
         {/* Hero */}
         <header className="space-y-8 pb-12 sm:pb-16 border-b border-border">
-          <div className="space-y-4">
-            {/* Badges */}
-            <div className="flex flex-wrap gap-3">
-              {company.type && (
-                <span className="px-3 py-1 text-xs bg-foreground/5 border border-border rounded-full">
-                  {company.type}
-                </span>
+          <div className="space-y-5">
+            {/* Logo + badges row */}
+            <div className="flex items-start gap-5">
+              {/* Logo */}
+              {company.logo ? (
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl border border-border bg-background overflow-hidden flex items-center justify-center flex-shrink-0">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={company.logo}
+                    alt={`Logo ${company.company}`}
+                    className="w-full h-full object-contain p-2"
+                  />
+                </div>
+              ) : (
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl border border-border bg-foreground/[0.03] flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl sm:text-3xl font-light text-muted-foreground select-none">
+                    {company.company.charAt(0).toUpperCase()}
+                  </span>
+                </div>
               )}
-              {company.current && (
-                <span className="px-3 py-1 text-xs bg-amber-500/10 text-amber-500 border border-amber-500/20 rounded-full">
-                  Poste actuel
-                </span>
-              )}
+
+              {/* Badges */}
+              <div className="flex flex-wrap gap-2.5 pt-1">
+                {company.type && (
+                  <span className="px-3 py-1 text-xs bg-foreground/5 border border-border rounded-full">
+                    {company.type}
+                  </span>
+                )}
+                {company.current && (
+                  <span className="px-3 py-1 text-xs bg-amber-500/10 text-amber-500 border border-amber-500/20 rounded-full">
+                    Poste actuel
+                  </span>
+                )}
+              </div>
             </div>
 
             {/* Company name */}
@@ -337,16 +358,36 @@ async function OtherCompaniesSection({ currentSlug }: { currentSlug: string }) {
             <Link
               key={company.id}
               href={`/work/${company.slug}`}
-              className="group p-6 border border-border rounded-xl hover:border-muted-foreground/50 transition-all duration-300 hover:shadow-lg space-y-3"
+              className="group p-5 border border-border rounded-xl hover:border-muted-foreground/50 transition-all duration-300 hover:shadow-lg space-y-3"
             >
-              <div className="flex items-start justify-between">
-                <h3 className="text-lg font-medium group-hover:text-muted-foreground transition-colors duration-300">
-                  {company.company}
-                </h3>
-                {company.current && (
-                  <span className="w-2 h-2 bg-amber-500 rounded-full mt-1.5 flex-shrink-0 animate-pulse" />
+              {/* Logo + name row */}
+              <div className="flex items-center gap-3">
+                {company.logo ? (
+                  <div className="w-9 h-9 rounded-lg border border-border bg-background overflow-hidden flex items-center justify-center flex-shrink-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={company.logo}
+                      alt={`Logo ${company.company}`}
+                      className="w-full h-full object-contain p-1"
+                    />
+                  </div>
+                ) : (
+                  <div className="w-9 h-9 rounded-lg border border-border bg-foreground/[0.03] flex items-center justify-center flex-shrink-0">
+                    <span className="text-sm font-light text-muted-foreground select-none">
+                      {company.company.charAt(0).toUpperCase()}
+                    </span>
+                  </div>
                 )}
+                <div className="flex items-center gap-2 flex-1 min-w-0">
+                  <h3 className="text-base font-medium group-hover:text-muted-foreground transition-colors duration-300 truncate">
+                    {company.company}
+                  </h3>
+                  {company.current && (
+                    <span className="w-1.5 h-1.5 bg-amber-500 rounded-full flex-shrink-0 animate-pulse" />
+                  )}
+                </div>
               </div>
+
               {company.position && (
                 <p className="text-sm text-muted-foreground">{company.position}</p>
               )}
