@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, Calendar, FileText, Download } from "lucide-react"
-import { newsletters, formatNewsletterDate } from "@/lib/newsletters-data"
+import { getNewsletters, formatNewsletterDate } from "@/lib/newsletters-data"
 
 export const metadata = {
   title: "Actualités IA — Gabriel Bigot",
@@ -8,9 +8,7 @@ export const metadata = {
 }
 
 export default function NewslettersPage() {
-  const sorted = [...newsletters].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  )
+  const sorted = getNewsletters()
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -47,7 +45,7 @@ export default function NewslettersPage() {
             </span>
             <span className="flex items-center gap-1.5">
               <FileText className="w-3.5 h-3.5" />
-              {newsletters.length} édition{newsletters.length > 1 ? "s" : ""}
+              {sorted.length} édition{sorted.length > 1 ? "s" : ""}
             </span>
           </div>
         </header>
