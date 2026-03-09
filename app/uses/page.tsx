@@ -224,7 +224,6 @@ export default function UsesPage() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex-shrink-0 p-2 text-muted-foreground hover:text-foreground transition-colors duration-200"
-                          onClick={(e) => e.stopPropagation()}
                           aria-label={`Visiter ${item.name}`}
                         >
                           <ExternalLink className="w-4 h-4" />
