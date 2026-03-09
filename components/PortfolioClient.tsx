@@ -688,18 +688,6 @@ export default function PortfolioClient({
                   </div>
                 </div>
 
-                {(personalInfo.objectiveTitle || personalInfo.objectiveText) && (
-                  <div className="p-6 border border-border rounded-lg bg-foreground/[0.02]">
-                    <div className="space-y-3">
-                      {personalInfo.objectiveTitle && (
-                        <div className="text-sm font-mono text-muted-foreground">{personalInfo.objectiveTitle}</div>
-                      )}
-                      {personalInfo.objectiveText && (
-                        <div className="text-sm text-muted-foreground leading-relaxed">{personalInfo.objectiveText}</div>
-                      )}
-                    </div>
-                  </div>
-                )}
 
                 <div className="pt-4">
                   <Link
