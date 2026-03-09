@@ -1,11 +1,14 @@
 import { getProjectsFromNotion } from "@/lib/notion-simple"
 import { projects as localProjects } from "@/lib/data"
+import { getPersonalInfo } from "@/lib/portfolio-data"
 import ProjectsPageClient from "@/components/ProjectsPageClient"
 
 // Revalidate every hour
 export const revalidate = 3600
 
 export default async function ProjectsPage() {
+  const personalInfo = await getPersonalInfo()
+
   // Try to fetch from Notion, fallback to local data
   let projects = localProjects
 
@@ -21,5 +24,5 @@ export default async function ProjectsPage() {
     console.warn("Failed to fetch from Notion, using local data:", error)
   }
 
-  return <ProjectsPageClient projects={projects} />
+  return <ProjectsPageClient projects={projects} cvUrl={(personalInfo as any).cvUrl} />
 }

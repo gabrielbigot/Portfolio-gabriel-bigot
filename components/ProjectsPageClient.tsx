@@ -20,9 +20,10 @@ interface Project {
 
 interface ProjectsPageClientProps {
   projects: Project[]
+  cvUrl?: string
 }
 
-export default function ProjectsPageClient({ projects }: ProjectsPageClientProps) {
+export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClientProps) {
   const [filter, setFilter] = useState<string>("all")
 
   // Extract all unique categories from all projects
@@ -313,8 +314,10 @@ export default function ProjectsPageClient({ projects }: ProjectsPageClientProps
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
-                href="/cv-gabriel-bigot.pdf"
-                download
+                href={cvUrl || "/cv-gabriel-bigot.pdf"}
+                download={!cvUrl?.startsWith("http")}
+                target={cvUrl?.startsWith("http") ? "_blank" : undefined}
+                rel={cvUrl?.startsWith("http") ? "noopener noreferrer" : undefined}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300"
               >
                 <span>Télécharger mon CV</span>
