@@ -1,14 +1,14 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft, ExternalLink, Download } from "lucide-react"
-import { newsletters, getNewsletter, formatNewsletterDate } from "@/lib/newsletters-data"
+import { getNewsletters, getNewsletter, formatNewsletterDate } from "@/lib/newsletters-data"
 
 type Props = {
   params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
-  return newsletters.map((n) => ({ slug: n.slug }))
+  return getNewsletters().map((n) => ({ slug: n.slug }))
 }
 
 export async function generateMetadata({ params }: Props) {
