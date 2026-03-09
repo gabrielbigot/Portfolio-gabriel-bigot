@@ -41,17 +41,12 @@ export default function ContactForm() {
     setSubmitStatus("idle")
 
     try {
-      // Simulate API call - Replace with your actual email service
-      // Options: Resend, SendGrid, EmailJS, or a custom API route
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-
-      // Example: Send to a API route
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(data),
-      // })
-      // if (!response.ok) throw new Error('Failed to send')
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      if (!response.ok) throw new Error('Failed to send')
 
       setSubmitStatus("success")
       reset()
