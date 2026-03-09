@@ -239,6 +239,12 @@ export default function PortfolioClient({
                     <span>Ce que j'utilise</span>
                   </Link>
                   <Link
+                    href="/newsletters"
+                    className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300"
+                  >
+                    <span>Tribune IA</span>
+                  </Link>
+                  <Link
                     href="/#connect"
                     className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300"
                   >
