@@ -74,7 +74,10 @@ export default async function WorkPage() {
                   {/* Logo */}
                   <div className="flex-shrink-0">
                     {company.logo ? (
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg border border-border bg-background overflow-hidden flex items-center justify-center">
+                      <div
+                          className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg border border-border overflow-hidden flex items-center justify-center"
+                          style={company.logoBackground ? { backgroundColor: company.logoBackground } : { backgroundColor: "white" }}
+                        >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={company.logo}
