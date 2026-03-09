@@ -96,7 +96,10 @@ export default async function CompanyPage({ params }: { params: Promise<{ slug: 
             <div className="flex items-start gap-5">
               {/* Logo */}
               {company.logo ? (
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl border border-border bg-background overflow-hidden flex items-center justify-center flex-shrink-0">
+                <div
+                    className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl border border-border overflow-hidden flex items-center justify-center flex-shrink-0"
+                    style={company.logoBackground ? { backgroundColor: company.logoBackground } : { backgroundColor: "white" }}
+                  >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={company.logo}
@@ -363,7 +366,10 @@ async function OtherCompaniesSection({ currentSlug }: { currentSlug: string }) {
               {/* Logo + name row */}
               <div className="flex items-center gap-3">
                 {company.logo ? (
-                  <div className="w-9 h-9 rounded-lg border border-border bg-background overflow-hidden flex items-center justify-center flex-shrink-0">
+                  <div
+                      className="w-9 h-9 rounded-lg border border-border overflow-hidden flex items-center justify-center flex-shrink-0"
+                      style={company.logoBackground ? { backgroundColor: company.logoBackground } : { backgroundColor: "white" }}
+                    >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={company.logo}

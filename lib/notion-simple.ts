@@ -841,6 +841,7 @@ export async function getCompaniesFromNotion() {
             console.log("[notion] Logo raw prop:", JSON.stringify(raw))
             return raw?.files?.[0]?.file?.url || raw?.files?.[0]?.external?.url || ""
           })(),
+          logoBackground: extractPlainText(props.LogoBackground?.rich_text) || "",
           companyUrl: props.CompanyURL?.url || extractPlainText(props.CompanyURL?.rich_text) || "",
           type: props.Type?.select?.name || "",
           featured: props.Featured?.checkbox || false,
