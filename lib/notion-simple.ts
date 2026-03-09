@@ -493,7 +493,12 @@ export async function getPersonalInfoFromNotion() {
       },
       objectiveTitle: extractPlainText(props.ObjectiveTitle?.rich_text),
       objectiveText: extractPlainText(props.ObjectiveText?.rich_text),
-      cvUrl: props.CvUrl?.url || extractPlainText(props.CvUrl?.rich_text) || "",
+      cvUrl: (() => {
+        const files = props.CvUrl?.files
+        if (!files || files.length === 0) return ""
+        const f = files[0]
+        return f.type === "external" ? f.external?.url : f.file?.url || ""
+      })(),
     }
   } catch (error) {
     console.error("Error fetching personal info from Notion:", error)
