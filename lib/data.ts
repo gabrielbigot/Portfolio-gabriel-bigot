@@ -34,6 +34,7 @@ Mon objectif est d'intégrer SKEMA Business School avec une spécialisation en I
 
   objectiveTitle: "OBJECTIF 2026",
   objectiveText: "Recherche activement un stage de 6 semaines (jan-fév 2026) en intégration IA/automatisation en PME ou développement produit IA.",
+  cvUrl: "/cv-gabriel-bigot.pdf",
 };
 
 export const socialLinks = [

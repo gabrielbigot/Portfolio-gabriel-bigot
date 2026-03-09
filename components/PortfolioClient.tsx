@@ -38,6 +38,7 @@ interface PersonalInfo {
   availability: string
   objectiveTitle?: string
   objectiveText?: string
+  cvUrl?: string
   currentRole: {
     position: string
     company: string
@@ -702,8 +703,10 @@ export default function PortfolioClient({
 
                 <div className="pt-4">
                   <Link
-                    href="/cv-gabriel-bigot.pdf"
-                    download
+                    href={personalInfo.cvUrl || "/cv-gabriel-bigot.pdf"}
+                    download={!personalInfo.cvUrl?.startsWith("http")}
+                    target={personalInfo.cvUrl?.startsWith("http") ? "_blank" : undefined}
+                    rel={personalInfo.cvUrl?.startsWith("http") ? "noopener noreferrer" : undefined}
                     className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300 hover:shadow-sm"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
