@@ -476,8 +476,8 @@ export async function getPersonalInfoFromNotion() {
       title: extractPlainText(props.Title?.rich_text),
       tagline: extractPlainText(props.Tagline?.rich_text),
       location: extractPlainText(props.Location?.rich_text),
-      email: extractPlainText(props.Email?.email || props.Email?.rich_text),
-      phone: extractPlainText(props.Phone?.phone_number || props.Phone?.rich_text),
+      email: props.Email?.email || extractPlainText(props.Email?.rich_text) || "",
+      phone: props.Phone?.phone_number || extractPlainText(props.Phone?.rich_text) || "",
       availability: extractPlainText(props.Availability?.rich_text),
       birthDate: props.BirthDate?.date?.start || "",
       bio: {
