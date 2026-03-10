@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, Calendar, FileText, Download } from "lucide-react"
+// Note: newsletter cards link directly to static .html files (no embedded viewer)
 import { getNewsletters, formatNewsletterDate } from "@/lib/newsletters-data"
 
 export const metadata = {
@@ -64,8 +65,10 @@ export default function NewslettersPage() {
                 <div className="text-xs font-mono text-muted-foreground tracking-wider mb-4">
                   DERNIÈRE ÉDITION
                 </div>
-                <Link
-                  href={`/newsletters/${sorted[0].slug}`}
+                <a
+                  href={`/newsletters/${sorted[0].slug}.html`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group block p-7 sm:p-8 border border-border rounded-xl hover:border-muted-foreground/50 hover:shadow-lg transition-all duration-300 bg-foreground/[0.02]"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-5">
@@ -104,7 +107,7 @@ export default function NewslettersPage() {
                       </div>
                     </div>
                   </div>
-                </Link>
+                </a>
               </div>
             )}
 
@@ -115,9 +118,11 @@ export default function NewslettersPage() {
                   ÉDITIONS PRÉCÉDENTES
                 </div>
                 {sorted.slice(1).map((newsletter) => (
-                  <Link
+                  <a
                     key={newsletter.slug}
-                    href={`/newsletters/${newsletter.slug}`}
+                    href={`/newsletters/${newsletter.slug}.html`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group flex items-center justify-between gap-4 p-5 sm:p-6 border border-border rounded-xl hover:border-muted-foreground/50 hover:shadow-md transition-all duration-300"
                   >
                     <div className="space-y-1 flex-1 min-w-0">
@@ -144,7 +149,7 @@ export default function NewslettersPage() {
                       )}
                       <ArrowRight className="w-4 h-4 text-muted-foreground transform group-hover:translate-x-1 group-hover:text-foreground transition-all duration-300" />
                     </div>
-                  </Link>
+                  </a>
                 ))}
               </>
             )}
