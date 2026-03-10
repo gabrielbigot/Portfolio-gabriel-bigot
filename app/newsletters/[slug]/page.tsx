@@ -23,28 +23,58 @@ export async function generateMetadata({ params }: Props) {
   }
 }
 
-function parseNewsletter(slug: string): { styles: string; body: string } | null {
+/** Strip color & background properties from a CSS string, keeping layout/typography */
+function stripCSSColors(css: string): string {
+  return css
+    .replace(/\bcolor\s*:[^;{}]+;?/gi, "")
+    .replace(/\bbackground(-color)?\s*:[^;{}]+;?/gi, "")
+    .replace(/\bborder-color\s*:[^;{}]+;?/gi, "")
+    .replace(/\boutline-color\s*:[^;{}]+;?/gi, "")
+}
+
+/** Strip color & background properties from inline style="" attributes in HTML */
+function stripInlineColors(html: string): string {
+  return html.replace(/style="([^"]*)"/gi, (_match, styleValue: string) => {
+    const cleaned = styleValue
+      .replace(/\bcolor\s*:[^;]+;?/gi, "")
+      .replace(/\bbackground(-color)?\s*:[^;]+;?/gi, "")
+      .replace(/\bborder-color\s*:[^;]+;?/gi, "")
+      .trim()
+    return cleaned ? `style="${cleaned}"` : ""
+  })
+}
+
+function parseNewsletter(slug: string): {
+  lightStyles: string
+  darkStyles: string
+  lightBody: string
+  darkBody: string
+} | null {
   const htmlPath = path.join(process.cwd(), "public", "newsletters", `${slug}.html`)
   try {
     const raw = fs.readFileSync(htmlPath, "utf-8")
 
-    // Extract all <style> blocks, stripping body/html rules to prevent leakage into the portfolio page
+    // Extract <style> blocks, strip body/html rules to prevent page-level leakage
     const styleMatches = [...raw.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)]
-    const styles = styleMatches
+    const lightStyles = styleMatches
       .map((m) => m[1])
       .join("\n")
       .replace(/\bhtml\b[^{]*\{[^}]*\}/gi, "")
       .replace(/\bbody\b[^{]*\{[^}]*\}/gi, "")
 
-    // Extract <body> content (strip scripts for safety)
+    // Extract <body> content, strip scripts
     const bodyMatch = raw.match(/<body[^>]*>([\s\S]*)<\/body>/i)
-    const raw_body = bodyMatch ? bodyMatch[1] : raw
-    const body = raw_body.replace(
+    const rawBody = bodyMatch ? bodyMatch[1] : raw
+    const lightBody = rawBody.replace(
       /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,
       ""
     )
 
-    return { styles, body }
+    // Dark variants: strip all color values so CSS overrides win cleanly
+    const darkStyles = stripCSSColors(lightStyles)
+    const darkBody = stripInlineColors(lightBody)
+
+    return { lightStyles, darkStyles, lightBody, darkBody }
   } catch {
     return null
   }
@@ -79,14 +109,14 @@ export default async function NewsletterPage({ params }: Props) {
               </span>
             </div>
           </div>
-
         </div>
       </nav>
 
-      {/* Newsletter content rendered inline */}
       <NewsletterViewer
-        styles={parsed.styles}
-        body={parsed.body}
+        lightStyles={parsed.lightStyles}
+        darkStyles={parsed.darkStyles}
+        lightBody={parsed.lightBody}
+        darkBody={parsed.darkBody}
         title={newsletter.title}
       />
     </div>
