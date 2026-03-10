@@ -2,7 +2,7 @@ import fs from "fs"
 import path from "path"
 import { notFound } from "next/navigation"
 import Link from "next/link"
-import { ArrowLeft, ExternalLink, Download } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 import { getNewsletters, getNewsletter, formatNewsletterDate } from "@/lib/newsletters-data"
 import { NewsletterViewer } from "@/components/NewsletterViewer"
 
@@ -54,9 +54,6 @@ export default async function NewsletterPage({ params }: Props) {
   const parsed = parseNewsletter(slug)
   if (!parsed) notFound()
 
-  const htmlUrl = `/newsletters/${slug}.html`
-  const pdfUrl = `/newsletters/${slug}.pdf`
-
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Toolbar */}
@@ -79,27 +76,6 @@ export default async function NewsletterPage({ params }: Props) {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 flex-shrink-0">
-            <a
-              href={htmlUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm text-muted-foreground border border-border rounded-lg hover:text-foreground hover:border-muted-foreground/50 transition-all duration-200"
-            >
-              <ExternalLink className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Ouvrir</span>
-            </a>
-            {newsletter.hasPdf && (
-              <a
-                href={pdfUrl}
-                download
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-200"
-              >
-                <Download className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">PDF</span>
-              </a>
-            )}
-          </div>
         </div>
       </nav>
 
