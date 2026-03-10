@@ -66,7 +66,7 @@ export default function NewslettersPage() {
                   DERNIÈRE ÉDITION
                 </div>
                 <a
-                  href={`/newsletters/${sorted[0].slug}.html`}
+                  href={`/newsletters/${sorted[0].slug}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group block p-7 sm:p-8 border border-border rounded-xl hover:border-muted-foreground/50 hover:shadow-lg transition-all duration-300 bg-foreground/[0.02]"
@@ -120,7 +120,7 @@ export default function NewslettersPage() {
                 {sorted.slice(1).map((newsletter) => (
                   <a
                     key={newsletter.slug}
-                    href={`/newsletters/${newsletter.slug}.html`}
+                    href={`/newsletters/${newsletter.slug}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group flex items-center justify-between gap-4 p-5 sm:p-6 border border-border rounded-xl hover:border-muted-foreground/50 hover:shadow-md transition-all duration-300"
