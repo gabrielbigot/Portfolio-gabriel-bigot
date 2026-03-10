@@ -28,9 +28,13 @@ function parseNewsletter(slug: string): { styles: string; body: string } | null 
   try {
     const raw = fs.readFileSync(htmlPath, "utf-8")
 
-    // Extract all <style> blocks
+    // Extract all <style> blocks, stripping body/html rules to prevent leakage into the portfolio page
     const styleMatches = [...raw.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)]
-    const styles = styleMatches.map((m) => m[1]).join("\n")
+    const styles = styleMatches
+      .map((m) => m[1])
+      .join("\n")
+      .replace(/\bhtml\b[^{]*\{[^}]*\}/gi, "")
+      .replace(/\bbody\b[^{]*\{[^}]*\}/gi, "")
 
     // Extract <body> content (strip scripts for safety)
     const bodyMatch = raw.match(/<body[^>]*>([\s\S]*)<\/body>/i)

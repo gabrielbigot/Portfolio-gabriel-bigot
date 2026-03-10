@@ -9,35 +9,35 @@ type Props = {
   title: string
 }
 
-// Targeted CSS overrides for dark mode — much better than filter:invert
-// Uses !important to override both the newsletter's class-based and inline styles
-const DARK_MODE_OVERRIDES = `
-  .nwl-dark, .nwl-dark body, .nwl-dark div, .nwl-dark table,
-  .nwl-dark section, .nwl-dark article, .nwl-dark header,
-  .nwl-dark footer, .nwl-dark main, .nwl-dark aside,
-  .nwl-dark td, .nwl-dark th, .nwl-dark tr {
+// Portfolio color tokens
+// Dark  : bg #09090b | foreground #fafafa | muted #a1a1aa | border #27272a
+// Light : bg #ffffff | foreground #09090b | muted #71717a | border #e4e4e7
+
+// Triple-class trick (.nwl-dark.nwl-dark.nwl-dark) gives specificity (0,3,0)
+// which beats most newsletter class rules (0,1,0)–(0,2,0), combined with
+// !important it overrides inline styles too.
+const DARK_OVERRIDES = `
+  .nwl-dark.nwl-dark.nwl-dark,
+  .nwl-dark.nwl-dark.nwl-dark * {
     background-color: #09090b !important;
+    background-image: none !important;
     color: #d4d4d8 !important;
-  }
-  .nwl-dark h1, .nwl-dark h2, .nwl-dark h3,
-  .nwl-dark h4, .nwl-dark h5, .nwl-dark h6 {
-    color: #ffffff !important;
-  }
-  .nwl-dark p, .nwl-dark li, .nwl-dark blockquote {
-    color: #d4d4d8 !important;
-  }
-  .nwl-dark span {
-    color: inherit !important;
-  }
-  .nwl-dark hr, .nwl-dark [style*="border"],
-  .nwl-dark td, .nwl-dark th {
     border-color: #27272a !important;
   }
-  .nwl-dark a {
+  .nwl-dark.nwl-dark.nwl-dark h1,
+  .nwl-dark.nwl-dark.nwl-dark h2,
+  .nwl-dark.nwl-dark.nwl-dark h3,
+  .nwl-dark.nwl-dark.nwl-dark h4,
+  .nwl-dark.nwl-dark.nwl-dark h5,
+  .nwl-dark.nwl-dark.nwl-dark h6 {
+    color: #fafafa !important;
+  }
+  .nwl-dark.nwl-dark.nwl-dark a {
     color: #a78bfa !important;
   }
-  .nwl-dark img {
-    opacity: 0.9;
+  .nwl-dark.nwl-dark.nwl-dark img {
+    opacity: 0.85;
+    filter: brightness(0.9);
   }
 `
 
@@ -51,10 +51,10 @@ export function NewsletterViewer({ styles, body, title }: Props) {
 
   return (
     <>
-      {/* Newsletter's own styles first */}
+      {/* Newsletter structural styles (body/html rules already stripped server-side) */}
       <style dangerouslySetInnerHTML={{ __html: styles }} />
-      {/* Dark mode overrides injected after, so they win the cascade */}
-      {isDark && <style dangerouslySetInnerHTML={{ __html: DARK_MODE_OVERRIDES }} />}
+      {/* Dark mode color overrides injected after — wins the cascade */}
+      {isDark && <style dangerouslySetInnerHTML={{ __html: DARK_OVERRIDES }} />}
       <div
         className={isDark ? "nwl-dark" : ""}
         aria-label={title}
