@@ -24,6 +24,7 @@ interface Project {
   categories?: string[]
   tags: string[]
   featured: boolean
+  image?: string
 }
 
 interface PersonalInfo {
@@ -407,9 +408,25 @@ export default function PortfolioClient({
                     <Link
                       key={project.id}
                       href={`/projects/${project.slug}`}
-                      className="group p-6 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300 hover:shadow-lg"
+                      className="group border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300 hover:shadow-lg overflow-hidden"
                     >
-                      <div className="space-y-4">
+                      {/* Image */}
+                      <div className="relative w-full aspect-video bg-foreground/[0.03]">
+                        {project.image ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-foreground/[0.03] to-foreground/[0.07]">
+                            <span className="text-xs font-mono text-muted-foreground/30 tracking-widest uppercase">{project.category}</span>
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="p-6 space-y-4">
                         <div className="flex items-center justify-between">
                           <div className="flex flex-wrap gap-1.5">
                             {project.categories && project.categories.length > 0 ? (
