@@ -335,7 +335,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 }
 
 function OtherProjectsSection({ currentProjectId }: { currentProjectId: string }) {
-  const otherProjects = projects
+  const otherProjects = getProjects()
     .filter((p) => p.id !== currentProjectId)
     .slice(0, 3)
 
