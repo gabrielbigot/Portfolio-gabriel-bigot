@@ -1,15 +1,15 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { blogPosts } from "@/lib/data"
+import { getBlogPosts, getBlogPost } from "@/lib/portfolio-data"
 import ShareButtons from "@/components/ShareButtons"
-import NotionBlockRenderer from "@/components/NotionBlockRenderer"
+import BlogContentRenderer from "@/components/BlogContentRenderer"
 
 export function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }))
+  return getBlogPosts().map((post) => ({ slug: post.slug }))
 }
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = blogPosts.find((p) => p.slug === params.slug)
+  const post = getBlogPost(params.slug)
 
   if (!post) {
     notFound()
@@ -78,7 +78,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         {/* Content */}
         <div className="max-w-none">
           {post.content && post.content.length > 0 ? (
-            <NotionBlockRenderer content={post.content} />
+            <BlogContentRenderer content={post.content as any} />
           ) : (
             <div className="text-center py-16 text-muted-foreground">
               <p>Le contenu de cet article est en cours de rédaction...</p>
@@ -111,7 +111,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 }
 
 function RelatedArticlesSection({ currentPostId }: { currentPostId: string }) {
-  const relatedPosts = blogPosts
+  const relatedPosts = getBlogPosts()
     .filter((p) => p.id !== currentPostId && p.published)
     .slice(0, 2)
 

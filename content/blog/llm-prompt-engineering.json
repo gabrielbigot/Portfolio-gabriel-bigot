@@ -1,0 +1,112 @@
+{
+  "title": "Prompt Engineering : l'art de parler aux IA",
+  "excerpt": "Mes techniques et bonnes pratiques pour obtenir les meilleurs résultats avec les LLM.",
+  "date": "2025-07",
+  "readingTime": "12 min",
+  "category": "IA",
+  "featured": false,
+  "published": true,
+  "content": [
+    {
+      "type": "paragraph",
+      "children": [{ "text": "Depuis 2022, j'expérimente quotidiennement avec les LLM (GPT, Claude, etc.). Au fil du temps, j'ai développé des techniques de prompt engineering qui transforment radicalement la qualité des résultats. Voici ce que j'ai appris." }]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [{ "text": "Principe 1 : La spécificité bat la généralité" }]
+    },
+    {
+      "type": "paragraph",
+      "children": [{ "text": "Mauvais prompt : 'Écris-moi un script Python pour traiter des données.'" }]
+    },
+    {
+      "type": "paragraph",
+      "children": [{ "text": "Bon prompt : 'Écris un script Python qui lit un fichier CSV contenant des transactions bancaires (colonnes : date, libellé, montant), filtre les transactions > 1000€, et génère un rapport Excel avec une colonne supplémentaire indiquant le mois de la transaction.'" }]
+    },
+    {
+      "type": "paragraph",
+      "children": [{ "text": "La différence ? Le contexte, les contraintes précises, et le résultat attendu clairement défini." }]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [{ "text": "Principe 2 : Donnez des exemples" }]
+    },
+    {
+      "type": "paragraph",
+      "children": [{ "text": "Les LLM apprennent incroyablement bien par l'exemple. Au lieu de décrire ce que vous voulez, montrez-le. Le few-shot learning est l'une des techniques les plus puissantes à votre disposition." }]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [{ "text": "Principe 3 : Le chaînage de prompts" }]
+    },
+    {
+      "type": "paragraph",
+      "children": [{ "text": "Pour les tâches complexes, ne cherchez pas à tout faire en un seul prompt. Décomposez en étapes :" }]
+    },
+    {
+      "type": "ordered-list",
+      "children": [
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Étape 1 : Analyser le problème et identifier les sous-tâches" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Étape 2 : Pour chaque sous-tâche, créer la solution" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Étape 3 : Intégrer les solutions ensemble" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Étape 4 : Tester et raffiner" }] }] }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [{ "text": "Principe 4 : Définissez le rôle et le contexte" }]
+    },
+    {
+      "type": "paragraph",
+      "children": [{ "text": "Les LLM performent mieux quand vous leur donnez un rôle et un contexte précis. Commencez par : 'Tu es un expert en X avec Y ans d'expérience. Contexte : [votre situation]. Question : [votre demande].'" }]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [{ "text": "Technique avancée : Le prompting structuré CRISPE" }]
+    },
+    {
+      "type": "unordered-list",
+      "children": [
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "C - Contexte : Quelle est la situation ?" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "R - Rôle : Qui est l'IA dans ce scénario ?" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "I - Instructions : Que doit-elle faire exactement ?" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "S - Steps : Quelles étapes suivre ?" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "P - Persona : Quel style de réponse ?" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "E - Examples : Des exemples concrets" }] }] }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [{ "text": "Erreurs de débutant à éviter" }]
+    },
+    {
+      "type": "unordered-list",
+      "children": [
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Être trop vague : 'Aide-moi à automatiser' → non, soyez précis" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Tout demander d'un coup : décomposez les tâches complexes" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Ne pas donner de contraintes : précisez les limites, les formats, les cas limites" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Ignorer le contexte : donnez toujours le contexte métier" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Ne pas vérifier : les LLM peuvent halluciner, vérifiez toujours le code généré" }] }] }
+      ]
+    },
+    {
+      "type": "blockquote",
+      "children": [{ "type": "paragraph", "children": [{ "text": "Le prompt engineering n'est pas juste une compétence technique. C'est l'art de communiquer clairement ce que vous voulez, avec des exemples, du contexte, et de la structure." }] }]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [{ "text": "Conclusion" }]
+    },
+    {
+      "type": "paragraph",
+      "children": [{ "text": "Le prompt engineering est une compétence qui s'apprend par la pratique : expérimentez quotidiennement, gardez trace de vos meilleurs prompts, itérez et raffinez. Et surtout : restez curieux. Les LLM évoluent constamment, c'est ça qui rend ce domaine passionnant." }]
+    }
+  ]
+}

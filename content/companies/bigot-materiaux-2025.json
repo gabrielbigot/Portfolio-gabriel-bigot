@@ -1,0 +1,29 @@
+{
+  "company": "BIGOT Matériaux",
+  "position": "Assistant RH/Compta & Développeur d'Automatisations",
+  "location": "Étaples, France",
+  "startDate": "2025-07-01",
+  "endDate": "2025-09-01",
+  "current": false,
+  "type": "Stage",
+  "shortDescription": "Développement d'automatisations stratégiques pour optimiser les processus RH et comptables de la PME familiale.",
+  "description": "Développement d'automatisations stratégiques pour optimiser les processus RH et comptables de la PME familiale.",
+  "logo": "",
+  "logoBackground": "",
+  "companyUrl": "",
+  "technologies": [
+    "Python",
+    "Flask",
+    "Supabase",
+    "Excel/VBA",
+    "OCR",
+    "PDF Parsing",
+    "Automatisation UI"
+  ],
+  "achievements": [
+    "Création d'une application web complète pour automatiser la comptabilité avec Python, Flask et base de données cloud",
+    "Développement d'un système de traitement automatique de relevés bancaires : extraction PDF, mise en forme Excel, préparation import comptable",
+    "Conception d'automatisations Excel avancées : relances clients automatiques, regroupement de données, suppression de doublons",
+    "Automatisation de la génération de procès-verbaux d'assemblées générales"
+  ]
+}

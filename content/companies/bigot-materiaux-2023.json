@@ -1,0 +1,24 @@
+{
+  "company": "BIGOT Matériaux",
+  "position": "Assistant RH & Comptable",
+  "location": "Étaples, France",
+  "startDate": "2023-07-01",
+  "endDate": "2023-07-31",
+  "current": false,
+  "type": "Stage",
+  "shortDescription": "Premier contact avec les processus administratifs de l'entreprise familiale.",
+  "description": "Premier contact avec les processus administratifs de l'entreprise familiale. Découverte des outils internes et des processus comptables.",
+  "logo": "",
+  "logoBackground": "",
+  "companyUrl": "",
+  "technologies": [
+    "Excel",
+    "Logiciels comptables"
+  ],
+  "achievements": [
+    "Archivage et organisation de documents RH",
+    "Inventaires et gestion de stock",
+    "Saisie et lettrage comptable",
+    "Découverte des outils internes (AS400)"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "title": "Automatisation Traitement Relevés Bancaires",
+  "shortDescription": "Système d'extraction et formatage automatique de relevés bancaires PDF vers Excel",
+  "fullDescription": "Développement d'un pipeline complet pour extraire les données de relevés bancaires PDF, les structurer et les préparer pour l'import dans le système comptable.",
+  "category": "Automatisation",
+  "categories": ["Automatisation", "Data"],
+  "tags": ["Python", "OCR", "PDF", "Excel", "Data Processing"],
+  "date": "2025-08",
+  "company": "BIGOT Matériaux",
+  "featured": true,
+  "image": "/projects/bank-automation.jpg",
+  "problem": "Le traitement manuel de dizaines de relevés bancaires PDF prenait plusieurs heures et était source d'erreurs.",
+  "solution": "Création d'un script Python utilisant l'OCR et le parsing intelligent pour extraire, nettoyer et formater automatiquement les données.",
+  "impact": [
+    "Traitement de 50+ relevés en quelques minutes vs plusieurs heures",
+    "Précision de 98% dans l'extraction des données",
+    "Export direct vers format compatible comptabilité",
+    "Élimination de la saisie manuelle"
+  ],
+  "technologies": [
+    { "name": "Python", "usage": "Script d'automatisation" },
+    { "name": "OCR", "usage": "Extraction de texte depuis PDF" },
+    { "name": "Pandas", "usage": "Manipulation et nettoyage de données" },
+    { "name": "Excel", "usage": "Export formaté" }
+  ],
+  "challenges": [
+    "Variabilité des formats de PDF bancaires",
+    "Reconnaissance OCR précise des montants",
+    "Gestion des cas limites et erreurs"
+  ],
+  "learnings": [
+    "Techniques d'OCR et parsing de documents",
+    "Importance de la validation de données",
+    "Gestion robuste des erreurs"
+  ]
+}

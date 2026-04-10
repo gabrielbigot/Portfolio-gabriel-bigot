@@ -2,12 +2,11 @@ import Link from "next/link"
 import { ArrowLeft, Award, Heart, Zap, TrendingUp, Target, Medal } from "lucide-react"
 import { getPersonalInfo, getTimeline, getAchievements, getInterests } from "@/lib/portfolio-data"
 
-export default async function AboutPage() {
-  // Fetch data from Notion with fallback to local data
-  const personalInfo = await getPersonalInfo()
-  const timeline = await getTimeline()
-  const achievements = await getAchievements()
-  const interests = await getInterests()
+export default function AboutPage() {
+  const personalInfo = getPersonalInfo()
+  const timeline = getTimeline()
+  const achievements = getAchievements()
+  const interests = getInterests()
   return (
     <div className="min-h-screen bg-background text-foreground">
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">

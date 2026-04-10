@@ -1,0 +1,112 @@
+{
+  "title": "Excel vs Python : quand et comment automatiser ?",
+  "excerpt": "Guide pratique pour choisir entre VBA et Python selon vos besoins d'automatisation.",
+  "date": "2025-08",
+  "readingTime": "10 min",
+  "category": "Technique",
+  "featured": false,
+  "published": true,
+  "content": [
+    {
+      "type": "paragraph",
+      "children": [{ "text": "Après avoir développé des dizaines d'automatisations pour BIGOT Matériaux, une question revient constamment : 'Est-ce que je devrais faire ça en Excel/VBA ou en Python ?' Voici mon guide pratique basé sur l'expérience terrain." }]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [{ "text": "Excel/VBA : quand l'utiliser ?" }]
+    },
+    {
+      "type": "paragraph",
+      "children": [{ "text": "Excel reste un outil incroyablement puissant pour l'automatisation, surtout dans un contexte PME. Voici quand je choisis Excel/VBA :" }]
+    },
+    {
+      "type": "unordered-list",
+      "children": [
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "L'utilisateur final travaille déjà dans Excel quotidiennement" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Les données source et destination sont dans Excel" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "L'automatisation est relativement simple (macros, formules avancées, Power Query)" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Vous voulez une adoption immédiate sans formation technique" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Le volume de données reste raisonnable (< 100k lignes)" }] }] }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [{ "text": "Exemple : Relances clients automatiques" }]
+    },
+    {
+      "type": "paragraph",
+      "children": [{ "text": "J'ai créé une macro VBA qui lit la liste des clients en retard de paiement, génère automatiquement des emails personnalisés, crée un rapport de suivi dans Excel et met à jour les statuts de relance." }]
+    },
+    {
+      "type": "paragraph",
+      "children": [{ "text": "Pourquoi Excel ici ? Parce que l'utilisateur travaille déjà dans Excel, connaît l'interface, et peut facilement vérifier/modifier les données avant l'envoi." }]
+    },
+    {
+      "type": "code",
+      "children": [{ "text": "Sub RelancerClients()\n    Dim ws As Worksheet\n    Set ws = ThisWorkbook.Sheets(\"Relances\")\n\n    ' Parcourir les clients en retard\n    For Each row In ws.Range(\"A2:A\" & ws.Cells(Rows.Count, 1).End(xlUp).Row)\n        If row.Offset(0, 3).Value > 30 Then ' Retard > 30 jours\n            Call GenererEmailRelance(row)\n        End If\n    Next row\nEnd Sub" }]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [{ "text": "Python : quand l'utiliser ?" }]
+    },
+    {
+      "type": "paragraph",
+      "children": [{ "text": "Python devient le meilleur choix dans ces situations :" }]
+    },
+    {
+      "type": "unordered-list",
+      "children": [
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Vous devez interagir avec des APIs externes" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Le traitement implique des données de sources multiples (PDF, bases de données, web)" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Le volume de données est important (> 100k lignes)" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Vous avez besoin de fonctionnalités avancées (ML, OCR, scraping)" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "L'automatisation doit tourner en arrière-plan ou sur un serveur" }] }] }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [{ "text": "Exemple : Traitement automatique de relevés bancaires" }]
+    },
+    {
+      "type": "code",
+      "children": [{ "text": "import pandas as pd\nimport pdfplumber\nfrom pathlib import Path\n\ndef extraire_transactions_pdf(pdf_path):\n    transactions = []\n\n    with pdfplumber.open(pdf_path) as pdf:\n        for page in pdf.pages:\n            text = page.extract_text()\n            # ... logique d'extraction\n\n    return pd.DataFrame(transactions)\n\n# Traiter tous les PDFs\ndfs = []\nfor pdf_file in Path(\"releves/\").glob(\"*.pdf\"):\n    df = extraire_transactions_pdf(pdf_file)\n    dfs.append(df)\n\n# Consolider et exporter\nfinal_df = pd.concat(dfs)\nfinal_df.to_excel(\"import_comptable.xlsx\", index=False)" }]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [{ "text": "L'approche hybride : le meilleur des deux mondes" }]
+    },
+    {
+      "type": "unordered-list",
+      "children": [
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Python pour le traitement lourd et complexe" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Excel pour l'interface utilisateur et la présentation finale" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Python génère des fichiers Excel que l'utilisateur peut consulter/modifier" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Excel déclenche des scripts Python via VBA si nécessaire" }] }] }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [{ "text": "Mon framework de décision" }]
+    },
+    {
+      "type": "ordered-list",
+      "children": [
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Étape 1 : Est-ce que l'utilisateur final vit dans Excel ? → Si oui, privilégier Excel/VBA" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Étape 2 : Est-ce que le traitement est complexe (APIs, OCR, ML) ? → Si oui, Python" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Étape 3 : Est-ce que le volume de données est important ? → Si oui, Python" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Étape 4 : Est-ce que l'automatisation doit tourner sans intervention ? → Si oui, Python" }] }] },
+        { "type": "list-item", "children": [{ "type": "list-item-content", "children": [{ "text": "Étape 5 : Sinon, Excel/VBA est probablement le meilleur choix" }] }] }
+      ]
+    },
+    {
+      "type": "blockquote",
+      "children": [{ "type": "paragraph", "children": [{ "text": "Le meilleur outil n'est pas celui qui est le plus avancé techniquement, c'est celui qui résout le problème de la façon la plus simple possible." }] }]
+    }
+  ]
+}

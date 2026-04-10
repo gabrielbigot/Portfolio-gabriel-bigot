@@ -1,5 +1,4 @@
-import { blogPosts, projects } from "@/lib/data"
-import { getPersonalInfo, getSocialLinks, getWorkExperience, getSkills } from "@/lib/portfolio-data"
+import { getPersonalInfo, getSocialLinks, getWorkExperience, getSkills, getProjects, getBlogPosts } from "@/lib/portfolio-data"
 import PortfolioClient from "@/components/PortfolioClient"
 
 export default function PortfolioPage() {
@@ -7,7 +6,8 @@ export default function PortfolioPage() {
   const socialLinks = getSocialLinks()
   const workExperience = getWorkExperience()
   const skills = getSkills()
-  const featuredProjects = projects.filter((p) => p.featured)
+  const blogPosts = getBlogPosts()
+  const featuredProjects = getProjects().filter((p) => p.featured)
 
   return (
     <PortfolioClient

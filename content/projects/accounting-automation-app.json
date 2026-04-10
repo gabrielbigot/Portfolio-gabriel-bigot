@@ -1,0 +1,36 @@
+{
+  "title": "Application Web de Comptabilité Automatisée",
+  "shortDescription": "Application web complète pour automatiser les processus comptables d'une PME",
+  "fullDescription": "Développement from scratch d'une application web permettant d'automatiser l'ensemble du processus de saisie comptable pour BIGOT Matériaux. L'application élimine les tâches répétitives et réduit drastiquement le temps de traitement.",
+  "category": "Automatisation",
+  "categories": ["Automatisation", "Web App"],
+  "tags": ["Python", "Flask", "Supabase", "IA", "Comptabilité", "Web App"],
+  "date": "2025-09",
+  "company": "BIGOT Matériaux",
+  "featured": true,
+  "image": "/projects/accounting-app.jpg",
+  "problem": "Les saisies comptables répétitives prenaient plusieurs heures par semaine et étaient sujettes aux erreurs humaines.",
+  "solution": "Création d'une application web avec interface intuitive permettant de générer automatiquement les écritures comptables à partir de règles prédéfinies.",
+  "impact": [
+    "Réduction de 80% du temps de saisie comptable",
+    "Élimination quasi-totale des erreurs de saisie",
+    "Génération automatique des écritures complexes",
+    "Interface accessible sans compétences techniques"
+  ],
+  "technologies": [
+    { "name": "Python", "usage": "Backend et logique métier" },
+    { "name": "Flask", "usage": "Framework web et API" },
+    { "name": "Supabase", "usage": "Base de données cloud et authentification" },
+    { "name": "HTML/CSS/JS", "usage": "Interface utilisateur" }
+  ],
+  "challenges": [
+    "Comprendre les règles comptables complexes",
+    "Assurer la fiabilité des générations automatiques",
+    "Créer une interface accessible aux non-techniciens"
+  ],
+  "learnings": [
+    "Architecture d'applications web Python",
+    "Gestion de base de données cloud",
+    "Importance de l'UX pour l'adoption utilisateur"
+  ]
+}

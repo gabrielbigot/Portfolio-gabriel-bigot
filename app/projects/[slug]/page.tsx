@@ -1,14 +1,14 @@
 import Link from "next/link"
-import { projects } from "@/lib/data"
+import { getProjects, getProject } from "@/lib/portfolio-data"
 import { ArrowLeft, ExternalLink, Github, Calendar, Building2, Zap, Code2 } from "lucide-react"
 import { notFound } from "next/navigation"
 
 export function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }))
+  return getProjects().map((project) => ({ slug: project.slug }))
 }
 
 export default function ProjectPage({ params }: { params: { slug: string } }) {
-  const project = projects.find((p) => p.slug === params.slug)
+  const project = getProject(params.slug)
 
   if (!project) {
     return (

@@ -1,0 +1,21 @@
+{
+  "company": "TAC Hockey",
+  "position": "Animateur & Entraîneur",
+  "location": "Le Touquet Paris-Plage, France",
+  "startDate": "2022-07-01",
+  "endDate": "2022-07-31",
+  "current": false,
+  "type": "Bénévolat",
+  "shortDescription": "Encadrement de jeunes joueurs de hockey sur gazon.",
+  "description": "Encadrement de jeunes joueurs de hockey sur gazon. Transmission de techniques sportives et animation de séances.",
+  "logo": "",
+  "logoBackground": "",
+  "companyUrl": "",
+  "technologies": [],
+  "achievements": [
+    "Encadrement et animation de groupes de jeunes",
+    "Pédagogie sportive et transmission de techniques",
+    "Responsabilité de groupe et sécurité",
+    "Organisation d'exercices et de jeux"
+  ]
+}

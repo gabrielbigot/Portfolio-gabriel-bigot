@@ -1,0 +1,35 @@
+{
+  "title": "Génération Automatique de Procès-Verbaux",
+  "shortDescription": "Système d'automatisation de la génération de PV d'assemblées générales",
+  "fullDescription": "Automatisation complète de la création de procès-verbaux d'assemblées générales à partir de templates et de données structurées.",
+  "category": "Automatisation",
+  "categories": ["Automatisation"],
+  "tags": ["Python", "Document Generation", "Templates", "Automatisation"],
+  "date": "2025-09",
+  "company": "BIGOT Matériaux",
+  "featured": false,
+  "image": "/projects/pv-automation.jpg",
+  "problem": "Rédaction manuelle de PV d'AG longue et sujette à oublis ou erreurs de formatage.",
+  "solution": "Script Python générant automatiquement des PV formatés à partir de données saisies et de templates Word.",
+  "impact": [
+    "Réduction du temps de rédaction de 90%",
+    "Garantie de conformité et cohérence",
+    "Templates personnalisables facilement",
+    "Export PDF automatique"
+  ],
+  "technologies": [
+    { "name": "Python", "usage": "Logique de génération" },
+    { "name": "python-docx", "usage": "Manipulation de documents Word" },
+    { "name": "Templates", "usage": "Modèles de documents" }
+  ],
+  "challenges": [
+    "Respect strict du formalisme légal",
+    "Gestion de cas variés d'assemblées",
+    "Personnalisation flexible des templates"
+  ],
+  "learnings": [
+    "Génération programmatique de documents",
+    "Importance des templates bien structurés",
+    "Automatisation de workflows administratifs"
+  ]
+}
