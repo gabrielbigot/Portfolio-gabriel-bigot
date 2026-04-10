@@ -271,7 +271,8 @@ export const projects = [
       "Architecture d'applications web Python",
       "Gestion de base de données cloud",
       "Importance de l'UX pour l'adoption utilisateur"
-    ]
+    ],
+    media: [] as Array<{ url: string; caption?: string }>
   },
   {
     id: "bank-statement-automation",
@@ -308,7 +309,8 @@ export const projects = [
       "Techniques d'OCR et parsing de documents",
       "Importance de la validation de données",
       "Gestion robuste des erreurs"
-    ]
+    ],
+    media: [] as Array<{ url: string; caption?: string }>
   },
   {
     id: "excel-automation-suite",
@@ -344,7 +346,8 @@ export const projects = [
       "Maîtrise avancée de VBA",
       "Design de solutions utilisateur-friendly",
       "Importance de la documentation"
-    ]
+    ],
+    media: [] as Array<{ url: string; caption?: string }>
   },
   {
     id: "meeting-minutes-automation",
@@ -380,7 +383,9 @@ export const projects = [
       "Génération programmatique de documents",
       "Importance des templates bien structurés",
       "Automatisation de workflows administratifs"
-    ]
+    ],
+    media: [] as Array<{ url: string; caption?: string }>
+
   }
 ];
 

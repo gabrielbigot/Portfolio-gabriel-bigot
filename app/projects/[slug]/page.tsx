@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { getProjects, getProject } from "@/lib/portfolio-data"
 import { ArrowLeft, ExternalLink, Github, Calendar, Building2, Zap, Code2 } from "lucide-react"
 import { notFound } from "next/navigation"
@@ -210,6 +211,34 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                       >
                         <p className="text-muted-foreground leading-relaxed">{learning}</p>
                       </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {/* Media Gallery */}
+              {(project as any).media && (project as any).media.length > 0 && (
+                <section className="space-y-6">
+                  <h2 className="text-2xl sm:text-3xl font-light">Médias</h2>
+                  <div className="space-y-8">
+                    {(project as any).media.map((item: { url: string; caption?: string }, index: number) => (
+                      <figure key={index} className="space-y-3">
+                        <div className="relative w-full overflow-hidden rounded-lg border border-border bg-foreground/[0.02]">
+                          <Image
+                            src={item.url}
+                            alt={item.caption ?? `Capture d'écran ${index + 1}`}
+                            width={1200}
+                            height={800}
+                            className="w-full h-auto object-contain"
+                            unoptimized
+                          />
+                        </div>
+                        {item.caption && (
+                          <figcaption className="text-sm text-muted-foreground text-center">
+                            {item.caption}
+                          </figcaption>
+                        )}
+                      </figure>
                     ))}
                   </div>
                 </section>
