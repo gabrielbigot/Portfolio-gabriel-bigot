@@ -376,7 +376,11 @@ export const projects = [
       "Valeur stratégique de la micro-segmentation",
       "Pagination et traitement en masse via API"
     ],
-    media: [] as Array<{ url: string; caption?: string }>,
+    media: [
+      { url: "/projects/enrichissement-btp-workflow-n8n.png", caption: "Workflow n8n — Enrichissement Complet Pappers + Gemini Email" },
+      { url: "/projects/enrichissement-btp-google-sheet-avant.png", caption: "Google Sheet — base prospects avant enrichissement" },
+      { url: "/projects/enrichissement-btp-google-sheet-apres.png", caption: "Google Sheet — base prospects après enrichissement (âge, date de naissance)" }
+    ] as Array<{ url: string; caption?: string }>,
       content: [
         { type: 'heading', text: `Vue d'ensemble` },
         { type: 'paragraph', text: `Workflow n8n entièrement automatisé qui enrichit une base de 15 000+ prospects BTP avec l'âge et la date de naissance des dirigeants via l'API Pappers. L'objectif : transformer une prospection "aveugle" en un ciblage précis, permettant de prioriser les dirigeants de 60 ans et plus — cible principale d'ADN POTENTIEL pour ses formations à la transmission d'entreprise.` },
