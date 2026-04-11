@@ -303,7 +303,43 @@ export const projects = [
       "Importance de la ligne éditoriale dans les prompts IA",
       "Valeur de la documentation pour l'autonomie client"
     ],
-    media: [] as Array<{ url: string; caption?: string }>
+    media: [] as Array<{ url: string; caption?: string }>,
+      content: [
+        { type: 'heading', text: `Vue d'ensemble` },
+        { type: 'paragraph', text: `Chaîne d'automatisation complète en 3 workflows n8n interconnectés, pilotée depuis un Hub Notion avec 5 bases de données :` },
+        { type: 'list', items: [`Veille automatisée — Capture et qualification IA d'articles sectoriels (BTP, transmission, management) toutes les 6 heures`, `Génération de contenus — Production automatique de brouillons LinkedIn (150-250 mots) et d'images via Google Gemini`, `Publication automatique — Déclenchement au clic dans Notion, publication sécurisée sur LinkedIn avec anti-doublon`] },
+        { type: 'paragraph', text: `Résultat : 7h+ économisées par semaine, 75% de taux de validation des contenus par le client, 0 échec en production.` },
+        { type: 'heading', text: `Contexte` },
+        { type: 'paragraph', text: `ADN POTENTIEL n'avait quasiment aucune présence SEO malgré 2 ans d'existence à Lille. La production de contenus LinkedIn était irrégulière et chronophage. Loïc Chevallard (dirigeant) n'avait pas le temps de faire une veille sectorielle quotidienne tout en gérant ses missions clients.` },
+        { type: 'paragraph', text: `L'enjeu : construire une "machine à contenus" qui fonctionne 24h/24 en autonomie, en respectant la voix, le ton et le positionnement d'ADN POTENTIEL — sans que Loïc ait à repartir de zéro à chaque publication.` },
+        { type: 'heading', text: `Problème` },
+        { type: 'list', items: [`Aucune présence SEO malgré 2 ans d'existence`, `Production de contenus manuelle, irrégulière et chronophage (~7h/semaine)`, `Pas de système de veille sectorielle : les opportunités éditoriales étaient manquées`, `Difficulté à maintenir une ligne éditoriale cohérente sur LinkedIn`, `Risque de doublons et de publications non relues`] },
+        { type: 'heading', text: `Solution` },
+        { type: 'heading', text: `Workflow A — Veille automatisée + Qualification IA` },
+        { type: 'list', items: [`Flux RSS depuis des sources spécialisées BTP, transmission d'entreprise, management`, `Exécution automatique toutes les 6 heures`, `Agent IA (Perplexity AI + OpenAI GPT-4 mini) : catégorisation, score d'impact de 1 à 10, résumé de l'article, opportunités business identifiées`, `Seuls les articles avec score supérieur à 6 déclenchent la génération de contenu`, `Stockage complet dans la base Notion "Veille ADN POTENTIEL" avec toutes les métadonnées`] },
+        { type: 'heading', text: `Workflow B — Génération de brouillons LinkedIn + Images` },
+        { type: 'list', items: [`Génération automatique de brouillons LinkedIn (150-250 mots) alimentés par le contexte ADN POTENTIEL (ton, valeurs, positionnement, exemples passés)`, `Bibliothèque de formats pour varier le style : chiffre clé, retour d'expérience, question ouverte, conseil pratique, étude de cas...`, `Génération d'images via Google Gemini à partir d'une bibliothèque de styles visuels`, `Hébergement automatique des images sur imgbb`, `Stockage dans la base Notion "Contenus & Publications"`] },
+        { type: 'heading', text: `Workflow C — Publication automatique LinkedIn` },
+        { type: 'list', items: [`Scan Notion toutes les 5 minutes`, `Déclenchement au clic sur une checkbox "Ready to Publish" : Loïc valide et publie en un clic`, `Appel à l'API LinkedIn v2 (OAuth2) pour publication avec image`, `Mécanisme anti-doublon : vérification de l'historique avant chaque publication`, `Alertes automatiques en cas d'erreur (token expiré, erreur API, etc.)`] },
+        { type: 'heading', text: `Hub Notion — Interface de pilotage centrale` },
+        { type: 'paragraph', text: `5 bases de données interconnectées accessibles depuis une seule interface :` },
+        { type: 'list', items: [`Veille ADN POTENTIEL — Articles captés avec score, résumé, catégorie et opportunités`, `Contenus & Publications — Brouillons générés et posts déjà publiés`, `Modèles de publications — Templates pour varier les formats (enrichi au fil du stage)`, `Modèles d'images — Bibliothèque de styles visuels pour la génération`, `Contexte ADN POTENTIEL — Documents de référence qui nourrissent le prompt IA (ton, valeurs, positionnement)`] },
+        { type: 'heading', text: `Résultats clés` },
+        { type: 'list', items: [`✅ 100% opérationnel — système en production stable au quotidien`, `✅ 7h+ économisées par semaine sur la veille et la création de contenus`, `✅ 75% de taux de validation des brouillons générés (modifications mineures uniquement)`, `✅ 0 échec de publication en production`, `✅ ~50 articles captés et qualifiés en quelques jours seulement`, `✅ ~12 articles à fort impact identifiés (score > 7)`, `✅ Anti-doublon 100% efficace — aucune publication en double`, `✅ Coût API optimisé : ~5-10€/mois pour l'ensemble du système`, `✅ Loïc utilise le système activement au quotidien`] },
+        { type: 'heading', text: `Médias` },
+        { type: 'heading', text: `Fonctionnalités principales` },
+        { type: 'list', items: [`Capture RSS multi-sources — Agrégation de flux depuis des sources BTP, transmission d'entreprise, management`, `Qualification IA — Score d'impact (1-10), catégorisation automatique, résumé et opportunités business identifiées`, `Filtre intelligent — Seuls les articles avec score > 6 déclenchent la génération de contenus`, `Génération contextuelle — Les brouillons sont générés en tenant compte du ton, des valeurs et du positionnement d'ADN POTENTIEL`, `Bibliothèque de formats — Rotation entre différents styles de publications pour varier le fil LinkedIn`, `Génération d'images IA — Création d'images personnalisées via Google Gemini + hébergement automatique imgbb`, `Validation en un clic — Loïc valide et déclenche la publication depuis Notion (checkbox "Ready to Publish")`, `Anti-doublon — Vérification systématique avant chaque publication`, `Monitoring & alertes — Notifications automatiques en cas d'erreur API ou de token expiré`] },
+        { type: 'heading', text: `Architecture technique` },
+        { type: 'paragraph', text: `Stack : n8n · Notion API · OpenAI GPT-4 mini · Perplexity AI · Google Gemini · LinkedIn API v2 · imgbb` },
+        { type: 'paragraph', text: `Flux de données global :` },
+        { type: 'list', items: [`Flux RSS → n8n (toutes les 6h) → Qualification IA (Perplexity + OpenAI) → Score d'impact`, `Articles score > 6 → Génération brouillon LinkedIn (OpenAI) + Image (Gemini) → Hébergement imgbb → Stockage Notion`, `Loïc coche "Ready to Publish" dans Notion → n8n scan (toutes les 5 min) → Appel LinkedIn API v2`, `Mise à jour statut Notion → Log publication → Anti-doublon activé`] },
+        { type: 'paragraph', text: `Gestion de l'authentification OAuth2 LinkedIn :` },
+        { type: 'list', items: [`Authentification OAuth2 complète configurée dans n8n`, `Refresh token automatique avant expiration`, `Procédure de renouvellement documentée et testée en cas d'expiration manuelle`] },
+        { type: 'heading', text: `Qualité & contrôles` },
+        { type: 'list', items: [`Anti-doublon double niveau : vérification de l'identifiant unique de l'article avant génération, et vérification du contenu avant publication`, `Gestion d'erreurs gracieuse : si une API tombe (Gemini, OpenAI...), le système continue avec des fallbacks — aucune interruption complète`, `Monitoring : alertes automatiques en cas d'erreur de publication ou de token expiré`, `Validation humaine maintenue : Loïc reste maître de chaque publication via la checkbox — 0 publication automatique sans validation`, `Archivage : chaque publication est loggée dans Notion avec date, statut et contenu exact`] },
+        { type: 'heading', text: `Documentation livrée` },
+        { type: 'list', items: [`Tutoriel vidéo complet (~25-30 min) : configuration des 3 workflows, utilisation du Hub Notion au quotidien`, `Guide de renouvellement OAuth2 LinkedIn (procédure step-by-step illustrée)`, `Guide de maintenance : ajout de nouvelles sources RSS, modification des prompts IA, gestion des coûts API`, `Documentation complète des prompts utilisés (avec explications des choix éditoriaux)`] },
+      ] as ContentSection[],
   },
   {
     id: "enrichissement-prospects-btp",
@@ -340,7 +376,35 @@ export const projects = [
       "Valeur stratégique de la micro-segmentation",
       "Pagination et traitement en masse via API"
     ],
-    media: [] as Array<{ url: string; caption?: string }>
+    media: [] as Array<{ url: string; caption?: string }>,
+      content: [
+        { type: 'heading', text: `Vue d'ensemble` },
+        { type: 'paragraph', text: `Workflow n8n entièrement automatisé qui enrichit une base de 15 000+ prospects BTP avec l'âge et la date de naissance des dirigeants via l'API Pappers. L'objectif : transformer une prospection "aveugle" en un ciblage précis, permettant de prioriser les dirigeants de 60 ans et plus — cible principale d'ADN POTENTIEL pour ses formations à la transmission d'entreprise.` },
+        { type: 'heading', text: `Contexte` },
+        { type: 'paragraph', text: `ADN POTENTIEL s'est spécialisé dans le secteur BTP et cible les dirigeants de TPE/PME de 60 ans et plus, souvent confrontés à des enjeux de transmission ou de cession d'entreprise — un moment-clé où la formation au management de transition prend tout son sens.` },
+        { type: 'paragraph', text: `Le problème concret : l'entreprise disposait d'un fichier de 15 000+ prospects BTP (noms, entreprises, coordonnées) mais sans aucune information sur l'âge des dirigeants. Impossible donc de prioriser, de segmenter, ou d'adapter le discours commercial.` },
+        { type: 'paragraph', text: `L'enjeu stratégique : activer une micro-segmentation par tranche d'âge :` },
+        { type: 'list', items: [`60-65 ans → Phase de réflexion (contenus éducatifs, sensibilisation)`, `65-70 ans → Phase de décision (offre directe, cas concrets)`, `70+ ans → Transmission urgente (approche personnalisée et réactive)`] },
+        { type: 'heading', text: `Problème` },
+        { type: 'list', items: [`Base de 15 000+ prospects sans information sur l'âge des dirigeants`, `Prospection à l'aveugle : impossible de prioriser ni de segmenter`, `Enrichissement manuel impossible à cette échelle`, `Temps commercial gaspillé sur des contacts non qualifiés`, `Aucun ciblage différencié selon la maturité du projet de transmission`] },
+        { type: 'heading', text: `Solution` },
+        { type: 'paragraph', text: `Conception d'un workflow n8n connecté à l'API Pappers (base de données légale et financière française) pour récupérer automatiquement, pour chaque prospect :` },
+        { type: 'list', items: [`La date de naissance du dirigeant (quand disponible)`, `Son âge calculé automatiquement`, `Son statut "senior" (60+ ans : oui / non)`, `Sa tranche d'âge (60-65 / 65-70 / 70+)`] },
+        { type: 'paragraph', text: `Les données enrichies sont directement écrites dans Google Sheets pour une utilisation immédiate par l'équipe commerciale.` },
+        { type: 'heading', text: `Résultats clés` },
+        { type: 'list', items: [`✅ 85,7% de complétion — workflow opérationnel en production`, `✅ Traitement automatique de 15 000+ prospects par lots`, `✅ Micro-segmentation activée sur 3 tranches d'âge`, `✅ Tutoriel vidéo complet (~15-20 min) fourni pour autonomie totale`, `✅ Documentation technique complète (configuration, dépannage, maintenance)`, `✅ Coût marginal : quelques euros de crédits API pour l'ensemble du fichier`] },
+        { type: 'heading', text: `Médias` },
+        { type: 'heading', text: `Fonctionnalités principales` },
+        { type: 'list', items: [`Lecture prospects — Import depuis Google Sheets (15 000+ lignes), traitement par lots pour respecter les limites API`, `Requête Pappers — Appel automatique par SIREN ou nom d'entreprise pour identifier le dirigeant`, `Extraction du dirigeant — Récupération du nom, prénom, date de naissance, âge calculé`, `Calcul statut senior — Flag automatique si âge ≥ 60 ans`, `Segmentation par tranche — Classement automatique : 60-65 / 65-70 / 70+`, `Écriture des résultats — Mise à jour en temps réel des colonnes enrichies dans Google Sheets`, `Gestion d'erreurs gracieuse — Le workflow continue si une donnée est manquante (date de naissance non disponible dans Pappers) sans interrompre le traitement`, `Pagination — Mécanisme de traitement par lots pour les 15 000+ lignes sans saturer l'API`] },
+        { type: 'heading', text: `Architecture technique` },
+        { type: 'paragraph', text: `Stack : n8n · API Pappers · Google Sheets API` },
+        { type: 'paragraph', text: `Flux de données :` },
+        { type: 'list', items: [`Trigger manuel (ou planifié) → Lecture du fichier Google Sheets`, `Boucle sur chaque prospect → Appel API Pappers (recherche par SIREN)`, `Extraction des données dirigeant → Calcul âge + segmentation`, `Vérification des données (cohérence, valeurs manquantes) → Traitement gracieux`, `Écriture des colonnes enrichies → Mise à jour Google Sheets`, `Fin de traitement → Rapport d'exécution (prospects traités / non trouvés)`] },
+        { type: 'heading', text: `Qualité & contrôles` },
+        { type: 'list', items: [`Gestion des erreurs API : timeout, données manquantes, rate limiting — le workflow continue sans bloquer`, `Log des non-enrichis : les prospects sans date de naissance sont signalés pour revue manuelle`, `Cohérence des données : vérification de la plausibilité de l'âge avant écriture`, `Anti-duplication : un prospect déjà enrichi n'est pas retraité inutilement`] },
+        { type: 'heading', text: `Documentation livrée` },
+        { type: 'list', items: [`Tutoriel vidéo complet : configuration du workflow, utilisation au quotidien, mise à jour des credentials`, `Guide de dépannage : erreurs API courantes, gestion du rate limiting Pappers`, `Notice de maintenance : renouvellement des clés API, ajout de champs supplémentaires`] },
+      ] as ContentSection[],
   },
   {
     id: "automatisation-rappels-sms-greminders",
@@ -375,7 +439,29 @@ export const projects = [
       "Valeur des outils no-code pour des gains rapides sans développement",
       "Importance de la personnalisation dans les communications automatisées"
     ],
-    media: [] as Array<{ url: string; caption?: string }>
+    media: [] as Array<{ url: string; caption?: string }>,
+      content: [
+        { type: 'heading', text: `Vue d'ensemble` },
+        { type: 'paragraph', text: `Mise en place de Greminders pour automatiser l'envoi de rappels SMS et email aux prospects et clients avant leurs rendez-vous avec ADN POTENTIEL. Objectif : réduire le taux de no-show sur les rendez-vous qualifiés, sans aucun développement technique — entièrement piloté depuis une interface no-code connectée à Google Calendar.` },
+        { type: 'heading', text: `Contexte` },
+        { type: 'paragraph', text: `Dans le cadre du stage, ADN POTENTIEL générait des rendez-vous qualifiés via la prospection BTP enrichie. Le problème : un certain taux de no-show représentait un manque à gagner direct — temps de préparation perdu, créneau non récupérable, relation commerciale fragilisée.` },
+        { type: 'paragraph', text: `Greminders est un outil SaaS no-code qui s'intègre directement au calendrier Google (via OAuth2) et envoie automatiquement des rappels personnalisés — SMS, email ou WhatsApp — aux participants d'un rendez-vous, à des délais paramétrables.` },
+        { type: 'heading', text: `Problème` },
+        { type: 'list', items: [`Taux de no-show non négligeable sur les rendez-vous qualifiés`, `Rappels manuels chronophages pour Loïc (appels ou SMS envoyés à la main)`, `Aucune relance automatique en cas d'absence de confirmation`, `Perte de temps et de crédibilité sur des créneaux non honorés`] },
+        { type: 'heading', text: `Solution` },
+        { type: 'paragraph', text: `Configuration de Greminders connecté au Google Calendar d'ADN POTENTIEL :` },
+        { type: 'list', items: [`Rappel automatique J-1 : SMS + email envoyé 24h avant le rendez-vous`, `Rappel automatique H-1 : SMS envoyé 1h avant`, `Messages personnalisés : textes adaptés au contexte ADN POTENTIEL — ton professionnel, nom du prospect inclus dynamiquement`, `Lien de confirmation / annulation : le prospect peut confirmer ou annuler directement depuis le SMS, en un clic`, `Notification automatique à Loïc si un prospect annule via le lien`] },
+        { type: 'heading', text: `Résultats clés` },
+        { type: 'list', items: [`✅ Rappels SMS/email entièrement automatisés (0 action manuelle requise de Loïc)`, `✅ Messages personnalisés avec nom du prospect et contexte du rendez-vous`, `✅ Lien de confirmation/annulation intégré dans chaque rappel`, `✅ Notification automatique à Loïc en cas d'annulation`, `✅ Mise en place rapide sans développement`] },
+        { type: 'heading', text: `Médias` },
+        { type: 'heading', text: `Fonctionnalités configurées` },
+        { type: 'list', items: [`Intégration Google Calendar — Connexion OAuth2 : chaque nouveau rendez-vous créé dans le calendrier ADN POTENTIEL déclenche automatiquement la séquence de rappels`, `Rappel J-1 (SMS + email) — Envoyé 24h avant, avec nom du prospect, date, heure et contexte du RDV`, `Rappel H-1 (SMS) — Dernier rappel 1h avant pour maximiser la présence`, `Confirmation / annulation — Lien intégré dans le SMS permettant au prospect de répondre en un clic`, `Messages personnalisés — Templates rédigés avec le ton ADN POTENTIEL, variables dynamiques (prénom, date, heure, lieu/visio)`, `Notification annulation — Loïc est automatiquement alerté si un prospect annule, pour récupérer le créneau`] },
+        { type: 'heading', text: `Configuration mise en place` },
+        { type: 'heading', text: `Qualité & contrôles` },
+        { type: 'list', items: [`Aucun rappel envoyé si le rendez-vous est annulé dans Google Calendar`, `Vérification du numéro de téléphone avant envoi (format FR)`, `Logs des envois accessibles dans Greminders (statut : envoyé / délivré / échec)`, `Procédure documentée pour modifier les templates de messages`] },
+        { type: 'heading', text: `Documentation livrée` },
+        { type: 'list', items: [`Guide de prise en main Greminders (connexion Google Calendar, création de workflows de rappel)`, `Templates SMS/email utilisés et procédure de modification`, `Guide de maintenance : ajout de nouveaux types de rendez-vous, gestion de la facturation Greminders`] },
+      ] as ContentSection[],
   },
   {
     id: "veille-ia-automatisee-n8n",
@@ -417,7 +503,73 @@ export const projects = [
     media: [
       { url: "/projects/veille-ia-n8n-workflow.png", caption: "Workflow n8n — vue d'ensemble" },
       { url: "/projects/veille-ia-gmail-rapport.png", caption: "Exemple de rapport HTML reçu par email" }
-    ] as Array<{ url: string; caption?: string }>
+    ] as Array<{ url: string; caption?: string }>,
+      content: [
+        { type: 'heading', text: `Vue d’ensemble` },
+        { type: 'paragraph', text: `Workflow n8n que j’ai conçu pour automatiser ma veille IA. Chaque matin, un agent orchestre des recherches multi‑sources, génère un rapport structuré, le met en forme en HTML et me l’envoie par email. L’idée: rester à jour sans y passer 1 à 2 heures par jour.` },
+        { type: 'heading', text: `Contexte` },
+        { type: 'paragraph', text: `Je suis parti d’un besoin très personnel. Chaque jour, je voulais suivre l’IA sérieusement, mais je me surprenais à ouvrir dix onglets, à scroller X/Twitter, Reddit et des blogs, puis à perdre 45 à 90 minutes pour, au final, n’avoir qu’une vision parcellaire. La sensation de « manquer quelque chose » était constante. J’avais besoin d’un garde‑fou: un rendez‑vous quotidien, fiable, qui filtre le bruit et met en avant l’essentiel.` },
+        { type: 'paragraph', text: `Ce que je vivais concrètement avant ce workflow:` },
+        { type: 'list', items: [`J’ouvrais Perplexity, X/Twitter, quelques newsletters, et je faisais un collage mental.`, `Je ne classais pas vraiment l’info. Le lendemain, impossible de comparer ou de mesurer une tendance.`, `Les prix des API changeant vite, je n’avais jamais un tableau à jour pour décider quoi tester.`] },
+        { type: 'paragraph', text: `Ce que je voulais obtenir à la place:` },
+        { type: 'list', items: [`Un rapport qui arrive tout seul à 7h, pendant que je prends mon café.`, `Des rubriques fixes pour ancrer les repères: Robotique, Grandes entreprises, Startups, Prix API.`, `Des sources croisées web + social pour éviter l’angle mort.`, `Un format HTML propre, lisible sur mobile, archivable dans ma boîte mail.`] },
+        { type: 'paragraph', text: `Pourquoi j’ai choisi n8n et un agent IA:` },
+        { type: 'list', items: [`n8n me permet d’itérer visuellement et de brancher facilement Perplexity et Grok.`, `Un agent IA (GPT‑4o‑mini) peut orchestrer la veille, prioriser et reformuler pour que le rapport soit synthétique mais actionnable.`, `Le nœud Code me donne la main pour transformer un Markdown bien structuré en HTML stylé avant envoi Gmail.`] },
+        { type: 'paragraph', text: `Mes critères de réussite (simples et mesurables):` },
+        { type: 'list', items: [`Temps d’effort quotidien: 0 minute. Tout est en push.`, `Taux de lecture: je lis le rapport en < 10 minutes, tous les jours.`, `Signal > bruit: au moins 3 items vraiment utiles par jour, pas une liste brute de liens.`] },
+        { type: 'paragraph', text: `En pratique, j’ai itéré sur les prompts, réduit le nombre de résultats Perplexity, cadré les comptes X et imposé une structure stable. Aujourd’hui, je reçois un rapport qui me permet de décider rapidement quoi creuser, sans me noyer ni y passer ma matinée.` },
+        { type: 'list', items: [`Trop d’annonces et de sources, pas de cadre pour prioriser`, `Temps perdu à compiler, reformater, classer par thèmes`, `Pas de synthèse quotidienne reçue automatiquement`] },
+        { type: 'heading', text: `Solution` },
+        { type: 'list', items: [`Un workflow n8n planifié à 7h qui:`] },
+        { type: 'heading', text: `Résultats clés` },
+        { type: 'list', items: [`Veille quotidienne en 0 minute d’effort`, `Rapport structuré et comparable jour après jour`, `Vue multi‑sources: web + réseaux sociaux + tableau comparatif prix API`] },
+        { type: 'heading', text: `Médias` },
+        { type: 'heading', text: `Vidéo démo` },
+        { type: 'heading', text: `Captures d’écran` },
+        { type: 'list', items: [`Aperçu du workflow n8n`] },
+        { type: 'list', items: [`Extrait de rapport HTML reçu`] },
+        { type: 'heading', text: `Architecture technique` },
+        { type: 'heading', text: `Schéma du workflow` },
+        { type: 'code', text: `Schedule (7:00)
+  → AI Agent (GPT‑4o‑mini)
+     ├─ Perplexity Deep Research (7 jours, max 20)
+     ├─ Grok X Search (X, 24h, comptes ciblés)
+     └─ Agrégation et structuration par thèmes
+  → Code (JS) Markdown → HTML
+  → Gmail (envoi formaté)` },
+        { type: 'heading', text: `Stack` },
+        { type: 'list', items: [`Orchestration: n8n`, `Agent IA: OpenAI GPT‑4o‑mini`, `Recherche web: Perplexity Sonar Deep Research`, `Recherche social: xAI Grok 3 Latest (Twitter/X)`, `Email: Gmail API (OAuth2)`, `Transformation: JavaScript (nœud Code)`] },
+        { type: 'heading', text: `Nœuds principaux n8n` },
+        { type: 'paragraph', text: `1) Schedule Trigger — Exécution quotidienne 7h` },
+        { type: 'paragraph', text: `2) AI Agent — Orchestration, choix outils et structure` },
+        { type: 'paragraph', text: `3) HTTP Request Tool — Perplexity (web, 7 jours, 20 résultats)` },
+        { type: 'paragraph', text: `4) HTTP Request Tool — Grok X (tweets 24h, comptes @minchoi, @hasantoxr, @heyrobinai)` },
+        { type: 'paragraph', text: `5) Code (JS) — Conversion Markdown → HTML + styles` },
+        { type: 'paragraph', text: `6) Gmail — Envoi du rapport HTML` },
+        { type: 'heading', text: `Rubriques du rapport` },
+        { type: 'list', items: [`IA et Robotique`, `Grandes entreprises IA`, `Startups et écosystème`, `Tableau comparatif des prix API`] },
+        { type: 'paragraph', text: `Chacune contient des points clés avec sources et dates pour situer rapidement les annonces.` },
+        { type: 'heading', text: `Installation rapide` },
+        { type: 'paragraph', text: `Prérequis:` },
+        { type: 'list', items: [`n8n (Cloud ou self‑hosted)`, `Clés API: OpenAI, Perplexity, xAI (Grok)`, `OAuth2 Gmail configuré`] },
+        { type: 'paragraph', text: `Étapes:` },
+        { type: 'paragraph', text: `1) Importer le fichier Veille IA.json dans n8n` },
+        { type: 'paragraph', text: `2) Renseigner les credentials sur chaque nœud (OpenAI, Perplexity, xAI, Gmail)` },
+        { type: 'paragraph', text: `3) Personnaliser le destinataire Gmail et, si besoin, l’heure du Schedule` },
+        { type: 'paragraph', text: `4) Activer le workflow` },
+        { type: 'heading', text: `Utilisation` },
+        { type: 'list', items: [`Auto: le rapport arrive chaque jour à 7h`, `Manuel: bouton "Execute Workflow" dans n8n pour tester à la demande`] },
+        { type: 'heading', text: `Format du rapport` },
+        { type: 'list', items: [`Markdown structuré rendu en HTML`, `Liens sources et sections fixes pour la comparaison quotidienne`, `Tableau prix API par type de modèle avec ordre et notation`] },
+        { type: 'heading', text: `Configuration avancée` },
+        { type: 'list', items: [`Comptes X suivis: éditer la liste des handles dans le nœud Grok`, `Fenêtre temporelle Perplexity: ajuster from_date / to_date et max_results`, `Heure d’exécution: modifier la config du Schedule Trigger`, `Prompt de l’agent: adapter les thèmes, le ton et la mise en forme`] },
+        { type: 'heading', text: `Dépannage et coûts` },
+        { type: 'list', items: [`Vérifier que le workflow est actif et que les credentials sont valides`, `Logs n8n pour diagnostiquer les appels API`, `Coût par jour estimé: $0.08 – $0.17 selon volume; mensuel: $2.40 – $5.10`] },
+        { type: 'heading', text: `Roadmap` },
+        { type: 'list', items: [`Stockage des rapports et dashboard historique`, `Filtres personnalisés et export PDF`, `Notifications Slack/Discord`, `Ajout d’autres sources (Reddit, HN, LinkedIn) et multilingue`] },
+        { type: 'heading', text: `Crédits` },
+        { type: 'paragraph', text: `© 2025 — Veille IA automatisée — Workflow n8n` },
+      ] as ContentSection[],
   },
   {
     id: "excel-vba-automatisation-relances",
@@ -458,7 +610,68 @@ export const projects = [
     ],
     media: [
       { url: "/projects/relances-interface.png", caption: "Interface d'upload et métriques" }
-    ] as Array<{ url: string; caption?: string }>
+    ] as Array<{ url: string; caption?: string }>,
+      content: [
+        { type: 'heading', text: `Vue d’ensemble` },
+        { type: 'paragraph', text: `Suite d’automatisation des relances clients que j’ai conçue pour BIGOT Matériaux. J’ai combiné un traitement de données robuste (Python/FastAPI + Pandas + OpenPyXL) et une interface d’analyse simple (React + Chart.js) pour passer d’un Excel manuel chronophage à un flux rapide, fiable et standardisé.` },
+        { type: 'heading', text: `Contexte` },
+        { type: 'paragraph', text: `Je suis parti d’une situation très concrète chez BIGOT Matériaux. L’été 2025, je voyais mon père passer des heures à préparer les relances clients : extraire des données brutes depuis l’AS/400, ouvrir Excel, trier par client puis par mois, recalculer les totaux, repérer à la main les doublons… À la fin de la journée, on avait un fichier exploitable, mais le chemin pour y arriver était long, fragile et franchement pénible.` },
+        { type: 'paragraph', text: `Je tenais à garder Excel comme sortie, parce que c’est l’outil familier de l’équipe et qu’il s’intègre bien au quotidien (impression, partage, annotations rapides). En revanche, je voulais supprimer tout ce qui relève du « travail mécanique ». Mon idée : automatiser la préparation des données en amont, pour que le temps humain soit consacré à la décision (qui relancer ? avec quel message ? à quelle date ?) plutôt qu’à la mise en forme.` },
+        { type: 'paragraph', text: `Concrètement, j’ai listé ce qui me faisait perdre le plus de temps :` },
+        { type: 'list', items: [`le tri par client et par période, avec des copier‑coller sources d’erreurs`, `la cohérence des totaux, qu’il fallait revérifier à chaque itération`, `la chasse aux doublons, sur plusieurs colonnes, jamais agréable à faire à la main`, `la mise en page, pour livrer un fichier prêt à imprimer et toujours au même format`] },
+        { type: 'paragraph', text: `À partir de là, j’ai conçu un petit service backend (FastAPI + Pandas) pour faire tout le « sale boulot » : parser, normaliser, agréger, contrôler. Et j’ai ajouté une UI React légère qui me permet d’uploader un fichier, de voir instantanément les métriques utiles (montant total, clients en relance, répartition par vendeur/niveau), puis de télécharger un Excel propre et standardisé. Mon objectif est simple : garder la simplicité d’Excel en bout de chaîne, tout en rendant la préparation tellement rapide et fiable que je n’ai plus à y penser.` },
+        { type: 'heading', text: `Problème` },
+        { type: 'list', items: [`Données brutes hétérogènes issues d’AS/400, difficilement exploitables`, `Tri et mises en forme manuels très longs et sources d’erreurs`, `Aucune vue synthétique pour piloter les relances (vendeur, niveau, période)`] },
+        { type: 'heading', text: `Solution` },
+        { type: 'list', items: [`Un backend FastAPI qui parse, normalise et agrège les données (Pandas), puis génère un Excel formaté (OpenPyXL)`, `Un frontend React léger pour uploader les fichiers, voir les métriques et télécharger les résultats`, `Des règles de validation et de contrôle: minimum de colonnes, formats de date, doublons sur clé multi‑champs`] },
+        { type: 'heading', text: `Résultats clés` },
+        { type: 'list', items: [`Temps de préparation des relances divisé par environ 4`, `Standardisation des fichiers envoyés et meilleure traçabilité`, `Vision immédiate par vendeur et par niveau de relance`] },
+        { type: 'heading', text: `Médias` },
+        { type: 'heading', text: `Galerie d’écrans` },
+        { type: 'list', items: [`Interface d’upload et métriques`] },
+        { type: 'list', items: [`Excel généré (groupes client/noms et client/mois)`] },
+        { type: 'heading', text: `Fonctionnalités principales` },
+        { type: 'list', items: [`Traitement des données`, `Génération Excel prête à l’impression`, `Analyse et pilotage`] },
+        { type: 'heading', text: `Architecture technique` },
+        { type: 'list', items: [`Backend: FastAPI, Uvicorn, Pandas, Pydantic, python‑multipart, OpenPyXL`, `Frontend: React 18, Bootstrap 5, Chart.js (+ react‑chartjs‑2), Axios`] },
+        { type: 'paragraph', text: `Arborescence simplifiée:` },
+        { type: 'code', text: `Automatisation Relances clients/
+├── backend/                 # FastAPI + Pandas + OpenPyXL
+│   ├── main.py              # Endpoints API
+│   ├── data_processor.py    # Parsing/validation/agrégation
+│   └── requirements.txt     # Dépendances Python
+├── frontend/                # React + Chart.js + Bootstrap
+│   ├── public/
+│   └── src/
+│       ├── components/
+│       │   ├── DataUploader.js
+│       │   └── Dashboard.js
+│       ├── App.js
+│       └── index.js
+├── Autre/                   # Interfaces/scripts alternatifs
+│   ├── index.html           # HTML statique (traitement rapide)
+│   └── process_excel*.py
+├── index 2.html             # Version standalone
+├── process_excel.py         # Script Python standalone
+└── run_project.bat          # Démarrage automatique (Windows)` },
+        { type: 'heading', text: `Flux` },
+        { type: 'list', items: [`Upload fichier → API FastAPI → parsing/validation → agrégation → Excel formaté → téléchargement`, `Tableau de bord → KPIs temps réel → graphiques par vendeur/niveau`] },
+        { type: 'heading', text: `Endpoints (extrait)` },
+        { type: 'list', items: [`POST /process: CSV en form‑data → Excel formaté`, `POST /api/process: Upload à largeur fixe → traitement → Excel`, `GET /api/download-csv: export CSV des données traitées`, `GET /docs et /redoc: documentation interactive`] },
+        { type: 'heading', text: `Utilisation rapide` },
+        { type: 'paragraph', text: `1) Lancer le backend sur le port 8000, puis le frontend sur 3000` },
+        { type: 'paragraph', text: `2) Uploader le fichier CSV/Excel de relances` },
+        { type: 'paragraph', text: `3) Vérifier les métriques et graphiques` },
+        { type: 'paragraph', text: `4) Télécharger l’Excel formaté et envoyer les relances` },
+        { type: 'heading', text: `Installation (résumé)` },
+        { type: 'list', items: [`Prérequis: Python 3.7+, Node.js 14+, pip`, `Script automatique Windows: run_project.bat`, `Manuel:`] },
+        { type: 'heading', text: `Qualité et contrôles` },
+        { type: 'list', items: [`Vérification des formats de date et des montants`, `Contrôle des totaux par client et cohérence vs sommaire`, `Surbrillance des doublons et revue manuelle ciblée`] },
+        { type: 'heading', text: `Roadmap` },
+        { type: 'list', items: [`v2.0: Persistance Postgres, authentification, historique, notifications`, `v2.1: Filtres avancés, export PDF, API tokens, logs détaillés, tests ≥ 80%`] },
+        { type: 'heading', text: `Crédits` },
+        { type: 'paragraph', text: `© 2025 — Automatisation des relances clients — BIGOT Matériaux` },
+      ] as ContentSection[],
   },
   {
     id: "as400-beta-2-automatisation-comptable",
@@ -496,7 +709,51 @@ export const projects = [
       "Intégration d'IA dans des applications métier critiques",
       "Importance de l'ergonomie familière pour l'adoption"
     ],
-    media: [] as Array<{ url: string; caption?: string }>
+    media: [] as Array<{ url: string; caption?: string }>,
+      content: [
+        { type: 'heading', text: `Vue d’ensemble` },
+        { type: 'paragraph', text: `Application de comptabilité moderne, inspirée de l’ergonomie AS/400, développée pour le Touquet Athletic Club (TAC). Elle reprend les usages clavier familiers tout en ajoutant automatisation, conformité légale et analyses par IA.` },
+        { type: 'heading', text: `Contexte` },
+        { type: 'paragraph', text: `À l’été 2025, j’ai aidé mon père à tenir la comptabilité du Touquet Athletic Club (TAC). Historiquement, tout était fait sur un logiciel ancien de type AS/400. Je passais des heures à ressaisir des opérations à partir de relevés bancaires PDF, avec des écritures très répétitives d’un mois sur l’autre. J’ai vite constaté trois choses :` },
+        { type: 'list', items: [`Beaucoup de temps perdu sur de la saisie mécanique et peu de valeur ajoutée`, `Des risques d’erreurs (copier‑coller, inversions Débit/Crédit, comptes mal choisis)`, `Une ergonomie clavier efficace mais peu accessible pour d’autres personnes de l’équipe`] },
+        { type: 'paragraph', text: `Mon objectif a été de garder ce qui fonctionne pour nous — la navigation rapide au clavier façon AS/400 — tout en modernisant le reste : automatiser les écritures récurrentes, importer les relevés bancaires au format PDF, sécuriser les données et générer en un clic les états légaux (FEC, Balance, Grand Livre, TVA). Pour accélérer les contrôles, j’ai aussi ajouté un assistant IA qui explique, alerte et propose des corrections.` },
+        { type: 'paragraph', text: `J’ai donc conçu et développé une application web « look & feel AS/400 » qui reprend nos réflexes (fond noir, texte vert, numérotation des options, validation à l’Entrée) mais s’appuie sur une architecture moderne (React/TypeScript, API Node/Express, Supabase/PostgreSQL, service IA Claude). L’idée: réduire nettement le temps passé sur la tenue courante et fiabiliser la production des états, tout en restant immédiatement utilisable par quelqu’un d’habitué à l’AS/400.` },
+        { type: 'heading', text: `Problème` },
+        { type: 'list', items: [`Saisie manuelle et redondante des écritures à partir de PDF.`, `Interfaces peu accessibles et peu tolérantes aux erreurs.`, `Difficulté à produire rapidement des états conformes (FEC, Balance, Grand Livre, TVA).`, `Perte de temps pour une personne déjà prise par d’autres responsabilités.`] },
+        { type: 'heading', text: `Solution` },
+        { type: 'list', items: [`Interface « look & feel » AS/400: fond noir, texte vert, navigation clavier, numéros d’options.`, `Saisie en partie double avec validations et lettrage automatique.`, `Automatisation des écritures récurrentes et import bancaire OCR.`, `Génération des rapports légaux en un clic: FEC, Balance, Grand Livre, TVA.`, `Assistant IA (Claude) pour analyser, expliquer et détecter des anomalies.`, `Multi‑utilisateurs sécurisé (Supabase Auth + RLS) pour séparer les sociétés.`] },
+        { type: 'heading', text: `Résultats clés` },
+        { type: 'list', items: [`Environ 60% de temps de saisie économisé sur les périodes récurrentes.`, `Diminution des erreurs grâce aux validations et à l’IA d’assistance.`, `Meilleure accessibilité pour des utilisateurs non experts.`] },
+        { type: 'heading', text: `Médias` },
+        { type: 'heading', text: `Vidéo démo` },
+        { type: 'heading', text: `Galerie d’écrans` },
+        { type: 'list', items: [`Page d’accueil / menu principal`, `Saisie d’écritures en partie double`, `Lettrage et journaux AC/VE/BQ/OD/AN`, `Rapports: Balance, Grand Livre, FEC, TVA`, `Assistant IA: analyses et détection d’anomalies`] },
+        { type: 'heading', text: `Fonctionnalités principales` },
+        { type: 'list', items: [`Authentification et multi‑sociétés`, `Plan comptable et journaux`, `Écritures et clôtures`, `Rapports et conformité`, `Import bancaire et automatisation`, `Assistant IA`, `Tableau de bord`] },
+        { type: 'heading', text: `Architecture technique` },
+        { type: 'list', items: [`Frontend: React 18 + TypeScript, Vite, Tailwind CSS, React Router, TanStack Query`, `Backend API: Node.js + Express (TypeScript)`, `IA: Service dédié intégrant Claude via Anthropic SDK`, `Base de données: PostgreSQL (hébergée via Supabase)`, `Déploiement: Frontend sur Vercel/Netlify. Backend(s) sur Render/Railway`] },
+        { type: 'paragraph', text: `Arborescence simplifiée:` },
+        { type: 'code', text: `AS400 v1/
+├── frontend/         # React + TS + Vite
+├── backend/          # API Node + Express + TS
+├── supabase/         # Schéma PostgreSQL (schema.sql)
+├── ai-backend/       # Serveur Assistant IA (Claude)
+└── *.md              # Documentation complète` },
+        { type: 'heading', text: `Flux principaux` },
+        { type: 'list', items: [`Auth → récupération profil et société active → permissions RLS`, `Saisie → validations typées → enregistrement → lettrage`, `Import PDF → OCR → propositions d’écritures → validation utilisateur`, `Rapports → requêtes SQL agrégées → export FEC/Balance/GL/TVA`, `IA → appels au service Claude → résumés, contrôles, alertes`] },
+        { type: 'heading', text: `Schéma BDD (extraits)` },
+        { type: 'list', items: [`companies, accounts, journals, entries, tva_declarations, closures`, `Triggers et contraintes pour cohérence et numérotation`, `Politiques RLS par utilisateur et société`] },
+        { type: 'heading', text: `Sécurité` },
+        { type: 'list', items: [`Auth Supabase + RLS pour isolation multi‑tenant`, `Validation serveur côté API avant écriture en BDD`] },
+        { type: 'heading', text: `Utilisation rapide` },
+        { type: 'list', items: [`Navigation clavier (style AS/400)`, `Parcours conseillé`] },
+        { type: 'heading', text: `Installation (résumé)` },
+        { type: 'list', items: [`Prérequis: Node.js 18+, compte Supabase, clé API Claude`, `Variables d’environnement: VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY, ANTHROPIC_API_KEY, SUPABASE_URL, SUPABASE_SERVICE_KEY`, `Démarrage type:`] },
+        { type: 'heading', text: `Roadmap synthétique` },
+        { type: 'list', items: [`Migration complète React/TypeScript et optimisation via TanStack Query`, `Tests unitaires et E2E`, `Mode hors‑ligne avec synchronisation`] },
+        { type: 'heading', text: `Crédits` },
+        { type: 'paragraph', text: `© 2025 — AS400 Comptabilité TAC Touquet Hockey Club` },
+      ] as ContentSection[],
   },
   {
     id: "as400-horizontal-application-comptabilite-moderne",
@@ -539,7 +796,60 @@ export const projects = [
       { url: "/projects/as400-v2-dashboard.png", caption: "Tableau de bord et navigation horizontale" },
       { url: "/projects/as400-v2-assistant-ia.png", caption: "Assistant IA comptable" },
       { url: "/projects/as400-v2-assistant-ia-2.png", caption: "Assistant IA — analyse contextuelle" }
-    ] as Array<{ url: string; caption?: string }>
+    ] as Array<{ url: string; caption?: string }>,
+      content: [
+        { type: 'heading', text: `Vue d’ensemble` },
+        { type: 'paragraph', text: `AS400 Horizontal est ma version "v2" de l’application comptable du TAC Hockey Club. J’ai repensé l’UX autour d’une navigation horizontale fluide, ajouté un assistant IA conversationnel et modernisé toute la stack pour en faire une application à la fois pédagogique, rapide et complète.` },
+        { type: 'heading', text: `Contexte` },
+        { type: 'paragraph', text: `Je suis parti d’un besoin très concret au TAC Hockey Club. Pendant l’été, j’ai mis les mains dans la comptabilité opérationnelle et j’ai réalisé à quel point les allers‑retours entre saisie, contrôle et génération d’états me faisaient perdre du temps. Ma v1, calquée sur l’ergonomie AS/400, m’a permis d’aller vite et de respecter nos réflexes clavier, mais je me suis heurté à plusieurs limites au moment d’ajouter des fonctionnalités plus ambitieuses.` },
+        { type: 'paragraph', text: `Ce que je voulais vraiment faire:` },
+        { type: 'list', items: [`Accélérer la saisie « réelle » du quotidien et réduire le taux d’erreur sans complexifier l’outil`, `Rendre la structure comptable lisible pour quelqu’un qui n’est pas expert, avec des repères visuels et des aides contextuelles`, `Centraliser tout le flux dans une même expérience: saisir → contrôler → lettrer → éditer les états`, `Brancher une IA qui répond, explique et alerte, sans jamais « inventer » des écritures`] },
+        { type: 'paragraph', text: `Pourquoi repartir de zéro:` },
+        { type: 'list', items: [`L’UX très « terminal » de la v1 rendait l’intégration d’une IA conversationnelle et d’écrans riches laborieuse`, `Les animations, le virtual scrolling et les dashboards restaient limités techniquement`, `L’industrialisation (exports PDF/CSV soignés, performances, réutilisabilité des composants) demandait une structure front plus moderne`] },
+        { type: 'paragraph', text: `Mes choix structurants:` },
+        { type: 'list', items: [`Passer à Next.js + React 18 pour une navigation fluide « en sections » et une base solide pour la performance`, `Adopter une navigation horizontale pilotée au scroll vertical pour segmenter clairement les 9 grandes zones du produit (dashboard → plan → journaux → écritures → brouillard → lettrage → rapports → paramètres → assistant IA)`, `Isoler un service IA dédié (Claude + GenUI) avec du streaming pour obtenir des réponses guidées en contexte, pédagogiques et rapides`, `S’appuyer sur Supabase (PostgreSQL + Auth) pour garantir des schémas propres et des exports fiables`] },
+        { type: 'paragraph', text: `Concrètement, j’ai reconçu l’expérience pour que je puisse enchaîner mes tâches sans « friction »: ouvrir la section, voir les bons indicateurs, saisir avec des garde‑fous, contrôler immédiatement, puis produire un état propre quand tout est OK. Mon objectif n’est pas de remplacer l’expertise comptable, mais de me faire gagner du temps et d’éviter les erreurs bêtes, tout en gardant des sorties conformes et lisibles.` },
+        { type: 'list', items: [`Saisie toujours coûteuse et sujette aux erreurs sans aides contextuelles`, `Difficulté à relier saisie, contrôle, lettrage et édition d’états dans un même flux lisible`, `UI peu pédagogique pour des personnes non expertes en comptabilité`, `Intégration d’IA compliquée dans une ergonomie très "terminale"`] },
+        { type: 'heading', text: `Solution` },
+        { type: 'list', items: [`Une UI moderne et réactive, pensée en sections horizontales pilotées au scroll vertical et au clavier`, `Un assistant IA conversationnel (Claude + GenUI) qui répond, explique, détecte des incohérences et propose des actions`, `Des vues riches et visuelles pour comprendre vite: dashboards, graphiques, animations utiles`, `Des exports propres et normés (PDF/CSV) et une base solide côté données (Supabase + Postgres)`] },
+        { type: 'heading', text: `Résultats clés` },
+        { type: 'list', items: [`Parcours de bout en bout plus fluide, de la saisie à l’édition des états`, `Meilleure compréhension immédiate via dashboards et vues par section`, `Base technique prête pour l’authentification, le multi‑sociétés et les rôles (roadmap)`] },
+        { type: 'heading', text: `Médias` },
+        { type: 'heading', text: `Vidéo démo` },
+        { type: 'heading', text: `Galerie d’écrans` },
+        { type: 'list', items: [`Tableau de bord et navigation horizontale`] },
+        { type: 'list', items: [`Saisie d’écritures et brouillard`] },
+        { type: 'list', items: [`Lettrage et journaux`] },
+        { type: 'list', items: [`Rapports: Balance, Grand Livre, FEC, TVA`] },
+        { type: 'list', items: [`Assistant IA (Thesys GenUI + Claude)`] },
+        { type: 'heading', text: `Fonctionnalités principales` },
+        { type: 'list', items: [`Navigation horizontale et raccourcis`, `Comptabilité complète`, `Assistant IA`, `Visualisations`, `Performance et UX`] },
+        { type: 'heading', text: `Architecture technique` },
+        { type: 'list', items: [`Frontend: Next.js 15 (App Router), React 18, TypeScript, Tailwind, Radix UI, Framer Motion, Lucide, @tanstack/react-virtual`, `IA & agents: @anthropic-ai/sdk (Claude 3.5 Sonnet), Thesys GenUI, @crayonai/*, streaming`, `Backend: Node.js + Express (TypeScript), Morgan`, `Données: Supabase (PostgreSQL + Auth), schémas typés et validations`, `Exports: jsPDF (+ autotable) pour PDF, CSV standards`] },
+        { type: 'paragraph', text: `Arborescence simplifiée:` },
+        { type: 'code', text: `AS400 v2/
+├── app/                    # Next.js App Router
+├── components/             # sections/, ai-assistant/, ui/
+├── hooks/                  # use-keyboard-shortcuts, use-supabase…
+├── lib/                    # supabase, api, utils, constants
+├── backend/                # API Express (TS)
+├── ai-backend/             # Service IA (Claude)
+└── scripts/                # utilitaires` },
+        { type: 'heading', text: `Flux majeurs` },
+        { type: 'list', items: [`Auth (roadmap) → sélection société → permissions`, `Saisie → brouillard → validations → lettrage → états`, `IA → analyse contextuelle → recommandations/actions`, `Rapports → génération PDF/CSV → partage`] },
+        { type: 'heading', text: `Base de données (extraits)` },
+        { type: 'list', items: [`companies, accounts, journals, journal_entries, company_settings`, `Vues/req. pour soldes, contrôles d’équilibre, lettrage`] },
+        { type: 'heading', text: `Performances` },
+        { type: 'list', items: [`FCP < 1.5s, TTI < 3s (cibles et mesures locales)`, `Code splitting, lazy loading, memoization`] },
+        { type: 'heading', text: `Utilisation rapide` },
+        { type: 'list', items: [`Ctrl+K: palette de commandes`, `Flèches ou scroll: changer de section`, `Écritures: équilibre Débit = Crédit, lot validé si |Σ Débits − Σ Crédits| < 0,01€`, `Rapports: Balance, Grand Livre, FEC, TVA en 1 clic`] },
+        { type: 'heading', text: `Installation (résumé)` },
+        { type: 'list', items: [`Prérequis: Node.js 18+, compte Supabase, clé Anthropic`, `Environnements: .env.local (frontend), backend/.env, ai-backend/.env`, `Démarrage type:`] },
+        { type: 'heading', text: `Roadmap synthétique` },
+        { type: 'list', items: [`v1.1: Auth Supabase, rôles, import CSV/Excel, mode offline (PWA)`, `v1.2: Multi‑sociétés, workflow de validation, audit trail, API publique`] },
+        { type: 'heading', text: `Crédits` },
+        { type: 'paragraph', text: `© 2025 — AS400 Horizontal — TAC Hockey Club` },
+      ] as ContentSection[],
   }
 ];
 
