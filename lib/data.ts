@@ -303,7 +303,18 @@ export const projects = [
       "Importance de la ligne éditoriale dans les prompts IA",
       "Valeur de la documentation pour l'autonomie client"
     ],
-    media: [] as Array<{ url: string; caption?: string }>,
+    media: [
+      { url: "/projects/veille-linkedin-workflow-n8n-veille-btp.png", caption: "Workflow A — Veille BTP & génération de contenus réseaux" },
+      { url: "/projects/veille-linkedin-workflow-n8n-gemini-image.png", caption: "Workflow B — Génération d'images Gemini depuis Notion" },
+      { url: "/projects/veille-linkedin-workflow-n8n-publication.png", caption: "Workflow C — Publication automatique LinkedIn depuis Notion" },
+      { url: "/projects/veille-linkedin-notion-hub-veille.png", caption: "Hub Notion — Interface centrale veille & contenus ADN POTENTIEL" },
+      { url: "/projects/veille-linkedin-notion-contenus-publications.png", caption: "Base Notion — Contenus & Publications (calendrier éditorial)" },
+      { url: "/projects/veille-linkedin-notion-veille-adn.png", caption: "Base Notion — Veille ADN POTENTIEL (articles qualifiés par IA)" },
+      { url: "/projects/veille-linkedin-notion-modeles-publications.png", caption: "Base Notion — Modèles Publications (templates éditoriaux)" },
+      { url: "/projects/veille-linkedin-notion-modeles-images.png", caption: "Base Notion — Modèles Images (bibliothèque de styles visuels)" },
+      { url: "/projects/veille-linkedin-notion-contexte-adn.png", caption: "Base Notion — Contexte ADN POTENTIEL (documents de référence IA)" },
+      { url: "/projects/veille-linkedin-publication-linkedin.png", caption: "Exemple de publication LinkedIn générée et publiée automatiquement" }
+    ] as Array<{ url: string; caption?: string }>,
       content: [
         { type: 'heading', text: `Vue d'ensemble` },
         { type: 'paragraph', text: `Chaîne d'automatisation complète en 3 workflows n8n interconnectés, pilotée depuis un Hub Notion avec 5 bases de données :` },
