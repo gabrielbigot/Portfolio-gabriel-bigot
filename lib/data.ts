@@ -275,7 +275,7 @@ export const projects = [
     date: "2026-01",
     company: "ADN POTENTIEL",
     featured: true,
-    image: "",
+    image: "/projects/veille-linkedin-workflow-n8n-veille-btp.png",
     problem: "Aucune présence SEO malgré 2 ans d'existence, production de contenus manuelle et chronophage (~7h/semaine), pas de système de veille sectorielle.",
     solution: "3 workflows n8n interconnectés + Hub Notion 5 bases de données : veille automatisée, génération de contenus IA, publication LinkedIn au clic.",
     impact: [
@@ -363,7 +363,7 @@ export const projects = [
     date: "2026-01",
     company: "ADN POTENTIEL",
     featured: true,
-    image: "",
+    image: "/projects/enrichissement-btp-workflow-n8n.png",
     problem: "Base de 15 000+ prospects sans information sur l'âge des dirigeants. Prospection à l'aveugle : impossible de prioriser ni de segmenter. Enrichissement manuel impossible à cette échelle.",
     solution: "Workflow n8n connecté à l'API Pappers pour récupérer automatiquement la date de naissance, l'âge calculé, le statut \"senior\" (60+ ans) et la tranche d'âge de chaque dirigeant.",
     impact: [
@@ -432,7 +432,7 @@ export const projects = [
     date: "2026-01",
     company: "ADN POTENTIEL",
     featured: false,
-    image: "",
+    image: "/projects/greminders-rappel-sms.png",
     problem: "Taux de no-show non négligeable sur les rendez-vous qualifiés. Rappels manuels chronophages (appels ou SMS envoyés à la main). Perte de temps et crédibilité sur des créneaux non honorés.",
     solution: "Configuration Greminders (SaaS no-code) connecté au Google Calendar via OAuth2 : rappels SMS + email J-1 et H-1, messages personnalisés, lien confirmation/annulation.",
     impact: [
