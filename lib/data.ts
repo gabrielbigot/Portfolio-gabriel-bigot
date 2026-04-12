@@ -454,7 +454,10 @@ export const projects = [
       "Valeur des outils no-code pour des gains rapides sans développement",
       "Importance de la personnalisation dans les communications automatisées"
     ],
-    media: [] as Array<{ url: string; caption?: string }>,
+    media: [
+      { url: "/projects/greminders-interface-site.png", caption: "Interface GReminders — plateforme SaaS de rappels automatiques" },
+      { url: "/projects/greminders-rappel-sms.png", caption: "Exemple de rappel SMS reçu par un prospect — 22/02/2026" }
+    ] as Array<{ url: string; caption?: string }>,
       content: [
         { type: 'heading', text: `Vue d'ensemble` },
         { type: 'paragraph', text: `Mise en place de Greminders pour automatiser l'envoi de rappels SMS et email aux prospects et clients avant leurs rendez-vous avec ADN POTENTIEL. Objectif : réduire le taux de no-show sur les rendez-vous qualifiés, sans aucun développement technique — entièrement piloté depuis une interface no-code connectée à Google Calendar.` },
