@@ -877,6 +877,88 @@ export const projects = [
         { type: 'heading', text: `Crédits` },
         { type: 'paragraph', text: `© 2025 — AS400 Horizontal — TAC Hockey Club` },
       ] as ContentSection[],
+  },
+  {
+    id: "veille-hub",
+    title: "Veille Hub — Moteur de recherche intelligent pour ma veille IA",
+    slug: "veille-hub",
+    shortDescription: "Application personnelle de veille construite pour résoudre un vrai problème : retrouver n'importe lequel de mes 40-50 tweets enregistrés par jour grâce à une recherche IA, avec annotations, notes et statistiques.",
+    fullDescription: `Né d'un problème concret : je sauvegarde quotidiennement 40 à 50 tweets et de nombreuses vidéos YouTube dans le cadre de ma veille en intelligence artificielle. La recherche native de Twitter est trop basique — impossible de filtrer, trier ou faire une recherche sémantique. J'ai donc construit Veille Hub : une application full-stack qui indexe tous mes signets Twitter et mes vidéos YouTube dans Supabase, et les rend accessibles via un assistant IA capable de comprendre des requêtes en langage naturel. Je peux retrouver n'importe quel contenu, qu'il date d'hier ou de 3 ans.`,
+    category: "IA",
+    tags: ["Next.js", "Supabase", "AI SDK", "TypeScript", "Python", "Cloudflare", "Vercel"],
+    date: "2025-12",
+    company: "",
+    featured: true,
+    image: "/projects/veille-hub/screenshot-1.png",
+    problem: "Je sauvegarde 40 à 50 tweets par jour dans mes signets Twitter pour ma veille IA, mais la recherche native de Twitter est trop simpliste : pas de filtres, pas de tri, pas de recherche sémantique. Retrouver un tweet précis parmi des milliers devient un cauchemar. Même problème avec mes centaines de vidéos YouTube enregistrées.",
+    solution: "Application full-stack qui scrape automatiquement mes signets Twitter et mes vidéos YouTube, les stocke dans Supabase, et les rend accessibles via un assistant IA en langage naturel. Possibilité d'annoter, commenter et noter chaque contenu — ces métadonnées sont intégrées dans la recherche.",
+    impact: [
+      "Accès immédiat à des années de veille en langage naturel",
+      "16 000+ tweets et vidéos indexés et interrogeables",
+      "Annotations et notes intégrées dans le ranking de recherche",
+      "Dashboard de stats : heatmap d'activité, auteurs suivis, top actions",
+      "Scraping automatisé via scripts Python + cron"
+    ],
+    technologies: [
+      { name: "Next.js 15", usage: "Framework full-stack, App Router" },
+      { name: "Supabase", usage: "Base de données PostgreSQL et stockage des signets" },
+      { name: "AI SDK (Vercel)", usage: "Intégration OpenAI / xAI pour l'assistant IA" },
+      { name: "Python", usage: "Scripts de scraping des signets Twitter et vidéos YouTube" },
+      { name: "Cloudflare Pages", usage: "Déploiement via OpenNext" },
+      { name: "TypeScript", usage: "Typage de bout en bout" },
+      { name: "Recharts", usage: "Graphiques et heatmap d'activité" }
+    ],
+    challenges: [
+      "Scraping fiable des signets Twitter sans API officielle (cookies-based)",
+      "Recherche sémantique pertinente sur un volume de 16 000+ contenus",
+      "Intégration des annotations utilisateur dans le ranking IA"
+    ],
+    learnings: [
+      "Construire pour résoudre son propre problème produit les meilleures spécifications",
+      "Architecture RAG appliquée à une base de connaissance personnelle",
+      "Valeur des métadonnées utilisateur (notes, commentaires) pour améliorer la pertinence de recherche"
+    ],
+    media: [
+      { url: "/projects/veille-hub/screenshot-1.png", caption: "Dashboard de veille — vue annuelle avec heatmap d'activité et stats globales" },
+      { url: "/projects/veille-hub/screenshot-2.png", caption: "Dashboard de veille — activité détaillée et signaux récents" },
+      { url: "/projects/veille-hub/screenshot-3.png", caption: "Flux de signaux — aperçu des tweets et vidéos avec top auteurs" },
+      { url: "/projects/veille-hub/screenshot-4.png", caption: "Assistant IA — interface de recherche en langage naturel dans les signets" },
+      { url: "/projects/veille-hub/screenshot-5.png", caption: "Assistant IA — résultat de recherche avec fiche détaillée d'un tweet" }
+    ] as Array<{ url: string; caption?: string }>,
+    content: [
+      { type: 'heading', text: `Vue d'ensemble` },
+      { type: 'paragraph', text: `Veille Hub est une application personnelle construite pour résoudre un vrai problème de ma vie quotidienne : je suis passionné d'intelligence artificielle et je sauvegarde 40 à 50 tweets chaque jour dans mes signets X (anciennement Twitter) pour garder une trace des découvertes, articles, threads et idées marquantes.` },
+      { type: 'paragraph', text: `Le problème : la recherche native de Twitter est beaucoup trop basique. Pas de filtres, pas de tri par date ou pertinence, pas de recherche sémantique. Retrouver un tweet précis parmi des milliers de signets devient vite impossible. Idem pour mes centaines de vidéos YouTube enregistrées.` },
+      { type: 'paragraph', text: `La solution que j'ai construite : une application full-stack qui indexe tous mes contenus dans Supabase et les rend accessibles via un assistant IA capable de comprendre des questions en langage naturel — "Que pense Karpathy de l'IA générative ?", "Montre-moi les tweets sur Claude et Anthropic de la semaine dernière", "Quels auteurs publient le plus sur les agents IA ?"` },
+      { type: 'heading', text: `Pourquoi X / Twitter malgré la controverse ?` },
+      { type: 'paragraph', text: `X reste, qu'on le veuille ou non, la meilleure plateforme pour suivre l'actualité IA en temps réel. Les chercheurs, les fondateurs de startups IA, les ingénieurs de Google DeepMind, Anthropic, OpenAI y publient en premier. Aucune autre plateforme n'offre cette densité d'information sur mon domaine. C'est précisément parce que j'y passe du temps que j'avais besoin d'un outil pour valoriser ce temps passé.` },
+      { type: 'heading', text: `Fonctionnalités principales` },
+      { type: 'list', items: [
+        `Recherche IA en langage naturel — Pose une question sur tes signets, l'assistant comprend et retrouve les contenus pertinents`,
+        `Indexation automatique — Scripts Python qui scrapent les signets Twitter et les vidéos YouTube à intervalles réguliers`,
+        `Annotations & notes — Chaque tweet ou vidéo peut être annoté, commenté et noté ; ces métadonnées enrichissent la recherche`,
+        `Dashboard de stats — Heatmap d'activité annuelle/mensuelle/hebdomadaire, total de tweets, durée de vidéos, top auteurs suivis`,
+        `Filtres avancés — Par type (tweet, vidéo, photo), par auteur, par langue, par date`,
+        `Transcriptions vidéo — Les vidéos YouTube sont transcrites pour être cherchées par contenu`
+      ]},
+      { type: 'heading', text: `Architecture technique` },
+      { type: 'paragraph', text: `Stack : Next.js 15 (App Router) · Supabase (PostgreSQL) · AI SDK Vercel · OpenAI / xAI · Python (scraping) · Cloudflare Pages` },
+      { type: 'list', items: [
+        `Scraping : scripts Python (scrape-daily.py, scrape-youtube.py) exécutés en cron, authentification via cookies Twitter`,
+        `Stockage : tous les signets et vidéos sont normalisés et stockés dans Supabase avec leurs métadonnées`,
+        `Assistant IA : l'AI SDK de Vercel orchestre les appels au modèle (OpenAI / xAI) avec accès à la base Supabase comme contexte`,
+        `Frontend : Next.js 15 avec App Router, Tailwind CSS, Recharts pour les graphiques, Radix UI pour les composants`,
+        `Déploiement : Cloudflare Pages via OpenNext pour des performances edge mondiales`
+      ]},
+      { type: 'heading', text: `Résultats` },
+      { type: 'list', items: [
+        `✅ 16 000+ contenus indexés et interrogeables instantanément`,
+        `✅ Retrouver n'importe quel tweet en quelques secondes, même daté de 3 ans`,
+        `✅ Veille quotidienne valorisée : chaque tweet sauvegardé devient une ressource durable`,
+        `✅ Annotations et notes intégrées dans le ranking de l'assistant IA`,
+        `✅ Changement réel de mon quotidien — utilisé activement chaque jour`
+      ]},
+    ] as ContentSection[],
   }
 ];
 

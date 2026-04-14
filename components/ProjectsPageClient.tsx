@@ -26,14 +26,19 @@ interface ProjectsPageClientProps {
 
 export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClientProps) {
   const [filter, setFilter] = useState<string>("all")
+  const [typeFilter, setTypeFilter] = useState<"all" | "perso" | "pro">("all")
 
   // Extract all unique categories from all projects
   const allCategories = projects.flatMap((p) => p.categories || [])
   const categories = ["all", ...Array.from(new Set(allCategories))]
 
-  const filteredProjects = filter === "all"
-    ? projects
-    : projects.filter((p) => p.categories?.includes(filter))
+  const filteredProjects = projects
+    .filter((p) => filter === "all" || p.categories?.includes(filter))
+    .filter((p) => {
+      if (typeFilter === "perso") return !p.company || p.company === ""
+      if (typeFilter === "pro") return p.company && p.company !== ""
+      return true
+    })
 
   const featuredProjects = projects.filter((p) => p.featured)
 
@@ -91,27 +96,48 @@ export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClie
         </header>
 
         {/* Filters */}
-        <div className="pb-12 space-y-4">
-          <div className="text-sm text-muted-foreground font-mono">FILTRER PAR CATÉGORIE</div>
-          <div className="flex flex-wrap gap-3">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setFilter(category)}
-                className={`px-4 py-2 text-sm border rounded-lg transition-all duration-300 ${
-                  filter === category
-                    ? "bg-foreground text-background border-foreground"
-                    : "border-border hover:border-muted-foreground/50"
-                }`}
-              >
-                {category === "all" ? "Tous les projets" : category}
-              </button>
-            ))}
+        <div className="pb-12 space-y-6">
+          <div className="space-y-4">
+            <div className="text-sm text-muted-foreground font-mono">TYPE</div>
+            <div className="flex flex-wrap gap-3">
+              {(["all", "perso", "pro"] as const).map((t) => (
+                <button
+                  key={t}
+                  onClick={() => setTypeFilter(t)}
+                  className={`px-4 py-2 text-sm border rounded-lg transition-all duration-300 ${
+                    typeFilter === t
+                      ? "bg-foreground text-background border-foreground"
+                      : "border-border hover:border-muted-foreground/50"
+                  }`}
+                >
+                  {t === "all" ? "Tous" : t === "perso" ? "Personnel" : "Professionnel"}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <div className="text-sm text-muted-foreground font-mono">FILTRER PAR CATÉGORIE</div>
+            <div className="flex flex-wrap gap-3">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setFilter(category)}
+                  className={`px-4 py-2 text-sm border rounded-lg transition-all duration-300 ${
+                    filter === category
+                      ? "bg-foreground text-background border-foreground"
+                      : "border-border hover:border-muted-foreground/50"
+                  }`}
+                >
+                  {category === "all" ? "Tous les projets" : category}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Featured Projects */}
-        {filter === "all" && featuredProjects.length > 0 && (
+        {filter === "all" && typeFilter === "all" && featuredProjects.length > 0 && (
           <section className="pb-16 sm:pb-24">
             <div className="space-y-8 sm:space-y-12">
               <div className="flex items-end justify-between">
@@ -220,7 +246,7 @@ export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClie
         <section className="space-y-8 sm:space-y-12">
           <div className="flex items-end justify-between">
             <h2 className="text-2xl sm:text-3xl font-light">
-              {filter === "all" ? "Tous les projets" : `${filter}`}
+              {typeFilter === "perso" ? "Projets personnels" : typeFilter === "pro" ? "Projets professionnels" : filter === "all" ? "Tous les projets" : filter}
             </h2>
             <div className="text-sm text-muted-foreground font-mono">
               {filteredProjects.length} {filteredProjects.length > 1 ? "PROJETS" : "PROJET"}
