@@ -811,9 +811,18 @@ export const projects = [
       "Design système cohérent pour une application complexe"
     ],
     media: [
-      { url: "/projects/as400-v2-dashboard.png", caption: "Tableau de bord et navigation horizontale" },
-      { url: "/projects/as400-v2-assistant-ia.png", caption: "Assistant IA comptable" },
-      { url: "/projects/as400-v2-assistant-ia-2.png", caption: "Assistant IA — analyse contextuelle" }
+      { url: "/projects/as400-v2-tableau-bord-1.png", caption: "Tableau de bord — indicateurs financiers & évolution 6 mois" },
+      { url: "/projects/as400-v2-tableau-bord-2.png", caption: "Tableau de bord — charges par catégorie & top comptes actifs" },
+      { url: "/projects/as400-v2-tableau-bord-3.png", caption: "Tableau de bord — activité, alertes & actions rapides" },
+      { url: "/projects/as400-v2-plan-comptable.png", caption: "Plan Comptable — consultation et gestion des comptes" },
+      { url: "/projects/as400-v2-journaux-comptable.png", caption: "Journaux Comptables — organisation par nature d'opération" },
+      { url: "/projects/as400-v2-saisie-ecritures.png", caption: "Saisie d'Écritures — partie double avec validation du solde" },
+      { url: "/projects/as400-v2-gestion-brouillard.png", caption: "Gestion du Brouillard — validation des lots en attente" },
+      { url: "/projects/as400-v2-lettrage-comptes.png", caption: "Lettrage des Comptes — rapprochement débit/crédit" },
+      { url: "/projects/as400-v2-rapports-editions.png", caption: "Rapports & Éditions — Balance, Grand Livre, TVA, FEC" },
+      { url: "/projects/as400-v2-parametres-comptabilite.png", caption: "Paramètres de Comptabilité — exercice et structure" },
+      { url: "/projects/as400-v2-assistant-ia-comptable-1.png", caption: "Assistant Comptable IA — interface conversationnelle" },
+      { url: "/projects/as400-v2-assistant-ia-comptable-2.png", caption: "Assistant Comptable IA — chat et suggestions contextuelles" }
     ] as Array<{ url: string; caption?: string }>,
       content: [
         { type: 'heading', text: `Vue d’ensemble` },
