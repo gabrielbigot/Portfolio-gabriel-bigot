@@ -959,6 +959,129 @@ export const projects = [
         `✅ Changement réel de mon quotidien — utilisé activement chaque jour`
       ]},
     ] as ContentSection[],
+  },
+  {
+    id: "unlimited-cognition",
+    title: "Unlimited Cognition",
+    slug: "unlimited-cognition",
+    shortDescription: "Application web multifonction pour booster ses capacités cognitives : flashcards SRS, générateur de quizz IA, éditeur LaTeX/Markdown (Prism), importation de données TOEIC/Kwizmo — construite sur un constat simple : déléguer sa réflexion à l'IA rend définitivement plus bête.",
+    fullDescription: `Application d'apprentissage personnel construite from scratch en React 19 + TypeScript. Elle réunit un système de répétition espacée (SRS), un générateur de quizz piloté par Claude (Anthropic), un éditeur riche LaTeX/Markdown (Prism Workspace), un système d'import multi-sources et un tableau de bord de suivi. Pensée pendant 2-3 ans, développée pour répondre à mes propres besoins cognitifs avant tout.`,
+    category: "Application Web",
+    tags: ["React 19", "TypeScript", "Supabase", "Claude AI", "SRS", "Vite", "Tailwind CSS", "Zustand", "KaTeX", "Mermaid"],
+    date: "2025-01",
+    company: "",
+    featured: true,
+    image: "/projects/unlimited-cognition/screenshot-01-daily-briefing.png",
+    problem: "Un constat alarmant : autour de moi, des camarades de classe côtoyés depuis 3 ans délèguent intégralement leur réflexion à l'IA — chaque exercice, chaque évaluation, chaque concours. Résultat observable : un appauvrissement cognitif réel et progressif. Je n'en étais pas exempt moi-même, dans une moindre mesure. Le problème n'est pas l'IA en soi, c'est l'absence d'effort cognitif délibéré. Les applications existantes (Quizlet, StudySmart…) existent en nombre, mais aucune ne proposait le niveau de personnalisation et les fonctionnalités que je cherchais.",
+    solution: "Après avoir étudié les 3 étapes de l'apprentissage (Encodage, Automatisation, Métacognition), j'ai conçu une application multifonction taillée pour mes besoins : un système de répétition espacée (SRS) pour l'encodage et l'automatisation, un générateur de contenu piloté par l'IA (Claude) pour la production de matière, et un espace de travail riche (Prism) pour la métacognition — avec écriture LaTeX, mind maps, et snippets. L'idée centrale : utiliser l'IA comme outil de génération, jamais comme béquille cognitive.",
+    impact: [
+      "Capacités de mémorisation et de révision personnellement démultipliées",
+      "Import automatisé de milliers de questions (TOEIC, Kwizmo, Tage Mage) — zéro saisie manuelle",
+      "Éditeur Prism : LaTeX, Markdown, Mermaid et snippets dans un seul espace de travail",
+      "Génération de flashcards et de quizz contextuels via Claude (Anthropic) en quelques secondes",
+      "Application open-source (prévue) : le savoir doit être accessible à tous",
+      "Preuve qu'en 2026, on n'a pas besoin de puce cérébrale pour rester cognitivement compétitif"
+    ],
+    technologies: [
+      { name: "React 19 + TypeScript", usage: "Frontend — UI réactive et typée" },
+      { name: "Vite 8", usage: "Build tool ultra-rapide" },
+      { name: "Tailwind CSS v4", usage: "Styling utilitaire" },
+      { name: "Supabase", usage: "Backend, base de données et authentification" },
+      { name: "Anthropic SDK (Claude)", usage: "Génération de flashcards, quizz et contenu pédagogique" },
+      { name: "Zustand", usage: "Gestion d'état globale (SRS store, sessions)" },
+      { name: "KaTeX", usage: "Rendu de formules mathématiques dans Prism" },
+      { name: "Mermaid", usage: "Génération de mind maps et diagrammes" },
+      { name: "Framer Motion + GSAP", usage: "Animations (retournement de cartes, transitions)" },
+      { name: "PDF.js", usage: "Lecture et import depuis des documents PDF" },
+      { name: "React Markdown + remark-math", usage: "Rendu Markdown enrichi avec maths" }
+    ],
+    challenges: [
+      "Concevoir un algorithme SRS suffisamment flexible pour différentes matières et rythmes d'apprentissage",
+      "Intégrer Claude comme co-constructeur de contenu sans que l'app devienne une béquille cognitive",
+      "Parser et normaliser des formats hétérogènes (TOEIC livres scannés, exports Kwizmo, CSV Tage Mage)",
+      "Construire une interface riche (LaTeX, Mermaid, Markdown) qui reste fluide et non intimidante",
+      "Trouver le bon équilibre entre personnalisation poussée et expérience utilisable pour d'autres"
+    ],
+    learnings: [
+      "L'effort cognitif délibéré est irremplaçable — l'IA amplifie, elle ne remplace pas",
+      "Une application conçue pour soi-même a une efficacité que des outils génériques ne peuvent égaler",
+      "Architecture feature-based en React pour des domaines fonctionnels complexes (SRS, génération, import)",
+      "2-3 ans de réflexion sur son propre apprentissage valent n'importe quel cahier des charges"
+    ],
+    media: [
+      { url: "/projects/unlimited-cognition/screenshot-01-daily-briefing.png", caption: "Daily Briefing — Vue quotidienne des révisions dues" },
+      { url: "/projects/unlimited-cognition/screenshot-02-import-generator.png", caption: "Import & Generator — Génération de contenu avec l'IA" },
+      { url: "/projects/unlimited-cognition/screenshot-03-import-library.png", caption: "Import Library — Bibliothèques et sources d'importations" },
+      { url: "/projects/unlimited-cognition/screenshot-04-library.png", caption: "Bibliothèque de Flashcards — Parcourir et gérer ses decks" },
+      { url: "/projects/unlimited-cognition/screenshot-05-mind-map.png", caption: "Mind Map — Visualisation via Mermaid" },
+      { url: "/projects/unlimited-cognition/screenshot-06-library-audio.png", caption: "Library Audio — Support multimédia" },
+      { url: "/projects/unlimited-cognition/screenshot-07-quiz-session.png", caption: "Quiz Session — Pédagogie interactive" },
+      { url: "/projects/unlimited-cognition/screenshot-08-quiz-editor.png", caption: "Éditeur de Quiz — Création de questionnaires personnalisés" },
+      { url: "/projects/unlimited-cognition/screenshot-09-prism-markdown.png", caption: "Prism Workspace — Édition en Markdown étendu" },
+      { url: "/projects/unlimited-cognition/screenshot-10-prism-split.png", caption: "Prism Workspace — Vue Split Screen" },
+      { url: "/projects/unlimited-cognition/screenshot-11-prism-pdf.png", caption: "Prism Workspace — Support et lecture de fichiers PDF" },
+      { url: "/projects/unlimited-cognition/screenshot-12-study-modes.png", caption: "Study Modes — Choix des modes d'apprentissage" },
+      { url: "/projects/unlimited-cognition/screenshot-13-analytics.png", caption: "Analytics — Suivi des performances" },
+      { url: "/projects/unlimited-cognition/screenshot-14-planning-agenda.png", caption: "Planning & Agenda — Calendrier de révision prévisionnel" },
+      { url: "/projects/unlimited-cognition/screenshot-15-planning-logs-ia.png", caption: "Planning — Logs de l'assistant IA" },
+      { url: "/projects/unlimited-cognition/screenshot-16-annotations.png", caption: "Annotations — Prise de notes contextuelles" }
+    ] as Array<{ url: string; caption?: string }>,
+    content: [
+      { type: 'heading', text: `Le constat` },
+      { type: 'paragraph', text: `Tout a commencé par une observation simple, et assez inquiétante. Dans ma classe de prépa, j'ai des camarades que je côtoie depuis 3 ans. Quotidiennement. Et depuis l'explosion des LLMs, pour n'importe quel exercice, évaluation, ou concours blanc — ils délèguent tout. Absolument tout. Sans le moindre effort cognitif.` },
+      { type: 'paragraph', text: `Le résultat est visible : un appauvrissement intellectuel réel, progressif, observable. Je ne ferais pas ce constat aussi alarmiste si je n'en avais pas moi-même été partiellement victime. La tentation est forte, les outils sont là, et l'effort paraît inutile quand la machine fait mieux en 3 secondes.` },
+      { type: 'paragraph', text: `Mais voilà le problème : ce n'est pas parce que l'IA peut penser à ta place que tu devrais la laisser faire. Le muscle cognitif s'atrophie comme un muscle physique. Résultat : tu deviendras dépendant d'un outil que tu ne comprends pas, incapable de fonctionner sans lui.` },
+      { type: 'heading', text: `Pourquoi cette application` },
+      { type: 'paragraph', text: `Après avoir pris le temps d'étudier les 3 étapes détaillées de l'apprentissage — Encodage, Automatisation, Métacognition — j'ai décidé de construire une réponse concrète. Pas une application de plus dans l'océan des EdTech, mais une application construite pour répondre à mes problèmes spécifiques, avec un niveau de personnalisation qu'on ne voit nulle part ailleurs.` },
+      { type: 'paragraph', text: `On peut légitimement objecter que des applications comme Quizlet, StudySmart ou Anki existent déjà, et à raison. Mais Unlimited Cognition possède des fonctionnalités que ces applications n'ont pas, un niveau de personnalisation système radicalement différent, et sera très probablement rendu open-source — parce que selon moi, le savoir doit être gratuit et accessible.` },
+      { type: 'paragraph', text: `Je n'ai aucune certitude que cette application fonctionnera pour tout le monde. Elle a été construite pour répondre à mes problèmes en premier lieu. Mais c'est peut-être précisément pour ça qu'elle fonctionne aussi bien pour moi : j'y ai réfléchi pendant plus de 2 ans, je l'ai conçue, et quelque part, elle m'appartient.` },
+      { type: 'heading', text: `Fonctionnalités principales` },
+      { type: 'heading', text: `SRS — Répétition Espacée` },
+      { type: 'list', items: [
+        `Système de flashcards avec algorithme de répétition espacée (SRS)`,
+        `Sessions d'étude avec feedback de difficulté (facile / moyen / difficile)`,
+        `Suivi de progression par deck — intervalles calculés automatiquement`,
+        `Support du rendu LaTeX dans les cartes pour les maths et sciences`
+      ]},
+      { type: 'heading', text: `Génération IA (Claude)` },
+      { type: 'list', items: [
+        `Génération de flashcards depuis n'importe quel texte ou document`,
+        `Génération de quizz contextuels avec questions et corrections`,
+        `Claude comme co-constructeur de contenu pédagogique, pas comme béquille cognitive`
+      ]},
+      { type: 'heading', text: `Prism Workspace` },
+      { type: 'list', items: [
+        `Éditeur riche avec support LaTeX (KaTeX), Markdown et syntaxe étendue`,
+        `Mind maps et diagrammes via Mermaid`,
+        `Snippets réutilisables — bibliothèque de fragments`,
+        `Espace de métacognition : structurer sa pensée, pas juste mémoriser`
+      ]},
+      { type: 'heading', text: `Import multi-sources` },
+      { type: 'list', items: [
+        `Import TOEIC depuis livres scannés (photos → questions parsées automatiquement)`,
+        `Import depuis Kwizmo (scraper Python dédié)`,
+        `Import Tage Mage (format JSON normalisé)`,
+        `Support PDF via PDF.js pour l'extraction de contenu`
+      ]},
+      { type: 'heading', text: `Tableau de bord & suivi` },
+      { type: 'list', items: [
+        `Daily Briefing — vue quotidienne des révisions dues`,
+        `Schedule View — calendrier de révision prévisionnel`,
+        `Annotations — notes contextuelles liées aux cartes`,
+        `Avatars des grands penseurs (Einstein, Turing, Feynman…) comme figures d'étude`
+      ]},
+      { type: 'heading', text: `Architecture technique` },
+      { type: 'paragraph', text: `Stack : React 19 · TypeScript · Vite 8 · Tailwind CSS v4 · Supabase · Anthropic SDK · Zustand · KaTeX · Mermaid · Framer Motion · GSAP · PDF.js` },
+      { type: 'list', items: [
+        `Architecture feature-based : chaque domaine fonctionnel (srs, generation, quizzes, import) est isolé dans son propre module`,
+        `Zustand pour la gestion d'état globale, notamment le SRS store (intervals, sessions, progression)`,
+        `Supabase en backend : authentification, stockage des decks, sync cloud (roadmap)`,
+        `Claude (Anthropic) intégré via SDK officiel pour la génération de contenu pédagogique`,
+        `Prism Workspace : éditeur custom avec code editor (@uiw/react-textarea-code-editor), rendu KaTeX et Mermaid`
+      ]},
+      { type: 'heading', text: `Vision` },
+      { type: 'paragraph', text: `Unlimited Cognition, c'est aussi une prise de position : je ne crois pas qu'avec l'émergence de l'IA, nous soyons obligés d'implanter des puces dans notre cerveau pour continuer à exister cognitivement. On peut utiliser ces outils pour amplifier notre intelligence, pas pour la déléguer. Cette application est ma réponse pratique à cette conviction.` },
+    ] as ContentSection[],
   }
 ];
 
