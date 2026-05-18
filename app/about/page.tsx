@@ -35,16 +35,16 @@ const milestones: {
     text: "Un entraînement totalement ordinaire. Pas de coup reçu, pas d'impact. Juste en courant. J'ai vu mon genou sur le côté — tordu. Ma première pensée : je ne ferai plus jamais de sport. Le diagnostic : dysplasie trochléenne, héréditaire. L'os censé bloquer ma rotule est trop plat. Elle se balade.",
   },
   {
-    year: "2019 — 2021",
+    year: "2019 — 2020",
     type: "rebuild",
-    title: "Revenir, et encore revenir",
-    text: "Rééducation. Retour au hockey. Mais le genou n'était plus le même — je le sentais à chaque appui. La deuxième luxation est arrivée le seul jour où j'avais oublié ma genouillère. Puis une troisième — cette fois avec la genouillère. Mon genou s'était luxé alors même qu'il était maintenu. Plus tu te blesses, plus ça devient fragile. Le kiné ne peut pas effacer ça complètement.",
+    title: "Première rééducation, premier retour",
+    text: "Rééducation. Retour au hockey. Mais le genou n'était plus le même — je le sentais à chaque appui, à chaque changement de direction. Plus tu te blesses, plus ça devient fragile. Le kiné ne peut pas effacer ça complètement.",
   },
   {
-    year: "Lycée — La Malassise",
+    year: "Lycée — La Malassise (2020-2022)",
     type: "rupture",
-    title: "Porter le poids de l'exemple",
-    text: "Internat à Saint-Omer. La majorité de mon équipe U16 avait arrêté le hockey en arrivant au lycée. Pas moi. Je rentrais le vendredi soir, épuisé, pour m'entraîner. Je portais la pression de prouver que c'était possible. Des luxations partielles que j'ignorais. Une période sombre que personne ne voyait. Je cherchais de la dopamine partout — sans le comprendre. Beaucoup de gens me regardaient comme si j'étais un zombie. Cela me faisait mal.",
+    title: "Les dislocations continuent, la période s'assombrit",
+    text: "Internat à Saint-Omer. La majorité de mon équipe U16 avait arrêté le hockey en arrivant au lycée. Pas moi. Je rentrais le vendredi soir épuisé pour m'entraîner. Deuxième luxation — le seul jour où j'avais oublié ma genouillère. Troisième luxation — cette fois avec la genouillère. Mon genou s'était luxé alors même qu'il était maintenu. Des luxations partielles que j'ignorais. Une période sombre que personne ne voyait. Je cherchais de la dopamine partout, sans le comprendre. Beaucoup de gens me regardaient comme si j'étais un zombie.",
   },
   {
     year: "Oct. 2022",
