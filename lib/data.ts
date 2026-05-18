@@ -16,10 +16,10 @@ export const personalInfo = {
   birthDate: "2005-05-19",
 
   bio: {
-    short: "Étudiant en économie-gestion, j'applique l'IA et l'automatisation à des processus métier réels. Mon parcours sportif forgé par le hockey m'a appris la rigueur, la résilience et le travail d'équipe.",
+    short: "Étudiant en économie-gestion, j'applique l'IA et l'automatisation à des processus métier réels. Mon parcours sportif forgé par le hockey m'a appris la rigueur, la constance et le travail d'équipe.",
     full: `Passionné par l'intelligence artificielle et l'automatisation depuis 2022, je transforme des processus métier complexes en solutions efficaces. Mon expérience en PME familiale m'a naturellement orienté vers l'IA : d'abord pour résoudre des tâches répétitives, puis pour repenser des flux entiers.
 
-Mon parcours sportif de haut niveau en hockey sur gazon m'a forgé une résilience exceptionnelle, notamment après avoir surmonté de graves blessures pour revenir au plus haut niveau. Cette expérience m'a appris la persévérance, le travail d'équipe et la capacité à me relever face aux difficultés.
+Mon parcours sportif en hockey sur gazon m'a appris la persévérance, le travail d'équipe et l'exigence dans la durée. Avec le TAC, la saison 2026 marque un cap fort : 1ère place de Nationale 1 et retour en Élite, le plus haut niveau français.
 
 Mon objectif est d'intégrer SKEMA Business School avec une spécialisation en IA et transformation digitale, pour développer une expertise à l'intersection du business et de la technologie.`
   },
@@ -75,10 +75,11 @@ export const education = [
     location: "Saint-Omer, France",
     startDate: "2020",
     endDate: "2023",
-    description: "Parcours marqué par une opération au genou et complications médicales surmontées avec résilience.",
+    description: "Parcours exigeant en internat, avec un équilibre constant entre études, sport et responsabilités personnelles.",
     highlights: [
-      "Baccalauréat obtenu malgré hospitalisation et rééducation intensive",
-      "Internat pendant 3 ans"
+      "Baccalauréat obtenu",
+      "Internat pendant 3 ans",
+      "Continuité du hockey au TAC malgré la distance"
     ]
   },
   {
@@ -278,7 +279,7 @@ export const skills = {
 
   languages: [
     { name: "Français", level: "Natif" },
-    { name: "Anglais", level: "Opérationnel", certification: "TOEIC 900+" }
+    { name: "Anglais", level: "Opérationnel" }
   ]
 };
 
@@ -2194,24 +2195,24 @@ export const blogPosts: BlogPost[] = [
 
 export const achievements = [
   {
-    title: "Vice-Champion de France Hockey en Salle",
-    organization: "Équipe Départementale",
-    date: "2016",
-    description: "Capitaine de l'équipe départementale, meilleur résultat historique du département",
+    title: "1ère place de Nationale 1",
+    organization: "TAC Hockey",
+    date: "2026",
+    description: "Saison historique avec montée en Élite, le plus haut niveau du hockey sur gazon français",
     icon: "trophy"
   },
   {
-    title: "TOEIC 900+",
-    organization: "Educational Testing Service",
-    date: "2024",
-    description: "Certification anglais professionnel",
-    icon: "certificate"
+    title: "Retour en Élite",
+    organization: "TAC Hockey",
+    date: "2026",
+    description: "18 matchs, 16 victoires, 100 buts inscrits et meilleure défense de Nationale 1",
+    icon: "medal"
   },
   {
-    title: "2e Place Cross Départemental",
+    title: "Podium en cross départemental",
     organization: "UNSS",
     date: "2017",
-    description: "Course à pied inter-collèges",
+    description: "Représentation du collège en compétition départementale",
     icon: "award"
   }
 ];
@@ -2220,7 +2221,7 @@ export const interests = [
   {
     name: "Hockey sur Gazon",
     icon: "🏑",
-    description: "Pratique depuis 15+ ans, actuellement joueur du TAC Hockey en 2ème division française. Capitaine et vice-champion de France en salle (2016)."
+    description: "Pratique depuis l'enfance au TAC Hockey. Saison 2026 : 1ère place de Nationale 1 et montée en Élite, le plus haut niveau français."
   },
   {
     name: "Course à Pied",
@@ -2240,6 +2241,12 @@ export const interests = [
 ];
 
 export const timeline = [
+  {
+    year: "2026",
+    title: "Montée en Élite avec le TAC",
+    description: "1ère place de Nationale 1, 16 victoires en 18 matchs et 100 buts inscrits",
+    type: "achievement"
+  },
   {
     year: "2026",
     title: "Objectif SKEMA Business School",
@@ -2269,18 +2276,6 @@ export const timeline = [
     title: "Lycée La Malassise",
     description: "Baccalauréat malgré complications médicales majeures",
     type: "education"
-  },
-  {
-    year: "2019-2020",
-    title: "Opération Genou & Résilience",
-    description: "Opération, infection, ré-opération, hospitalisation et rééducation intensive",
-    type: "life"
-  },
-  {
-    year: "2016",
-    title: "Vice-Champion de France Hockey",
-    description: "Capitaine, 2e place championnat France en salle",
-    type: "achievement"
   },
   {
     year: "2008",
