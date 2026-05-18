@@ -2108,18 +2108,18 @@ export const companies = [
     current: false,
     type: "Freelance",
     shortDescription: "Développement d'une application web Next.js 16 sur-mesure remplaçant entièrement n8n + Notion, plus enrichissement de prospects mécènes — première rémunération pour des compétences en IA.",
-    description: "Mission freelance post-stage sur sollicitation du client — première rémunération professionnelle pour des compétences en IA. En parallèle d'une période surchargée : contrôle continu ESDHEM, examens, candidatures grandes écoles (SKEMA), et fin de saison de hockey sur gazon. Engagement confirmant la qualité des livrables du stage.",
+    description: "Mission freelance post-stage sur sollicitation du client. Première rémunération professionnelle pour des compétences en IA. Engagement confirmant la qualité des livrables du stage.",
     logo: "/companies/adn-potentiel.png",
     logoBackground: "#ffffff",
     companyUrl: null,
     technologies: ["Next.js 16", "TypeScript", "Neon PostgreSQL", "Drizzle ORM", "Vercel", "JWT / bcryptjs", "Instagram Graph API", "Apify", "OpenAI", "Anthropic", "Perplexity AI", "Gemini", "DALL-E"],
     achievements: [
-      "Migration complète du système n8n + Notion vers une application web Next.js 16 sur-mesure déployée sur Vercel — remplacement du système d'automatisation par une SaaS maison sans limite d'exécutions et entièrement contrôlable",
+      "Migration complète du système n8n + Notion vers une application web Next.js 16 sur-mesure déployée sur Vercel. Remplacement du système d'automatisation par une SaaS maison sans limite d'exécutions et entièrement contrôlable",
       "Développement full-stack : veille RSS automatisée (Perplexity AI + OpenAI/Anthropic), studio de contenu avec previews LinkedIn et Instagram en temps réel, génération d'images (DALL-E / Gemini), publication directe sur LinkedIn et Instagram depuis le dashboard",
-      "Système d'authentification JWT (bcryptjs, cookie httpOnly 30j) avec isolation totale des données par utilisateur — chaque compte accède uniquement à ses propres articles, posts et paramètres",
+      "Système d'authentification JWT, avec isolation totale des données par utilisateur. Chaque compte accède uniquement à ses propres articles, posts et paramètres",
       "Intégration Apify pour récupérer les stats d'engagement LinkedIn (likes, commentaires, profils des commentateurs) en contournement des restrictions de scope de l'API officielle",
-      "Workflow Perplexity AI pour enrichir 48 entreprises mécènes potentielles en Nord/Pas-de-Calais : recherche automatique des contacts RSE, Communication et PDG avec emails et téléphones",
-      "Livraison de vidéos tutoriels pour l'onboarding du nouveau stagiaire (Glenn)"
+      "Workflow Perplexity AI pour enrichir 48 entreprises mécènes potentielles dans le Nord/Pas-de-Calais : recherche automatique des contacts RSE, Communication et PDG avec emails et téléphones",
+      "Livraison de vidéos tutoriels pour l'onboarding du nouveau stagiaire du client"
     ],
     content: [],
   },
@@ -2142,9 +2142,7 @@ export const companies = [
     achievements: [
       "Conception et déploiement de 3 workflows n8n en production : enrichissement automatique de 15 000+ prospects BTP (API Pappers), système de veille sectorielle avec qualification IA (score d'impact, catégorisation), génération et publication automatique de contenus LinkedIn",
       "Création d'un Hub Notion avec 5 bases de données interconnectées comme interface de pilotage de l'ensemble du système",
-      "Économie de 7h+ par semaine sur la veille et la création de contenus, 75% de taux de validation des contenus par le client, 0 échec en production",
       "Production de 4 tutoriels vidéo (~70 minutes) et documentation technique complète pour garantir l'autonomie du client non-technique",
-      "Optimisation des coûts API à ~5-10€/mois et mise en place de mécanismes anti-doublon et de gestion d'erreurs gracieuse"
     ],
     content: [],
   },
