@@ -993,20 +993,22 @@ export const projects = [
     id: "unlimited-cognition",
     title: "Unlimited Cognition",
     slug: "unlimited-cognition",
-    shortDescription: "Application web multifonction pour booster ses capacités cognitives : flashcards SRS, générateur de quizz IA, éditeur LaTeX/Markdown (Prism), importation de données TOEIC/Kwizmo — construite sur un constat simple : déléguer sa réflexion à l'IA rend définitivement plus bête.",
-    fullDescription: `Application d'apprentissage personnel construite from scratch en React 19 + TypeScript. Elle réunit un système de répétition espacée (SRS), un générateur de quizz piloté par Claude (Anthropic), un éditeur riche LaTeX/Markdown (Prism Workspace), un système d'import multi-sources et un tableau de bord de suivi. Pensée pendant 2-3 ans, développée pour répondre à mes propres besoins cognitifs avant tout.`,
+    shortDescription: "Application web d'apprentissage augmentée : SRS, quiz, writing, audio, annotations, planning intelligent, analytics et génération IA — pensée pour utiliser l'IA comme levier d'effort cognitif, pas comme substitut.",
+    fullDescription: `Application d'apprentissage personnel construite from scratch en React 19 + TypeScript. Elle réunit un système de répétition espacée (SRS), des quiz et exercices de writing, un générateur de contenu piloté par Claude, une bibliothèque multimédia avec audio, un planning de révision paramétrable, des analytics, des annotations et un espace de mind maps. Pensée pendant 2-3 ans, développée pour répondre à mes propres besoins cognitifs avant tout.`,
     category: "Application Web",
     tags: ["React 19", "TypeScript", "Supabase", "Claude AI", "SRS", "Vite", "Tailwind CSS", "Zustand", "KaTeX", "Mermaid"],
     date: "2025-01",
     company: "",
     featured: true,
-    image: "/projects/unlimited-cognition/screenshot-01-daily-briefing.png",
+    image: "/projects/unlimited-cognition/screenshot-01-home-upload.png",
     problem: "Un constat alarmant : autour de moi, des camarades de classe côtoyés depuis 3 ans délèguent intégralement leur réflexion à l'IA — chaque exercice, chaque évaluation, chaque concours. Résultat observable : un appauvrissement cognitif réel et progressif. Je n'en étais pas exempt moi-même, dans une moindre mesure. Le problème n'est pas l'IA en soi, c'est l'absence d'effort cognitif délibéré. Les applications existantes (Quizlet, StudySmart…) existent en nombre, mais aucune ne proposait le niveau de personnalisation et les fonctionnalités que je cherchais.",
     solution: "Après avoir étudié les 3 étapes de l'apprentissage (Encodage, Automatisation, Métacognition), j'ai conçu une application multifonction taillée pour mes besoins : un système de répétition espacée (SRS) pour l'encodage et l'automatisation, un générateur de contenu piloté par l'IA (Claude) pour la production de matière, et un espace de travail riche (Prism) pour la métacognition — avec écriture LaTeX, mind maps, et snippets. L'idée centrale : utiliser l'IA comme outil de génération, jamais comme béquille cognitive.",
     impact: [
-      "Capacités de mémorisation et de révision personnellement démultipliées",
+      "Capacités de mémorisation et de révision personnellement démultipliées grâce au SRS, aux sessions quiz et aux exercices de writing",
       "Import automatisé de milliers de questions (TOEIC, Kwizmo, Tage Mage) — zéro saisie manuelle",
-      "Éditeur Prism : LaTeX, Markdown, Mermaid et snippets dans un seul espace de travail",
+      "Planning intelligent avec agenda, règles personnalisées et logs d'IA pour organiser les sessions",
+      "Analytics détaillées : activité, maîtrise des decks, performances par quiz et progression",
+      "Bibliothèque multimédia avec lecteur audio, mind maps et annotations contextuelles",
       "Génération de flashcards et de quizz contextuels via Claude (Anthropic) en quelques secondes",
       "Application open-source (prévue) : le savoir doit être accessible à tous",
       "Preuve qu'en 2026, on n'a pas besoin de puce cérébrale pour rester cognitivement compétitif"
@@ -1028,7 +1030,7 @@ export const projects = [
       "Concevoir un algorithme SRS suffisamment flexible pour différentes matières et rythmes d'apprentissage",
       "Intégrer Claude comme co-constructeur de contenu sans que l'app devienne une béquille cognitive",
       "Parser et normaliser des formats hétérogènes (TOEIC livres scannés, exports Kwizmo, CSV Tage Mage)",
-      "Construire une interface riche (LaTeX, Mermaid, Markdown) qui reste fluide et non intimidante",
+      "Construire une interface riche (quiz, writing, audio, analytics, planning, mind maps) qui reste fluide et non intimidante",
       "Trouver le bon équilibre entre personnalisation poussée et expérience utilisable pour d'autres"
     ],
     learnings: [
@@ -1038,22 +1040,24 @@ export const projects = [
       "2-3 ans de réflexion sur son propre apprentissage valent n'importe quel cahier des charges"
     ],
     media: [
-      { url: "/projects/unlimited-cognition/screenshot-01-daily-briefing.png", caption: "Daily Briefing — Vue quotidienne des révisions dues" },
-      { url: "/projects/unlimited-cognition/screenshot-02-import-generator.png", caption: "Import & Generator — Génération de contenu avec l'IA" },
-      { url: "/projects/unlimited-cognition/screenshot-03-import-library.png", caption: "Import Library — Bibliothèques et sources d'importations" },
-      { url: "/projects/unlimited-cognition/screenshot-04-library.png", caption: "Bibliothèque de Flashcards — Parcourir et gérer ses decks" },
-      { url: "/projects/unlimited-cognition/screenshot-05-mind-map.png", caption: "Mind Map — Visualisation via Mermaid" },
-      { url: "/projects/unlimited-cognition/screenshot-06-library-audio.png", caption: "Library Audio — Support multimédia" },
-      { url: "/projects/unlimited-cognition/screenshot-07-quiz-session.png", caption: "Quiz Session — Pédagogie interactive" },
-      { url: "/projects/unlimited-cognition/screenshot-08-quiz-editor.png", caption: "Éditeur de Quiz — Création de questionnaires personnalisés" },
-      { url: "/projects/unlimited-cognition/screenshot-09-prism-markdown.png", caption: "Prism Workspace — Édition en Markdown étendu" },
-      { url: "/projects/unlimited-cognition/screenshot-10-prism-split.png", caption: "Prism Workspace — Vue Split Screen" },
-      { url: "/projects/unlimited-cognition/screenshot-11-prism-pdf.png", caption: "Prism Workspace — Support et lecture de fichiers PDF" },
-      { url: "/projects/unlimited-cognition/screenshot-12-study-modes.png", caption: "Study Modes — Choix des modes d'apprentissage" },
-      { url: "/projects/unlimited-cognition/screenshot-13-analytics.png", caption: "Analytics — Suivi des performances" },
-      { url: "/projects/unlimited-cognition/screenshot-14-planning-agenda.png", caption: "Planning & Agenda — Calendrier de révision prévisionnel" },
-      { url: "/projects/unlimited-cognition/screenshot-15-planning-logs-ia.png", caption: "Planning — Logs de l'assistant IA" },
-      { url: "/projects/unlimited-cognition/screenshot-16-annotations.png", caption: "Annotations — Prise de notes contextuelles" }
+      { url: "/projects/unlimited-cognition/screenshot-01-home-upload.png", caption: "Accueil — Importer ou déposer de nouvelles connaissances" },
+      { url: "/projects/unlimited-cognition/screenshot-02-review-queue.png", caption: "Session de révision — Files de cartes prêtes à revoir" },
+      { url: "/projects/unlimited-cognition/screenshot-03-library-decks.png", caption: "Library — Bibliothèque de decks, dossiers et catégories" },
+      { url: "/projects/unlimited-cognition/screenshot-04-quiz-session.png", caption: "Quiz — Questions interactives et progression en session" },
+      { url: "/projects/unlimited-cognition/screenshot-05-flashcard-session.png", caption: "Flashcards — Répétition espacée avec feedback de difficulté" },
+      { url: "/projects/unlimited-cognition/screenshot-06-quiz-editor.png", caption: "Éditeur de quiz — Modification détaillée des questions" },
+      { url: "/projects/unlimited-cognition/screenshot-07-quiz-answer-review.png", caption: "Correction — Relecture des réponses et explications" },
+      { url: "/projects/unlimited-cognition/screenshot-08-writing-practice.png", caption: "Writing — Exercice de rédaction avec mots imposés" },
+      { url: "/projects/unlimited-cognition/screenshot-09-study-modes.png", caption: "Modes d'apprentissage — Flashcards, quiz, writing et réglages personnalisés" },
+      { url: "/projects/unlimited-cognition/screenshot-10-ai-recommendations.png", caption: "Assistant IA — Recommandations de sessions à partir des données d'étude" },
+      { url: "/projects/unlimited-cognition/screenshot-11-analytics-dashboard.png", caption: "Analytics — Tableau de bord de performance" },
+      { url: "/projects/unlimited-cognition/screenshot-12-analytics-detail.png", caption: "Analytics — Maîtrise des quiz, decks et performances" },
+      { url: "/projects/unlimited-cognition/screenshot-13-planning-agenda.png", caption: "Planning — Agenda et sessions programmées" },
+      { url: "/projects/unlimited-cognition/screenshot-14-planning-logs.png", caption: "Planning — Logs IA et règles appliquées" },
+      { url: "/projects/unlimited-cognition/screenshot-15-planning-rule-editor.png", caption: "Règles de planification — Personnalisation des contraintes" },
+      { url: "/projects/unlimited-cognition/screenshot-16-annotations.png", caption: "Annotations — Notes contextuelles liées aux contenus" },
+      { url: "/projects/unlimited-cognition/screenshot-17-audio-library.png", caption: "Bibliothèque audio — Écoute et révision multimédia" },
+      { url: "/projects/unlimited-cognition/screenshot-18-mind-map.png", caption: "Mind Map — Visualisation des notions et liens conceptuels" }
     ] as Array<{ url: string; caption?: string }>,
     content: [
       { type: 'heading', text: `Le constat` },
@@ -1079,16 +1083,17 @@ export const projects = [
         type: 'list', items: [
           `Génération de flashcards depuis n'importe quel texte ou document`,
           `Génération de quizz contextuels avec questions et corrections`,
+          `Recommandations de sessions d'étude à partir des performances et des échéances`,
           `Claude comme co-constructeur de contenu pédagogique, pas comme béquille cognitive`
         ]
       },
-      { type: 'heading', text: `Prism Workspace` },
+      { type: 'heading', text: `Modes d'apprentissage` },
       {
         type: 'list', items: [
-          `Éditeur riche avec support LaTeX (KaTeX), Markdown et syntaxe étendue`,
-          `Mind maps et diagrammes via Mermaid`,
-          `Snippets réutilisables — bibliothèque de fragments`,
-          `Espace de métacognition : structurer sa pensée, pas juste mémoriser`
+          `Flashcards SRS pour mémoriser durablement`,
+          `Quiz interactifs avec éditeur et correction détaillée`,
+          `Writing avec mots imposés pour travailler la production écrite`,
+          `Bibliothèque audio pour réviser aussi par l'écoute`
         ]
       },
       { type: 'heading', text: `Import multi-sources` },
@@ -1104,9 +1109,10 @@ export const projects = [
       {
         type: 'list', items: [
           `Daily Briefing — vue quotidienne des révisions dues`,
-          `Schedule View — calendrier de révision prévisionnel`,
-          `Annotations — notes contextuelles liées aux cartes`,
-          `Avatars des grands penseurs (Einstein, Turing, Feynman…) comme figures d'étude`
+          `Planning — agenda, règles personnalisées et logs d'IA`,
+          `Analytics — activité, maîtrise par deck, performances par quiz`,
+          `Annotations — notes contextuelles liées aux cartes et contenus`,
+          `Mind maps — visualisation des liens conceptuels`
         ]
       },
       { type: 'heading', text: `Architecture technique` },
@@ -1122,6 +1128,98 @@ export const projects = [
       },
       { type: 'heading', text: `Vision` },
       { type: 'paragraph', text: `Unlimited Cognition, c'est aussi une prise de position : je ne crois pas qu'avec l'émergence de l'IA, nous soyons obligés d'implanter des puces dans notre cerveau pour continuer à exister cognitivement. On peut utiliser ces outils pour amplifier notre intelligence, pas pour la déléguer. Cette application est ma réponse pratique à cette conviction.` },
+    ] as ContentSection[],
+  },
+  {
+    id: "screentune",
+    title: "ScreenTune — Studio de démos produit pour freelances",
+    slug: "screentune",
+    shortDescription: "Application macOS native pour transformer une capture d'écran ou une vidéo en démo client claire : zooms, pauses, flèches, annotations, style visuel et export MP4 sans abonnement.",
+    fullDescription: `ScreenTune est une application macOS native construite pour résoudre un problème concret de freelance en télétravail : livrer des produits bien compris par des clients parfois peu à l'aise avec la technologie. Au lieu d'envoyer seulement une page Notion avec du texte et des captures, l'app permet de produire des démonstrations vidéo annotées, avec zooms sur les zones importantes, pauses, flèches, surbrillances, curseur mis en valeur et export prêt à partager.`,
+    category: "Application macOS",
+    tags: ["SwiftUI", "macOS", "ScreenCaptureKit", "AVFoundation", "Video Editing", "Freelance", "Documentation"],
+    date: "2026-05",
+    company: "",
+    featured: true,
+    image: "/projects/screentune/screenshot-01-editor.png",
+    problem: "En freelance et en télétravail, la difficulté ne s'arrête pas à la livraison du produit : il faut aussi que le client comprenne ce qui a été livré. Une documentation Notion avec texte et images aide, mais reste limitée pour expliquer une interface, montrer un parcours, attirer l'attention sur les bons éléments ou guider un client peu technique.",
+    solution: "Créer une application macOS native qui transforme une capture ou une vidéo en support de démonstration professionnel : timeline, zooms temporels, freezes, annotations, flèches, styles visuels, tracking du curseur et export MP4. L'objectif : produire des livrables pédagogiques sans dépendre d'un SaaS payant.",
+    impact: [
+      "Démonstrations client plus claires que de simples captures Notion",
+      "Ajout de zooms et pauses pour expliquer les moments clés d'un produit livré",
+      "Annotations visuelles : flèches, textes, formes, surbrillances et réglages de style",
+      "Export MP4 partageable directement dans une documentation ou un message client",
+      "Outil personnel sans abonnement, adapté à un workflow freelance récurrent",
+      "Prototype natif macOS construit en une journée autour d'un besoin métier réel"
+    ],
+    technologies: [
+      { name: "SwiftUI", usage: "Interface native macOS, panneaux, toolbar et timeline" },
+      { name: "ScreenCaptureKit", usage: "Capture d'écran, capture de fenêtre et enregistrement d'écran" },
+      { name: "AVFoundation", usage: "Lecture, timeline, rendu et export vidéo MP4" },
+      { name: "AppKit", usage: "Interop macOS, NSImage, panneaux d'ouverture/export" },
+      { name: "Keychain", usage: "Stockage local des clés API pour les fonctions IA" },
+      { name: "Swift Package Manager", usage: "Structure package-first et build local" }
+    ],
+    challenges: [
+      "Synchroniser zooms, freezes, annotations et curseur sur une même timeline vidéo",
+      "Rendre les captures plus premium sans perdre la lisibilité du produit présenté",
+      "Gérer les permissions macOS de capture d'écran proprement",
+      "Exporter une vidéo finale avec fond stylisé, curseur, annotations et pauses intégrées",
+      "Concevoir un éditeur puissant mais utilisable rapidement après une livraison client"
+    ],
+    learnings: [
+      "Un livrable technique n'est vraiment terminé que lorsqu'il est compréhensible par le client",
+      "Les outils de documentation sont aussi importants que les outils de production",
+      "SwiftUI + AVFoundation permettent de construire rapidement un vrai outil desktop spécialisé",
+      "Le contexte freelance crée d'excellents problèmes produit : répétitifs, concrets et immédiatement vérifiables"
+    ],
+    media: [
+      { url: "/projects/screentune/screenshot-01-editor.png", caption: "Éditeur ScreenTune — Timeline vidéo, zooms, freezes et panneau de style" },
+      { url: "/projects/screentune/screenshot-02-export-preview.png", caption: "Réglages curseur et export — Mise en valeur des interactions avant partage client" }
+    ] as Array<{ url: string; caption?: string; type?: "image" | "video"; poster?: string }>,
+    content: [
+      { type: 'heading', text: `Le problème : livrer ne suffit pas` },
+      { type: 'paragraph', text: `Depuis que je travaille en freelance et à distance, j'ai identifié un problème majeur : la communication autour des livrables. Construire une application, une automatisation ou un dashboard n'est qu'une partie du travail. Il faut ensuite expliquer clairement ce qui a été fait, comment l'utiliser, où cliquer, quoi vérifier, et pourquoi certaines décisions ont été prises.` },
+      { type: 'paragraph', text: `J'utilisais déjà Notion pour documenter mes livraisons avec du texte, des captures et des liens partagés au client. C'est utile, mais limité. Pour un client peu technique, une capture statique ne montre pas toujours le parcours, les gestes, les points d'attention ni les zones importantes de l'interface.` },
+      { type: 'heading', text: `L'idée de ScreenTune` },
+      { type: 'paragraph', text: `ScreenTune est né de ce besoin très concret : pouvoir produire rapidement une vidéo de démonstration claire, pédagogique et professionnelle, sans souscrire à un abonnement supplémentaire. L'application permet de capturer ou importer un média, puis de le transformer en support de formation court et lisible.` },
+      { type: 'paragraph', text: `L'objectif n'est pas de faire du montage vidéo généraliste. L'objectif est beaucoup plus précis : créer des démos produit qui aident un client à comprendre une livraison à distance.` },
+      { type: 'heading', text: `Fonctionnalités principales` },
+      {
+        type: 'list', items: [
+          `Capture d'écran, capture de fenêtre et import d'images ou vidéos`,
+          `Enregistrement d'écran avec suivi du curseur et clics`,
+          `Timeline dédiée aux démos : trim, zones de zoom, pauses/freeze frames et annotations temporelles`,
+          `Zooms guidés sur les zones importantes pour attirer l'attention du client`,
+          `Annotations visuelles : flèches, texte, formes, couleurs, opacité, pointillés et épaisseur`,
+          `Styles de présentation : fond, padding, coins arrondis, ombres et presets visuels`,
+          `Personnalisation du curseur : taille, style et anneau de clic`,
+          `Export image ou MP4 prêt à intégrer dans Notion, un mail ou une livraison client`
+        ]
+      },
+      { type: 'heading', text: `Architecture technique` },
+      { type: 'paragraph', text: `Stack : SwiftUI · ScreenCaptureKit · AVFoundation · AppKit · Swift Package Manager · Keychain` },
+      {
+        type: 'list', items: [
+          `SwiftUI pour l'éditeur principal, la toolbar, le panneau de style, les modales et la timeline`,
+          `ScreenCaptureKit pour capturer l'écran, une fenêtre spécifique ou enregistrer une session`,
+          `AVFoundation pour lire, synchroniser et exporter la vidéo finale en MP4`,
+          `Modèle de projet .screentune pour sauvegarder les médias, annotations, zooms et réglages`,
+          `Services séparés : capture, rendu, export, bibliothèque de projets, keychain et analyse IA`
+        ]
+      },
+      { type: 'heading', text: `Pourquoi c'est utile dans mon workflow` },
+      { type: 'paragraph', text: `ScreenTune complète directement mon travail de freelance. Après avoir livré une application ou une automatisation, je peux enregistrer une courte démonstration, zoomer sur les zones clés, ajouter des flèches ou pauses, puis intégrer la vidéo dans une documentation Notion. Le client comprend plus vite, pose moins de questions bloquantes, et garde une trace consultable après la livraison.` },
+      { type: 'heading', text: `Résultat` },
+      {
+        type: 'list', items: [
+          `✅ Application macOS native fonctionnelle`,
+          `✅ Éditeur vidéo orienté démonstrations produit`,
+          `✅ Timeline avec zooms, freezes, trims, annotations et curseur`,
+          `✅ Export MP4 pour partager facilement les démos`,
+          `✅ Outil construit autour d'un besoin freelance réel, pas d'une idée abstraite`
+        ]
+      },
     ] as ContentSection[],
   },
   {
