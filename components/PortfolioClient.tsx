@@ -4,17 +4,6 @@ import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import ContactForm from "@/components/contact-form"
 
-interface BlogPost {
-  id: string
-  title: string
-  slug: string
-  excerpt: string
-  date: string
-  readingTime: string
-  category: string
-  published: boolean
-}
-
 interface Project {
   id: string
   title: string
@@ -91,7 +80,6 @@ interface PortfolioClientProps {
   socialLinks: SocialLink[]
   workExperience: WorkExperience[]
   skills: Skills
-  blogPosts: BlogPost[]
   projects: Project[]
 }
 
@@ -130,7 +118,6 @@ export default function PortfolioClient({
   socialLinks,
   workExperience,
   skills,
-  blogPosts,
   projects,
 }: PortfolioClientProps) {
   const [isDark, setIsDark] = useState(true)
@@ -169,7 +156,7 @@ export default function PortfolioClient({
     <div className="min-h-screen bg-background text-foreground relative">
       <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-10 hidden lg:block">
         <div className="flex flex-col gap-4">
-          {["intro", "work", "skills", "thoughts", "connect"].map((section) => (
+          {["intro", "work", "skills", "connect"].map((section) => (
             <button
               key={section}
               onClick={() => document.getElementById(section)?.scrollIntoView({ behavior: "smooth" })}
@@ -238,12 +225,6 @@ export default function PortfolioClient({
                     className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300"
                   >
                     <span>Ce que j'utilise</span>
-                  </Link>
-                  <Link
-                    href="/newsletters"
-                    className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300"
-                  >
-                    <span>Tribune IA</span>
                   </Link>
                   <Link
                     href="/#connect"
@@ -535,86 +516,7 @@ export default function PortfolioClient({
           </div>
         </section>
 
-        <section
-          id="thoughts"
-          ref={(el) => (sectionsRef.current[3] = el)}
-          className="py-20 sm:py-32"
-        >
-          <div className="space-y-12 sm:space-y-16">
-            <div className="flex items-end justify-between">
-              <h2 className="text-3xl sm:text-4xl font-light">Réflexions & Articles</h2>
-              <Link
-                href="/blog"
-                className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 font-mono"
-              >
-                <span>VOIR TOUS LES ARTICLES</span>
-                <svg
-                  className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </div>
-
-            <div className="grid gap-6 sm:gap-8 lg:grid-cols-2">
-              {blogPosts.slice(0, 4).map((post, index) => (
-                <Link
-                  key={index}
-                  href={post.published ? `/blog/${post.slug}` : "#"}
-                  className={`group relative p-6 sm:p-8 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-500 hover:shadow-lg overflow-hidden ${
-                    post.published ? "cursor-pointer" : "cursor-not-allowed opacity-75"
-                  }`}
-                >
-                  {!post.published && (
-                    <div className="absolute top-4 right-4">
-                      <span className="px-2 py-1 text-xs bg-amber-500/10 text-amber-500 rounded border border-amber-500/20">
-                        À venir
-                      </span>
-                    </div>
-                  )}
-
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between text-xs text-muted-foreground font-mono">
-                      <span>{post.date}</span>
-                      <span>{post.readingTime}</span>
-                    </div>
-
-                    <h3 className="text-lg sm:text-xl font-medium group-hover:text-muted-foreground transition-colors duration-300">
-                      {post.title}
-                    </h3>
-
-                    <p className="text-muted-foreground leading-relaxed">{post.excerpt}</p>
-
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs px-2 py-1 bg-background border border-border rounded">
-                        {post.category}
-                      </span>
-
-                      {post.published && (
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                          <span>Lire</span>
-                          <svg
-                            className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                          </svg>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="connect" ref={(el) => (sectionsRef.current[4] = el)} className="py-20 sm:py-32">
+        <section id="connect" ref={(el) => (sectionsRef.current[3] = el)} className="py-20 sm:py-32">
           <div className="space-y-16 sm:space-y-20">
             <div className="text-center max-w-3xl mx-auto space-y-6">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light">Contactez-moi</h2>
