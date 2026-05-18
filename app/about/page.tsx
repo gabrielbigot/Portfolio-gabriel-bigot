@@ -1,12 +1,12 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowLeft, ArrowRight, ExternalLink, Medal, Target, Trophy, Users } from "lucide-react"
+import { ArrowLeft, ArrowRight, ExternalLink, Medal, ShieldCheck, Target, Trophy, Users } from "lucide-react"
 
 const storyPhotos = [
   {
     src: "/about/story/hockey-child-match.jpg",
     title: "Les premiers matchs",
-    text: "Le hockey est entré très tôt dans ma vie. Ce n'était pas une activité à côté du reste, c'était le cadre dans lequel j'ai appris à écouter, répéter, progresser et trouver ma place dans un collectif.",
+    text: "Le hockey est entré très tôt dans ma vie. Ce n'était pas une activité à côté du reste : c'était le cadre dans lequel j'ai appris à écouter, répéter, perdre, revenir et trouver ma place dans un collectif.",
   },
   {
     src: "/about/story/coach-talk.jpg",
@@ -21,17 +21,17 @@ const storyPhotos = [
   {
     src: "/about/story/hockey-young-player.jpg",
     title: "Grandir sur le terrain",
-    text: "Les années de formation au TAC ont construit mon rapport au travail : répéter les gestes, accepter la concurrence, revenir à l'entraînement même quand la progression paraît lente.",
+    text: "Les années de formation au TAC ont construit mon rapport au travail : répéter les gestes, accepter la concurrence, revenir à l'entraînement même quand le corps impose un détour.",
   },
   {
     src: "/about/story/coaching-with-brace.jpg",
     title: "Transmettre malgré tout",
-    text: "Même quand je ne pouvais pas jouer normalement, je restais au bord du terrain. Coacher des plus jeunes m'a appris à expliquer simplement, à guider, à transformer une contrainte en responsabilité.",
+    text: "Après une luxation du genou, avec une attelle, je ne pouvais pas jouer normalement. Je suis resté au bord du terrain pour coacher, expliquer, guider et transformer une contrainte en responsabilité.",
   },
   {
     src: "/about/story/nationale-1-trophy.jpg",
     title: "Nationale 1, puis l'Élite",
-    text: "En 2026, le TAC termine 1er de Nationale 1 et retrouve l'Élite, le plus haut niveau français. Une saison dominée de bout en bout, et un trophée qui raconte autant le collectif que le résultat.",
+    text: "En 2026, le TAC termine 1er de Nationale 1 et retrouve l'Élite, le plus haut niveau français. Pour moi, ce trophée raconte aussi les retours, les genouillères, les adaptations et la détermination.",
   },
 ]
 
@@ -49,7 +49,12 @@ const milestones = [
   {
     year: "Lycée",
     title: "Continuer quand les conditions changent",
-    text: "L'internat, les études et quelques blessures m'obligent à adapter mon rythme. Je parle peu du médical ici : ce qui compte, c'est ce que cette période m'a appris sur la discipline et la constance.",
+    text: "L'internat, les études, les luxations du genou, l'opération, les complications et les phases de rééducation changent mon rapport au sport. Je dois apprendre à avancer autrement, sans perdre l'envie de revenir.",
+  },
+  {
+    year: "2022-2023",
+    title: "Se reconstruire sans disparaître",
+    text: "Les périodes d'arrêt m'obligent à déplacer mon énergie : observer davantage, coacher, reprendre progressivement, accepter les protections et reconstruire de la confiance geste après geste.",
   },
   {
     year: "2023",
@@ -84,11 +89,12 @@ export default function AboutPage() {
             <div className="space-y-7">
               <div className="text-sm text-muted-foreground font-mono tracking-wider">MON HISTOIRE</div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight max-w-4xl">
-                Grandir par le sport, construire par la technologie
+                Tenir, revenir, construire
               </h1>
               <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed max-w-3xl">
-                Mon parcours tient en trois fils : le hockey, l'effort et la construction de solutions concrètes.
-                Le terrain m'a appris le collectif. L'IA et le développement m'ont donné un moyen d'agir.
+                Mon parcours tient en trois fils : le hockey, les blessures et la construction de solutions
+                concrètes. Le terrain m'a appris le collectif. Les complications m'ont appris la résilience.
+                L'IA et le développement m'ont donné un moyen d'agir.
               </p>
             </div>
 
@@ -132,10 +138,10 @@ export default function AboutPage() {
 
             <div className="space-y-4">
               <Users className="w-7 h-7 text-amber-500" />
-              <h2 className="text-2xl font-light">Le collectif avant tout</h2>
+              <h2 className="text-2xl font-light">Revenir dans le collectif</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Cette montée raconte un groupe, un club et une culture. C'est ce même réflexe collectif que je
-                retrouve aujourd'hui dans mes projets : comprendre les besoins, livrer utile, rendre autonome.
+                Cette montée raconte un groupe, un club et une culture. Pour moi, elle raconte aussi la capacité
+                à retrouver sa place après les arrêts, à servir l'équipe autrement, puis à revenir plus lucide.
               </p>
             </div>
           </div>
@@ -154,17 +160,50 @@ export default function AboutPage() {
         </section>
 
         <section className="py-16 sm:py-24 border-b border-border">
+          <div className="grid lg:grid-cols-3 gap-8">
+            <div className="space-y-4">
+              <ShieldCheck className="w-7 h-7 text-emerald-500" />
+              <h2 className="text-2xl font-light">Encaisser</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                Les blessures au genou, les arrêts forcés et les complications ont cassé plusieurs fois le rythme.
+                La première leçon a été simple : accepter le réel avant de vouloir repartir.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              <Target className="w-7 h-7 text-emerald-500" />
+              <h2 className="text-2xl font-light">Reconstruire</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                Revenir n'a jamais été juste une question de motivation. C'était des exercices répétés, de la
+                rééducation, des ajustements, des genouillères, et la patience de refaire confiance à son corps.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              <Trophy className="w-7 h-7 text-emerald-500" />
+              <h2 className="text-2xl font-light">Transformer</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                Ces périodes compliquées ont fini par devenir une méthode : observer, comprendre, adapter,
+                continuer. C'est la même détermination que je mets aujourd'hui dans mes projets.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 sm:py-24 border-b border-border">
           <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-16">
             <div className="space-y-5">
               <h2 className="text-3xl sm:text-4xl font-light">Ce que le terrain m'a appris</h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Je ne veux pas raconter une histoire héroïque ni dramatiser les obstacles. Ce qui m'intéresse,
-                c'est la trace concrète que le sport laisse dans une façon de travailler.
+                La résilience n'est pas un slogan pour moi. C'est revenir à l'entraînement avec une appréhension
+                dans le genou, refaire les mêmes exercices, accepter de jouer différemment et garder le cap
+                quand la progression devient moins linéaire.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Être sérieux à l'entraînement, écouter un coach, revenir après une période compliquée,
-                transmettre à des plus jeunes, accepter un rôle dans une équipe : ce sont des habitudes.
-                Aujourd'hui, je les retrouve dans mes projets d'automatisation et d'IA.
+                transmettre à des plus jeunes, accepter un rôle dans une équipe : ce sont des habitudes forgées
+                dans les moments où il aurait été plus simple de lâcher. Aujourd'hui, je les retrouve dans mes
+                projets d'automatisation et d'IA.
               </p>
             </div>
 
@@ -196,7 +235,7 @@ export default function AboutPage() {
               <h2 className="text-3xl sm:text-4xl font-light">Quelques repères</h2>
               <p className="text-lg text-muted-foreground max-w-3xl">
                 Une chronologie volontairement simple : assez de contexte pour comprendre le parcours,
-                sans transformer cette page en récit médical.
+                les ruptures de rythme et la détermination qui s'est construite derrière.
               </p>
             </div>
 
@@ -239,29 +278,31 @@ export default function AboutPage() {
                 />
               </div>
               <figcaption className="text-sm text-muted-foreground">
-                Coacher, c'est apprendre à formuler clairement une idée pour qu'elle devienne actionnable.
+                Même blessé, rester utile : coacher, transmettre, garder un lien concret avec le terrain.
               </figcaption>
             </figure>
 
             <div className="space-y-6">
               <h2 className="text-3xl sm:text-4xl font-light">De la transmission au produit</h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Coacher des enfants m'a marqué plus que je ne l'imaginais. Pour aider quelqu'un à progresser,
-                il ne suffit pas de savoir faire. Il faut décomposer, expliquer, observer, corriger sans décourager.
+                Coacher des enfants avec une attelle m'a marqué plus que je ne l'imaginais. Quand je ne pouvais
+                pas jouer comme je voulais, j'ai découvert une autre manière d'être utile : décomposer, expliquer,
+                observer, corriger sans décourager.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 C'est exactement ce que j'essaie de faire dans mes livrables : construire des outils efficaces,
                 mais aussi les rendre compréhensibles. Une automatisation utile est une automatisation que le client
-                sait utiliser, maintenir et s'approprier.
+                sait utiliser, maintenir et s'approprier. Cette exigence vient aussi de là : rendre clair ce qui
+                semblait compliqué, et permettre à quelqu'un d'avancer avec plus de confiance.
               </p>
               <div className="grid sm:grid-cols-2 gap-4 pt-2">
                 <div className="p-5 border border-border rounded-lg">
                   <div className="text-sm text-muted-foreground font-mono mb-2">SPORT</div>
-                  <div className="text-lg font-medium">Écouter, répéter, progresser</div>
+                  <div className="text-lg font-medium">Encaisser, adapter, revenir</div>
                 </div>
                 <div className="p-5 border border-border rounded-lg">
                   <div className="text-sm text-muted-foreground font-mono mb-2">TECH</div>
-                  <div className="text-lg font-medium">Comprendre, construire, documenter</div>
+                  <div className="text-lg font-medium">Diagnostiquer, construire, transmettre</div>
                 </div>
               </div>
             </div>
@@ -275,11 +316,11 @@ export default function AboutPage() {
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Aujourd'hui, mon énergie va vers les projets qui relient business et technologie :
                 automatisations métier, applications IA, outils de productivité, documentation claire.
-                Le point commun reste le même : créer de la valeur mesurable, pas seulement du code.
+                Le point commun reste le même : résoudre des problèmes réels avec méthode, pas seulement écrire du code.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Le hockey m'a appris à tenir dans la durée. L'IA m'a donné un terrain d'expression.
-                Mon portfolio est le lieu où ces deux trajectoires se rejoignent.
+                Le hockey m'a appris à tenir dans la durée, surtout quand le corps ne suivait pas le plan.
+                L'IA m'a donné un terrain d'expression. Mon portfolio est le lieu où ces deux trajectoires se rejoignent.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Link
@@ -309,7 +350,7 @@ export default function AboutPage() {
                 />
               </div>
               <figcaption className="text-sm text-muted-foreground">
-                Le terrain comme point de départ, la construction comme trajectoire.
+                Le terrain comme point de départ, la résilience comme méthode, la construction comme trajectoire.
               </figcaption>
             </figure>
           </div>
