@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The AI Weekly Tribune - Samedi 10 Mars 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lora:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a1a1a;
+            --color-secondary: #666;
+            --color-accent: #8b0000;
+            --color-border: #d4d4d4;
+            --color-border-dark: #1a1a1a;
+            --color-bg: #faf9f6;
+            --color-bg-alt: #f0efe9;
+            --font-display: 'UnifrakturMaguntia', cursive;
+            --font-headline: 'Playfair Display', Georgia, serif;
+            --font-body: 'Lora', Georgia, serif;
+            --font-sans: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-primary);
+            background: var(--color-bg);
+            line-height: 1.6;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: var(--color-primary); text-decoration: none; }
+        a:hover { color: var(--color-accent); }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== MASTHEAD ===== */
+        .masthead-bar {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            color: var(--color-secondary);
+            padding: 8px 0;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .masthead {
+            text-align: center;
+            padding: 20px 0 12px;
+        }
+
+        .masthead h1 {
+            font-family: var(--font-display);
+            font-size: 4.5rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            line-height: 1;
+            margin: 0;
+            color: var(--color-primary);
+        }
+
+        .masthead-subtitle {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-secondary);
+            margin-top: 4px;
+        }
+
+        /* Scotch Rule */
+        .scotch-rule {
+            border: none;
+            border-top: 3px solid var(--color-border-dark);
+            border-bottom: 1px solid var(--color-border-dark);
+            height: 4px;
+            margin: 0;
+        }
+
+        .thin-rule {
+            border: none;
+            border-top: 1px solid var(--color-border);
+            margin: 0;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav-sections {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            padding: 10px 0;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .nav-sections a {
+            color: var(--color-secondary);
+            font-weight: 600;
+        }
+
+        .nav-sections a:hover {
+            color: var(--color-primary);
+        }
+
+        /* ===== FEATURED SECTION ===== */
+        .featured {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 0;
+            margin-top: 20px;
+            min-height: 450px;
+        }
+
+        .featured-col {
+            padding: 0 20px;
+            border-right: 1px solid var(--color-border);
+        }
+
+        .featured-col:first-child { padding-left: 0; }
+        .featured-col:last-child { border-right: none; padding-right: 0; }
+
+        /* ===== ARTICLES ===== */
+        .article {
+            margin-bottom: 20px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .article:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .article-category {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-accent);
+            margin-bottom: 4px;
+        }
+
+        .article h2 {
+            font-family: var(--font-headline);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 6px;
+        }
+
+        .article h2.headline-xl {
+            font-size: 2.4rem;
+        }
+
+        .article h2.headline-lg {
+            font-size: 1.6rem;
+        }
+
+        .article h2.headline-md {
+            font-size: 1.25rem;
+        }
+
+        .article h2.headline-sm {
+            font-size: 1.05rem;
+        }
+
+        .article .byline {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            color: var(--color-secondary);
+            margin-bottom: 8px;
+        }
+
+        .article .summary {
+            font-size: 0.95rem;
+            line-height: 1.55;
+            color: #333;
+        }
+
+        .article .summary p {
+            margin-bottom: 8px;
+        }
+
+        .article .source-link {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        .article .source-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        .section-header {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 10px 0;
+            margin-top: 10px;
+            border-top: 3px solid var(--color-border-dark);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        /* ===== SUBSECTIONS ===== */
+        .subsection-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+
+        .subsection-grid .article {
+            padding: 15px 20px;
+            border-right: 1px solid var(--color-border);
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .subsection-grid .article:last-child {
+            border-right: none;
+        }
+
+        .subsection-grid .article h2 {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .subsection-grid .article .summary {
+            font-size: 0.85rem;
+        }
+
+        /* ===== LATEST / TIMELINE ===== */
+        .latest-list .article {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 20px;
+            align-items: start;
+            padding: 15px 0;
+        }
+
+        .latest-list .timestamp {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            color: var(--color-accent);
+            font-weight: 600;
+            padding-top: 4px;
+        }
+
+        .latest-list .article h2 {
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+
+        .latest-list .article .summary {
+            font-size: 0.85rem;
+        }
+
+        /* ===== QUOTE BLOCK ===== */
+        .weekly-quote {
+            background: var(--color-bg-alt);
+            padding: 30px;
+            margin: 30px 0;
+            border-top: 3px solid var(--color-border-dark);
+            text-align: center;
+        }
+
+        .weekly-quote blockquote {
+            font-family: var(--font-headline);
+            font-style: italic;
+            font-size: 1.4rem;
+            line-height: 1.4;
+            color: var(--color-primary);
+            margin-bottom: 10px;
+        }
+
+        .weekly-quote cite {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            color: var(--color-secondary);
+            font-style: normal;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* ===== STATS BAR ===== */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            border-top: 3px solid var(--color-border-dark);
+            border-bottom: 1px solid var(--color-border);
+            margin: 20px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px 20px;
+            border-right: 1px solid var(--color-border);
+        }
+
+        .stat-item:last-child { border-right: none; }
+
+        .stat-value {
+            font-family: var(--font-headline);
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--color-primary);
+        }
+
+        .stat-label {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-secondary);
+            margin-top: 2px;
+        }
+
+        .stat-change {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            margin-top: 2px;
+        }
+
+        .stat-change.up { color: #2e7d32; }
+        .stat-change.down { color: #c62828; }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            border-top: 3px solid var(--color-border-dark);
+            margin-top: 30px;
+            padding: 20px 0 40px;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .footer-info {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            color: var(--color-secondary);
+            line-height: 1.8;
+        }
+
+        /* ===== EDITION BADGE ===== */
+        .edition-badge {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            border: 1px solid var(--color-border-dark);
+            padding: 2px 8px;
+            margin-left: 8px;
+        }
+
+        /* ===== PRINT / PDF STYLES ===== */
+        @page {
+            size: A4;
+            margin: 14mm 12mm 16mm 12mm;
+        }
+
+        @media print {
+            body {
+                background: white;
+                font-size: 9.5pt;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+
+            a { color: var(--color-primary) !important; }
+
+            /* Masquer la nav interactive */
+            .nav-sections { display: none; }
+
+            /* ---- FEATURED : layout journal pleine largeur ---- */
+            /* Article principal en pleine largeur, puis 2 colonnes secondaires */
+            .featured {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                gap: 0 !important;
+                margin-top: 10px !important;
+                min-height: auto !important;
+            }
+
+            /* Colonne centrale (article principal) : pleine largeur en premier */
+            .featured-col:nth-child(2) {
+                order: -1 !important;
+                flex: 0 0 100% !important;
+                padding: 0 0 8px 0 !important;
+                border-right: none !important;
+                border-bottom: 2px solid var(--color-border-dark) !important;
+                margin-bottom: 10px !important;
+            }
+
+            /* Colonne gauche */
+            .featured-col:nth-child(1) {
+                flex: 0 0 50% !important;
+                padding: 0 12px 0 0 !important;
+                border-right: 1px solid var(--color-border) !important;
+                border-bottom: none !important;
+            }
+
+            /* Colonne droite */
+            .featured-col:nth-child(3) {
+                flex: 0 0 50% !important;
+                padding: 0 0 0 12px !important;
+                border-right: none !important;
+                border-bottom: none !important;
+            }
+
+            .subsection-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            .subsection-grid .article {
+                border-bottom: none !important;
+            }
+
+            .subsection-grid .article:nth-child(2),
+            .subsection-grid .article:nth-child(4) {
+                border-right: none !important;
+            }
+
+            .stats-bar {
+                display: grid !important;
+                grid-template-columns: repeat(4, 1fr) !important;
+            }
+
+            .latest-list .article {
+                display: grid !important;
+                grid-template-columns: 80px 1fr !important;
+                gap: 12px !important;
+            }
+
+            /* ---- Anti-coupure ---- */
+            .article,
+            .stat-item,
+            .weekly-quote,
+            .footer,
+            .masthead,
+            .masthead-bar,
+            .stats-bar {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            /* Un header de section reste colle au contenu qui suit */
+            .section-header {
+                break-after: avoid;
+                page-break-after: avoid;
+            }
+
+            /* Featured et colonnes : laisser couler librement pour remplir la page 1.
+               Seuls les .article individuels a l'interieur sont proteges. */
+            .featured,
+            .featured-col {
+                break-inside: auto;
+                page-break-inside: auto;
+            }
+
+            .subsection-grid {
+                break-inside: auto;
+                page-break-inside: auto;
+            }
+
+            .subsection-grid .article {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            .latest-list .article {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            /* Article principal pleine largeur : titre large, texte en 2 colonnes */
+            .featured-col:nth-child(2) .article h2.headline-xl {
+                font-size: 2rem !important;
+                text-align: center;
+                margin-bottom: 6px;
+            }
+
+            .featured-col:nth-child(2) .article .byline {
+                text-align: center;
+            }
+
+            .featured-col:nth-child(2) .article .summary {
+                column-count: 2;
+                column-gap: 20px;
+                column-rule: 1px solid var(--color-border);
+            }
+
+            /* ---- Tailles typo compactes ---- */
+            .article h2.headline-xl { font-size: 1.5rem; }
+            .article h2.headline-lg { font-size: 1.2rem; }
+            .article h2.headline-md { font-size: 1rem; }
+            .article h2.headline-sm { font-size: 0.9rem; }
+
+            .stat-value { font-size: 1.3rem; }
+            .stat-label { font-size: 0.6rem; }
+            .stat-change { font-size: 0.65rem; }
+
+            /* ---- Espacement compact ---- */
+            .article {
+                margin-bottom: 8px;
+                padding-bottom: 8px;
+            }
+
+            .article .summary {
+                font-size: 0.8rem;
+                line-height: 1.45;
+            }
+
+            .article .summary p {
+                margin-bottom: 3px;
+            }
+
+            .article .byline {
+                font-size: 0.65rem;
+                margin-bottom: 4px;
+            }
+
+            .article-category {
+                font-size: 0.6rem;
+                margin-bottom: 2px;
+            }
+
+            .section-header {
+                margin-top: 8px;
+                padding: 5px 0;
+                font-size: 0.75rem;
+            }
+
+            .subsection-grid .article {
+                padding: 10px 14px;
+            }
+
+            .subsection-grid .article h2 {
+                font-size: 0.85rem;
+            }
+
+            .subsection-grid .article .summary {
+                font-size: 0.75rem;
+            }
+
+            /* Quote block */
+            .weekly-quote {
+                margin: 12px 0;
+                padding: 14px 20px;
+            }
+
+            .weekly-quote blockquote {
+                font-size: 1.05rem;
+            }
+
+            .weekly-quote cite {
+                font-size: 0.65rem;
+            }
+
+            /* Footer compact */
+            .footer {
+                margin-top: 10px;
+                padding: 10px 0 6px;
+            }
+
+            .footer-brand { font-size: 1.5rem; }
+            .footer-info { font-size: 0.65rem; }
+
+            /* Scotch rule visible */
+            .scotch-rule {
+                border-top: 3px solid black;
+                border-bottom: 1px solid black;
+            }
+
+            .thin-rule {
+                margin-top: 10px !important;
+            }
+
+            /* Masthead compact */
+            .masthead {
+                padding: 8px 0 6px;
+            }
+
+            .masthead h1 {
+                font-size: 2.8rem;
+            }
+
+            .masthead-subtitle {
+                font-size: 0.65rem;
+            }
+
+            .masthead-bar {
+                font-size: 0.6rem;
+                padding: 4px 0;
+            }
+
+            .edition-badge {
+                font-size: 0.55rem;
+                padding: 1px 5px;
+            }
+
+            /* Fil d'actualites compact */
+            .latest-list .timestamp {
+                font-size: 0.7rem;
+            }
+
+            .latest-list .article {
+                padding: 8px 0;
+            }
+
+            .latest-list .article h2 {
+                font-size: 0.9rem;
+            }
+
+            .latest-list .article .summary {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* ===== RESPONSIVE (screen only) ===== */
+        @media screen and (max-width: 900px) {
+            .masthead h1 { font-size: 3rem; }
+            .featured { grid-template-columns: 1fr; }
+            .featured-col {
+                border-right: none;
+                border-bottom: 1px solid var(--color-border);
+                padding: 15px 0;
+            }
+            .featured-col:last-child { border-bottom: none; }
+            .subsection-grid { grid-template-columns: 1fr 1fr; }
+            .subsection-grid .article { border-bottom: 1px solid var(--color-border); }
+        }
+
+        @media screen and (max-width: 600px) {
+            .masthead h1 { font-size: 2.2rem; }
+            .masthead-bar { flex-direction: column; gap: 4px; }
+            .subsection-grid { grid-template-columns: 1fr; }
+            .nav-sections { flex-wrap: wrap; gap: 12px; }
+            .stats-bar { grid-template-columns: 1fr 1fr; }
+            .latest-list .article { grid-template-columns: 1fr; gap: 4px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- MASTHEAD BAR -->
+        <div class="masthead-bar">
+            <span>Mardi 10 Mars 2026</span>
+            <span>Edition Hebdomadaire</span>
+        </div>
+
+        <!-- MASTHEAD -->
+        <header class="masthead">
+            <h1>The AI Weekly Tribune</h1>
+            <div class="masthead-subtitle">
+                Votre veille intelligence artificielle hebdomadaire
+                <span class="edition-badge">Edition N&deg;11</span>
+            </div>
+        </header>
+
+        <hr class="scotch-rule">
+
+        <!-- NAVIGATION -->
+        <nav class="nav-sections">
+            <a href="#modeles">Modeles</a>
+            <a href="#produits">Produits</a>
+            <a href="#startups">Startups</a>
+            <a href="#regulation">Regulation</a>
+            <a href="#applications">Applications</a>
+            <a href="#open-source">Open Source</a>
+        </nav>
+
+        <!-- STATS BAR -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-value">$110Mds</div>
+                <div class="stat-label">Levee de fonds OpenAI</div>
+                <div class="stat-change up">Record historique</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">1T</div>
+                <div class="stat-label">Parametres DeepSeek V4</div>
+                <div class="stat-change up">Modele MoE trillion</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">82,1%</div>
+                <div class="stat-label">Claude Sonnet 5 &mdash; SWE-Bench</div>
+                <div class="stat-change up">Premier modele &gt; 80%</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">188K</div>
+                <div class="stat-label">Etoiles GitHub OpenClaw</div>
+                <div class="stat-change up">+179K en 60 jours</div>
+            </div>
+        </div>
+
+        <!-- FEATURED ARTICLES -->
+        <section class="featured">
+            <!-- Colonne gauche -->
+            <div class="featured-col">
+                <div class="article">
+                    <div class="article-category">Modeles</div>
+                    <h2 class="headline-md">DeepSeek V4 : le premier modele a un trillion de parametres arrive</h2>
+                    <div class="byline">Sources multiples &mdash; Mars 2026</div>
+                    <div class="summary">
+                        <p>DeepSeek s'apprete a lancer V4, un modele colossal a un trillion de parametres base sur une architecture Mixture-of-Experts avec environ 32 milliards de parametres actifs. Il integre des capacites multimodales natives et une fenetre de contexte d'un million de tokens.</p>
+                        <p>Fait notable : le modele est optimise pour les puces Huawei Ascend, signe d'une strategie d'independance vis-a-vis de Nvidia cote chinois.</p>
+                    </div>
+                </div>
+                <div class="article">
+                    <div class="article-category">Recherche</div>
+                    <h2 class="headline-md">Claude Sonnet 5 &laquo; Fennec &raquo; franchit la barre des 80% sur SWE-Bench</h2>
+                    <div class="byline">Anthropic</div>
+                    <div class="summary">
+                        <p>Anthropic marque un tournant avec Claude Sonnet 5 (nom de code Fennec), premier modele de l'histoire a depasser 80% sur le benchmark SWE-Bench Verified avec un score de 82,1%. Ce benchmark mesure la capacite des modeles a resoudre de vrais bugs logiciels issus de projets open source.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Colonne centrale - Article principal -->
+            <div class="featured-col">
+                <div class="article">
+                    <div class="article-category">A la une</div>
+                    <h2 class="headline-xl">OpenAI boucle une levee historique de 110 milliards de dollars</h2>
+                    <div class="byline">Crunchbase News, TechCrunch &mdash; Mars 2026</div>
+                    <div class="summary">
+                        <p>C'est le chiffre qui resonne dans toute la Silicon Valley cette semaine : OpenAI vient de boucler une levee de fonds de 110 milliards de dollars, la plus importante jamais realisee par une entreprise privee dans l'histoire. Amazon, Nvidia et SoftBank menent ce tour de table monumental.</p>
+                        <p>Cette operation s'accompagne d'un partenariat strategique de 100 milliards de dollars avec Amazon Web Services pour renforcer l'infrastructure cloud dediee a l'IA. Jensen Huang, PDG de Nvidia, a declare lors de la conference Morgan Stanley que l'investissement de 30 milliards de Nvidia dans OpenAI serait probablement le dernier avant l'introduction en Bourse du createur de ChatGPT.</p>
+                        <p>Fevrier 2026 a battu tous les records en matiere de financement de startups, avec 189 milliards de dollars au total, dont une part ecrasante pour l'intelligence artificielle. L'appetit des investisseurs pour le secteur ne faiblit pas, bien au contraire : les capitaux affluent massivement vers l'infrastructure, l'IA physique et les agents verticaux.</p>
+                        <p>Ce megadeal repositionne les rapports de force dans l'ecosysteme. OpenAI, desormais adosse a trois des plus grandes entreprises technologiques mondiales, dispose de moyens sans precedent pour accelerer le developpement de ses modeles et ses ambitions d'IA generale.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Colonne droite -->
+            <div class="featured-col">
+                <div class="article">
+                    <div class="article-category">Produits</div>
+                    <h2 class="headline-md">Apple lance le MacBook Air M5 et prepare Siri 2.0 avec Gemini</h2>
+                    <div class="byline">Apple Newsroom &mdash; 4 Mars 2026</div>
+                    <div class="summary">
+                        <p>Apple accelere sa strategie IA avec le nouveau MacBook Air M5, positionne comme une station de travail IA locale. Le constructeur s'associe a Google pour integrer Gemini (1,2 trillion de parametres) dans Siri via Apple Private Cloud Compute.</p>
+                        <p>Apple Intelligence 2.0 et un Siri repense sont attendus avec iOS 26.4 au printemps.</p>
+                    </div>
+                </div>
+                <div class="article">
+                    <div class="article-category">Societe</div>
+                    <h2 class="headline-md">La &laquo; Pro-Human AI Declaration &raquo; federe technologues et politiques</h2>
+                    <div class="byline">Futura Sciences &mdash; 5 Mars 2026</div>
+                    <div class="summary">
+                        <p>Yoshua Bengio, Susan Rice, Steve Bannon, Richard Branson et Joseph Gordon-Levitt ont publie conjointement la Pro-Human AI Declaration, appelant a une IA au service de l'humanite. Un coalition aussi improbable que le sujet est consensuel.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="thin-rule" style="margin-top: 20px;">
+
+        <!-- SECTION: STARTUPS & BUSINESS -->
+        <div class="section-header" id="startups">Startups &amp; Business</div>
+        <div class="subsection-grid">
+            <div class="article">
+                <div class="article-category">Puces IA</div>
+                <h2 class="headline-sm">MatX leve 500 M$ pour defier Nvidia avec des puces 10x plus rapides</h2>
+                <div class="summary"><p>La startup MatX a boucle un Serie B massif de 500 millions de dollars pour developper des puces d'entrainement IA qu'elle annonce dix fois plus performantes que les GPU Nvidia. La meme semaine, Axelera AI a leve 250 M$ pour ses puces d'inference en edge.</p></div>
+            </div>
+            <div class="article">
+                <div class="article-category">Conduite autonome</div>
+                <h2 class="headline-sm">Wayve leve 1,2 Md$ aupres de Mercedes, Stellantis et Uber</h2>
+                <div class="summary"><p>La startup britannique Wayve a boucle un Serie D de 1,2 milliard de dollars mene par ses propres partenaires constructeurs automobiles. Un signal fort de validation industrielle pour la conduite autonome basee sur l'IA.</p></div>
+            </div>
+            <div class="article">
+                <div class="article-category">Restructuration</div>
+                <h2 class="headline-sm">Block supprime 4 000 postes au profit de l'IA</h2>
+                <div class="summary"><p>Jack Dorsey annonce la suppression de plus de 4 000 emplois chez Block (Square, Cash App), arguant que des equipes plus petites equipees d'outils IA surpassent des effectifs plus importants. Un plan de restructuration radical.</p></div>
+            </div>
+            <div class="article">
+                <div class="article-category">Licorne</div>
+                <h2 class="headline-sm">Basis atteint le statut de licorne avec sa comptabilite agentique</h2>
+                <div class="summary"><p>Basis a leve 100 M$ en Serie B pour une valorisation de 1,15 milliard de dollars. Sa plateforme d'agents IA gere audits et declarations fiscales de maniere autonome, incarnant la montee des agents verticaux.</p></div>
+            </div>
+        </div>
+
+        <!-- SECTION: REGULATION -->
+        <div class="section-header" id="regulation">Regulation &amp; Geopolitique</div>
+        <div class="subsection-grid">
+            <div class="article">
+                <div class="article-category">Etats-Unis</div>
+                <h2 class="headline-sm">La FTC doit clarifier l'encadrement federal de l'IA avant le 11 mars</h2>
+                <div class="summary"><p>Echeance cruciale : la Federal Trade Commission doit publier un cadre precisant comment la loi federale s'applique a l'IA et quand elle prime sur les lois des Etats. Le secretaire au Commerce doit aussi identifier les lois etatiques jugees trop contraignantes.</p></div>
+            </div>
+            <div class="article">
+                <div class="article-category">Justice</div>
+                <h2 class="headline-sm">La Cour supreme refuse d'examiner le droit d'auteur des oeuvres generees par IA</h2>
+                <div class="summary"><p>La plus haute juridiction americaine a decline d'entendre un appel contestant le refus de proteger par le copyright les oeuvres creees entierement par intelligence artificielle. Le debat reste donc en suspens.</p></div>
+            </div>
+            <div class="article">
+                <div class="article-category">Chine</div>
+                <h2 class="headline-sm">Pekin place l'IA et le quantique au coeur de son plan quinquennal</h2>
+                <div class="summary"><p>Le nouveau plan quinquennal chinois fait de l'IA et de l'informatique quantique des priorites nationales avec des investissements massifs dans les supercalculateurs et les infrastructures dediees aux modeles de grande taille.</p></div>
+            </div>
+            <div class="article">
+                <div class="article-category">Etats americains</div>
+                <h2 class="headline-sm">L'Oregon adopte une loi sur la securite des chatbots</h2>
+                <div class="summary"><p>L'Oregon donne son feu vert a une loi encadrant la securite des chatbots IA, tandis qu'une mesure similaire est en attente a Washington. Le Colorado a deja impose des obligations de transparence pour les systemes IA a haut risque.</p></div>
+            </div>
+        </div>
+
+        <!-- SECTION: MODELES -->
+        <div class="section-header" id="modeles">Modeles &amp; Recherche</div>
+        <div class="subsection-grid">
+            <div class="article">
+                <div class="article-category">Guerre des modeles</div>
+                <h2 class="headline-sm">Fevrier-mars 2026 : une avalanche de modeles frontieres sans precedent</h2>
+                <div class="summary"><p>Claude Opus 4.6, GPT-5.3-Codex, Claude Sonnet 5, Gemini 3.1 Pro, Grok 4.20, Qwen 3.5, Mercury 2... Jamais autant de modeles de pointe n'avaient ete lances en si peu de temps. Les analystes prevoient des mises a jour bi-hebdomadaires tout au long du premier trimestre.</p></div>
+            </div>
+            <div class="article">
+                <div class="article-category">Cognition</div>
+                <h2 class="headline-sm">Des reseaux neuronaux relient perception sensorielle et pensee symbolique</h2>
+                <div class="summary"><p>Des chercheurs ont mis au point une architecture neuronale capable de faire le pont entre l'experience sensorielle directe et le raisonnement conceptuel abstrait, une avancee majeure en intelligence artificielle cognitive.</p></div>
+            </div>
+            <div class="article">
+                <div class="article-category">Societes IA</div>
+                <h2 class="headline-sm">Les premieres &laquo; societes d'IA &raquo; emergent dans les laboratoires</h2>
+                <div class="summary"><p>Selon Nature, des chercheurs etudient les interactions sociales entre agents IA. La startup Simile a leve 100 M$ pour creer des simulations ou des agents IA modelisent le comportement humain dans des situations de conflit et de prise de decision.</p></div>
+            </div>
+            <div class="article">
+                <div class="article-category">Benchmark</div>
+                <h2 class="headline-sm">MiniMax M2.5 rivalise avec Opus 4.6 a prix casse</h2>
+                <div class="summary"><p>Le modele M2.5 de MiniMax affiche des performances comparables a Claude Opus 4.6 en codage et creation visuelle, tout en restant nettement plus abordable. Une opportunite pour les startups aux budgets limites.</p></div>
+            </div>
+        </div>
+
+        <!-- SECTION: OPEN SOURCE -->
+        <div class="section-header" id="open-source">Open Source</div>
+        <div class="subsection-grid">
+            <div class="article">
+                <div class="article-category">Phenomene</div>
+                <h2 class="headline-sm">OpenClaw : de 9 000 a 188 000 etoiles GitHub en 60 jours</h2>
+                <div class="summary"><p>L'assistant IA personnel open source OpenClaw (ex-Clawdbot) est le repo GitHub a la croissance la plus rapide de l'histoire. Il fonctionne sur du materiel personnel et se connecte a WhatsApp, Telegram, Slack, Discord, Signal et iMessage.</p></div>
+            </div>
+            <div class="article">
+                <div class="article-category">Outils</div>
+                <h2 class="headline-sm">Ollama franchit les 162 000 etoiles, Dify atteint 130 000</h2>
+                <div class="summary"><p>Les outils d'inference locale continuent leur ascension. Ollama et Dify confirment la demande massive pour des solutions d'IA respectueuses de la vie privee et executables localement.</p></div>
+            </div>
+            <div class="article">
+                <div class="article-category">Ecosysteme</div>
+                <h2 class="headline-sm">GitHub : un ecosysteme open source plus mondial et plus dependant de l'IA</h2>
+                <div class="summary"><p>Selon un rapport InfoQ, l'ecosysteme open source en 2026 est de plus en plus globalise et profondement transforme par les outils de codage IA. Une dynamique a double tranchant qui accelere l'innovation mais souleve des questions de qualite.</p></div>
+            </div>
+            <div class="article">
+                <div class="article-category">Frameworks</div>
+                <h2 class="headline-sm">Mastra, Browser Use, E2B : les frameworks agents se multiplient</h2>
+                <div class="summary"><p>L'ecosysteme des frameworks pour agents autonomes explose. Mastra (orchestration), Browser Use (navigation web) et E2B (sandboxes securises) sont parmi les projets les plus actifs, tous avec des commits dans les 30 derniers jours.</p></div>
+            </div>
+        </div>
+
+        <!-- SECTION: APPLICATIONS -->
+        <div class="section-header" id="applications">Applications</div>
+        <div class="subsection-grid">
+            <div class="article">
+                <div class="article-category">Sante</div>
+                <h2 class="headline-sm">L'IA en sante passe du stade experimental au retour sur investissement</h2>
+                <div class="summary"><p>Selon l'enquete annuelle de Nvidia, les applications d'IA en imagerie medicale et decouverte de medicaments generent desormais un retour sur investissement mesurable. L'industrie pharmaceutique accelere son adoption.</p></div>
+            </div>
+            <div class="article">
+                <div class="article-category">Robotique</div>
+                <h2 class="headline-sm">Deloitte : l'IA physique et les robots humanoides entrent en production</h2>
+                <div class="summary"><p>Un rapport Deloitte documente la convergence de l'IA et de la robotique, avec des systemes chirurgicaux autonomes de plus en plus precis et des robots humanoides qui passent du prototype a la chaine de production.</p></div>
+            </div>
+            <div class="article">
+                <div class="article-category">Wearables</div>
+                <h2 class="headline-sm">Lenovo Qira : le coach sante personnel propulse par l'IA</h2>
+                <div class="summary"><p>Presente au CES 2026, l'assistant Qira de Lenovo integre les donnees de montres connectees et bracelets fitness pour fournir des conseils personnalises sur l'alimentation, l'exercice et le repos.</p></div>
+            </div>
+            <div class="article">
+                <div class="article-category">ONU</div>
+                <h2 class="headline-sm">Guterres alerte sur l'urgence de la gouvernance IA a l'echelle mondiale</h2>
+                <div class="summary"><p>Lors de la premiere reunion officielle du groupe scientifique de l'ONU sur l'IA le 3 mars, Antonio Guterres a insiste sur la necessite d'agir vite face a l'acceleration technologique, appelant a une gouvernance internationale coordonnee.</p></div>
+            </div>
+        </div>
+
+        <!-- WEEKLY QUOTE -->
+        <div class="weekly-quote">
+            <blockquote>&laquo; L'intelligence artificielle doit servir l'humanite, et non l'inverse. C'est la responsabilite de notre generation de s'en assurer. &raquo;</blockquote>
+            <cite>Pro-Human AI Declaration &mdash; Yoshua Bengio, Susan Rice, Richard Branson et al., 5 mars 2026</cite>
+        </div>
+
+        <!-- LATEST NEWS TIMELINE -->
+        <div class="section-header">Fil d'actualites</div>
+        <div class="latest-list">
+            <div class="article">
+                <div class="timestamp">Lun. 3</div>
+                <div>
+                    <h2 class="headline-sm">L'ONU tient la premiere reunion de son groupe scientifique sur l'IA</h2>
+                    <div class="summary"><p>Le secretaire general Antonio Guterres appelle a une gouvernance internationale urgente face a l'acceleration de l'intelligence artificielle.</p></div>
+                </div>
+            </div>
+            <div class="article">
+                <div class="timestamp">Mar. 4</div>
+                <div>
+                    <h2 class="headline-sm">Apple ouvre les precommandes du MacBook Air M5</h2>
+                    <div class="summary"><p>Le nouvel ordinateur portable d'Apple mise sur l'acceleration IA locale avec la puce M5. Disponibilite le 11 mars.</p></div>
+                </div>
+            </div>
+            <div class="article">
+                <div class="timestamp">Mer. 5</div>
+                <div>
+                    <h2 class="headline-sm">La Pro-Human AI Declaration reunit un casting improbable</h2>
+                    <div class="summary"><p>De Yoshua Bengio a Steve Bannon, en passant par Richard Branson : un appel commun pour que l'IA reste au service de l'humain.</p></div>
+                </div>
+            </div>
+            <div class="article">
+                <div class="timestamp">Mer. 5</div>
+                <div>
+                    <h2 class="headline-sm">La Chine mise sur le quantique et l'IA dans son nouveau plan quinquennal</h2>
+                    <div class="summary"><p>Pekin annonce des investissements massifs dans l'infrastructure de calcul et les modeles de grande taille.</p></div>
+                </div>
+            </div>
+            <div class="article">
+                <div class="timestamp">Jeu. 6</div>
+                <div>
+                    <h2 class="headline-sm">Ayar Labs leve 500 M$ avec Nvidia et AMD pour ses puces photoniques</h2>
+                    <div class="summary"><p>La startup specialisee dans les interconnexions optiques boucle un Serie E pour accelerer le transfert de donnees entre puces IA.</p></div>
+                </div>
+            </div>
+            <div class="article">
+                <div class="timestamp">Ven. 7</div>
+                <div>
+                    <h2 class="headline-sm">TechCrunch publie une feuille de route pour l'avenir de l'IA</h2>
+                    <div class="summary"><p>Un editorial appelle a une approche plus pragmatique de l'IA en 2026, apres les exces de promesses de 2025.</p></div>
+                </div>
+            </div>
+            <div class="article">
+                <div class="timestamp">Sam. 8</div>
+                <div>
+                    <h2 class="headline-sm">Zest AI democratise le credit IA pour les petites cooperatives bancaires</h2>
+                    <div class="summary"><p>Lancement du CU Lending Collective, offrant aux petites structures financieres l'acces a des outils de pret bases sur l'IA.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-brand">The AI Weekly Tribune</div>
+            <div class="footer-info">
+                Genere automatiquement par Claude &mdash; Anthropic<br>
+                Sources : TechCrunch, Crunchbase, Nature, Apple Newsroom, Futura Sciences, InfoQ, Nvidia Blog, Deloitte<br>
+                10 Mars 2026 &mdash; Edition N&deg;11
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>
