@@ -16,10 +16,10 @@ export const personalInfo = {
   birthDate: "2005-05-19",
 
   bio: {
-    short: "Étudiant en économie-gestion, j'applique l'IA et l'automatisation à des processus métier réels. Mon parcours sportif forgé par le hockey m'a appris la rigueur, la constance et le travail d'équipe.",
+    short: "Étudiant en économie-gestion, j'applique l'IA et l'automatisation à des processus métier réels. Mon parcours sportif forgé par le hockey m'a appris la rigueur, la résilience, la détermination et le travail d'équipe.",
     full: `Passionné par l'intelligence artificielle et l'automatisation depuis 2022, je transforme des processus métier complexes en solutions efficaces. Mon expérience en PME familiale m'a naturellement orienté vers l'IA : d'abord pour résoudre des tâches répétitives, puis pour repenser des flux entiers.
 
-Mon parcours sportif en hockey sur gazon m'a appris la persévérance, le travail d'équipe et l'exigence dans la durée. Avec le TAC, la saison 2026 marque un cap fort : 1ère place de Nationale 1 et retour en Élite, le plus haut niveau français.
+Mon parcours sportif en hockey sur gazon m'a appris la persévérance, le travail d'équipe et l'exigence dans la durée. Les blessures au genou, l'opération, les complications et les phases de rééducation ont aussi construit une détermination très concrète : adapter, reconstruire, revenir. Avec le TAC, la saison 2026 marque un cap fort : 1ère place de Nationale 1 et retour en Élite, le plus haut niveau français.
 
 Mon objectif est d'intégrer SKEMA Business School avec une spécialisation en IA et transformation digitale, pour développer une expertise à l'intersection du business et de la technologie.`
   },
@@ -75,11 +75,11 @@ export const education = [
     location: "Saint-Omer, France",
     startDate: "2020",
     endDate: "2023",
-    description: "Parcours exigeant en internat, avec un équilibre constant entre études, sport et responsabilités personnelles.",
+    description: "Parcours exigeant en internat, avec un équilibre constant entre études, hockey, blessures, rééducation et responsabilités personnelles.",
     highlights: [
-      "Baccalauréat obtenu",
+      "Baccalauréat obtenu dans une période de reconstruction physique",
       "Internat pendant 3 ans",
-      "Continuité du hockey au TAC malgré la distance"
+      "Continuité du hockey au TAC malgré la distance, les arrêts et les reprises progressives"
     ]
   },
   {
@@ -2264,6 +2264,12 @@ export const timeline = [
     title: "ESDHEM - Licence Éco-Gestion",
     description: "Début des études supérieures à Lille",
     type: "education"
+  },
+  {
+    year: "2022-2023",
+    title: "Opération, rééducation et retour",
+    description: "Blessures au genou, complications, reprise progressive et reconstruction de la confiance",
+    type: "life"
   },
   {
     year: "2022-2023",
