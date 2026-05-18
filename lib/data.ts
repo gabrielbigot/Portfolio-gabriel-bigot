@@ -104,14 +104,14 @@ export const workExperience = [
     startDate: "Avril 2026",
     endDate: "Mai 2026",
     current: false,
-    description: "Mission freelance post-stage sur sollicitation du client — première rémunération professionnelle pour des compétences en IA. En parallèle d'une période surchargée : contrôle continu ESDHEM, examens, candidatures grandes écoles (SKEMA), et fin de saison de hockey sur gazon. Engagement confirmant la qualité des livrables du stage.",
+    description: "Mission freelance post-stage sur sollicitation du client. Première rémunération professionnelle pour des compétences en IA. Engagement confirmant la qualité des livrables du stage.",
     achievements: [
-      "Migration complète du système n8n + Notion vers une application web Next.js 16 sur-mesure déployée sur Vercel — remplacement du système d'automatisation par une SaaS maison sans limite d'exécutions et entièrement contrôlable",
+      "Migration complète du système n8n + Notion vers une application web Next.js 16 sur-mesure déployée sur Vercel. Remplacement du système d'automatisation par une SaaS maison sans limite d'exécutions et entièrement contrôlable",
       "Développement full-stack : veille RSS automatisée (Perplexity AI + OpenAI/Anthropic), studio de contenu avec previews LinkedIn et Instagram en temps réel, génération d'images (DALL-E / Gemini), publication directe sur LinkedIn et Instagram depuis le dashboard",
-      "Système d'authentification JWT (bcryptjs, cookie httpOnly 30j) avec isolation totale des données par utilisateur — chaque compte accède uniquement à ses propres articles, posts et paramètres",
+      "Système d'authentification JWT avec isolation totale des données par utilisateur. Chaque compte accède uniquement à ses propres articles, posts et paramètres",
       "Intégration Apify pour récupérer les stats d'engagement LinkedIn (likes, commentaires, profils des commentateurs) en contournement des restrictions de scope de l'API officielle",
-      "Workflow Perplexity AI pour enrichir 48 entreprises mécènes potentielles en Nord/Pas-de-Calais : recherche automatique des contacts RSE, Communication et PDG avec emails et téléphones",
-      "Livraison de vidéos tutoriels pour l'onboarding du nouveau stagiaire (Glenn)"
+      "Workflow Perplexity AI pour enrichir 48 entreprises mécènes potentielles du Nord/Pas-de-Calais : recherche automatique des contacts RSE, Communication et PDG avec emails et téléphones",
+      "Livraison de vidéos tutoriels pour l'onboarding du nouveau stagiaire du client"
     ],
     technologies: ["Next.js 16", "TypeScript", "Neon PostgreSQL", "Drizzle ORM", "Vercel", "JWT / bcryptjs", "Instagram Graph API", "Apify", "OpenAI", "Anthropic", "Perplexity AI", "Gemini", "DALL-E"]
   },
@@ -126,9 +126,7 @@ export const workExperience = [
     achievements: [
       "Conception et déploiement de 3 workflows n8n en production : enrichissement automatique de 15 000+ prospects BTP (API Pappers), système de veille sectorielle avec qualification IA (score d'impact, catégorisation), génération et publication automatique de contenus LinkedIn",
       "Création d'un Hub Notion avec 5 bases de données interconnectées comme interface de pilotage de l'ensemble du système",
-      "Économie de 7h+ par semaine sur la veille et la création de contenus, 75% de taux de validation des contenus par le client, 0 échec en production",
       "Production de 4 tutoriels vidéo (~70 minutes) et documentation technique complète pour garantir l'autonomie du client non-technique",
-      "Optimisation des coûts API à ~5-10€/mois et mise en place de mécanismes anti-doublon et de gestion d'erreurs gracieuse"
     ],
     technologies: ["n8n", "Notion", "OpenAI", "Google Gemini", "LinkedIn API", "Pappers API", "Perplexity AI"]
   },
@@ -336,42 +334,42 @@ export const projects = [
       { url: "/projects/veille-linkedin-notion-contexte-adn.png", caption: "Base Notion — Contexte ADN POTENTIEL (documents de référence IA)" },
       { url: "/projects/veille-linkedin-publication-linkedin.png", caption: "Exemple de publication LinkedIn générée et publiée automatiquement" }
     ] as Array<{ url: string; caption?: string }>,
-      content: [
-        { type: 'heading', text: `Vue d'ensemble` },
-        { type: 'paragraph', text: `Chaîne d'automatisation complète en 3 workflows n8n interconnectés, pilotée depuis un Hub Notion avec 5 bases de données :` },
-        { type: 'list', items: [`Veille automatisée — Capture et qualification IA d'articles sectoriels (BTP, transmission, management) toutes les 6 heures`, `Génération de contenus — Production automatique de brouillons LinkedIn (150-250 mots) et d'images via Google Gemini`, `Publication automatique — Déclenchement au clic dans Notion, publication sécurisée sur LinkedIn avec anti-doublon`] },
-        { type: 'paragraph', text: `Résultat : 7h+ économisées par semaine, 75% de taux de validation des contenus par le client, 0 échec en production.` },
-        { type: 'heading', text: `Contexte` },
-        { type: 'paragraph', text: `ADN POTENTIEL n'avait quasiment aucune présence SEO malgré 2 ans d'existence à Lille. La production de contenus LinkedIn était irrégulière et chronophage. Loïc Chevallard (dirigeant) n'avait pas le temps de faire une veille sectorielle quotidienne tout en gérant ses missions clients.` },
-        { type: 'paragraph', text: `L'enjeu : construire une "machine à contenus" qui fonctionne 24h/24 en autonomie, en respectant la voix, le ton et le positionnement d'ADN POTENTIEL — sans que Loïc ait à repartir de zéro à chaque publication.` },
-        { type: 'heading', text: `Problème` },
-        { type: 'list', items: [`Aucune présence SEO malgré 2 ans d'existence`, `Production de contenus manuelle, irrégulière et chronophage (~7h/semaine)`, `Pas de système de veille sectorielle : les opportunités éditoriales étaient manquées`, `Difficulté à maintenir une ligne éditoriale cohérente sur LinkedIn`, `Risque de doublons et de publications non relues`] },
-        { type: 'heading', text: `Solution` },
-        { type: 'heading', text: `Workflow A — Veille automatisée + Qualification IA` },
-        { type: 'list', items: [`Flux RSS depuis des sources spécialisées BTP, transmission d'entreprise, management`, `Exécution automatique toutes les 6 heures`, `Agent IA (Perplexity AI + OpenAI GPT-4 mini) : catégorisation, score d'impact de 1 à 10, résumé de l'article, opportunités business identifiées`, `Seuls les articles avec score supérieur à 6 déclenchent la génération de contenu`, `Stockage complet dans la base Notion "Veille ADN POTENTIEL" avec toutes les métadonnées`] },
-        { type: 'heading', text: `Workflow B — Génération de brouillons LinkedIn + Images` },
-        { type: 'list', items: [`Génération automatique de brouillons LinkedIn (150-250 mots) alimentés par le contexte ADN POTENTIEL (ton, valeurs, positionnement, exemples passés)`, `Bibliothèque de formats pour varier le style : chiffre clé, retour d'expérience, question ouverte, conseil pratique, étude de cas...`, `Génération d'images via Google Gemini à partir d'une bibliothèque de styles visuels`, `Hébergement automatique des images sur imgbb`, `Stockage dans la base Notion "Contenus & Publications"`] },
-        { type: 'heading', text: `Workflow C — Publication automatique LinkedIn` },
-        { type: 'list', items: [`Scan Notion toutes les 5 minutes`, `Déclenchement au clic sur une checkbox "Ready to Publish" : Loïc valide et publie en un clic`, `Appel à l'API LinkedIn v2 (OAuth2) pour publication avec image`, `Mécanisme anti-doublon : vérification de l'historique avant chaque publication`, `Alertes automatiques en cas d'erreur (token expiré, erreur API, etc.)`] },
-        { type: 'heading', text: `Hub Notion — Interface de pilotage centrale` },
-        { type: 'paragraph', text: `5 bases de données interconnectées accessibles depuis une seule interface :` },
-        { type: 'list', items: [`Veille ADN POTENTIEL — Articles captés avec score, résumé, catégorie et opportunités`, `Contenus & Publications — Brouillons générés et posts déjà publiés`, `Modèles de publications — Templates pour varier les formats (enrichi au fil du stage)`, `Modèles d'images — Bibliothèque de styles visuels pour la génération`, `Contexte ADN POTENTIEL — Documents de référence qui nourrissent le prompt IA (ton, valeurs, positionnement)`] },
-        { type: 'heading', text: `Résultats clés` },
-        { type: 'list', items: [`✅ 100% opérationnel — système en production stable au quotidien`, `✅ 7h+ économisées par semaine sur la veille et la création de contenus`, `✅ 75% de taux de validation des brouillons générés (modifications mineures uniquement)`, `✅ 0 échec de publication en production`, `✅ ~50 articles captés et qualifiés en quelques jours seulement`, `✅ ~12 articles à fort impact identifiés (score > 7)`, `✅ Anti-doublon 100% efficace — aucune publication en double`, `✅ Coût API optimisé : ~5-10€/mois pour l'ensemble du système`, `✅ Loïc utilise le système activement au quotidien`] },
-        { type: 'heading', text: `Médias` },
-        { type: 'heading', text: `Fonctionnalités principales` },
-        { type: 'list', items: [`Capture RSS multi-sources — Agrégation de flux depuis des sources BTP, transmission d'entreprise, management`, `Qualification IA — Score d'impact (1-10), catégorisation automatique, résumé et opportunités business identifiées`, `Filtre intelligent — Seuls les articles avec score > 6 déclenchent la génération de contenus`, `Génération contextuelle — Les brouillons sont générés en tenant compte du ton, des valeurs et du positionnement d'ADN POTENTIEL`, `Bibliothèque de formats — Rotation entre différents styles de publications pour varier le fil LinkedIn`, `Génération d'images IA — Création d'images personnalisées via Google Gemini + hébergement automatique imgbb`, `Validation en un clic — Loïc valide et déclenche la publication depuis Notion (checkbox "Ready to Publish")`, `Anti-doublon — Vérification systématique avant chaque publication`, `Monitoring & alertes — Notifications automatiques en cas d'erreur API ou de token expiré`] },
-        { type: 'heading', text: `Architecture technique` },
-        { type: 'paragraph', text: `Stack : n8n · Notion API · OpenAI GPT-4 mini · Perplexity AI · Google Gemini · LinkedIn API v2 · imgbb` },
-        { type: 'paragraph', text: `Flux de données global :` },
-        { type: 'list', items: [`Flux RSS → n8n (toutes les 6h) → Qualification IA (Perplexity + OpenAI) → Score d'impact`, `Articles score > 6 → Génération brouillon LinkedIn (OpenAI) + Image (Gemini) → Hébergement imgbb → Stockage Notion`, `Loïc coche "Ready to Publish" dans Notion → n8n scan (toutes les 5 min) → Appel LinkedIn API v2`, `Mise à jour statut Notion → Log publication → Anti-doublon activé`] },
-        { type: 'paragraph', text: `Gestion de l'authentification OAuth2 LinkedIn :` },
-        { type: 'list', items: [`Authentification OAuth2 complète configurée dans n8n`, `Refresh token automatique avant expiration`, `Procédure de renouvellement documentée et testée en cas d'expiration manuelle`] },
-        { type: 'heading', text: `Qualité & contrôles` },
-        { type: 'list', items: [`Anti-doublon double niveau : vérification de l'identifiant unique de l'article avant génération, et vérification du contenu avant publication`, `Gestion d'erreurs gracieuse : si une API tombe (Gemini, OpenAI...), le système continue avec des fallbacks — aucune interruption complète`, `Monitoring : alertes automatiques en cas d'erreur de publication ou de token expiré`, `Validation humaine maintenue : Loïc reste maître de chaque publication via la checkbox — 0 publication automatique sans validation`, `Archivage : chaque publication est loggée dans Notion avec date, statut et contenu exact`] },
-        { type: 'heading', text: `Documentation livrée` },
-        { type: 'list', items: [`Tutoriel vidéo complet (~25-30 min) : configuration des 3 workflows, utilisation du Hub Notion au quotidien`, `Guide de renouvellement OAuth2 LinkedIn (procédure step-by-step illustrée)`, `Guide de maintenance : ajout de nouvelles sources RSS, modification des prompts IA, gestion des coûts API`, `Documentation complète des prompts utilisés (avec explications des choix éditoriaux)`] },
-      ] as ContentSection[],
+    content: [
+      { type: 'heading', text: `Vue d'ensemble` },
+      { type: 'paragraph', text: `Chaîne d'automatisation complète en 3 workflows n8n interconnectés, pilotée depuis un Hub Notion avec 5 bases de données :` },
+      { type: 'list', items: [`Veille automatisée — Capture et qualification IA d'articles sectoriels (BTP, transmission, management) toutes les 6 heures`, `Génération de contenus — Production automatique de brouillons LinkedIn (150-250 mots) et d'images via Google Gemini`, `Publication automatique — Déclenchement au clic dans Notion, publication sécurisée sur LinkedIn avec anti-doublon`] },
+      { type: 'paragraph', text: `Résultat : 7h+ économisées par semaine, 75% de taux de validation des contenus par le client, 0 échec en production.` },
+      { type: 'heading', text: `Contexte` },
+      { type: 'paragraph', text: `ADN POTENTIEL n'avait quasiment aucune présence SEO malgré 2 ans d'existence à Lille. La production de contenus LinkedIn était irrégulière et chronophage. Loïc Chevallard (dirigeant) n'avait pas le temps de faire une veille sectorielle quotidienne tout en gérant ses missions clients.` },
+      { type: 'paragraph', text: `L'enjeu : construire une "machine à contenus" qui fonctionne 24h/24 en autonomie, en respectant la voix, le ton et le positionnement d'ADN POTENTIEL — sans que Loïc ait à repartir de zéro à chaque publication.` },
+      { type: 'heading', text: `Problème` },
+      { type: 'list', items: [`Aucune présence SEO malgré 2 ans d'existence`, `Production de contenus manuelle, irrégulière et chronophage (~7h/semaine)`, `Pas de système de veille sectorielle : les opportunités éditoriales étaient manquées`, `Difficulté à maintenir une ligne éditoriale cohérente sur LinkedIn`, `Risque de doublons et de publications non relues`] },
+      { type: 'heading', text: `Solution` },
+      { type: 'heading', text: `Workflow A — Veille automatisée + Qualification IA` },
+      { type: 'list', items: [`Flux RSS depuis des sources spécialisées BTP, transmission d'entreprise, management`, `Exécution automatique toutes les 6 heures`, `Agent IA (Perplexity AI + OpenAI GPT-4 mini) : catégorisation, score d'impact de 1 à 10, résumé de l'article, opportunités business identifiées`, `Seuls les articles avec score supérieur à 6 déclenchent la génération de contenu`, `Stockage complet dans la base Notion "Veille ADN POTENTIEL" avec toutes les métadonnées`] },
+      { type: 'heading', text: `Workflow B — Génération de brouillons LinkedIn + Images` },
+      { type: 'list', items: [`Génération automatique de brouillons LinkedIn (150-250 mots) alimentés par le contexte ADN POTENTIEL (ton, valeurs, positionnement, exemples passés)`, `Bibliothèque de formats pour varier le style : chiffre clé, retour d'expérience, question ouverte, conseil pratique, étude de cas...`, `Génération d'images via Google Gemini à partir d'une bibliothèque de styles visuels`, `Hébergement automatique des images sur imgbb`, `Stockage dans la base Notion "Contenus & Publications"`] },
+      { type: 'heading', text: `Workflow C — Publication automatique LinkedIn` },
+      { type: 'list', items: [`Scan Notion toutes les 5 minutes`, `Déclenchement au clic sur une checkbox "Ready to Publish" : Loïc valide et publie en un clic`, `Appel à l'API LinkedIn v2 (OAuth2) pour publication avec image`, `Mécanisme anti-doublon : vérification de l'historique avant chaque publication`, `Alertes automatiques en cas d'erreur (token expiré, erreur API, etc.)`] },
+      { type: 'heading', text: `Hub Notion — Interface de pilotage centrale` },
+      { type: 'paragraph', text: `5 bases de données interconnectées accessibles depuis une seule interface :` },
+      { type: 'list', items: [`Veille ADN POTENTIEL — Articles captés avec score, résumé, catégorie et opportunités`, `Contenus & Publications — Brouillons générés et posts déjà publiés`, `Modèles de publications — Templates pour varier les formats (enrichi au fil du stage)`, `Modèles d'images — Bibliothèque de styles visuels pour la génération`, `Contexte ADN POTENTIEL — Documents de référence qui nourrissent le prompt IA (ton, valeurs, positionnement)`] },
+      { type: 'heading', text: `Résultats clés` },
+      { type: 'list', items: [`✅ 100% opérationnel — système en production stable au quotidien`, `✅ 7h+ économisées par semaine sur la veille et la création de contenus`, `✅ 75% de taux de validation des brouillons générés (modifications mineures uniquement)`, `✅ 0 échec de publication en production`, `✅ ~50 articles captés et qualifiés en quelques jours seulement`, `✅ ~12 articles à fort impact identifiés (score > 7)`, `✅ Anti-doublon 100% efficace — aucune publication en double`, `✅ Coût API optimisé : ~5-10€/mois pour l'ensemble du système`, `✅ Loïc utilise le système activement au quotidien`] },
+      { type: 'heading', text: `Médias` },
+      { type: 'heading', text: `Fonctionnalités principales` },
+      { type: 'list', items: [`Capture RSS multi-sources — Agrégation de flux depuis des sources BTP, transmission d'entreprise, management`, `Qualification IA — Score d'impact (1-10), catégorisation automatique, résumé et opportunités business identifiées`, `Filtre intelligent — Seuls les articles avec score > 6 déclenchent la génération de contenus`, `Génération contextuelle — Les brouillons sont générés en tenant compte du ton, des valeurs et du positionnement d'ADN POTENTIEL`, `Bibliothèque de formats — Rotation entre différents styles de publications pour varier le fil LinkedIn`, `Génération d'images IA — Création d'images personnalisées via Google Gemini + hébergement automatique imgbb`, `Validation en un clic — Loïc valide et déclenche la publication depuis Notion (checkbox "Ready to Publish")`, `Anti-doublon — Vérification systématique avant chaque publication`, `Monitoring & alertes — Notifications automatiques en cas d'erreur API ou de token expiré`] },
+      { type: 'heading', text: `Architecture technique` },
+      { type: 'paragraph', text: `Stack : n8n · Notion API · OpenAI GPT-4 mini · Perplexity AI · Google Gemini · LinkedIn API v2 · imgbb` },
+      { type: 'paragraph', text: `Flux de données global :` },
+      { type: 'list', items: [`Flux RSS → n8n (toutes les 6h) → Qualification IA (Perplexity + OpenAI) → Score d'impact`, `Articles score > 6 → Génération brouillon LinkedIn (OpenAI) + Image (Gemini) → Hébergement imgbb → Stockage Notion`, `Loïc coche "Ready to Publish" dans Notion → n8n scan (toutes les 5 min) → Appel LinkedIn API v2`, `Mise à jour statut Notion → Log publication → Anti-doublon activé`] },
+      { type: 'paragraph', text: `Gestion de l'authentification OAuth2 LinkedIn :` },
+      { type: 'list', items: [`Authentification OAuth2 complète configurée dans n8n`, `Refresh token automatique avant expiration`, `Procédure de renouvellement documentée et testée en cas d'expiration manuelle`] },
+      { type: 'heading', text: `Qualité & contrôles` },
+      { type: 'list', items: [`Anti-doublon double niveau : vérification de l'identifiant unique de l'article avant génération, et vérification du contenu avant publication`, `Gestion d'erreurs gracieuse : si une API tombe (Gemini, OpenAI...), le système continue avec des fallbacks — aucune interruption complète`, `Monitoring : alertes automatiques en cas d'erreur de publication ou de token expiré`, `Validation humaine maintenue : Loïc reste maître de chaque publication via la checkbox — 0 publication automatique sans validation`, `Archivage : chaque publication est loggée dans Notion avec date, statut et contenu exact`] },
+      { type: 'heading', text: `Documentation livrée` },
+      { type: 'list', items: [`Tutoriel vidéo complet (~25-30 min) : configuration des 3 workflows, utilisation du Hub Notion au quotidien`, `Guide de renouvellement OAuth2 LinkedIn (procédure step-by-step illustrée)`, `Guide de maintenance : ajout de nouvelles sources RSS, modification des prompts IA, gestion des coûts API`, `Documentation complète des prompts utilisés (avec explications des choix éditoriaux)`] },
+    ] as ContentSection[],
   },
   {
     id: "enrichissement-prospects-btp",
@@ -413,34 +411,34 @@ export const projects = [
       { url: "/projects/enrichissement-btp-google-sheet-avant.png", caption: "Google Sheet — base prospects avant enrichissement" },
       { url: "/projects/enrichissement-btp-google-sheet-apres.png", caption: "Google Sheet — base prospects après enrichissement (âge, date de naissance)" }
     ] as Array<{ url: string; caption?: string }>,
-      content: [
-        { type: 'heading', text: `Vue d'ensemble` },
-        { type: 'paragraph', text: `Workflow n8n entièrement automatisé qui enrichit une base de 15 000+ prospects BTP avec l'âge et la date de naissance des dirigeants via l'API Pappers. L'objectif : transformer une prospection "aveugle" en un ciblage précis, permettant de prioriser les dirigeants de 60 ans et plus — cible principale d'ADN POTENTIEL pour ses formations à la transmission d'entreprise.` },
-        { type: 'heading', text: `Contexte` },
-        { type: 'paragraph', text: `ADN POTENTIEL s'est spécialisé dans le secteur BTP et cible les dirigeants de TPE/PME de 60 ans et plus, souvent confrontés à des enjeux de transmission ou de cession d'entreprise — un moment-clé où la formation au management de transition prend tout son sens.` },
-        { type: 'paragraph', text: `Le problème concret : l'entreprise disposait d'un fichier de 15 000+ prospects BTP (noms, entreprises, coordonnées) mais sans aucune information sur l'âge des dirigeants. Impossible donc de prioriser, de segmenter, ou d'adapter le discours commercial.` },
-        { type: 'paragraph', text: `L'enjeu stratégique : activer une micro-segmentation par tranche d'âge :` },
-        { type: 'list', items: [`60-65 ans → Phase de réflexion (contenus éducatifs, sensibilisation)`, `65-70 ans → Phase de décision (offre directe, cas concrets)`, `70+ ans → Transmission urgente (approche personnalisée et réactive)`] },
-        { type: 'heading', text: `Problème` },
-        { type: 'list', items: [`Base de 15 000+ prospects sans information sur l'âge des dirigeants`, `Prospection à l'aveugle : impossible de prioriser ni de segmenter`, `Enrichissement manuel impossible à cette échelle`, `Temps commercial gaspillé sur des contacts non qualifiés`, `Aucun ciblage différencié selon la maturité du projet de transmission`] },
-        { type: 'heading', text: `Solution` },
-        { type: 'paragraph', text: `Conception d'un workflow n8n connecté à l'API Pappers (base de données légale et financière française) pour récupérer automatiquement, pour chaque prospect :` },
-        { type: 'list', items: [`La date de naissance du dirigeant (quand disponible)`, `Son âge calculé automatiquement`, `Son statut "senior" (60+ ans : oui / non)`, `Sa tranche d'âge (60-65 / 65-70 / 70+)`] },
-        { type: 'paragraph', text: `Les données enrichies sont directement écrites dans Google Sheets pour une utilisation immédiate par l'équipe commerciale.` },
-        { type: 'heading', text: `Résultats clés` },
-        { type: 'list', items: [`✅ 85,7% de complétion — workflow opérationnel en production`, `✅ Traitement automatique de 15 000+ prospects par lots`, `✅ Micro-segmentation activée sur 3 tranches d'âge`, `✅ Tutoriel vidéo complet (~15-20 min) fourni pour autonomie totale`, `✅ Documentation technique complète (configuration, dépannage, maintenance)`, `✅ Coût marginal : quelques euros de crédits API pour l'ensemble du fichier`] },
-        { type: 'heading', text: `Médias` },
-        { type: 'heading', text: `Fonctionnalités principales` },
-        { type: 'list', items: [`Lecture prospects — Import depuis Google Sheets (15 000+ lignes), traitement par lots pour respecter les limites API`, `Requête Pappers — Appel automatique par SIREN ou nom d'entreprise pour identifier le dirigeant`, `Extraction du dirigeant — Récupération du nom, prénom, date de naissance, âge calculé`, `Calcul statut senior — Flag automatique si âge ≥ 60 ans`, `Segmentation par tranche — Classement automatique : 60-65 / 65-70 / 70+`, `Écriture des résultats — Mise à jour en temps réel des colonnes enrichies dans Google Sheets`, `Gestion d'erreurs gracieuse — Le workflow continue si une donnée est manquante (date de naissance non disponible dans Pappers) sans interrompre le traitement`, `Pagination — Mécanisme de traitement par lots pour les 15 000+ lignes sans saturer l'API`] },
-        { type: 'heading', text: `Architecture technique` },
-        { type: 'paragraph', text: `Stack : n8n · API Pappers · Google Sheets API` },
-        { type: 'paragraph', text: `Flux de données :` },
-        { type: 'list', items: [`Trigger manuel (ou planifié) → Lecture du fichier Google Sheets`, `Boucle sur chaque prospect → Appel API Pappers (recherche par SIREN)`, `Extraction des données dirigeant → Calcul âge + segmentation`, `Vérification des données (cohérence, valeurs manquantes) → Traitement gracieux`, `Écriture des colonnes enrichies → Mise à jour Google Sheets`, `Fin de traitement → Rapport d'exécution (prospects traités / non trouvés)`] },
-        { type: 'heading', text: `Qualité & contrôles` },
-        { type: 'list', items: [`Gestion des erreurs API : timeout, données manquantes, rate limiting — le workflow continue sans bloquer`, `Log des non-enrichis : les prospects sans date de naissance sont signalés pour revue manuelle`, `Cohérence des données : vérification de la plausibilité de l'âge avant écriture`, `Anti-duplication : un prospect déjà enrichi n'est pas retraité inutilement`] },
-        { type: 'heading', text: `Documentation livrée` },
-        { type: 'list', items: [`Tutoriel vidéo complet : configuration du workflow, utilisation au quotidien, mise à jour des credentials`, `Guide de dépannage : erreurs API courantes, gestion du rate limiting Pappers`, `Notice de maintenance : renouvellement des clés API, ajout de champs supplémentaires`] },
-      ] as ContentSection[],
+    content: [
+      { type: 'heading', text: `Vue d'ensemble` },
+      { type: 'paragraph', text: `Workflow n8n entièrement automatisé qui enrichit une base de 15 000+ prospects BTP avec l'âge et la date de naissance des dirigeants via l'API Pappers. L'objectif : transformer une prospection "aveugle" en un ciblage précis, permettant de prioriser les dirigeants de 60 ans et plus — cible principale d'ADN POTENTIEL pour ses formations à la transmission d'entreprise.` },
+      { type: 'heading', text: `Contexte` },
+      { type: 'paragraph', text: `ADN POTENTIEL s'est spécialisé dans le secteur BTP et cible les dirigeants de TPE/PME de 60 ans et plus, souvent confrontés à des enjeux de transmission ou de cession d'entreprise — un moment-clé où la formation au management de transition prend tout son sens.` },
+      { type: 'paragraph', text: `Le problème concret : l'entreprise disposait d'un fichier de 15 000+ prospects BTP (noms, entreprises, coordonnées) mais sans aucune information sur l'âge des dirigeants. Impossible donc de prioriser, de segmenter, ou d'adapter le discours commercial.` },
+      { type: 'paragraph', text: `L'enjeu stratégique : activer une micro-segmentation par tranche d'âge :` },
+      { type: 'list', items: [`60-65 ans → Phase de réflexion (contenus éducatifs, sensibilisation)`, `65-70 ans → Phase de décision (offre directe, cas concrets)`, `70+ ans → Transmission urgente (approche personnalisée et réactive)`] },
+      { type: 'heading', text: `Problème` },
+      { type: 'list', items: [`Base de 15 000+ prospects sans information sur l'âge des dirigeants`, `Prospection à l'aveugle : impossible de prioriser ni de segmenter`, `Enrichissement manuel impossible à cette échelle`, `Temps commercial gaspillé sur des contacts non qualifiés`, `Aucun ciblage différencié selon la maturité du projet de transmission`] },
+      { type: 'heading', text: `Solution` },
+      { type: 'paragraph', text: `Conception d'un workflow n8n connecté à l'API Pappers (base de données légale et financière française) pour récupérer automatiquement, pour chaque prospect :` },
+      { type: 'list', items: [`La date de naissance du dirigeant (quand disponible)`, `Son âge calculé automatiquement`, `Son statut "senior" (60+ ans : oui / non)`, `Sa tranche d'âge (60-65 / 65-70 / 70+)`] },
+      { type: 'paragraph', text: `Les données enrichies sont directement écrites dans Google Sheets pour une utilisation immédiate par l'équipe commerciale.` },
+      { type: 'heading', text: `Résultats clés` },
+      { type: 'list', items: [`✅ 85,7% de complétion — workflow opérationnel en production`, `✅ Traitement automatique de 15 000+ prospects par lots`, `✅ Micro-segmentation activée sur 3 tranches d'âge`, `✅ Tutoriel vidéo complet (~15-20 min) fourni pour autonomie totale`, `✅ Documentation technique complète (configuration, dépannage, maintenance)`, `✅ Coût marginal : quelques euros de crédits API pour l'ensemble du fichier`] },
+      { type: 'heading', text: `Médias` },
+      { type: 'heading', text: `Fonctionnalités principales` },
+      { type: 'list', items: [`Lecture prospects — Import depuis Google Sheets (15 000+ lignes), traitement par lots pour respecter les limites API`, `Requête Pappers — Appel automatique par SIREN ou nom d'entreprise pour identifier le dirigeant`, `Extraction du dirigeant — Récupération du nom, prénom, date de naissance, âge calculé`, `Calcul statut senior — Flag automatique si âge ≥ 60 ans`, `Segmentation par tranche — Classement automatique : 60-65 / 65-70 / 70+`, `Écriture des résultats — Mise à jour en temps réel des colonnes enrichies dans Google Sheets`, `Gestion d'erreurs gracieuse — Le workflow continue si une donnée est manquante (date de naissance non disponible dans Pappers) sans interrompre le traitement`, `Pagination — Mécanisme de traitement par lots pour les 15 000+ lignes sans saturer l'API`] },
+      { type: 'heading', text: `Architecture technique` },
+      { type: 'paragraph', text: `Stack : n8n · API Pappers · Google Sheets API` },
+      { type: 'paragraph', text: `Flux de données :` },
+      { type: 'list', items: [`Trigger manuel (ou planifié) → Lecture du fichier Google Sheets`, `Boucle sur chaque prospect → Appel API Pappers (recherche par SIREN)`, `Extraction des données dirigeant → Calcul âge + segmentation`, `Vérification des données (cohérence, valeurs manquantes) → Traitement gracieux`, `Écriture des colonnes enrichies → Mise à jour Google Sheets`, `Fin de traitement → Rapport d'exécution (prospects traités / non trouvés)`] },
+      { type: 'heading', text: `Qualité & contrôles` },
+      { type: 'list', items: [`Gestion des erreurs API : timeout, données manquantes, rate limiting — le workflow continue sans bloquer`, `Log des non-enrichis : les prospects sans date de naissance sont signalés pour revue manuelle`, `Cohérence des données : vérification de la plausibilité de l'âge avant écriture`, `Anti-duplication : un prospect déjà enrichi n'est pas retraité inutilement`] },
+      { type: 'heading', text: `Documentation livrée` },
+      { type: 'list', items: [`Tutoriel vidéo complet : configuration du workflow, utilisation au quotidien, mise à jour des credentials`, `Guide de dépannage : erreurs API courantes, gestion du rate limiting Pappers`, `Notice de maintenance : renouvellement des clés API, ajout de champs supplémentaires`] },
+    ] as ContentSection[],
   },
   {
     id: "automatisation-rappels-sms-greminders",
@@ -479,28 +477,28 @@ export const projects = [
       { url: "/projects/greminders-interface-site.png", caption: "Interface GReminders — plateforme SaaS de rappels automatiques" },
       { url: "/projects/greminders-rappel-sms.png", caption: "Exemple de rappel SMS reçu par un prospect — 22/02/2026" }
     ] as Array<{ url: string; caption?: string }>,
-      content: [
-        { type: 'heading', text: `Vue d'ensemble` },
-        { type: 'paragraph', text: `Mise en place de Greminders pour automatiser l'envoi de rappels SMS et email aux prospects et clients avant leurs rendez-vous avec ADN POTENTIEL. Objectif : réduire le taux de no-show sur les rendez-vous qualifiés, sans aucun développement technique — entièrement piloté depuis une interface no-code connectée à Google Calendar.` },
-        { type: 'heading', text: `Contexte` },
-        { type: 'paragraph', text: `Dans le cadre du stage, ADN POTENTIEL générait des rendez-vous qualifiés via la prospection BTP enrichie. Le problème : un certain taux de no-show représentait un manque à gagner direct — temps de préparation perdu, créneau non récupérable, relation commerciale fragilisée.` },
-        { type: 'paragraph', text: `Greminders est un outil SaaS no-code qui s'intègre directement au calendrier Google (via OAuth2) et envoie automatiquement des rappels personnalisés — SMS, email ou WhatsApp — aux participants d'un rendez-vous, à des délais paramétrables.` },
-        { type: 'heading', text: `Problème` },
-        { type: 'list', items: [`Taux de no-show non négligeable sur les rendez-vous qualifiés`, `Rappels manuels chronophages pour Loïc (appels ou SMS envoyés à la main)`, `Aucune relance automatique en cas d'absence de confirmation`, `Perte de temps et de crédibilité sur des créneaux non honorés`] },
-        { type: 'heading', text: `Solution` },
-        { type: 'paragraph', text: `Configuration de Greminders connecté au Google Calendar d'ADN POTENTIEL :` },
-        { type: 'list', items: [`Rappel automatique J-1 : SMS + email envoyé 24h avant le rendez-vous`, `Rappel automatique H-1 : SMS envoyé 1h avant`, `Messages personnalisés : textes adaptés au contexte ADN POTENTIEL — ton professionnel, nom du prospect inclus dynamiquement`, `Lien de confirmation / annulation : le prospect peut confirmer ou annuler directement depuis le SMS, en un clic`, `Notification automatique à Loïc si un prospect annule via le lien`] },
-        { type: 'heading', text: `Résultats clés` },
-        { type: 'list', items: [`✅ Rappels SMS/email entièrement automatisés (0 action manuelle requise de Loïc)`, `✅ Messages personnalisés avec nom du prospect et contexte du rendez-vous`, `✅ Lien de confirmation/annulation intégré dans chaque rappel`, `✅ Notification automatique à Loïc en cas d'annulation`, `✅ Mise en place rapide sans développement`] },
-        { type: 'heading', text: `Médias` },
-        { type: 'heading', text: `Fonctionnalités configurées` },
-        { type: 'list', items: [`Intégration Google Calendar — Connexion OAuth2 : chaque nouveau rendez-vous créé dans le calendrier ADN POTENTIEL déclenche automatiquement la séquence de rappels`, `Rappel J-1 (SMS + email) — Envoyé 24h avant, avec nom du prospect, date, heure et contexte du RDV`, `Rappel H-1 (SMS) — Dernier rappel 1h avant pour maximiser la présence`, `Confirmation / annulation — Lien intégré dans le SMS permettant au prospect de répondre en un clic`, `Messages personnalisés — Templates rédigés avec le ton ADN POTENTIEL, variables dynamiques (prénom, date, heure, lieu/visio)`, `Notification annulation — Loïc est automatiquement alerté si un prospect annule, pour récupérer le créneau`] },
-        { type: 'heading', text: `Configuration mise en place` },
-        { type: 'heading', text: `Qualité & contrôles` },
-        { type: 'list', items: [`Aucun rappel envoyé si le rendez-vous est annulé dans Google Calendar`, `Vérification du numéro de téléphone avant envoi (format FR)`, `Logs des envois accessibles dans Greminders (statut : envoyé / délivré / échec)`, `Procédure documentée pour modifier les templates de messages`] },
-        { type: 'heading', text: `Documentation livrée` },
-        { type: 'list', items: [`Guide de prise en main Greminders (connexion Google Calendar, création de workflows de rappel)`, `Templates SMS/email utilisés et procédure de modification`, `Guide de maintenance : ajout de nouveaux types de rendez-vous, gestion de la facturation Greminders`] },
-      ] as ContentSection[],
+    content: [
+      { type: 'heading', text: `Vue d'ensemble` },
+      { type: 'paragraph', text: `Mise en place de Greminders pour automatiser l'envoi de rappels SMS et email aux prospects et clients avant leurs rendez-vous avec ADN POTENTIEL. Objectif : réduire le taux de no-show sur les rendez-vous qualifiés, sans aucun développement technique — entièrement piloté depuis une interface no-code connectée à Google Calendar.` },
+      { type: 'heading', text: `Contexte` },
+      { type: 'paragraph', text: `Dans le cadre du stage, ADN POTENTIEL générait des rendez-vous qualifiés via la prospection BTP enrichie. Le problème : un certain taux de no-show représentait un manque à gagner direct — temps de préparation perdu, créneau non récupérable, relation commerciale fragilisée.` },
+      { type: 'paragraph', text: `Greminders est un outil SaaS no-code qui s'intègre directement au calendrier Google (via OAuth2) et envoie automatiquement des rappels personnalisés — SMS, email ou WhatsApp — aux participants d'un rendez-vous, à des délais paramétrables.` },
+      { type: 'heading', text: `Problème` },
+      { type: 'list', items: [`Taux de no-show non négligeable sur les rendez-vous qualifiés`, `Rappels manuels chronophages pour Loïc (appels ou SMS envoyés à la main)`, `Aucune relance automatique en cas d'absence de confirmation`, `Perte de temps et de crédibilité sur des créneaux non honorés`] },
+      { type: 'heading', text: `Solution` },
+      { type: 'paragraph', text: `Configuration de Greminders connecté au Google Calendar d'ADN POTENTIEL :` },
+      { type: 'list', items: [`Rappel automatique J-1 : SMS + email envoyé 24h avant le rendez-vous`, `Rappel automatique H-1 : SMS envoyé 1h avant`, `Messages personnalisés : textes adaptés au contexte ADN POTENTIEL — ton professionnel, nom du prospect inclus dynamiquement`, `Lien de confirmation / annulation : le prospect peut confirmer ou annuler directement depuis le SMS, en un clic`, `Notification automatique à Loïc si un prospect annule via le lien`] },
+      { type: 'heading', text: `Résultats clés` },
+      { type: 'list', items: [`✅ Rappels SMS/email entièrement automatisés (0 action manuelle requise de Loïc)`, `✅ Messages personnalisés avec nom du prospect et contexte du rendez-vous`, `✅ Lien de confirmation/annulation intégré dans chaque rappel`, `✅ Notification automatique à Loïc en cas d'annulation`, `✅ Mise en place rapide sans développement`] },
+      { type: 'heading', text: `Médias` },
+      { type: 'heading', text: `Fonctionnalités configurées` },
+      { type: 'list', items: [`Intégration Google Calendar — Connexion OAuth2 : chaque nouveau rendez-vous créé dans le calendrier ADN POTENTIEL déclenche automatiquement la séquence de rappels`, `Rappel J-1 (SMS + email) — Envoyé 24h avant, avec nom du prospect, date, heure et contexte du RDV`, `Rappel H-1 (SMS) — Dernier rappel 1h avant pour maximiser la présence`, `Confirmation / annulation — Lien intégré dans le SMS permettant au prospect de répondre en un clic`, `Messages personnalisés — Templates rédigés avec le ton ADN POTENTIEL, variables dynamiques (prénom, date, heure, lieu/visio)`, `Notification annulation — Loïc est automatiquement alerté si un prospect annule, pour récupérer le créneau`] },
+      { type: 'heading', text: `Configuration mise en place` },
+      { type: 'heading', text: `Qualité & contrôles` },
+      { type: 'list', items: [`Aucun rappel envoyé si le rendez-vous est annulé dans Google Calendar`, `Vérification du numéro de téléphone avant envoi (format FR)`, `Logs des envois accessibles dans Greminders (statut : envoyé / délivré / échec)`, `Procédure documentée pour modifier les templates de messages`] },
+      { type: 'heading', text: `Documentation livrée` },
+      { type: 'list', items: [`Guide de prise en main Greminders (connexion Google Calendar, création de workflows de rappel)`, `Templates SMS/email utilisés et procédure de modification`, `Guide de maintenance : ajout de nouveaux types de rendez-vous, gestion de la facturation Greminders`] },
+    ] as ContentSection[],
   },
   {
     id: "veille-ia-automatisee-n8n",
@@ -543,72 +541,73 @@ export const projects = [
       { url: "/projects/veille-ia-n8n-workflow.png", caption: "Workflow n8n — vue d'ensemble" },
       { url: "/projects/veille-ia-gmail-rapport.png", caption: "Exemple de rapport HTML reçu par email" }
     ] as Array<{ url: string; caption?: string }>,
-      content: [
-        { type: 'heading', text: `Vue d’ensemble` },
-        { type: 'paragraph', text: `Workflow n8n que j’ai conçu pour automatiser ma veille IA. Chaque matin, un agent orchestre des recherches multi‑sources, génère un rapport structuré, le met en forme en HTML et me l’envoie par email. L’idée: rester à jour sans y passer 1 à 2 heures par jour.` },
-        { type: 'heading', text: `Contexte` },
-        { type: 'paragraph', text: `Je suis parti d’un besoin très personnel. Chaque jour, je voulais suivre l’IA sérieusement, mais je me surprenais à ouvrir dix onglets, à scroller X/Twitter, Reddit et des blogs, puis à perdre 45 à 90 minutes pour, au final, n’avoir qu’une vision parcellaire. La sensation de « manquer quelque chose » était constante. J’avais besoin d’un garde‑fou: un rendez‑vous quotidien, fiable, qui filtre le bruit et met en avant l’essentiel.` },
-        { type: 'paragraph', text: `Ce que je vivais concrètement avant ce workflow:` },
-        { type: 'list', items: [`J’ouvrais Perplexity, X/Twitter, quelques newsletters, et je faisais un collage mental.`, `Je ne classais pas vraiment l’info. Le lendemain, impossible de comparer ou de mesurer une tendance.`, `Les prix des API changeant vite, je n’avais jamais un tableau à jour pour décider quoi tester.`] },
-        { type: 'paragraph', text: `Ce que je voulais obtenir à la place:` },
-        { type: 'list', items: [`Un rapport qui arrive tout seul à 7h, pendant que je prends mon café.`, `Des rubriques fixes pour ancrer les repères: Robotique, Grandes entreprises, Startups, Prix API.`, `Des sources croisées web + social pour éviter l’angle mort.`, `Un format HTML propre, lisible sur mobile, archivable dans ma boîte mail.`] },
-        { type: 'paragraph', text: `Pourquoi j’ai choisi n8n et un agent IA:` },
-        { type: 'list', items: [`n8n me permet d’itérer visuellement et de brancher facilement Perplexity et Grok.`, `Un agent IA (GPT‑4o‑mini) peut orchestrer la veille, prioriser et reformuler pour que le rapport soit synthétique mais actionnable.`, `Le nœud Code me donne la main pour transformer un Markdown bien structuré en HTML stylé avant envoi Gmail.`] },
-        { type: 'paragraph', text: `Mes critères de réussite (simples et mesurables):` },
-        { type: 'list', items: [`Temps d’effort quotidien: 0 minute. Tout est en push.`, `Taux de lecture: je lis le rapport en < 10 minutes, tous les jours.`, `Signal > bruit: au moins 3 items vraiment utiles par jour, pas une liste brute de liens.`] },
-        { type: 'paragraph', text: `En pratique, j’ai itéré sur les prompts, réduit le nombre de résultats Perplexity, cadré les comptes X et imposé une structure stable. Aujourd’hui, je reçois un rapport qui me permet de décider rapidement quoi creuser, sans me noyer ni y passer ma matinée.` },
-        { type: 'list', items: [`Trop d’annonces et de sources, pas de cadre pour prioriser`, `Temps perdu à compiler, reformater, classer par thèmes`, `Pas de synthèse quotidienne reçue automatiquement`] },
-        { type: 'heading', text: `Solution` },
-        { type: 'list', items: [`Un workflow n8n planifié à 7h qui:`] },
-        { type: 'heading', text: `Résultats clés` },
-        { type: 'list', items: [`Veille quotidienne en 0 minute d’effort`, `Rapport structuré et comparable jour après jour`, `Vue multi‑sources: web + réseaux sociaux + tableau comparatif prix API`] },
-        { type: 'heading', text: `Médias` },
-        { type: 'heading', text: `Vidéo démo` },
-        { type: 'heading', text: `Captures d’écran` },
-        { type: 'list', items: [`Aperçu du workflow n8n`] },
-        { type: 'list', items: [`Extrait de rapport HTML reçu`] },
-        { type: 'heading', text: `Architecture technique` },
-        { type: 'heading', text: `Schéma du workflow` },
-        { type: 'code', text: `Schedule (7:00)
+    content: [
+      { type: 'heading', text: `Vue d’ensemble` },
+      { type: 'paragraph', text: `Workflow n8n que j’ai conçu pour automatiser ma veille IA. Chaque matin, un agent orchestre des recherches multi‑sources, génère un rapport structuré, le met en forme en HTML et me l’envoie par email. L’idée: rester à jour sans y passer 1 à 2 heures par jour.` },
+      { type: 'heading', text: `Contexte` },
+      { type: 'paragraph', text: `Je suis parti d’un besoin très personnel. Chaque jour, je voulais suivre l’IA sérieusement, mais je me surprenais à ouvrir dix onglets, à scroller X/Twitter, Reddit et des blogs, puis à perdre 45 à 90 minutes pour, au final, n’avoir qu’une vision parcellaire. La sensation de « manquer quelque chose » était constante. J’avais besoin d’un garde‑fou: un rendez‑vous quotidien, fiable, qui filtre le bruit et met en avant l’essentiel.` },
+      { type: 'paragraph', text: `Ce que je vivais concrètement avant ce workflow:` },
+      { type: 'list', items: [`J’ouvrais Perplexity, X/Twitter, quelques newsletters, et je faisais un collage mental.`, `Je ne classais pas vraiment l’info. Le lendemain, impossible de comparer ou de mesurer une tendance.`, `Les prix des API changeant vite, je n’avais jamais un tableau à jour pour décider quoi tester.`] },
+      { type: 'paragraph', text: `Ce que je voulais obtenir à la place:` },
+      { type: 'list', items: [`Un rapport qui arrive tout seul à 7h, pendant que je prends mon café.`, `Des rubriques fixes pour ancrer les repères: Robotique, Grandes entreprises, Startups, Prix API.`, `Des sources croisées web + social pour éviter l’angle mort.`, `Un format HTML propre, lisible sur mobile, archivable dans ma boîte mail.`] },
+      { type: 'paragraph', text: `Pourquoi j’ai choisi n8n et un agent IA:` },
+      { type: 'list', items: [`n8n me permet d’itérer visuellement et de brancher facilement Perplexity et Grok.`, `Un agent IA (GPT‑4o‑mini) peut orchestrer la veille, prioriser et reformuler pour que le rapport soit synthétique mais actionnable.`, `Le nœud Code me donne la main pour transformer un Markdown bien structuré en HTML stylé avant envoi Gmail.`] },
+      { type: 'paragraph', text: `Mes critères de réussite (simples et mesurables):` },
+      { type: 'list', items: [`Temps d’effort quotidien: 0 minute. Tout est en push.`, `Taux de lecture: je lis le rapport en < 10 minutes, tous les jours.`, `Signal > bruit: au moins 3 items vraiment utiles par jour, pas une liste brute de liens.`] },
+      { type: 'paragraph', text: `En pratique, j’ai itéré sur les prompts, réduit le nombre de résultats Perplexity, cadré les comptes X et imposé une structure stable. Aujourd’hui, je reçois un rapport qui me permet de décider rapidement quoi creuser, sans me noyer ni y passer ma matinée.` },
+      { type: 'list', items: [`Trop d’annonces et de sources, pas de cadre pour prioriser`, `Temps perdu à compiler, reformater, classer par thèmes`, `Pas de synthèse quotidienne reçue automatiquement`] },
+      { type: 'heading', text: `Solution` },
+      { type: 'list', items: [`Un workflow n8n planifié à 7h qui:`] },
+      { type: 'heading', text: `Résultats clés` },
+      { type: 'list', items: [`Veille quotidienne en 0 minute d’effort`, `Rapport structuré et comparable jour après jour`, `Vue multi‑sources: web + réseaux sociaux + tableau comparatif prix API`] },
+      { type: 'heading', text: `Médias` },
+      { type: 'heading', text: `Vidéo démo` },
+      { type: 'heading', text: `Captures d’écran` },
+      { type: 'list', items: [`Aperçu du workflow n8n`] },
+      { type: 'list', items: [`Extrait de rapport HTML reçu`] },
+      { type: 'heading', text: `Architecture technique` },
+      { type: 'heading', text: `Schéma du workflow` },
+      {
+        type: 'code', text: `Schedule (7:00)
   → AI Agent (GPT‑4o‑mini)
      ├─ Perplexity Deep Research (7 jours, max 20)
      ├─ Grok X Search (X, 24h, comptes ciblés)
      └─ Agrégation et structuration par thèmes
   → Code (JS) Markdown → HTML
   → Gmail (envoi formaté)` },
-        { type: 'heading', text: `Stack` },
-        { type: 'list', items: [`Orchestration: n8n`, `Agent IA: OpenAI GPT‑4o‑mini`, `Recherche web: Perplexity Sonar Deep Research`, `Recherche social: xAI Grok 3 Latest (Twitter/X)`, `Email: Gmail API (OAuth2)`, `Transformation: JavaScript (nœud Code)`] },
-        { type: 'heading', text: `Nœuds principaux n8n` },
-        { type: 'paragraph', text: `1) Schedule Trigger — Exécution quotidienne 7h` },
-        { type: 'paragraph', text: `2) AI Agent — Orchestration, choix outils et structure` },
-        { type: 'paragraph', text: `3) HTTP Request Tool — Perplexity (web, 7 jours, 20 résultats)` },
-        { type: 'paragraph', text: `4) HTTP Request Tool — Grok X (tweets 24h, comptes @minchoi, @hasantoxr, @heyrobinai)` },
-        { type: 'paragraph', text: `5) Code (JS) — Conversion Markdown → HTML + styles` },
-        { type: 'paragraph', text: `6) Gmail — Envoi du rapport HTML` },
-        { type: 'heading', text: `Rubriques du rapport` },
-        { type: 'list', items: [`IA et Robotique`, `Grandes entreprises IA`, `Startups et écosystème`, `Tableau comparatif des prix API`] },
-        { type: 'paragraph', text: `Chacune contient des points clés avec sources et dates pour situer rapidement les annonces.` },
-        { type: 'heading', text: `Installation rapide` },
-        { type: 'paragraph', text: `Prérequis:` },
-        { type: 'list', items: [`n8n (Cloud ou self‑hosted)`, `Clés API: OpenAI, Perplexity, xAI (Grok)`, `OAuth2 Gmail configuré`] },
-        { type: 'paragraph', text: `Étapes:` },
-        { type: 'paragraph', text: `1) Importer le fichier Veille IA.json dans n8n` },
-        { type: 'paragraph', text: `2) Renseigner les credentials sur chaque nœud (OpenAI, Perplexity, xAI, Gmail)` },
-        { type: 'paragraph', text: `3) Personnaliser le destinataire Gmail et, si besoin, l’heure du Schedule` },
-        { type: 'paragraph', text: `4) Activer le workflow` },
-        { type: 'heading', text: `Utilisation` },
-        { type: 'list', items: [`Auto: le rapport arrive chaque jour à 7h`, `Manuel: bouton "Execute Workflow" dans n8n pour tester à la demande`] },
-        { type: 'heading', text: `Format du rapport` },
-        { type: 'list', items: [`Markdown structuré rendu en HTML`, `Liens sources et sections fixes pour la comparaison quotidienne`, `Tableau prix API par type de modèle avec ordre et notation`] },
-        { type: 'heading', text: `Configuration avancée` },
-        { type: 'list', items: [`Comptes X suivis: éditer la liste des handles dans le nœud Grok`, `Fenêtre temporelle Perplexity: ajuster from_date / to_date et max_results`, `Heure d’exécution: modifier la config du Schedule Trigger`, `Prompt de l’agent: adapter les thèmes, le ton et la mise en forme`] },
-        { type: 'heading', text: `Dépannage et coûts` },
-        { type: 'list', items: [`Vérifier que le workflow est actif et que les credentials sont valides`, `Logs n8n pour diagnostiquer les appels API`, `Coût par jour estimé: $0.08 – $0.17 selon volume; mensuel: $2.40 – $5.10`] },
-        { type: 'heading', text: `Roadmap` },
-        { type: 'list', items: [`Stockage des rapports et dashboard historique`, `Filtres personnalisés et export PDF`, `Notifications Slack/Discord`, `Ajout d’autres sources (Reddit, HN, LinkedIn) et multilingue`] },
-        { type: 'heading', text: `Crédits` },
-        { type: 'paragraph', text: `© 2025 — Veille IA automatisée — Workflow n8n` },
-      ] as ContentSection[],
+      { type: 'heading', text: `Stack` },
+      { type: 'list', items: [`Orchestration: n8n`, `Agent IA: OpenAI GPT‑4o‑mini`, `Recherche web: Perplexity Sonar Deep Research`, `Recherche social: xAI Grok 3 Latest (Twitter/X)`, `Email: Gmail API (OAuth2)`, `Transformation: JavaScript (nœud Code)`] },
+      { type: 'heading', text: `Nœuds principaux n8n` },
+      { type: 'paragraph', text: `1) Schedule Trigger — Exécution quotidienne 7h` },
+      { type: 'paragraph', text: `2) AI Agent — Orchestration, choix outils et structure` },
+      { type: 'paragraph', text: `3) HTTP Request Tool — Perplexity (web, 7 jours, 20 résultats)` },
+      { type: 'paragraph', text: `4) HTTP Request Tool — Grok X (tweets 24h, comptes @minchoi, @hasantoxr, @heyrobinai)` },
+      { type: 'paragraph', text: `5) Code (JS) — Conversion Markdown → HTML + styles` },
+      { type: 'paragraph', text: `6) Gmail — Envoi du rapport HTML` },
+      { type: 'heading', text: `Rubriques du rapport` },
+      { type: 'list', items: [`IA et Robotique`, `Grandes entreprises IA`, `Startups et écosystème`, `Tableau comparatif des prix API`] },
+      { type: 'paragraph', text: `Chacune contient des points clés avec sources et dates pour situer rapidement les annonces.` },
+      { type: 'heading', text: `Installation rapide` },
+      { type: 'paragraph', text: `Prérequis:` },
+      { type: 'list', items: [`n8n (Cloud ou self‑hosted)`, `Clés API: OpenAI, Perplexity, xAI (Grok)`, `OAuth2 Gmail configuré`] },
+      { type: 'paragraph', text: `Étapes:` },
+      { type: 'paragraph', text: `1) Importer le fichier Veille IA.json dans n8n` },
+      { type: 'paragraph', text: `2) Renseigner les credentials sur chaque nœud (OpenAI, Perplexity, xAI, Gmail)` },
+      { type: 'paragraph', text: `3) Personnaliser le destinataire Gmail et, si besoin, l’heure du Schedule` },
+      { type: 'paragraph', text: `4) Activer le workflow` },
+      { type: 'heading', text: `Utilisation` },
+      { type: 'list', items: [`Auto: le rapport arrive chaque jour à 7h`, `Manuel: bouton "Execute Workflow" dans n8n pour tester à la demande`] },
+      { type: 'heading', text: `Format du rapport` },
+      { type: 'list', items: [`Markdown structuré rendu en HTML`, `Liens sources et sections fixes pour la comparaison quotidienne`, `Tableau prix API par type de modèle avec ordre et notation`] },
+      { type: 'heading', text: `Configuration avancée` },
+      { type: 'list', items: [`Comptes X suivis: éditer la liste des handles dans le nœud Grok`, `Fenêtre temporelle Perplexity: ajuster from_date / to_date et max_results`, `Heure d’exécution: modifier la config du Schedule Trigger`, `Prompt de l’agent: adapter les thèmes, le ton et la mise en forme`] },
+      { type: 'heading', text: `Dépannage et coûts` },
+      { type: 'list', items: [`Vérifier que le workflow est actif et que les credentials sont valides`, `Logs n8n pour diagnostiquer les appels API`, `Coût par jour estimé: $0.08 – $0.17 selon volume; mensuel: $2.40 – $5.10`] },
+      { type: 'heading', text: `Roadmap` },
+      { type: 'list', items: [`Stockage des rapports et dashboard historique`, `Filtres personnalisés et export PDF`, `Notifications Slack/Discord`, `Ajout d’autres sources (Reddit, HN, LinkedIn) et multilingue`] },
+      { type: 'heading', text: `Crédits` },
+      { type: 'paragraph', text: `© 2025 — Veille IA automatisée — Workflow n8n` },
+    ] as ContentSection[],
   },
   {
     id: "excel-vba-automatisation-relances",
@@ -650,31 +649,32 @@ export const projects = [
     media: [
       { url: "/projects/relances-interface.png", caption: "Interface d'upload et métriques" }
     ] as Array<{ url: string; caption?: string }>,
-      content: [
-        { type: 'heading', text: `Vue d’ensemble` },
-        { type: 'paragraph', text: `Suite d’automatisation des relances clients que j’ai conçue pour BIGOT Matériaux. J’ai combiné un traitement de données robuste (Python/FastAPI + Pandas + OpenPyXL) et une interface d’analyse simple (React + Chart.js) pour passer d’un Excel manuel chronophage à un flux rapide, fiable et standardisé.` },
-        { type: 'heading', text: `Contexte` },
-        { type: 'paragraph', text: `Je suis parti d’une situation très concrète chez BIGOT Matériaux. L’été 2025, je voyais mon père passer des heures à préparer les relances clients : extraire des données brutes depuis l’AS/400, ouvrir Excel, trier par client puis par mois, recalculer les totaux, repérer à la main les doublons… À la fin de la journée, on avait un fichier exploitable, mais le chemin pour y arriver était long, fragile et franchement pénible.` },
-        { type: 'paragraph', text: `Je tenais à garder Excel comme sortie, parce que c’est l’outil familier de l’équipe et qu’il s’intègre bien au quotidien (impression, partage, annotations rapides). En revanche, je voulais supprimer tout ce qui relève du « travail mécanique ». Mon idée : automatiser la préparation des données en amont, pour que le temps humain soit consacré à la décision (qui relancer ? avec quel message ? à quelle date ?) plutôt qu’à la mise en forme.` },
-        { type: 'paragraph', text: `Concrètement, j’ai listé ce qui me faisait perdre le plus de temps :` },
-        { type: 'list', items: [`le tri par client et par période, avec des copier‑coller sources d’erreurs`, `la cohérence des totaux, qu’il fallait revérifier à chaque itération`, `la chasse aux doublons, sur plusieurs colonnes, jamais agréable à faire à la main`, `la mise en page, pour livrer un fichier prêt à imprimer et toujours au même format`] },
-        { type: 'paragraph', text: `À partir de là, j’ai conçu un petit service backend (FastAPI + Pandas) pour faire tout le « sale boulot » : parser, normaliser, agréger, contrôler. Et j’ai ajouté une UI React légère qui me permet d’uploader un fichier, de voir instantanément les métriques utiles (montant total, clients en relance, répartition par vendeur/niveau), puis de télécharger un Excel propre et standardisé. Mon objectif est simple : garder la simplicité d’Excel en bout de chaîne, tout en rendant la préparation tellement rapide et fiable que je n’ai plus à y penser.` },
-        { type: 'heading', text: `Problème` },
-        { type: 'list', items: [`Données brutes hétérogènes issues d’AS/400, difficilement exploitables`, `Tri et mises en forme manuels très longs et sources d’erreurs`, `Aucune vue synthétique pour piloter les relances (vendeur, niveau, période)`] },
-        { type: 'heading', text: `Solution` },
-        { type: 'list', items: [`Un backend FastAPI qui parse, normalise et agrège les données (Pandas), puis génère un Excel formaté (OpenPyXL)`, `Un frontend React léger pour uploader les fichiers, voir les métriques et télécharger les résultats`, `Des règles de validation et de contrôle: minimum de colonnes, formats de date, doublons sur clé multi‑champs`] },
-        { type: 'heading', text: `Résultats clés` },
-        { type: 'list', items: [`Temps de préparation des relances divisé par environ 4`, `Standardisation des fichiers envoyés et meilleure traçabilité`, `Vision immédiate par vendeur et par niveau de relance`] },
-        { type: 'heading', text: `Médias` },
-        { type: 'heading', text: `Galerie d’écrans` },
-        { type: 'list', items: [`Interface d’upload et métriques`] },
-        { type: 'list', items: [`Excel généré (groupes client/noms et client/mois)`] },
-        { type: 'heading', text: `Fonctionnalités principales` },
-        { type: 'list', items: [`Traitement des données`, `Génération Excel prête à l’impression`, `Analyse et pilotage`] },
-        { type: 'heading', text: `Architecture technique` },
-        { type: 'list', items: [`Backend: FastAPI, Uvicorn, Pandas, Pydantic, python‑multipart, OpenPyXL`, `Frontend: React 18, Bootstrap 5, Chart.js (+ react‑chartjs‑2), Axios`] },
-        { type: 'paragraph', text: `Arborescence simplifiée:` },
-        { type: 'code', text: `Automatisation Relances clients/
+    content: [
+      { type: 'heading', text: `Vue d’ensemble` },
+      { type: 'paragraph', text: `Suite d’automatisation des relances clients que j’ai conçue pour BIGOT Matériaux. J’ai combiné un traitement de données robuste (Python/FastAPI + Pandas + OpenPyXL) et une interface d’analyse simple (React + Chart.js) pour passer d’un Excel manuel chronophage à un flux rapide, fiable et standardisé.` },
+      { type: 'heading', text: `Contexte` },
+      { type: 'paragraph', text: `Je suis parti d’une situation très concrète chez BIGOT Matériaux. L’été 2025, je voyais mon père passer des heures à préparer les relances clients : extraire des données brutes depuis l’AS/400, ouvrir Excel, trier par client puis par mois, recalculer les totaux, repérer à la main les doublons… À la fin de la journée, on avait un fichier exploitable, mais le chemin pour y arriver était long, fragile et franchement pénible.` },
+      { type: 'paragraph', text: `Je tenais à garder Excel comme sortie, parce que c’est l’outil familier de l’équipe et qu’il s’intègre bien au quotidien (impression, partage, annotations rapides). En revanche, je voulais supprimer tout ce qui relève du « travail mécanique ». Mon idée : automatiser la préparation des données en amont, pour que le temps humain soit consacré à la décision (qui relancer ? avec quel message ? à quelle date ?) plutôt qu’à la mise en forme.` },
+      { type: 'paragraph', text: `Concrètement, j’ai listé ce qui me faisait perdre le plus de temps :` },
+      { type: 'list', items: [`le tri par client et par période, avec des copier‑coller sources d’erreurs`, `la cohérence des totaux, qu’il fallait revérifier à chaque itération`, `la chasse aux doublons, sur plusieurs colonnes, jamais agréable à faire à la main`, `la mise en page, pour livrer un fichier prêt à imprimer et toujours au même format`] },
+      { type: 'paragraph', text: `À partir de là, j’ai conçu un petit service backend (FastAPI + Pandas) pour faire tout le « sale boulot » : parser, normaliser, agréger, contrôler. Et j’ai ajouté une UI React légère qui me permet d’uploader un fichier, de voir instantanément les métriques utiles (montant total, clients en relance, répartition par vendeur/niveau), puis de télécharger un Excel propre et standardisé. Mon objectif est simple : garder la simplicité d’Excel en bout de chaîne, tout en rendant la préparation tellement rapide et fiable que je n’ai plus à y penser.` },
+      { type: 'heading', text: `Problème` },
+      { type: 'list', items: [`Données brutes hétérogènes issues d’AS/400, difficilement exploitables`, `Tri et mises en forme manuels très longs et sources d’erreurs`, `Aucune vue synthétique pour piloter les relances (vendeur, niveau, période)`] },
+      { type: 'heading', text: `Solution` },
+      { type: 'list', items: [`Un backend FastAPI qui parse, normalise et agrège les données (Pandas), puis génère un Excel formaté (OpenPyXL)`, `Un frontend React léger pour uploader les fichiers, voir les métriques et télécharger les résultats`, `Des règles de validation et de contrôle: minimum de colonnes, formats de date, doublons sur clé multi‑champs`] },
+      { type: 'heading', text: `Résultats clés` },
+      { type: 'list', items: [`Temps de préparation des relances divisé par environ 4`, `Standardisation des fichiers envoyés et meilleure traçabilité`, `Vision immédiate par vendeur et par niveau de relance`] },
+      { type: 'heading', text: `Médias` },
+      { type: 'heading', text: `Galerie d’écrans` },
+      { type: 'list', items: [`Interface d’upload et métriques`] },
+      { type: 'list', items: [`Excel généré (groupes client/noms et client/mois)`] },
+      { type: 'heading', text: `Fonctionnalités principales` },
+      { type: 'list', items: [`Traitement des données`, `Génération Excel prête à l’impression`, `Analyse et pilotage`] },
+      { type: 'heading', text: `Architecture technique` },
+      { type: 'list', items: [`Backend: FastAPI, Uvicorn, Pandas, Pydantic, python‑multipart, OpenPyXL`, `Frontend: React 18, Bootstrap 5, Chart.js (+ react‑chartjs‑2), Axios`] },
+      { type: 'paragraph', text: `Arborescence simplifiée:` },
+      {
+        type: 'code', text: `Automatisation Relances clients/
 ├── backend/                 # FastAPI + Pandas + OpenPyXL
 │   ├── main.py              # Endpoints API
 │   ├── data_processor.py    # Parsing/validation/agrégation
@@ -693,24 +693,24 @@ export const projects = [
 ├── index 2.html             # Version standalone
 ├── process_excel.py         # Script Python standalone
 └── run_project.bat          # Démarrage automatique (Windows)` },
-        { type: 'heading', text: `Flux` },
-        { type: 'list', items: [`Upload fichier → API FastAPI → parsing/validation → agrégation → Excel formaté → téléchargement`, `Tableau de bord → KPIs temps réel → graphiques par vendeur/niveau`] },
-        { type: 'heading', text: `Endpoints (extrait)` },
-        { type: 'list', items: [`POST /process: CSV en form‑data → Excel formaté`, `POST /api/process: Upload à largeur fixe → traitement → Excel`, `GET /api/download-csv: export CSV des données traitées`, `GET /docs et /redoc: documentation interactive`] },
-        { type: 'heading', text: `Utilisation rapide` },
-        { type: 'paragraph', text: `1) Lancer le backend sur le port 8000, puis le frontend sur 3000` },
-        { type: 'paragraph', text: `2) Uploader le fichier CSV/Excel de relances` },
-        { type: 'paragraph', text: `3) Vérifier les métriques et graphiques` },
-        { type: 'paragraph', text: `4) Télécharger l’Excel formaté et envoyer les relances` },
-        { type: 'heading', text: `Installation (résumé)` },
-        { type: 'list', items: [`Prérequis: Python 3.7+, Node.js 14+, pip`, `Script automatique Windows: run_project.bat`, `Manuel:`] },
-        { type: 'heading', text: `Qualité et contrôles` },
-        { type: 'list', items: [`Vérification des formats de date et des montants`, `Contrôle des totaux par client et cohérence vs sommaire`, `Surbrillance des doublons et revue manuelle ciblée`] },
-        { type: 'heading', text: `Roadmap` },
-        { type: 'list', items: [`v2.0: Persistance Postgres, authentification, historique, notifications`, `v2.1: Filtres avancés, export PDF, API tokens, logs détaillés, tests ≥ 80%`] },
-        { type: 'heading', text: `Crédits` },
-        { type: 'paragraph', text: `© 2025 — Automatisation des relances clients — BIGOT Matériaux` },
-      ] as ContentSection[],
+      { type: 'heading', text: `Flux` },
+      { type: 'list', items: [`Upload fichier → API FastAPI → parsing/validation → agrégation → Excel formaté → téléchargement`, `Tableau de bord → KPIs temps réel → graphiques par vendeur/niveau`] },
+      { type: 'heading', text: `Endpoints (extrait)` },
+      { type: 'list', items: [`POST /process: CSV en form‑data → Excel formaté`, `POST /api/process: Upload à largeur fixe → traitement → Excel`, `GET /api/download-csv: export CSV des données traitées`, `GET /docs et /redoc: documentation interactive`] },
+      { type: 'heading', text: `Utilisation rapide` },
+      { type: 'paragraph', text: `1) Lancer le backend sur le port 8000, puis le frontend sur 3000` },
+      { type: 'paragraph', text: `2) Uploader le fichier CSV/Excel de relances` },
+      { type: 'paragraph', text: `3) Vérifier les métriques et graphiques` },
+      { type: 'paragraph', text: `4) Télécharger l’Excel formaté et envoyer les relances` },
+      { type: 'heading', text: `Installation (résumé)` },
+      { type: 'list', items: [`Prérequis: Python 3.7+, Node.js 14+, pip`, `Script automatique Windows: run_project.bat`, `Manuel:`] },
+      { type: 'heading', text: `Qualité et contrôles` },
+      { type: 'list', items: [`Vérification des formats de date et des montants`, `Contrôle des totaux par client et cohérence vs sommaire`, `Surbrillance des doublons et revue manuelle ciblée`] },
+      { type: 'heading', text: `Roadmap` },
+      { type: 'list', items: [`v2.0: Persistance Postgres, authentification, historique, notifications`, `v2.1: Filtres avancés, export PDF, API tokens, logs détaillés, tests ≥ 80%`] },
+      { type: 'heading', text: `Crédits` },
+      { type: 'paragraph', text: `© 2025 — Automatisation des relances clients — BIGOT Matériaux` },
+    ] as ContentSection[],
   },
   {
     id: "as400-beta-2-automatisation-comptable",
@@ -749,50 +749,51 @@ export const projects = [
       "Importance de l'ergonomie familière pour l'adoption"
     ],
     media: [] as Array<{ url: string; caption?: string }>,
-      content: [
-        { type: 'heading', text: `Vue d’ensemble` },
-        { type: 'paragraph', text: `Application de comptabilité moderne, inspirée de l’ergonomie AS/400, développée pour le Touquet Athletic Club (TAC). Elle reprend les usages clavier familiers tout en ajoutant automatisation, conformité légale et analyses par IA.` },
-        { type: 'heading', text: `Contexte` },
-        { type: 'paragraph', text: `À l’été 2025, j’ai aidé mon père à tenir la comptabilité du Touquet Athletic Club (TAC). Historiquement, tout était fait sur un logiciel ancien de type AS/400. Je passais des heures à ressaisir des opérations à partir de relevés bancaires PDF, avec des écritures très répétitives d’un mois sur l’autre. J’ai vite constaté trois choses :` },
-        { type: 'list', items: [`Beaucoup de temps perdu sur de la saisie mécanique et peu de valeur ajoutée`, `Des risques d’erreurs (copier‑coller, inversions Débit/Crédit, comptes mal choisis)`, `Une ergonomie clavier efficace mais peu accessible pour d’autres personnes de l’équipe`] },
-        { type: 'paragraph', text: `Mon objectif a été de garder ce qui fonctionne pour nous — la navigation rapide au clavier façon AS/400 — tout en modernisant le reste : automatiser les écritures récurrentes, importer les relevés bancaires au format PDF, sécuriser les données et générer en un clic les états légaux (FEC, Balance, Grand Livre, TVA). Pour accélérer les contrôles, j’ai aussi ajouté un assistant IA qui explique, alerte et propose des corrections.` },
-        { type: 'paragraph', text: `J’ai donc conçu et développé une application web « look & feel AS/400 » qui reprend nos réflexes (fond noir, texte vert, numérotation des options, validation à l’Entrée) mais s’appuie sur une architecture moderne (React/TypeScript, API Node/Express, Supabase/PostgreSQL, service IA Claude). L’idée: réduire nettement le temps passé sur la tenue courante et fiabiliser la production des états, tout en restant immédiatement utilisable par quelqu’un d’habitué à l’AS/400.` },
-        { type: 'heading', text: `Problème` },
-        { type: 'list', items: [`Saisie manuelle et redondante des écritures à partir de PDF.`, `Interfaces peu accessibles et peu tolérantes aux erreurs.`, `Difficulté à produire rapidement des états conformes (FEC, Balance, Grand Livre, TVA).`, `Perte de temps pour une personne déjà prise par d’autres responsabilités.`] },
-        { type: 'heading', text: `Solution` },
-        { type: 'list', items: [`Interface « look & feel » AS/400: fond noir, texte vert, navigation clavier, numéros d’options.`, `Saisie en partie double avec validations et lettrage automatique.`, `Automatisation des écritures récurrentes et import bancaire OCR.`, `Génération des rapports légaux en un clic: FEC, Balance, Grand Livre, TVA.`, `Assistant IA (Claude) pour analyser, expliquer et détecter des anomalies.`, `Multi‑utilisateurs sécurisé (Supabase Auth + RLS) pour séparer les sociétés.`] },
-        { type: 'heading', text: `Résultats clés` },
-        { type: 'list', items: [`Environ 60% de temps de saisie économisé sur les périodes récurrentes.`, `Diminution des erreurs grâce aux validations et à l’IA d’assistance.`, `Meilleure accessibilité pour des utilisateurs non experts.`] },
-        { type: 'heading', text: `Médias` },
-        { type: 'heading', text: `Vidéo démo` },
-        { type: 'heading', text: `Galerie d’écrans` },
-        { type: 'list', items: [`Page d’accueil / menu principal`, `Saisie d’écritures en partie double`, `Lettrage et journaux AC/VE/BQ/OD/AN`, `Rapports: Balance, Grand Livre, FEC, TVA`, `Assistant IA: analyses et détection d’anomalies`] },
-        { type: 'heading', text: `Fonctionnalités principales` },
-        { type: 'list', items: [`Authentification et multi‑sociétés`, `Plan comptable et journaux`, `Écritures et clôtures`, `Rapports et conformité`, `Import bancaire et automatisation`, `Assistant IA`, `Tableau de bord`] },
-        { type: 'heading', text: `Architecture technique` },
-        { type: 'list', items: [`Frontend: React 18 + TypeScript, Vite, Tailwind CSS, React Router, TanStack Query`, `Backend API: Node.js + Express (TypeScript)`, `IA: Service dédié intégrant Claude via Anthropic SDK`, `Base de données: PostgreSQL (hébergée via Supabase)`, `Déploiement: Frontend sur Vercel/Netlify. Backend(s) sur Render/Railway`] },
-        { type: 'paragraph', text: `Arborescence simplifiée:` },
-        { type: 'code', text: `AS400 v1/
+    content: [
+      { type: 'heading', text: `Vue d’ensemble` },
+      { type: 'paragraph', text: `Application de comptabilité moderne, inspirée de l’ergonomie AS/400, développée pour le Touquet Athletic Club (TAC). Elle reprend les usages clavier familiers tout en ajoutant automatisation, conformité légale et analyses par IA.` },
+      { type: 'heading', text: `Contexte` },
+      { type: 'paragraph', text: `À l’été 2025, j’ai aidé mon père à tenir la comptabilité du Touquet Athletic Club (TAC). Historiquement, tout était fait sur un logiciel ancien de type AS/400. Je passais des heures à ressaisir des opérations à partir de relevés bancaires PDF, avec des écritures très répétitives d’un mois sur l’autre. J’ai vite constaté trois choses :` },
+      { type: 'list', items: [`Beaucoup de temps perdu sur de la saisie mécanique et peu de valeur ajoutée`, `Des risques d’erreurs (copier‑coller, inversions Débit/Crédit, comptes mal choisis)`, `Une ergonomie clavier efficace mais peu accessible pour d’autres personnes de l’équipe`] },
+      { type: 'paragraph', text: `Mon objectif a été de garder ce qui fonctionne pour nous — la navigation rapide au clavier façon AS/400 — tout en modernisant le reste : automatiser les écritures récurrentes, importer les relevés bancaires au format PDF, sécuriser les données et générer en un clic les états légaux (FEC, Balance, Grand Livre, TVA). Pour accélérer les contrôles, j’ai aussi ajouté un assistant IA qui explique, alerte et propose des corrections.` },
+      { type: 'paragraph', text: `J’ai donc conçu et développé une application web « look & feel AS/400 » qui reprend nos réflexes (fond noir, texte vert, numérotation des options, validation à l’Entrée) mais s’appuie sur une architecture moderne (React/TypeScript, API Node/Express, Supabase/PostgreSQL, service IA Claude). L’idée: réduire nettement le temps passé sur la tenue courante et fiabiliser la production des états, tout en restant immédiatement utilisable par quelqu’un d’habitué à l’AS/400.` },
+      { type: 'heading', text: `Problème` },
+      { type: 'list', items: [`Saisie manuelle et redondante des écritures à partir de PDF.`, `Interfaces peu accessibles et peu tolérantes aux erreurs.`, `Difficulté à produire rapidement des états conformes (FEC, Balance, Grand Livre, TVA).`, `Perte de temps pour une personne déjà prise par d’autres responsabilités.`] },
+      { type: 'heading', text: `Solution` },
+      { type: 'list', items: [`Interface « look & feel » AS/400: fond noir, texte vert, navigation clavier, numéros d’options.`, `Saisie en partie double avec validations et lettrage automatique.`, `Automatisation des écritures récurrentes et import bancaire OCR.`, `Génération des rapports légaux en un clic: FEC, Balance, Grand Livre, TVA.`, `Assistant IA (Claude) pour analyser, expliquer et détecter des anomalies.`, `Multi‑utilisateurs sécurisé (Supabase Auth + RLS) pour séparer les sociétés.`] },
+      { type: 'heading', text: `Résultats clés` },
+      { type: 'list', items: [`Environ 60% de temps de saisie économisé sur les périodes récurrentes.`, `Diminution des erreurs grâce aux validations et à l’IA d’assistance.`, `Meilleure accessibilité pour des utilisateurs non experts.`] },
+      { type: 'heading', text: `Médias` },
+      { type: 'heading', text: `Vidéo démo` },
+      { type: 'heading', text: `Galerie d’écrans` },
+      { type: 'list', items: [`Page d’accueil / menu principal`, `Saisie d’écritures en partie double`, `Lettrage et journaux AC/VE/BQ/OD/AN`, `Rapports: Balance, Grand Livre, FEC, TVA`, `Assistant IA: analyses et détection d’anomalies`] },
+      { type: 'heading', text: `Fonctionnalités principales` },
+      { type: 'list', items: [`Authentification et multi‑sociétés`, `Plan comptable et journaux`, `Écritures et clôtures`, `Rapports et conformité`, `Import bancaire et automatisation`, `Assistant IA`, `Tableau de bord`] },
+      { type: 'heading', text: `Architecture technique` },
+      { type: 'list', items: [`Frontend: React 18 + TypeScript, Vite, Tailwind CSS, React Router, TanStack Query`, `Backend API: Node.js + Express (TypeScript)`, `IA: Service dédié intégrant Claude via Anthropic SDK`, `Base de données: PostgreSQL (hébergée via Supabase)`, `Déploiement: Frontend sur Vercel/Netlify. Backend(s) sur Render/Railway`] },
+      { type: 'paragraph', text: `Arborescence simplifiée:` },
+      {
+        type: 'code', text: `AS400 v1/
 ├── frontend/         # React + TS + Vite
 ├── backend/          # API Node + Express + TS
 ├── supabase/         # Schéma PostgreSQL (schema.sql)
 ├── ai-backend/       # Serveur Assistant IA (Claude)
 └── *.md              # Documentation complète` },
-        { type: 'heading', text: `Flux principaux` },
-        { type: 'list', items: [`Auth → récupération profil et société active → permissions RLS`, `Saisie → validations typées → enregistrement → lettrage`, `Import PDF → OCR → propositions d’écritures → validation utilisateur`, `Rapports → requêtes SQL agrégées → export FEC/Balance/GL/TVA`, `IA → appels au service Claude → résumés, contrôles, alertes`] },
-        { type: 'heading', text: `Schéma BDD (extraits)` },
-        { type: 'list', items: [`companies, accounts, journals, entries, tva_declarations, closures`, `Triggers et contraintes pour cohérence et numérotation`, `Politiques RLS par utilisateur et société`] },
-        { type: 'heading', text: `Sécurité` },
-        { type: 'list', items: [`Auth Supabase + RLS pour isolation multi‑tenant`, `Validation serveur côté API avant écriture en BDD`] },
-        { type: 'heading', text: `Utilisation rapide` },
-        { type: 'list', items: [`Navigation clavier (style AS/400)`, `Parcours conseillé`] },
-        { type: 'heading', text: `Installation (résumé)` },
-        { type: 'list', items: [`Prérequis: Node.js 18+, compte Supabase, clé API Claude`, `Variables d’environnement: VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY, ANTHROPIC_API_KEY, SUPABASE_URL, SUPABASE_SERVICE_KEY`, `Démarrage type:`] },
-        { type: 'heading', text: `Roadmap synthétique` },
-        { type: 'list', items: [`Migration complète React/TypeScript et optimisation via TanStack Query`, `Tests unitaires et E2E`, `Mode hors‑ligne avec synchronisation`] },
-        { type: 'heading', text: `Crédits` },
-        { type: 'paragraph', text: `© 2025 — AS400 Comptabilité TAC Touquet Hockey Club` },
-      ] as ContentSection[],
+      { type: 'heading', text: `Flux principaux` },
+      { type: 'list', items: [`Auth → récupération profil et société active → permissions RLS`, `Saisie → validations typées → enregistrement → lettrage`, `Import PDF → OCR → propositions d’écritures → validation utilisateur`, `Rapports → requêtes SQL agrégées → export FEC/Balance/GL/TVA`, `IA → appels au service Claude → résumés, contrôles, alertes`] },
+      { type: 'heading', text: `Schéma BDD (extraits)` },
+      { type: 'list', items: [`companies, accounts, journals, entries, tva_declarations, closures`, `Triggers et contraintes pour cohérence et numérotation`, `Politiques RLS par utilisateur et société`] },
+      { type: 'heading', text: `Sécurité` },
+      { type: 'list', items: [`Auth Supabase + RLS pour isolation multi‑tenant`, `Validation serveur côté API avant écriture en BDD`] },
+      { type: 'heading', text: `Utilisation rapide` },
+      { type: 'list', items: [`Navigation clavier (style AS/400)`, `Parcours conseillé`] },
+      { type: 'heading', text: `Installation (résumé)` },
+      { type: 'list', items: [`Prérequis: Node.js 18+, compte Supabase, clé API Claude`, `Variables d’environnement: VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY, ANTHROPIC_API_KEY, SUPABASE_URL, SUPABASE_SERVICE_KEY`, `Démarrage type:`] },
+      { type: 'heading', text: `Roadmap synthétique` },
+      { type: 'list', items: [`Migration complète React/TypeScript et optimisation via TanStack Query`, `Tests unitaires et E2E`, `Mode hors‑ligne avec synchronisation`] },
+      { type: 'heading', text: `Crédits` },
+      { type: 'paragraph', text: `© 2025 — AS400 Comptabilité TAC Touquet Hockey Club` },
+    ] as ContentSection[],
   },
   {
     id: "as400-horizontal-application-comptabilite-moderne",
@@ -845,37 +846,38 @@ export const projects = [
       { url: "/projects/as400-v2-assistant-ia-comptable-1.png", caption: "Assistant Comptable IA — interface conversationnelle" },
       { url: "/projects/as400-v2-assistant-ia-comptable-2.png", caption: "Assistant Comptable IA — chat et suggestions contextuelles" }
     ] as Array<{ url: string; caption?: string }>,
-      content: [
-        { type: 'heading', text: `Vue d’ensemble` },
-        { type: 'paragraph', text: `AS400 Horizontal est ma version "v2" de l’application comptable du TAC Hockey Club. J’ai repensé l’UX autour d’une navigation horizontale fluide, ajouté un assistant IA conversationnel et modernisé toute la stack pour en faire une application à la fois pédagogique, rapide et complète.` },
-        { type: 'heading', text: `Contexte` },
-        { type: 'paragraph', text: `Je suis parti d’un besoin très concret au TAC Hockey Club. Pendant l’été, j’ai mis les mains dans la comptabilité opérationnelle et j’ai réalisé à quel point les allers‑retours entre saisie, contrôle et génération d’états me faisaient perdre du temps. Ma v1, calquée sur l’ergonomie AS/400, m’a permis d’aller vite et de respecter nos réflexes clavier, mais je me suis heurté à plusieurs limites au moment d’ajouter des fonctionnalités plus ambitieuses.` },
-        { type: 'paragraph', text: `Ce que je voulais vraiment faire:` },
-        { type: 'list', items: [`Accélérer la saisie « réelle » du quotidien et réduire le taux d’erreur sans complexifier l’outil`, `Rendre la structure comptable lisible pour quelqu’un qui n’est pas expert, avec des repères visuels et des aides contextuelles`, `Centraliser tout le flux dans une même expérience: saisir → contrôler → lettrer → éditer les états`, `Brancher une IA qui répond, explique et alerte, sans jamais « inventer » des écritures`] },
-        { type: 'paragraph', text: `Pourquoi repartir de zéro:` },
-        { type: 'list', items: [`L’UX très « terminal » de la v1 rendait l’intégration d’une IA conversationnelle et d’écrans riches laborieuse`, `Les animations, le virtual scrolling et les dashboards restaient limités techniquement`, `L’industrialisation (exports PDF/CSV soignés, performances, réutilisabilité des composants) demandait une structure front plus moderne`] },
-        { type: 'paragraph', text: `Mes choix structurants:` },
-        { type: 'list', items: [`Passer à Next.js + React 18 pour une navigation fluide « en sections » et une base solide pour la performance`, `Adopter une navigation horizontale pilotée au scroll vertical pour segmenter clairement les 9 grandes zones du produit (dashboard → plan → journaux → écritures → brouillard → lettrage → rapports → paramètres → assistant IA)`, `Isoler un service IA dédié (Claude + GenUI) avec du streaming pour obtenir des réponses guidées en contexte, pédagogiques et rapides`, `S’appuyer sur Supabase (PostgreSQL + Auth) pour garantir des schémas propres et des exports fiables`] },
-        { type: 'paragraph', text: `Concrètement, j’ai reconçu l’expérience pour que je puisse enchaîner mes tâches sans « friction »: ouvrir la section, voir les bons indicateurs, saisir avec des garde‑fous, contrôler immédiatement, puis produire un état propre quand tout est OK. Mon objectif n’est pas de remplacer l’expertise comptable, mais de me faire gagner du temps et d’éviter les erreurs bêtes, tout en gardant des sorties conformes et lisibles.` },
-        { type: 'list', items: [`Saisie toujours coûteuse et sujette aux erreurs sans aides contextuelles`, `Difficulté à relier saisie, contrôle, lettrage et édition d’états dans un même flux lisible`, `UI peu pédagogique pour des personnes non expertes en comptabilité`, `Intégration d’IA compliquée dans une ergonomie très "terminale"`] },
-        { type: 'heading', text: `Solution` },
-        { type: 'list', items: [`Une UI moderne et réactive, pensée en sections horizontales pilotées au scroll vertical et au clavier`, `Un assistant IA conversationnel (Claude + GenUI) qui répond, explique, détecte des incohérences et propose des actions`, `Des vues riches et visuelles pour comprendre vite: dashboards, graphiques, animations utiles`, `Des exports propres et normés (PDF/CSV) et une base solide côté données (Supabase + Postgres)`] },
-        { type: 'heading', text: `Résultats clés` },
-        { type: 'list', items: [`Parcours de bout en bout plus fluide, de la saisie à l’édition des états`, `Meilleure compréhension immédiate via dashboards et vues par section`, `Base technique prête pour l’authentification, le multi‑sociétés et les rôles (roadmap)`] },
-        { type: 'heading', text: `Médias` },
-        { type: 'heading', text: `Vidéo démo` },
-        { type: 'heading', text: `Galerie d’écrans` },
-        { type: 'list', items: [`Tableau de bord et navigation horizontale`] },
-        { type: 'list', items: [`Saisie d’écritures et brouillard`] },
-        { type: 'list', items: [`Lettrage et journaux`] },
-        { type: 'list', items: [`Rapports: Balance, Grand Livre, FEC, TVA`] },
-        { type: 'list', items: [`Assistant IA (Thesys GenUI + Claude)`] },
-        { type: 'heading', text: `Fonctionnalités principales` },
-        { type: 'list', items: [`Navigation horizontale et raccourcis`, `Comptabilité complète`, `Assistant IA`, `Visualisations`, `Performance et UX`] },
-        { type: 'heading', text: `Architecture technique` },
-        { type: 'list', items: [`Frontend: Next.js 15 (App Router), React 18, TypeScript, Tailwind, Radix UI, Framer Motion, Lucide, @tanstack/react-virtual`, `IA & agents: @anthropic-ai/sdk (Claude 3.5 Sonnet), Thesys GenUI, @crayonai/*, streaming`, `Backend: Node.js + Express (TypeScript), Morgan`, `Données: Supabase (PostgreSQL + Auth), schémas typés et validations`, `Exports: jsPDF (+ autotable) pour PDF, CSV standards`] },
-        { type: 'paragraph', text: `Arborescence simplifiée:` },
-        { type: 'code', text: `AS400 v2/
+    content: [
+      { type: 'heading', text: `Vue d’ensemble` },
+      { type: 'paragraph', text: `AS400 Horizontal est ma version "v2" de l’application comptable du TAC Hockey Club. J’ai repensé l’UX autour d’une navigation horizontale fluide, ajouté un assistant IA conversationnel et modernisé toute la stack pour en faire une application à la fois pédagogique, rapide et complète.` },
+      { type: 'heading', text: `Contexte` },
+      { type: 'paragraph', text: `Je suis parti d’un besoin très concret au TAC Hockey Club. Pendant l’été, j’ai mis les mains dans la comptabilité opérationnelle et j’ai réalisé à quel point les allers‑retours entre saisie, contrôle et génération d’états me faisaient perdre du temps. Ma v1, calquée sur l’ergonomie AS/400, m’a permis d’aller vite et de respecter nos réflexes clavier, mais je me suis heurté à plusieurs limites au moment d’ajouter des fonctionnalités plus ambitieuses.` },
+      { type: 'paragraph', text: `Ce que je voulais vraiment faire:` },
+      { type: 'list', items: [`Accélérer la saisie « réelle » du quotidien et réduire le taux d’erreur sans complexifier l’outil`, `Rendre la structure comptable lisible pour quelqu’un qui n’est pas expert, avec des repères visuels et des aides contextuelles`, `Centraliser tout le flux dans une même expérience: saisir → contrôler → lettrer → éditer les états`, `Brancher une IA qui répond, explique et alerte, sans jamais « inventer » des écritures`] },
+      { type: 'paragraph', text: `Pourquoi repartir de zéro:` },
+      { type: 'list', items: [`L’UX très « terminal » de la v1 rendait l’intégration d’une IA conversationnelle et d’écrans riches laborieuse`, `Les animations, le virtual scrolling et les dashboards restaient limités techniquement`, `L’industrialisation (exports PDF/CSV soignés, performances, réutilisabilité des composants) demandait une structure front plus moderne`] },
+      { type: 'paragraph', text: `Mes choix structurants:` },
+      { type: 'list', items: [`Passer à Next.js + React 18 pour une navigation fluide « en sections » et une base solide pour la performance`, `Adopter une navigation horizontale pilotée au scroll vertical pour segmenter clairement les 9 grandes zones du produit (dashboard → plan → journaux → écritures → brouillard → lettrage → rapports → paramètres → assistant IA)`, `Isoler un service IA dédié (Claude + GenUI) avec du streaming pour obtenir des réponses guidées en contexte, pédagogiques et rapides`, `S’appuyer sur Supabase (PostgreSQL + Auth) pour garantir des schémas propres et des exports fiables`] },
+      { type: 'paragraph', text: `Concrètement, j’ai reconçu l’expérience pour que je puisse enchaîner mes tâches sans « friction »: ouvrir la section, voir les bons indicateurs, saisir avec des garde‑fous, contrôler immédiatement, puis produire un état propre quand tout est OK. Mon objectif n’est pas de remplacer l’expertise comptable, mais de me faire gagner du temps et d’éviter les erreurs bêtes, tout en gardant des sorties conformes et lisibles.` },
+      { type: 'list', items: [`Saisie toujours coûteuse et sujette aux erreurs sans aides contextuelles`, `Difficulté à relier saisie, contrôle, lettrage et édition d’états dans un même flux lisible`, `UI peu pédagogique pour des personnes non expertes en comptabilité`, `Intégration d’IA compliquée dans une ergonomie très "terminale"`] },
+      { type: 'heading', text: `Solution` },
+      { type: 'list', items: [`Une UI moderne et réactive, pensée en sections horizontales pilotées au scroll vertical et au clavier`, `Un assistant IA conversationnel (Claude + GenUI) qui répond, explique, détecte des incohérences et propose des actions`, `Des vues riches et visuelles pour comprendre vite: dashboards, graphiques, animations utiles`, `Des exports propres et normés (PDF/CSV) et une base solide côté données (Supabase + Postgres)`] },
+      { type: 'heading', text: `Résultats clés` },
+      { type: 'list', items: [`Parcours de bout en bout plus fluide, de la saisie à l’édition des états`, `Meilleure compréhension immédiate via dashboards et vues par section`, `Base technique prête pour l’authentification, le multi‑sociétés et les rôles (roadmap)`] },
+      { type: 'heading', text: `Médias` },
+      { type: 'heading', text: `Vidéo démo` },
+      { type: 'heading', text: `Galerie d’écrans` },
+      { type: 'list', items: [`Tableau de bord et navigation horizontale`] },
+      { type: 'list', items: [`Saisie d’écritures et brouillard`] },
+      { type: 'list', items: [`Lettrage et journaux`] },
+      { type: 'list', items: [`Rapports: Balance, Grand Livre, FEC, TVA`] },
+      { type: 'list', items: [`Assistant IA (Thesys GenUI + Claude)`] },
+      { type: 'heading', text: `Fonctionnalités principales` },
+      { type: 'list', items: [`Navigation horizontale et raccourcis`, `Comptabilité complète`, `Assistant IA`, `Visualisations`, `Performance et UX`] },
+      { type: 'heading', text: `Architecture technique` },
+      { type: 'list', items: [`Frontend: Next.js 15 (App Router), React 18, TypeScript, Tailwind, Radix UI, Framer Motion, Lucide, @tanstack/react-virtual`, `IA & agents: @anthropic-ai/sdk (Claude 3.5 Sonnet), Thesys GenUI, @crayonai/*, streaming`, `Backend: Node.js + Express (TypeScript), Morgan`, `Données: Supabase (PostgreSQL + Auth), schémas typés et validations`, `Exports: jsPDF (+ autotable) pour PDF, CSV standards`] },
+      { type: 'paragraph', text: `Arborescence simplifiée:` },
+      {
+        type: 'code', text: `AS400 v2/
 ├── app/                    # Next.js App Router
 ├── components/             # sections/, ai-assistant/, ui/
 ├── hooks/                  # use-keyboard-shortcuts, use-supabase…
@@ -883,21 +885,21 @@ export const projects = [
 ├── backend/                # API Express (TS)
 ├── ai-backend/             # Service IA (Claude)
 └── scripts/                # utilitaires` },
-        { type: 'heading', text: `Flux majeurs` },
-        { type: 'list', items: [`Auth (roadmap) → sélection société → permissions`, `Saisie → brouillard → validations → lettrage → états`, `IA → analyse contextuelle → recommandations/actions`, `Rapports → génération PDF/CSV → partage`] },
-        { type: 'heading', text: `Base de données (extraits)` },
-        { type: 'list', items: [`companies, accounts, journals, journal_entries, company_settings`, `Vues/req. pour soldes, contrôles d’équilibre, lettrage`] },
-        { type: 'heading', text: `Performances` },
-        { type: 'list', items: [`FCP < 1.5s, TTI < 3s (cibles et mesures locales)`, `Code splitting, lazy loading, memoization`] },
-        { type: 'heading', text: `Utilisation rapide` },
-        { type: 'list', items: [`Ctrl+K: palette de commandes`, `Flèches ou scroll: changer de section`, `Écritures: équilibre Débit = Crédit, lot validé si |Σ Débits − Σ Crédits| < 0,01€`, `Rapports: Balance, Grand Livre, FEC, TVA en 1 clic`] },
-        { type: 'heading', text: `Installation (résumé)` },
-        { type: 'list', items: [`Prérequis: Node.js 18+, compte Supabase, clé Anthropic`, `Environnements: .env.local (frontend), backend/.env, ai-backend/.env`, `Démarrage type:`] },
-        { type: 'heading', text: `Roadmap synthétique` },
-        { type: 'list', items: [`v1.1: Auth Supabase, rôles, import CSV/Excel, mode offline (PWA)`, `v1.2: Multi‑sociétés, workflow de validation, audit trail, API publique`] },
-        { type: 'heading', text: `Crédits` },
-        { type: 'paragraph', text: `© 2025 — AS400 Horizontal — TAC Hockey Club` },
-      ] as ContentSection[],
+      { type: 'heading', text: `Flux majeurs` },
+      { type: 'list', items: [`Auth (roadmap) → sélection société → permissions`, `Saisie → brouillard → validations → lettrage → états`, `IA → analyse contextuelle → recommandations/actions`, `Rapports → génération PDF/CSV → partage`] },
+      { type: 'heading', text: `Base de données (extraits)` },
+      { type: 'list', items: [`companies, accounts, journals, journal_entries, company_settings`, `Vues/req. pour soldes, contrôles d’équilibre, lettrage`] },
+      { type: 'heading', text: `Performances` },
+      { type: 'list', items: [`FCP < 1.5s, TTI < 3s (cibles et mesures locales)`, `Code splitting, lazy loading, memoization`] },
+      { type: 'heading', text: `Utilisation rapide` },
+      { type: 'list', items: [`Ctrl+K: palette de commandes`, `Flèches ou scroll: changer de section`, `Écritures: équilibre Débit = Crédit, lot validé si |Σ Débits − Σ Crédits| < 0,01€`, `Rapports: Balance, Grand Livre, FEC, TVA en 1 clic`] },
+      { type: 'heading', text: `Installation (résumé)` },
+      { type: 'list', items: [`Prérequis: Node.js 18+, compte Supabase, clé Anthropic`, `Environnements: .env.local (frontend), backend/.env, ai-backend/.env`, `Démarrage type:`] },
+      { type: 'heading', text: `Roadmap synthétique` },
+      { type: 'list', items: [`v1.1: Auth Supabase, rôles, import CSV/Excel, mode offline (PWA)`, `v1.2: Multi‑sociétés, workflow de validation, audit trail, API publique`] },
+      { type: 'heading', text: `Crédits` },
+      { type: 'paragraph', text: `© 2025 — AS400 Horizontal — TAC Hockey Club` },
+    ] as ContentSection[],
   },
   {
     id: "veille-hub",
@@ -954,31 +956,37 @@ export const projects = [
       { type: 'heading', text: `Pourquoi X / Twitter malgré la controverse ?` },
       { type: 'paragraph', text: `X reste, qu'on le veuille ou non, la meilleure plateforme pour suivre l'actualité IA en temps réel. Les chercheurs, les fondateurs de startups IA, les ingénieurs de Google DeepMind, Anthropic, OpenAI y publient en premier. Aucune autre plateforme n'offre cette densité d'information sur mon domaine. C'est précisément parce que j'y passe du temps que j'avais besoin d'un outil pour valoriser ce temps passé.` },
       { type: 'heading', text: `Fonctionnalités principales` },
-      { type: 'list', items: [
-        `Recherche IA en langage naturel — Pose une question sur tes signets, l'assistant comprend et retrouve les contenus pertinents`,
-        `Indexation automatique — Scripts Python qui scrapent les signets Twitter et les vidéos YouTube à intervalles réguliers`,
-        `Annotations & notes — Chaque tweet ou vidéo peut être annoté, commenté et noté ; ces métadonnées enrichissent la recherche`,
-        `Dashboard de stats — Heatmap d'activité annuelle/mensuelle/hebdomadaire, total de tweets, durée de vidéos, top auteurs suivis`,
-        `Filtres avancés — Par type (tweet, vidéo, photo), par auteur, par langue, par date`,
-        `Transcriptions vidéo — Les vidéos YouTube sont transcrites pour être cherchées par contenu`
-      ]},
+      {
+        type: 'list', items: [
+          `Recherche IA en langage naturel — Pose une question sur tes signets, l'assistant comprend et retrouve les contenus pertinents`,
+          `Indexation automatique — Scripts Python qui scrapent les signets Twitter et les vidéos YouTube à intervalles réguliers`,
+          `Annotations & notes — Chaque tweet ou vidéo peut être annoté, commenté et noté ; ces métadonnées enrichissent la recherche`,
+          `Dashboard de stats — Heatmap d'activité annuelle/mensuelle/hebdomadaire, total de tweets, durée de vidéos, top auteurs suivis`,
+          `Filtres avancés — Par type (tweet, vidéo, photo), par auteur, par langue, par date`,
+          `Transcriptions vidéo — Les vidéos YouTube sont transcrites pour être cherchées par contenu`
+        ]
+      },
       { type: 'heading', text: `Architecture technique` },
       { type: 'paragraph', text: `Stack : Next.js 15 (App Router) · Supabase (PostgreSQL) · AI SDK Vercel · OpenAI / xAI · Python (scraping) · Cloudflare Pages` },
-      { type: 'list', items: [
-        `Scraping : scripts Python (scrape-daily.py, scrape-youtube.py) exécutés en cron, authentification via cookies Twitter`,
-        `Stockage : tous les signets et vidéos sont normalisés et stockés dans Supabase avec leurs métadonnées`,
-        `Assistant IA : l'AI SDK de Vercel orchestre les appels au modèle (OpenAI / xAI) avec accès à la base Supabase comme contexte`,
-        `Frontend : Next.js 15 avec App Router, Tailwind CSS, Recharts pour les graphiques, Radix UI pour les composants`,
-        `Déploiement : Cloudflare Pages via OpenNext pour des performances edge mondiales`
-      ]},
+      {
+        type: 'list', items: [
+          `Scraping : scripts Python (scrape-daily.py, scrape-youtube.py) exécutés en cron, authentification via cookies Twitter`,
+          `Stockage : tous les signets et vidéos sont normalisés et stockés dans Supabase avec leurs métadonnées`,
+          `Assistant IA : l'AI SDK de Vercel orchestre les appels au modèle (OpenAI / xAI) avec accès à la base Supabase comme contexte`,
+          `Frontend : Next.js 15 avec App Router, Tailwind CSS, Recharts pour les graphiques, Radix UI pour les composants`,
+          `Déploiement : Cloudflare Pages via OpenNext pour des performances edge mondiales`
+        ]
+      },
       { type: 'heading', text: `Résultats` },
-      { type: 'list', items: [
-        `✅ 16 000+ contenus indexés et interrogeables instantanément`,
-        `✅ Retrouver n'importe quel tweet en quelques secondes, même daté de 3 ans`,
-        `✅ Veille quotidienne valorisée : chaque tweet sauvegardé devient une ressource durable`,
-        `✅ Annotations et notes intégrées dans le ranking de l'assistant IA`,
-        `✅ Changement réel de mon quotidien — utilisé activement chaque jour`
-      ]},
+      {
+        type: 'list', items: [
+          `✅ 16 000+ contenus indexés et interrogeables instantanément`,
+          `✅ Retrouver n'importe quel tweet en quelques secondes, même daté de 3 ans`,
+          `✅ Veille quotidienne valorisée : chaque tweet sauvegardé devient une ressource durable`,
+          `✅ Annotations et notes intégrées dans le ranking de l'assistant IA`,
+          `✅ Changement réel de mon quotidien — utilisé activement chaque jour`
+        ]
+      },
     ] as ContentSection[],
   },
   {
@@ -1058,48 +1066,60 @@ export const projects = [
       { type: 'paragraph', text: `Je n'ai aucune certitude que cette application fonctionnera pour tout le monde. Elle a été construite pour répondre à mes problèmes en premier lieu. Mais c'est peut-être précisément pour ça qu'elle fonctionne aussi bien pour moi : j'y ai réfléchi pendant plus de 2 ans, je l'ai conçue, et quelque part, elle m'appartient.` },
       { type: 'heading', text: `Fonctionnalités principales` },
       { type: 'heading', text: `SRS — Répétition Espacée` },
-      { type: 'list', items: [
-        `Système de flashcards avec algorithme de répétition espacée (SRS)`,
-        `Sessions d'étude avec feedback de difficulté (facile / moyen / difficile)`,
-        `Suivi de progression par deck — intervalles calculés automatiquement`,
-        `Support du rendu LaTeX dans les cartes pour les maths et sciences`
-      ]},
+      {
+        type: 'list', items: [
+          `Système de flashcards avec algorithme de répétition espacée (SRS)`,
+          `Sessions d'étude avec feedback de difficulté (facile / moyen / difficile)`,
+          `Suivi de progression par deck — intervalles calculés automatiquement`,
+          `Support du rendu LaTeX dans les cartes pour les maths et sciences`
+        ]
+      },
       { type: 'heading', text: `Génération IA (Claude)` },
-      { type: 'list', items: [
-        `Génération de flashcards depuis n'importe quel texte ou document`,
-        `Génération de quizz contextuels avec questions et corrections`,
-        `Claude comme co-constructeur de contenu pédagogique, pas comme béquille cognitive`
-      ]},
+      {
+        type: 'list', items: [
+          `Génération de flashcards depuis n'importe quel texte ou document`,
+          `Génération de quizz contextuels avec questions et corrections`,
+          `Claude comme co-constructeur de contenu pédagogique, pas comme béquille cognitive`
+        ]
+      },
       { type: 'heading', text: `Prism Workspace` },
-      { type: 'list', items: [
-        `Éditeur riche avec support LaTeX (KaTeX), Markdown et syntaxe étendue`,
-        `Mind maps et diagrammes via Mermaid`,
-        `Snippets réutilisables — bibliothèque de fragments`,
-        `Espace de métacognition : structurer sa pensée, pas juste mémoriser`
-      ]},
+      {
+        type: 'list', items: [
+          `Éditeur riche avec support LaTeX (KaTeX), Markdown et syntaxe étendue`,
+          `Mind maps et diagrammes via Mermaid`,
+          `Snippets réutilisables — bibliothèque de fragments`,
+          `Espace de métacognition : structurer sa pensée, pas juste mémoriser`
+        ]
+      },
       { type: 'heading', text: `Import multi-sources` },
-      { type: 'list', items: [
-        `Import TOEIC depuis livres scannés (photos → questions parsées automatiquement)`,
-        `Import depuis Kwizmo (scraper Python dédié)`,
-        `Import Tage Mage (format JSON normalisé)`,
-        `Support PDF via PDF.js pour l'extraction de contenu`
-      ]},
+      {
+        type: 'list', items: [
+          `Import TOEIC depuis livres scannés (photos → questions parsées automatiquement)`,
+          `Import depuis Kwizmo (scraper Python dédié)`,
+          `Import Tage Mage (format JSON normalisé)`,
+          `Support PDF via PDF.js pour l'extraction de contenu`
+        ]
+      },
       { type: 'heading', text: `Tableau de bord & suivi` },
-      { type: 'list', items: [
-        `Daily Briefing — vue quotidienne des révisions dues`,
-        `Schedule View — calendrier de révision prévisionnel`,
-        `Annotations — notes contextuelles liées aux cartes`,
-        `Avatars des grands penseurs (Einstein, Turing, Feynman…) comme figures d'étude`
-      ]},
+      {
+        type: 'list', items: [
+          `Daily Briefing — vue quotidienne des révisions dues`,
+          `Schedule View — calendrier de révision prévisionnel`,
+          `Annotations — notes contextuelles liées aux cartes`,
+          `Avatars des grands penseurs (Einstein, Turing, Feynman…) comme figures d'étude`
+        ]
+      },
       { type: 'heading', text: `Architecture technique` },
       { type: 'paragraph', text: `Stack : React 19 · TypeScript · Vite 8 · Tailwind CSS v4 · Supabase · Anthropic SDK · Zustand · KaTeX · Mermaid · Framer Motion · GSAP · PDF.js` },
-      { type: 'list', items: [
-        `Architecture feature-based : chaque domaine fonctionnel (srs, generation, quizzes, import) est isolé dans son propre module`,
-        `Zustand pour la gestion d'état globale, notamment le SRS store (intervals, sessions, progression)`,
-        `Supabase en backend : authentification, stockage des decks, sync cloud (roadmap)`,
-        `Claude (Anthropic) intégré via SDK officiel pour la génération de contenu pédagogique`,
-        `Prism Workspace : éditeur custom avec code editor (@uiw/react-textarea-code-editor), rendu KaTeX et Mermaid`
-      ]},
+      {
+        type: 'list', items: [
+          `Architecture feature-based : chaque domaine fonctionnel (srs, generation, quizzes, import) est isolé dans son propre module`,
+          `Zustand pour la gestion d'état globale, notamment le SRS store (intervals, sessions, progression)`,
+          `Supabase en backend : authentification, stockage des decks, sync cloud (roadmap)`,
+          `Claude (Anthropic) intégré via SDK officiel pour la génération de contenu pédagogique`,
+          `Prism Workspace : éditeur custom avec code editor (@uiw/react-textarea-code-editor), rendu KaTeX et Mermaid`
+        ]
+      },
       { type: 'heading', text: `Vision` },
       { type: 'paragraph', text: `Unlimited Cognition, c'est aussi une prise de position : je ne crois pas qu'avec l'émergence de l'IA, nous soyons obligés d'implanter des puces dans notre cerveau pour continuer à exister cognitivement. On peut utiliser ces outils pour amplifier notre intelligence, pas pour la déléguer. Cette application est ma réponse pratique à cette conviction.` },
     ] as ContentSection[],
@@ -1162,21 +1182,25 @@ export const projects = [
       { type: 'paragraph', text: `Pendant le stage, la veille automatisée tournait sur un outil tiers (n8n cloud). En février, la limite mensuelle était atteinte chaque mois, bloquant la veille. Notion stockait les posts générés, mais sans aperçu et sans pouvoir publier sur Instagram.` },
       { type: 'paragraph', text: `La mission freelance était claire : construire quelque chose de solide pour remplacer tout ça.` },
       { type: 'heading', text: `6 modules` },
-      { type: 'list', items: [
-        `Accueil — Tableau de bord avec les stats de la semaine, bouton de lancement de la veille et sélecteur de template`,
-        `Veille — Articles de presse filtrés et scorés par IA (1-10), avec recherche, filtres et génération de brouillon en un clic`,
-        `Studio — Éditeur de posts avec aperçu LinkedIn et Instagram en temps réel, génération d'images IA, publication directe`,
-        `Calendrier — Vue mensuelle des publications passées et à venir`,
-        `Coûts API — Suivi des dépenses IA par service (OpenAI, Gemini) et par opération`,
-        `Paramètres — Sources RSS, prompts, modèles IA, templates de publication, clés API`
-      ]},
+      {
+        type: 'list', items: [
+          `Accueil — Tableau de bord avec les stats de la semaine, bouton de lancement de la veille et sélecteur de template`,
+          `Veille — Articles de presse filtrés et scorés par IA (1-10), avec recherche, filtres et génération de brouillon en un clic`,
+          `Studio — Éditeur de posts avec aperçu LinkedIn et Instagram en temps réel, génération d'images IA, publication directe`,
+          `Calendrier — Vue mensuelle des publications passées et à venir`,
+          `Coûts API — Suivi des dépenses IA par service (OpenAI, Gemini) et par opération`,
+          `Paramètres — Sources RSS, prompts, modèles IA, templates de publication, clés API`
+        ]
+      },
       { type: 'heading', text: `Deux utilisateurs, données séparées` },
       { type: 'paragraph', text: `Gabriel et Loïc se connectent au même dashboard avec des comptes séparés. Chacun voit uniquement ses articles, ses posts et ses paramètres.` },
       { type: 'heading', text: `Quelques défis` },
-      { type: 'list', items: [
-        `LinkedIn ne donne pas accès aux stats (likes, commentaires) sans une validation spéciale — contourné avec un outil tiers qui les récupère automatiquement`,
-        `Instagram exige que l'image soit déjà en ligne au moment de la publication — ajout d'un hébergement intermédiaire transparent`
-      ]},
+      {
+        type: 'list', items: [
+          `LinkedIn ne donne pas accès aux stats (likes, commentaires) sans une validation spéciale — contourné avec un outil tiers qui les récupère automatiquement`,
+          `Instagram exige que l'image soit déjà en ligne au moment de la publication — ajout d'un hébergement intermédiaire transparent`
+        ]
+      },
       { type: 'heading', text: `Stack technique` },
       { type: 'paragraph', text: `Next.js 16 · TypeScript · Neon PostgreSQL · Drizzle ORM · Vercel · JWT/bcryptjs · LinkedIn API · Instagram Graph API · Apify · OpenAI · Anthropic · Perplexity · DALL-E · Gemini` },
     ] as ContentSection[],
@@ -1229,13 +1253,15 @@ export const projects = [
       { type: 'heading', text: `Mode Prospection` },
       { type: 'paragraph', text: `Sans liste de départ : Gemini génère une dizaine d'entreprises mécènes potentielles dans un secteur donné, puis enrichit chacune comme en mode Enrichissement.` },
       { type: 'heading', text: `Données collectées` },
-      { type: 'list', items: [
-        `RSE : Nom, Email, Téléphone`,
-        `Communication : Nom, Email, Téléphone`,
-        `PDG : Nom, Email, Téléphone`,
-        `Numéro légal et ville`,
-        `Sensibilité mécénat : ⭐ à ⭐⭐⭐⭐⭐`
-      ]},
+      {
+        type: 'list', items: [
+          `RSE : Nom, Email, Téléphone`,
+          `Communication : Nom, Email, Téléphone`,
+          `PDG : Nom, Email, Téléphone`,
+          `Numéro légal et ville`,
+          `Sensibilité mécénat : ⭐ à ⭐⭐⭐⭐⭐`
+        ]
+      },
       { type: 'heading', text: `Livraison` },
       { type: 'paragraph', text: `Workflow livré avec un tutoriel vidéo pour que l'équipe ADN puisse l'utiliser seule. Conseil principal : vérifier les contacts générés par l'IA avant tout envoi.` },
     ] as ContentSection[],
@@ -1303,13 +1329,15 @@ export const blogPosts: BlogPost[] = [
       { type: "paragraph", text: `Pensez-y : quand 90% des métiers auront disparu, quand l'IA fera le gros du travail de production, sur quoi allons-nous concentrer notre attention ?` },
       { type: "paragraph", text: `Sur nous-mêmes. Sur notre santé. Sur notre développement personnel. Sur nos relations. Sur notre épanouissement.` },
       { type: "paragraph", text: `On ne se demandera plus "Comment puis-je être plus productif ?" mais "Comment puis-je être mieux ?"` },
-      { type: "list", items: [
-        `Quelle est la meilleure alimentation pour mon corps ?`,
-        `Comment optimiser mon sommeil ?`,
-        `Quelles activités physiques me conviennent le mieux ?`,
-        `Comment cultiver ma créativité ?`,
-        `Comment approfondir mes relations ?`
-      ] },
+      {
+        type: "list", items: [
+          `Quelle est la meilleure alimentation pour mon corps ?`,
+          `Comment optimiser mon sommeil ?`,
+          `Quelles activités physiques me conviennent le mieux ?`,
+          `Comment cultiver ma créativité ?`,
+          `Comment approfondir mes relations ?`
+        ]
+      },
       { type: "paragraph", text: `C'est pour ça que je suis convaincu que les métiers liés à la santé, au sport, au bien-être et à la psychologie vont exploser. Nous n'aurons plus à nous préoccuper de la productivité, nous pourrons enfin nous préoccuper de vivre bien.` },
       { type: "heading", text: `Pourquoi cette conviction guide mon orientation` },
       { type: "paragraph", text: `Vous comprenez maintenant pourquoi je me dirige vers l'IA ?` },
@@ -1320,13 +1348,15 @@ export const blogPosts: BlogPost[] = [
       { type: "paragraph", text: `Non, je veux être du côté de ceux qui construisent cette révolution. Pas du côté de ceux qui la subissent.` },
       { type: "heading", text: `Les compétences du futur` },
       { type: "paragraph", text: `Si ma vision se réalise, et je suis persuadé qu'elle se réalisera, quelles compétences faudra-t-il cultiver ?` },
-      { type: "list", items: [
-        `Comprendre l'IA et savoir l'utiliser - Pas forcément coder des modèles, mais au minimum savoir identifier où l'IA peut apporter de la valeur et comment la déployer.`,
-        `Développer sa créativité authentique - Ce qui nous rendra irremplaçables, c'est notre capacité à créer quelque chose d'unique, né de notre expérience humaine.`,
-        `Cultiver les compétences relationnelles - Dans un monde automatisé, la connexion humaine authentique deviendra rare et précieuse.`,
-        `Maîtriser le bien-être physique et mental - Savoir prendre soin de soi et des autres sera la compétence centrale d'une société post-productivité.`,
-        `Être capable de traduire la technologie en usage - Faire le pont entre les capacités de l'IA et les besoins humains réels.`
-      ] },
+      {
+        type: "list", items: [
+          `Comprendre l'IA et savoir l'utiliser - Pas forcément coder des modèles, mais au minimum savoir identifier où l'IA peut apporter de la valeur et comment la déployer.`,
+          `Développer sa créativité authentique - Ce qui nous rendra irremplaçables, c'est notre capacité à créer quelque chose d'unique, né de notre expérience humaine.`,
+          `Cultiver les compétences relationnelles - Dans un monde automatisé, la connexion humaine authentique deviendra rare et précieuse.`,
+          `Maîtriser le bien-être physique et mental - Savoir prendre soin de soi et des autres sera la compétence centrale d'une société post-productivité.`,
+          `Être capable de traduire la technologie en usage - Faire le pont entre les capacités de l'IA et les besoins humains réels.`
+        ]
+      },
       { type: "heading", text: `Une révolution à construire, pas à subir` },
       { type: "paragraph", text: `Voilà ma vision. Peut-être trop radicale pour certains. Peut-être trop rapide. Mais je préfère anticiper et me préparer à un changement majeur plutôt que de me réveiller dans cinq ans en réalisant que j'ai passé mon temps à acquérir des compétences obsolètes.` },
       { type: "paragraph", text: `Je n'ai pas envie de subir cette révolution. J'ai envie de la construire.` },
@@ -1442,28 +1472,34 @@ export const blogPosts: BlogPost[] = [
       { type: "paragraph", text: `Après avoir analysé en profondeur, j'en suis arrivé à cette conclusion : il n'y a pas UNE bulle IA, mais DEUX marchés complètement différents.` },
       { type: "heading", text: `1. L'infrastructure : des fondations qui tremblent ?` },
       { type: "paragraph", text: `Les fournisseurs de puissance de calcul (Nvidia, Microsoft, Amazon, Google) ont des fondamentaux économiques solides :` },
-      { type: "list", items: [
-        `Actifs tangibles : Centres de données, serveurs, puces. Ça a une valeur réelle, contrairement aux "espoirs virtuels" de l'an 2000.`,
-        `Marges colossales : 60% de marge nette pour certains fabricants de puces.`,
-        `Cash flow établi : Ces entreprises génèrent des milliards de profits réels, aujourd'hui.`,
-        `Utilité prouvée : Que les applications d'IA réussissent ou échouent, la puissance de calcul reste nécessaire pour l'innovation.`
-      ] },
+      {
+        type: "list", items: [
+          `Actifs tangibles : Centres de données, serveurs, puces. Ça a une valeur réelle, contrairement aux "espoirs virtuels" de l'an 2000.`,
+          `Marges colossales : 60% de marge nette pour certains fabricants de puces.`,
+          `Cash flow établi : Ces entreprises génèrent des milliards de profits réels, aujourd'hui.`,
+          `Utilité prouvée : Que les applications d'IA réussissent ou échouent, la puissance de calcul reste nécessaire pour l'innovation.`
+        ]
+      },
       { type: "paragraph", text: `Métaphore : Si l'IA est une ruée vers l'or, Nvidia vend les pelles. Et historiquement, ce sont ceux qui vendent les pelles qui font fortune, pas ceux qui cherchent l'or.` },
       { type: "paragraph", text: `Mais attention : La perte de 450 milliards en 3 jours de Nvidia montre que même l'infrastructure n'est pas immunisée contre la correction. Les valorisations, même pour des entreprises profitables, peuvent être déconnectées de la réalité.` },
       { type: "heading", text: `2. Les applications : un château de cartes` },
       { type: "paragraph", text: `Les startups d'IA générative, elles, sont dans une situation complètement différente :` },
-      { type: "list", items: [
-        `Valorisations délirantes : 250x leur chiffre d'affaires pour certaines.`,
-        `Pas de rentabilité : Une étude du MIT montre que 95% des projets d'IA en entreprise n'ont aucun retour sur investissement.`,
-        `Faible adoption réelle : Seulement 10% des entreprises américaines utilisent l'IA activement, malgré les investissements massifs.`
-      ] },
+      {
+        type: "list", items: [
+          `Valorisations délirantes : 250x leur chiffre d'affaires pour certaines.`,
+          `Pas de rentabilité : Une étude du MIT montre que 95% des projets d'IA en entreprise n'ont aucun retour sur investissement.`,
+          `Faible adoption réelle : Seulement 10% des entreprises américaines utilisent l'IA activement, malgré les investissements massifs.`
+        ]
+      },
       { type: "paragraph", text: `Le problème fondamental : Ces startups brûlent des millions pour créer des modèles que les gens ne sont pas prêts à payer au prix qu'il faudrait pour être rentable.` },
       { type: "heading", text: `L'image du gratte-ciel` },
       { type: "paragraph", text: `La meilleure analogie que j'ai trouvée : l'économie de l'IA est comme un gratte-ciel.` },
-      { type: "list", items: [
-        `Les fondations (l'infrastructure) sont extrêmement solides, en béton armé.`,
-        `Mais les étages supérieurs (les applications) sont construits à une vitesse vertigineuse, avec des matériaux fragiles, sans avoir trouvé comment générer assez de revenus pour justifier leur hauteur.`
-      ] },
+      {
+        type: "list", items: [
+          `Les fondations (l'infrastructure) sont extrêmement solides, en béton armé.`,
+          `Mais les étages supérieurs (les applications) sont construits à une vitesse vertigineuse, avec des matériaux fragiles, sans avoir trouvé comment générer assez de revenus pour justifier leur hauteur.`
+        ]
+      },
       { type: "paragraph", text: `Le risque ? Pas un effondrement total du bâtiment, mais un effondrement partiel des étages supérieurs.` },
       { type: "paragraph", text: `Novembre 2025 : Les premières fissures apparaissent même dans les fondations.` },
       { type: "heading", text: `Les facteurs qui pourraient déclencher la correction` },
@@ -1531,19 +1567,23 @@ export const blogPosts: BlogPost[] = [
       { type: "paragraph", text: `Vous savez ce qui m'a vraiment fait comprendre l'ampleur du problème ? Les chiffres sur le "Shadow AI".` },
       { type: "paragraph", text: `Shadow AI, c'est quand les employés utilisent des outils d'IA publics pour leur travail, sans que l'entreprise le sache ou le contrôle.` },
       { type: "paragraph", text: `Et c'est un désastre :` },
-      { type: "list", items: [
-        `79,1% des données exposées via l'IA passent par ChatGPT`,
-        `Plus de 40% des fichiers envoyés contiennent des données sensibles`,
-        `Près d'un salarié sur deux utilise ces outils, souvent sans se rendre compte du risque`
-      ] },
+      {
+        type: "list", items: [
+          `79,1% des données exposées via l'IA passent par ChatGPT`,
+          `Plus de 40% des fichiers envoyés contiennent des données sensibles`,
+          `Près d'un salarié sur deux utilise ces outils, souvent sans se rendre compte du risque`
+        ]
+      },
       { type: "heading", text: `Ce qui se passe vraiment quand vous utilisez le chat web public` },
       { type: "paragraph", text: `Quand vous collez du code propriétaire, des données clients, des informations stratégiques dans ChatGPT pour "juste obtenir de l'aide rapidement", voici ce qui se passe :` },
-      { type: "list", items: [
-        `Vos données sont envoyées en clair sur les serveurs du fournisseur (souvent aux États-Unis, soumis au Cloud Act)`,
-        `Elles peuvent être utilisées pour entraîner les modèles selon les conditions d'utilisation (qui changent régulièrement, d'ailleurs)`,
-        `Vous n'avez aucun contrôle sur qui peut y accéder, comment elles sont stockées, combien de temps elles sont conservées`,
-        `Impossible de filtrer les données sensibles avant l'envoi`
-      ] },
+      {
+        type: "list", items: [
+          `Vos données sont envoyées en clair sur les serveurs du fournisseur (souvent aux États-Unis, soumis au Cloud Act)`,
+          `Elles peuvent être utilisées pour entraîner les modèles selon les conditions d'utilisation (qui changent régulièrement, d'ailleurs)`,
+          `Vous n'avez aucun contrôle sur qui peut y accéder, comment elles sont stockées, combien de temps elles sont conservées`,
+          `Impossible de filtrer les données sensibles avant l'envoi`
+        ]
+      },
       { type: "paragraph", text: `C'est comme envoyer vos plans secrets par carte postale. Techniquement, ça marche. Mais c'est une idée terrible.` },
       { type: "heading", text: `Pourquoi l'API d'entreprise change tout` },
       { type: "paragraph", text: `Quand j'ai développé mes automatisations pour Bigot Matériaux, j'ai vite compris que je ne pouvais pas simplement copier-coller des données comptables dans ChatGPT.` },
@@ -1554,27 +1594,33 @@ export const blogPosts: BlogPost[] = [
       { type: "paragraph", text: `Avec le chat web public ? Aucune garantie. Anthropic a même changé sa politique pour utiliser les conversations par défaut, sauf refus explicite.` },
       { type: "heading", text: `2. Vous pouvez filtrer les données sensibles AVANT l'envoi` },
       { type: "paragraph", text: `Avec une API, vous intégrez des couches de sécurité entre vos données et le modèle :` },
-      { type: "list", items: [
-        `Masquage des données personnelles (PII) : Les noms, adresses, numéros de téléphone sont automatiquement masqués avant d'être envoyés`,
-        `DLP (Data Loss Prevention) : Des filtres qui détectent et bloquent les données sensibles`,
-        `Minimisation des données : Vous n'envoyez que ce qui est strictement nécessaire`
-      ] },
+      {
+        type: "list", items: [
+          `Masquage des données personnelles (PII) : Les noms, adresses, numéros de téléphone sont automatiquement masqués avant d'être envoyés`,
+          `DLP (Data Loss Prevention) : Des filtres qui détectent et bloquent les données sensibles`,
+          `Minimisation des données : Vous n'envoyez que ce qui est strictement nécessaire`
+        ]
+      },
       { type: "paragraph", text: `Dans le chat web ? Vous envoyez tout, en brut, sans filtre.` },
       { type: "heading", text: `3. Vous contrôlez où vos données sont stockées` },
       { type: "paragraph", text: `Avec l'API d'entreprise, vous pouvez :` },
-      { type: "list", items: [
-        `Choisir la région de stockage (pour respecter le RGPD)`,
-        `Utiliser vos propres clés de chiffrement (double chiffrement)`,
-        `Définir des durées de conservation précises`
-      ] },
+      {
+        type: "list", items: [
+          `Choisir la région de stockage (pour respecter le RGPD)`,
+          `Utiliser vos propres clés de chiffrement (double chiffrement)`,
+          `Définir des durées de conservation précises`
+        ]
+      },
       { type: "paragraph", text: `Le chat web public ? Vos données vont où le fournisseur décide.` },
       { type: "heading", text: `4. Vous gérez les accès de manière granulaire` },
       { type: "paragraph", text: `Avec l'API, vous créez des clés d'accès avec des permissions spécifiques :` },
-      { type: "list", items: [
-        `Telle clé peut seulement lire, pas écrire`,
-        `Telle clé est limitée à certains modèles`,
-        `Telle clé expire après 24 heures`
-      ] },
+      {
+        type: "list", items: [
+          `Telle clé peut seulement lire, pas écrire`,
+          `Telle clé est limitée à certains modèles`,
+          `Telle clé expire après 24 heures`
+        ]
+      },
       { type: "paragraph", text: `C'est le principe du moindre privilège : chaque accès a exactement les permissions nécessaires, rien de plus.` },
       { type: "paragraph", text: `Le chat web ? Une simple session de navigateur. Zéro granularité.` },
       { type: "heading", text: `Le parallèle avec les chatbots et les agents IA` },
@@ -1597,42 +1643,50 @@ export const blogPosts: BlogPost[] = [
       { type: "paragraph", text: `Près d'un tiers des professionnels ont identifié une fuite de données sensibles dans leur production d'API au cours de l'année écoulée.` },
       { type: "paragraph", text: `Pourquoi ? Parce qu'ils n'ont pas mis en place de journalisation et surveillance des requêtes API.` },
       { type: "paragraph", text: `Il faut surveiller :` },
-      { type: "list", items: [
-        `Qui accède à l'API`,
-        `Quelles données sont envoyées`,
-        `Quels patterns sont anormaux (tentatives d'abus)`
-      ] },
+      {
+        type: "list", items: [
+          `Qui accède à l'API`,
+          `Quelles données sont envoyées`,
+          `Quels patterns sont anormaux (tentatives d'abus)`
+        ]
+      },
       { type: "heading", text: `4. Pas de rotation des clés` },
       { type: "paragraph", text: `Une clé API, c'est comme un mot de passe. Si elle ne change jamais, elle finit par fuiter.` },
       { type: "paragraph", text: `Bonnes pratiques :` },
-      { type: "list", items: [
-        `Rotation régulière des clés (tous les 30-90 jours)`,
-        `Utilisation de jetons d'accès (JWT) avec expiration automatique`,
-        `Révocation immédiate en cas de suspicion de compromission`
-      ] },
+      {
+        type: "list", items: [
+          `Rotation régulière des clés (tous les 30-90 jours)`,
+          `Utilisation de jetons d'accès (JWT) avec expiration automatique`,
+          `Révocation immédiate en cas de suspicion de compromission`
+        ]
+      },
       { type: "heading", text: `Mon approche concrète pour sécuriser l'IA` },
       { type: "paragraph", text: `Quand j'ai développé mes automatisations, voici le principe que j'ai suivi :` },
       { type: "paragraph", text: `Jamais de données sensibles dans le chat web public. Toujours via API avec filtrage.` },
       { type: "paragraph", text: `Concrètement, voici mon architecture :` },
-      { type: "list", items: [
-        `Extraction des données depuis les sources (PDF, Excel, bases de données)`,
-        `Masquage automatique des PII (noms, adresses, données personnelles)`,
-        `Envoi via API d'entreprise avec clé stockée dans un vault sécurisé`,
-        `Réception et traitement de la réponse de l'IA`,
-        `Journalisation de toutes les requêtes pour audit`
-      ] },
+      {
+        type: "list", items: [
+          `Extraction des données depuis les sources (PDF, Excel, bases de données)`,
+          `Masquage automatique des PII (noms, adresses, données personnelles)`,
+          `Envoi via API d'entreprise avec clé stockée dans un vault sécurisé`,
+          `Réception et traitement de la réponse de l'IA`,
+          `Journalisation de toutes les requêtes pour audit`
+        ]
+      },
       { type: "paragraph", text: `Résultat ? 85% de gain de temps sur les tâches comptables, zéro fuite de données.` },
       { type: "paragraph", text: `C'est plus complexe que de copier-coller dans ChatGPT ? Oui. Mais c'est la seule façon de faire les choses correctement.` },
       { type: "heading", text: `API et RGPD : pourquoi c'est crucial en Europe` },
       { type: "paragraph", text: `Si vous êtes en Europe et que vous manipulez des données personnelles, vous DEVEZ respecter le RGPD (Règlement Général sur la Protection des Données).` },
       { type: "paragraph", text: `Et voilà le truc : le chat web public ne vous permet pas d'être conforme.` },
       { type: "paragraph", text: `Pourquoi ?` },
-      { type: "list", items: [
-        `Vous ne contrôlez pas où les données sont stockées`,
-        `Vous ne pouvez pas garantir la minimisation des données`,
-        `Vous n'avez pas de contrat clair de responsabilité de traitement`,
-        `Vous ne pouvez pas assurer la suppression effective des données`
-      ] },
+      {
+        type: "list", items: [
+          `Vous ne contrôlez pas où les données sont stockées`,
+          `Vous ne pouvez pas garantir la minimisation des données`,
+          `Vous n'avez pas de contrat clair de responsabilité de traitement`,
+          `Vous ne pouvez pas assurer la suppression effective des données`
+        ]
+      },
       { type: "paragraph", text: `L'API d'entreprise, en revanche, vous permet :` },
       { type: "paragraph", text: `✅ De définir contractuellement que vous êtes le Responsable de Traitement` },
       { type: "paragraph", text: `✅ De choisir la régionalisation (serveurs en Europe)` },
@@ -1643,20 +1697,24 @@ export const blogPosts: BlogPost[] = [
       { type: "heading", text: `L'analogie de la messagerie blindée` },
       { type: "paragraph", text: `Voici comment je résume tout ça :` },
       { type: "paragraph", text: `Le chat web public, c'est comme envoyer vos documents par la poste publique.` },
-      { type: "list", items: [
-        `N'importe qui peut ouvrir l'enveloppe`,
-        `Vous ne savez pas qui manipule votre courrier`,
-        `Pas de garantie de confidentialité`,
-        `Pas de contrôle sur la durée de conservation`
-      ] },
+      {
+        type: "list", items: [
+          `N'importe qui peut ouvrir l'enveloppe`,
+          `Vous ne savez pas qui manipule votre courrier`,
+          `Pas de garantie de confidentialité`,
+          `Pas de contrôle sur la durée de conservation`
+        ]
+      },
       { type: "paragraph", text: `L'API d'entreprise, c'est comme un service de messagerie blindé et sous contrat.` },
-      { type: "list", items: [
-        `Le coursier est identifié et autorisé`,
-        `Vous choisissez l'itinéraire (régionalisation)`,
-        `Le paquet est scellé et ne peut pas être copié (garantie de non-entraînement)`,
-        `Vous filtrez les informations superflues avant l'envoi (masquage DLP)`,
-        `Vous avez un contrat qui précise toutes les responsabilités`
-      ] },
+      {
+        type: "list", items: [
+          `Le coursier est identifié et autorisé`,
+          `Vous choisissez l'itinéraire (régionalisation)`,
+          `Le paquet est scellé et ne peut pas être copié (garantie de non-entraînement)`,
+          `Vous filtrez les informations superflues avant l'envoi (masquage DLP)`,
+          `Vous avez un contrat qui précise toutes les responsabilités`
+        ]
+      },
       { type: "paragraph", text: `C'est la seule façon de garantir la sécurité et la conformité.` },
       { type: "heading", text: `Pourquoi ça change ma façon de travailler avec l'IA` },
       { type: "paragraph", text: `Depuis que j'ai compris cette distinction, ma façon de travailler avec l'IA a radicalement changé.` },
@@ -1664,12 +1722,14 @@ export const blogPosts: BlogPost[] = [
       { type: "paragraph", text: `Pour les projets réels avec des données sensibles : Toujours via API. Toujours avec filtrage. Toujours avec journalisation.` },
       { type: "paragraph", text: `Et c'est exactement ce que je vais faire avec mon projet de startup (qui conditionne l'accès à l'IA à une activité physique mesurée). Les données d'activité physique des utilisateurs sont des données de santé, donc ultra-sensibles.` },
       { type: "paragraph", text: `Je ne passerai jamais ces données par un chat web public. Tout sera via API d'entreprise, avec :` },
-      { type: "list", items: [
-        `Masquage des identifiants personnels`,
-        `Stockage régionalisé en Europe`,
-        `Contrat de responsabilité de traitement clair`,
-        `Audit trail complet`
-      ] },
+      {
+        type: "list", items: [
+          `Masquage des identifiants personnels`,
+          `Stockage régionalisé en Europe`,
+          `Contrat de responsabilité de traitement clair`,
+          `Audit trail complet`
+        ]
+      },
       { type: "paragraph", text: `Parce que la confiance des utilisateurs, ça ne se reconstruit pas après une fuite de données.` },
       { type: "heading", text: `Ce qu'il faut retenir` },
       { type: "paragraph", text: `Si vous ne deviez retenir qu'une chose de cet article, ce serait celle-ci :` },
@@ -1702,12 +1762,14 @@ export const blogPosts: BlogPost[] = [
       { type: "paragraph", text: `10 fois plus d'électricité.` },
       { type: "paragraph", text: `Dix fois. Pour chaque question. Chaque message gratuit que vous envoyez érode directement la trésorerie d'OpenAI.` },
       { type: "paragraph", text: `Mais ça, ce n'est que la partie visible. Parce qu'avant même de pouvoir répondre à votre question, ces entreprises doivent :` },
-      { type: "list", items: [
-        `Acheter des serveurs GPU (un Nvidia H100 coûte 28 000 €, et il en faut des centaines)`,
-        `Payer des salaires astronomiques aux experts en IA`,
-        `Financer la R&D pour développer les modèles`,
-        `Maintenir une infrastructure complète (on parle de plus de 250 000 € par installation)`
-      ] },
+      {
+        type: "list", items: [
+          `Acheter des serveurs GPU (un Nvidia H100 coûte 28 000 €, et il en faut des centaines)`,
+          `Payer des salaires astronomiques aux experts en IA`,
+          `Financer la R&D pour développer les modèles`,
+          `Maintenir une infrastructure complète (on parle de plus de 250 000 € par installation)`
+        ]
+      },
       { type: "paragraph", text: `Et tout ça, pour vous offrir un service... gratuit ?` },
       { type: "heading", text: `OpenAI : le paradoxe de la croissance explosive` },
       { type: "paragraph", text: `Les chiffres d'OpenAI sont hallucinants. Et je pèse mes mots.` },
@@ -1717,13 +1779,15 @@ export const blogPosts: BlogPost[] = [
       { type: "paragraph", text: `Comment c'est possible ? Simple : les coûts d'entraînement et de fonctionnement des modèles d'IA sont tout simplement démentiels. Chaque requête gratuite coûte de l'argent. Chaque amélioration nécessite des investissements massifs.` },
       { type: "heading", text: `La fuite en avant stratégique` },
       { type: "paragraph", text: `Et la situation devient encore plus intéressante. Depuis mai 2025, la croissance des abonnements ChatGPT Plus ralentit. OpenAI se retrouve sous pression et réagit en se diversifiant tous azimuts :` },
-      { type: "list", items: [
-        `Conseil en IA pour grandes organisations (contrats à 10 millions de dollars)`,
-        `Logiciels de productivité pour concurrencer Microsoft 365`,
-        `Développement de matériel "post-écran" (rachat de la société de Jony Ive pour 6,5 milliards)`,
-        `Exploration de la publicité`,
-        `Et même des services à contenu érotique encadré`
-      ] },
+      {
+        type: "list", items: [
+          `Conseil en IA pour grandes organisations (contrats à 10 millions de dollars)`,
+          `Logiciels de productivité pour concurrencer Microsoft 365`,
+          `Développement de matériel "post-écran" (rachat de la société de Jony Ive pour 6,5 milliards)`,
+          `Exploration de la publicité`,
+          `Et même des services à contenu érotique encadré`
+        ]
+      },
       { type: "paragraph", text: `Certains analystes appellent ça une "fuite en avant". Moi, j'y vois surtout un réflexe de survie économique.` },
       { type: "heading", text: `Le projet qui change tout : Stargate` },
       { type: "paragraph", text: `Mais le vrai game changer, c'est le projet Stargate : une infrastructure IA évaluée jusqu'à 500 milliards de dollars.` },
@@ -1758,11 +1822,13 @@ export const blogPosts: BlogPost[] = [
       { type: "heading", text: `1. La stratégie freemium touche à sa fin` },
       { type: "paragraph", text: `La gratuité actuelle n'est qu'une phase d'acquisition stratégique. L'objectif était de créer une adoption massive, une dépendance. Mission accomplie.` },
       { type: "paragraph", text: `Maintenant, place à la monétisation. Et les limitations commencent déjà :` },
-      { type: "list", items: [
-        `Environ 10 messages GPT-5 toutes les cinq heures en gratuit, puis bascule vers un modèle moins performant`,
-        `Temps de réponse plus longs aux heures de pointe`,
-        `Les abonnés payants ont un accès prioritaire et des réponses plus rapides`
-      ] },
+      {
+        type: "list", items: [
+          `Environ 10 messages GPT-5 toutes les cinq heures en gratuit, puis bascule vers un modèle moins performant`,
+          `Temps de réponse plus longs aux heures de pointe`,
+          `Les abonnés payants ont un accès prioritaire et des réponses plus rapides`
+        ]
+      },
       { type: "paragraph", text: `C'est une segmentation délibérée pour pousser à la conversion.` },
       { type: "heading", text: `2. Le B2B, c'est là que l'argent est` },
       { type: "paragraph", text: `Le vrai potentiel de monétisation ? Le marché professionnel.` },
@@ -1786,13 +1852,15 @@ export const blogPosts: BlogPost[] = [
       { type: "paragraph", text: `Les entreprises qui refuseront de payer seront simplement dépassées par celles qui investiront.` },
       { type: "heading", text: `Ma conclusion` },
       { type: "paragraph", text: `Voilà la réalité de l'économie de l'IA en 2025 :` },
-      { type: "list", items: [
-        `OpenAI brûle du cash malgré des revenus records, se diversifie frénétiquement, et cherche des centaines de milliards pour financer son infrastructure future`,
-        `Google a un avantage structurel massif grâce à ses TPU propriétaires, mais doit défendre son cœur de métier (la recherche) tout en monétisant ses infrastructures`,
-        `Anthropic et les autres concurrents maintiennent une pression intense sur la performance et les prix`,
-        `La gratuité actuelle n'est qu'une stratégie temporaire d'acquisition de marché`,
-        `La monétisation massive arrive, principalement via le B2B`
-      ] },
+      {
+        type: "list", items: [
+          `OpenAI brûle du cash malgré des revenus records, se diversifie frénétiquement, et cherche des centaines de milliards pour financer son infrastructure future`,
+          `Google a un avantage structurel massif grâce à ses TPU propriétaires, mais doit défendre son cœur de métier (la recherche) tout en monétisant ses infrastructures`,
+          `Anthropic et les autres concurrents maintiennent une pression intense sur la performance et les prix`,
+          `La gratuité actuelle n'est qu'une stratégie temporaire d'acquisition de marché`,
+          `La monétisation massive arrive, principalement via le B2B`
+        ]
+      },
       { type: "paragraph", text: `Alors oui, l'ère de l'IA gratuite touche à sa fin. Mais ce n'est pas forcément une mauvaise nouvelle. Ça signifie que le secteur mûrit, que les modèles économiques se stabilisent, et que l'IA devient un vrai outil professionnel fiable.` },
       { type: "paragraph", text: `La fête est bientôt finie. Mais le vrai travail commence.` },
       { type: "paragraph", text: `Et moi ? Je compte bien être de ceux qui construisent cette économie, pas de ceux qui la subissent.` }
@@ -1815,12 +1883,14 @@ export const blogPosts: BlogPost[] = [
       { type: "heading", text: `Ce que j'observe en classe : un phénomène inquiétant` },
       { type: "paragraph", text: `Depuis trois ans que je suis à SKEMA, j'ai vu une transformation radicale. ChatGPT arrive fin 2022, et dès 2023, tout change.` },
       { type: "paragraph", text: `Mes camarades utilisent l'IA pour tout :` },
-      { type: "list", items: [
-        `Les devoirs écrits ? ChatGPT`,
-        `Les analyses de cas ? ChatGPT`,
-        `Les présentations ? ChatGPT`,
-        `Même les révisions d'examens ? ChatGPT qui résume les cours`
-      ] },
+      {
+        type: "list", items: [
+          `Les devoirs écrits ? ChatGPT`,
+          `Les analyses de cas ? ChatGPT`,
+          `Les présentations ? ChatGPT`,
+          `Même les révisions d'examens ? ChatGPT qui résume les cours`
+        ]
+      },
       { type: "paragraph", text: `Le résultat ? Ils développent beaucoup moins de compétences réelles. Leur capacité d'analyse diminue. Leur esprit critique s'atrophie. Leur créativité s'évapore.` },
       { type: "paragraph", text: `Mais voilà le truc le plus troublant : ça ne change rien à leur capacité d'obtenir le diplôme. Voire même, parfois, ça améliore leurs notes.` },
       { type: "paragraph", text: `Et ça me pose une question fondamentale : si on peut avoir le diplôme sans les compétences, à quoi sert le diplôme ?` },
@@ -1828,33 +1898,39 @@ export const blogPosts: BlogPost[] = [
       { type: "paragraph", text: `J'ai creusé le sujet, et ce que j'observe n'est pas un cas isolé. C'est un phénomène généralisé.` },
       { type: "heading", text: `L'impact massif sur l'emploi des jeunes diplômés` },
       { type: "paragraph", text: `Les chiffres sont brutaux :` },
-      { type: "list", items: [
-        `En Inde, le recrutement de jeunes diplômés dans les grandes entreprises IT a chuté de 70% entre 2023 et 2024 : de 225 000 à 60 000 recrutements.`,
-        `Aux États-Unis, une étude de Stanford montre que les jeunes de 22-25 ans dans les secteurs exposés à l'IA ont significativement moins d'opportunités que leurs aînés.`,
-        `Pourquoi ? Parce que les entreprises automatisent les tâches qu'on confiait traditionnellement aux juniors : codage simple, analyse de données de base, rédaction de documents...`
-      ] },
+      {
+        type: "list", items: [
+          `En Inde, le recrutement de jeunes diplômés dans les grandes entreprises IT a chuté de 70% entre 2023 et 2024 : de 225 000 à 60 000 recrutements.`,
+          `Aux États-Unis, une étude de Stanford montre que les jeunes de 22-25 ans dans les secteurs exposés à l'IA ont significativement moins d'opportunités que leurs aînés.`,
+          `Pourquoi ? Parce que les entreprises automatisent les tâches qu'on confiait traditionnellement aux juniors : codage simple, analyse de données de base, rédaction de documents...`
+        ]
+      },
       { type: "paragraph", text: `Résultat : les entreprises privilégient maintenant l'expérience. Elles préfèrent recruter des profils confirmés plutôt que de former des juniors dont les compétences de base ne sont plus nécessaires.` },
       { type: "heading", text: `Le déclin cognitif lié à l'IA` },
       { type: "paragraph", text: `Un post LinkedIn que j'ai sauvegardé pose la vraie question :` },
       { type: "quote", text: `"Si l'intelligence artificielle accomplit une tâche mieux et plus vite, à quoi sert d'apprendre à la reproduire manuellement ?"` },
       { type: "paragraph", text: `La réponse est évidente : l'école a longtemps valorisé la mémorisation, la répétition, la restitution. Or, ces compétences sont désormais automatisables.` },
       { type: "paragraph", text: `Les compétences qui comptent maintenant :` },
-      { type: "list", items: [
-        `La curiosité`,
-        `La pensée critique`,
-        `La collaboration homme-machine`,
-        `La créativité authentique`
-      ] },
+      {
+        type: "list", items: [
+          `La curiosité`,
+          `La pensée critique`,
+          `La collaboration homme-machine`,
+          `La créativité authentique`
+        ]
+      },
       { type: "paragraph", text: `Mais voilà le problème : mes camarades ne développent même pas ces compétences-là. Ils utilisent l'IA comme une béquille pour éviter l'effort, pas comme un levier pour aller plus loin.` },
       { type: "heading", text: `La mort du diplôme comme signal de compétence` },
       { type: "paragraph", text: `Alors voici ma conviction : le diplôme est en train de perdre sa valeur comme signal de compétence.` },
       { type: "heading", text: `Pourquoi les diplômes valaient quelque chose` },
       { type: "paragraph", text: `Historiquement, un diplôme servait de signal au marché du travail. Il disait :` },
-      { type: "list", items: [
-        `"Cette personne a acquis un socle de connaissances"`,
-        `"Elle a la capacité de travailler dur et de terminer ce qu'elle commence"`,
-        `"Elle peut analyser des problèmes complexes"`
-      ] },
+      {
+        type: "list", items: [
+          `"Cette personne a acquis un socle de connaissances"`,
+          `"Elle a la capacité de travailler dur et de terminer ce qu'elle commence"`,
+          `"Elle peut analyser des problèmes complexes"`
+        ]
+      },
       { type: "paragraph", text: `Mais si l'IA permet d'obtenir le diplôme sans développer ces capacités, le signal devient du bruit.` },
       { type: "paragraph", text: `Le diplôme ne garantit plus les compétences. Il garantit juste qu'on a su naviguer dans un système qui n'a pas encore compris comment évaluer les compétences réelles à l'ère de l'IA.` },
       { type: "heading", text: `Ce qui va remplacer le diplôme` },
@@ -1863,120 +1939,146 @@ export const blogPosts: BlogPost[] = [
       { type: "paragraph", text: `1. Le portfolio de projets réels` },
       { type: "paragraph", text: `Au lieu de demander "Vous avez quel diplôme ?", les recruteurs vont demander "Montrez-moi ce que vous avez construit."` },
       { type: "paragraph", text: `Un portfolio qui montre :` },
-      { type: "list", items: [
-        `Des projets concrets que vous avez menés`,
-        `Les problèmes que vous avez résolus`,
-        `La valeur que vous avez créée`,
-        `Comment vous avez utilisé les outils (y compris l'IA) pour y arriver`
-      ] },
+      {
+        type: "list", items: [
+          `Des projets concrets que vous avez menés`,
+          `Les problèmes que vous avez résolus`,
+          `La valeur que vous avez créée`,
+          `Comment vous avez utilisé les outils (y compris l'IA) pour y arriver`
+        ]
+      },
       { type: "paragraph", text: `C'est exactement ce que je fais avec MoveThink. Je construis quelque chose de réel, qui crée de la valeur mesurable. Ça vaut infiniment plus qu'une bonne moyenne dans des devoirs rédigés par ChatGPT.` },
       { type: "paragraph", text: `2. Les avis et recommandations professionnels` },
       { type: "paragraph", text: `L'équivalent des notes Google pour les restaurants, mais pour les professionnels.` },
       { type: "paragraph", text: `Imaginez :` },
-      { type: "list", items: [
-        `Vous travaillez sur un projet`,
-        `Les personnes avec qui vous collaborez (tuteurs, clients, collègues) laissent des avis détaillés sur vos compétences réelles`,
-        `Ces avis sont vérifiés, datés, contextualisés`
-      ] },
+      {
+        type: "list", items: [
+          `Vous travaillez sur un projet`,
+          `Les personnes avec qui vous collaborez (tuteurs, clients, collègues) laissent des avis détaillés sur vos compétences réelles`,
+          `Ces avis sont vérifiés, datés, contextualisés`
+        ]
+      },
       { type: "paragraph", text: `C'est beaucoup plus difficile à tricher qu'un diplôme obtenu avec l'aide de ChatGPT.` },
       { type: "paragraph", text: `3. Les évaluations de compétences en situation réelle` },
       { type: "paragraph", text: `Plutôt que d'évaluer ce que vous savez en théorie, on va évaluer ce que vous savez faire en pratique.` },
-      { type: "list", items: [
-        `Des tests de codage en live`,
-        `Des études de cas à résoudre en temps limité`,
-        `Des projets pilotes courts pour démontrer votre valeur`
-      ] },
+      {
+        type: "list", items: [
+          `Des tests de codage en live`,
+          `Des études de cas à résoudre en temps limité`,
+          `Des projets pilotes courts pour démontrer votre valeur`
+        ]
+      },
       { type: "paragraph", text: `On ne pourra pas se cacher derrière l'IA pour ces évaluations. Soit vous savez faire, soit vous ne savez pas.` },
       { type: "heading", text: `Mais attendez... on peut tricher sur un portfolio aussi ?` },
       { type: "paragraph", text: `C'est vrai. On peut mettre n'importe quoi sur un portfolio. Mais c'est là que les avis deviennent cruciaux.` },
       { type: "paragraph", text: `Si je dis "J'ai créé MoveThink, une startup qui conditionne l'accès à l'IA à l'effort physique", quelqu'un peut vérifier :` },
-      { type: "list", items: [
-        `Est-ce que la startup existe vraiment ?`,
-        `Est-ce que Gabriel Bigot en est vraiment le fondateur ?`,
-        `Est-ce que le produit fonctionne ?`,
-        `Qu'en disent les utilisateurs ?`,
-        `Qu'en dit le tuteur de stage qui l'a supervisé ?`
-      ] },
+      {
+        type: "list", items: [
+          `Est-ce que la startup existe vraiment ?`,
+          `Est-ce que Gabriel Bigot en est vraiment le fondateur ?`,
+          `Est-ce que le produit fonctionne ?`,
+          `Qu'en disent les utilisateurs ?`,
+          `Qu'en dit le tuteur de stage qui l'a supervisé ?`
+        ]
+      },
       { type: "paragraph", text: `L'écosystème de vérification fait toute la différence.` },
       { type: "paragraph", text: `C'est comme sur Amazon : on peut dire qu'on vend le meilleur produit du monde, mais si les avis disent le contraire, personne n'achète.` },
       { type: "heading", text: `Le paradoxe : l'IA révèle qui crée vraiment de la valeur` },
       { type: "paragraph", text: `Voici l'ironie de la situation : l'IA, en rendant les diplômes moins fiables, va forcer le marché à se concentrer sur ce qui compte vraiment : la capacité à créer de la valeur.` },
       { type: "paragraph", text: `Dans ma classe, il y a deux types de personnes :` },
       { type: "paragraph", text: `Type 1 : Ceux qui utilisent l'IA pour éviter l'effort` },
-      { type: "list", items: [
-        `Ils demandent à ChatGPT de faire leurs devoirs`,
-        `Ils obtiennent de bonnes notes`,
-        `Ils auront le diplôme`,
-        `Mais ils n'ont développé aucune compétence réelle`,
-        `Le marché du travail va les démasquer rapidement`
-      ] },
+      {
+        type: "list", items: [
+          `Ils demandent à ChatGPT de faire leurs devoirs`,
+          `Ils obtiennent de bonnes notes`,
+          `Ils auront le diplôme`,
+          `Mais ils n'ont développé aucune compétence réelle`,
+          `Le marché du travail va les démasquer rapidement`
+        ]
+      },
       { type: "paragraph", text: `Type 2 : Ceux qui utilisent l'IA comme levier` },
-      { type: "list", items: [
-        `Ils utilisent l'IA pour automatiser les tâches répétitives`,
-        `Ils se concentrent sur la création de valeur réelle`,
-        `Ils construisent des projets, des entreprises, des solutions`,
-        `Ils développent des compétences que l'IA ne peut pas remplacer`,
-        `Le marché du travail va les valoriser énormément`
-      ] },
+      {
+        type: "list", items: [
+          `Ils utilisent l'IA pour automatiser les tâches répétitives`,
+          `Ils se concentrent sur la création de valeur réelle`,
+          `Ils construisent des projets, des entreprises, des solutions`,
+          `Ils développent des compétences que l'IA ne peut pas remplacer`,
+          `Le marché du travail va les valoriser énormément`
+        ]
+      },
       { type: "paragraph", text: `Je fais partie du Type 2. Et je pense que c'est le seul choix viable à long terme.` },
       { type: "heading", text: `Ma stratégie personnelle : construire pendant que les autres trichent` },
       { type: "paragraph", text: `Pendant que mes camarades utilisent ChatGPT pour avoir 14/20 à un devoir qu'ils ne comprennent pas, moi je fais autre chose :` },
       { type: "paragraph", text: `Je construis MoveThink.` },
-      { type: "list", items: [
-        `Une vraie startup, avec une vraie SASU`,
-        `Un vrai produit qui crée de la valeur`,
-        `Une vraie problématique résolue : conditionner l'accès à l'IA à l'effort`,
-        `Un vrai business model : B2C à 15€/mois`,
-        `De vraies compétences développées : architecture technique, APIs, n8n, Supabase, stratégie, positionnement`
-      ] },
+      {
+        type: "list", items: [
+          `Une vraie startup, avec une vraie SASU`,
+          `Un vrai produit qui crée de la valeur`,
+          `Une vraie problématique résolue : conditionner l'accès à l'IA à l'effort`,
+          `Un vrai business model : B2C à 15€/mois`,
+          `De vraies compétences développées : architecture technique, APIs, n8n, Supabase, stratégie, positionnement`
+        ]
+      },
       { type: "paragraph", text: `Je crée un portfolio concret.` },
-      { type: "list", items: [
-        `Des automatisations qui ont généré 85% de gain de temps dans l'entreprise familiale`,
-        `Des articles de blog qui démontrent ma capacité d'analyse (comme celui-ci)`,
-        `Un projet entrepreneurial qui montre que je sais identifier des problèmes et construire des solutions`
-      ] },
+      {
+        type: "list", items: [
+          `Des automatisations qui ont généré 85% de gain de temps dans l'entreprise familiale`,
+          `Des articles de blog qui démontrent ma capacité d'analyse (comme celui-ci)`,
+          `Un projet entrepreneurial qui montre que je sais identifier des problèmes et construire des solutions`
+        ]
+      },
       { type: "paragraph", text: `Je développe des compétences irremplaçables.` },
-      { type: "list", items: [
-        `Comprendre où l'IA crée de la valeur`,
-        `Savoir déployer des solutions techniques`,
-        `Penser de manière critique et stratégique`,
-        `Avoir une vision long terme sur l'évolution du marché`
-      ] },
+      {
+        type: "list", items: [
+          `Comprendre où l'IA crée de la valeur`,
+          `Savoir déployer des solutions techniques`,
+          `Penser de manière critique et stratégique`,
+          `Avoir une vision long terme sur l'évolution du marché`
+        ]
+      },
       { type: "paragraph", text: `Quand le marché du travail va réaliser que les diplômes ne veulent plus rien dire, ceux qui auront construit quelque chose de réel auront une longueur d'avance massive.` },
       { type: "heading", text: `L'éducation va devoir se réinventer` },
       { type: "paragraph", text: `Les écoles et universités vont devoir s'adapter. Elles n'ont pas le choix.` },
       { type: "paragraph", text: `Voici ce qui doit changer :` },
       { type: "paragraph", text: `1. Arrêter d'évaluer la restitution, évaluer la création` },
       { type: "paragraph", text: `Plus de devoirs à rendre qu'on peut faire rédiger par ChatGPT. À la place :` },
-      { type: "list", items: [
-        `Des projets réels à construire`,
-        `Des problèmes concrets à résoudre`,
-        `Des présentations orales où on doit défendre ses idées en live`
-      ] },
+      {
+        type: "list", items: [
+          `Des projets réels à construire`,
+          `Des problèmes concrets à résoudre`,
+          `Des présentations orales où on doit défendre ses idées en live`
+        ]
+      },
       { type: "paragraph", text: `2. Enseigner l'utilisation intelligente de l'IA` },
       { type: "paragraph", text: `Plutôt que d'interdire ChatGPT (ce qui est ridicule et inefficace), apprendre aux étudiants :` },
-      { type: "list", items: [
-        `Comment utiliser l'IA comme levier`,
-        `Où l'IA apporte de la valeur et où elle n'en apporte pas`,
-        `Comment vérifier et critiquer ce que produit l'IA`,
-        `Comment l'intégrer dans un workflow de création de valeur`
-      ] },
+      {
+        type: "list", items: [
+          `Comment utiliser l'IA comme levier`,
+          `Où l'IA apporte de la valeur et où elle n'en apporte pas`,
+          `Comment vérifier et critiquer ce que produit l'IA`,
+          `Comment l'intégrer dans un workflow de création de valeur`
+        ]
+      },
       { type: "paragraph", text: `3. Créer des systèmes de validation de compétences réelles` },
       { type: "paragraph", text: `Les écoles doivent devenir des certificateurs de compétences, pas des distributeurs de diplômes.` },
-      { type: "list", items: [
-        `Portfolio vérifié de projets menés pendant les études`,
-        `Évaluations en situation réelle`,
-        `Avis de professionnels qui ont collaboré avec l'étudiant`
-      ] },
+      {
+        type: "list", items: [
+          `Portfolio vérifié de projets menés pendant les études`,
+          `Évaluations en situation réelle`,
+          `Avis de professionnels qui ont collaboré avec l'étudiant`
+        ]
+      },
       { type: "paragraph", text: `Si les écoles ne font pas cette transition, elles vont devenir obsolètes. Les entreprises arrêteront de faire confiance aux diplômes et créeront leurs propres systèmes d'évaluation.` },
       { type: "heading", text: `Une question qui reste : est-ce partout pareil ?` },
       { type: "paragraph", text: `J'observe ça à SKEMA depuis trois ans. Mais est-ce que c'est représentatif de ce qui se passe en France ? En Europe ? Dans le monde ?` },
       { type: "paragraph", text: `La réponse est oui. Les données montrent que c'est un phénomène global :` },
-      { type: "list", items: [
-        `68% des entreprises de plus de 500 employés utilisent déjà l'IA dans le recrutement en 2025`,
-        `Les études sur l'impact de l'IA sur l'emploi des jeunes diplômés touchent tous les pays développés`,
-        `Les discussions sur "l'IA dans l'éducation" explosent partout`
-      ] },
+      {
+        type: "list", items: [
+          `68% des entreprises de plus de 500 employés utilisent déjà l'IA dans le recrutement en 2025`,
+          `Les études sur l'impact de l'IA sur l'emploi des jeunes diplômés touchent tous les pays développés`,
+          `Les discussions sur "l'IA dans l'éducation" explosent partout`
+        ]
+      },
       { type: "paragraph", text: `Ce n'est pas spécifique à ma classe. Ce n'est pas spécifique à mon école. C'est une transformation systémique du rapport entre éducation, compétences et emploi.` },
       { type: "paragraph", text: `Certaines écoles s'adaptent plus vite que d'autres. Certains étudiants comprennent l'enjeu plus vite que d'autres. Mais tout le monde est concerné.` },
       { type: "heading", text: `Ma conviction finale` },
