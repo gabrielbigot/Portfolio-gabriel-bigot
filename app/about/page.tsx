@@ -44,7 +44,7 @@ const milestones: {
     year: "Lycée — La Malassise (2020-2022)",
     type: "rupture",
     title: "Les dislocations continuent, la période s'assombrit",
-    text: "J'ai choisi La Malassise à Saint-Omer alors que la quasi-totalité de mon équipe U16 avait arrêté le hockey en arrivant au lycée. Moi je revenais le vendredi soir souvent épuisé de la semaine pour aller m'entraîner. La deuxième luxation est arrivée le seul jour où j'avais oublié ma genouillère. La troisième est arrivée alors que je l'avais, ce qui voulait dire que même le maintien artificiel ne suffisait plus. Entre les deux il y avait des luxations partielles que je ressentais et que j'ignorais volontairement. C'était aussi une période assez sombre que personne ne voyait vraiment autour de moi, où je cherchais de la dopamine n'importe où sans vraiment en avoir conscience. Beaucoup de gens me regardaient comme si j'étais un zombie à cette époque et ça me faisait vraiment mal.",
+    text: "J'ai choisi La Malassise à Saint-Omer alors que la quasi-totalité de mon équipe U16 avait arrêté le hockey en arrivant au lycée. Moi je revenais le vendredi soir souvent épuisé de la semaine pour aller m'entraîner. La deuxième luxation est arrivée le seul jour où j'avais oublié ma genouillère. La troisième est arrivée alors que je l'avais, ce qui voulait dire que même le maintien artificiel ne suffisait plus. Entre les deux il y avait des luxations partielles que je ressentais et que j'ignorais volontairement.",
   },
   {
     year: "Oct. 2022",
