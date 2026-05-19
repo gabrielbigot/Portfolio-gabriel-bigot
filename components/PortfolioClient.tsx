@@ -324,7 +324,7 @@ export default function PortfolioClient({
                         </div>
 
                         {job.technologies.length > 0 && (
-                          <div className="lg:max-w-sm">
+                          <div className="lg:max-w-md">
                             <TechnologyGroups technologies={job.technologies} compact maxItems={8} />
                           </div>
                         )}
