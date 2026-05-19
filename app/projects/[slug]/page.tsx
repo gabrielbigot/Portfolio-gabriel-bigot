@@ -3,6 +3,8 @@ import { getProjects, getProject } from "@/lib/portfolio-data"
 import { ArrowLeft, ExternalLink, Github, Calendar, Building2, Zap, Code2 } from "lucide-react"
 import BlogContentRenderer from "@/components/BlogContentRenderer"
 import ProjectMediaCarousel from "@/components/ProjectMediaCarousel"
+import TechnologyGroups from "@/components/TechnologyGroups"
+import { getTechnologyName } from "@/lib/technology-categories"
 
 export function generateStaticParams() {
   return getProjects().map((project) => ({ slug: project.slug }))
@@ -94,8 +96,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                   ? project.technologies.slice(0, 3)
                   : project.tags.slice(0, 3)
                 ).map((tech: any) => (
-                  <span key={typeof tech === "string" ? tech : tech.name} className="text-sm text-foreground">
-                    {typeof tech === "string" ? tech : tech.name}
+                  <span key={getTechnologyName(tech)} className="text-sm text-foreground">
+                    {getTechnologyName(tech)}
                   </span>
                 ))}
               </div>
@@ -175,19 +177,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                   {project.technologies && project.technologies.length > 0 && (
                     <section className="space-y-6">
                       <h2 className="text-2xl sm:text-3xl font-light">Stack Technique</h2>
-                      <div className="flex flex-wrap gap-3">
-                        {project.technologies.map((tech: any, index: number) => (
-                          <div
-                            key={index}
-                            className="px-4 py-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-colors duration-300"
-                          >
-                            <div className="flex items-center gap-2">
-                              <Code2 className="w-4 h-4 text-muted-foreground" />
-                              <span className="font-medium">{typeof tech === "string" ? tech : tech.name}</span>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
+                      <TechnologyGroups technologies={project.technologies} />
                     </section>
                   )}
 
@@ -242,16 +232,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               {project.technologies && project.technologies.length > 0 ? (
                 <div className="space-y-4">
                   <h3 className="text-sm text-muted-foreground font-mono">TECHNOLOGIES</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech: any) => (
-                      <span
-                        key={typeof tech === "string" ? tech : tech.name}
-                        className="px-3 py-1.5 text-sm border border-border rounded-lg hover:border-muted-foreground/50 transition-colors duration-300"
-                      >
-                        {typeof tech === "string" ? tech : tech.name}
-                      </span>
-                    ))}
-                  </div>
+                  <TechnologyGroups technologies={project.technologies} />
                 </div>
               ) : project.tags && project.tags.length > 0 ? (
                 <div className="space-y-4">

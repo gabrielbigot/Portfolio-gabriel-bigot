@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useState } from "react"
 import { ArrowLeft, ArrowRight, Calendar, Building2, Code2 } from "lucide-react"
+import { formatTechnologyGroups } from "@/lib/technology-categories"
 
 interface Project {
   id: string
@@ -214,7 +215,7 @@ export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClie
                         {project.technologies && project.technologies.length > 0 && (
                           <div className="flex items-start gap-2 text-sm text-muted-foreground">
                             <Code2 className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                            <span>{project.technologies.join(", ")}</span>
+                            <span>{formatTechnologyGroups(project.technologies, 10)}</span>
                           </div>
                         )}
                       </div>
@@ -321,7 +322,7 @@ export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClie
                     {project.technologies && project.technologies.length > 0 && (
                       <div className="flex items-start gap-2">
                         <Code2 className="w-3 h-3 mt-0.5 flex-shrink-0" />
-                        <span className="line-clamp-2">{project.technologies.join(", ")}</span>
+                        <span className="line-clamp-3">{formatTechnologyGroups(project.technologies, 6)}</span>
                       </div>
                     )}
                   </div>

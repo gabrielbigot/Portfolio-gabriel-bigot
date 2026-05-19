@@ -2,6 +2,8 @@ import Link from "next/link"
 import { getCompany, getCompanyProjects, getCompanies } from "@/lib/portfolio-data"
 import { ArrowLeft, ArrowRight, Building2, MapPin, Calendar, Briefcase, ExternalLink, Code2 } from "lucide-react"
 import { notFound } from "next/navigation"
+import TechnologyGroups from "@/components/TechnologyGroups"
+import { getTechnologyName } from "@/lib/technology-categories"
 
 export function generateStaticParams() {
   return getCompanies().map((c) => ({ slug: c.slug }))
@@ -173,7 +175,7 @@ export default function CompanyPage({ params }: { params: { slug: string } }) {
                 <div className="flex flex-wrap gap-1.5">
                   {company.technologies.slice(0, 4).map((tech: string) => (
                     <span key={tech} className="text-sm text-foreground">
-                      {tech}
+                      {getTechnologyName(tech)}
                     </span>
                   ))}
                   {company.technologies.length > 4 && (
@@ -219,16 +221,7 @@ export default function CompanyPage({ params }: { params: { slug: string } }) {
               {company.technologies && company.technologies.length > 0 && (
                 <div className="space-y-4">
                   <h3 className="text-sm text-muted-foreground font-mono">TECHNOLOGIES</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {company.technologies.map((tech: string) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1.5 text-sm border border-border rounded-lg hover:border-muted-foreground/50 transition-colors duration-300"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                  <TechnologyGroups technologies={company.technologies} />
                 </div>
               )}
 
