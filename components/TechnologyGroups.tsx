@@ -14,10 +14,39 @@ export default function TechnologyGroups({ technologies, compact = false, maxIte
 
   if (groups.length === 0) return null
 
+  if (compact) {
+    return (
+      <div className="flex flex-wrap gap-1.5 lg:justify-end">
+        {groups.flatMap((group) =>
+          group.technologies.map((technology) => {
+            const name = getTechnologyName(technology)
+
+            return (
+              <span
+                key={`${group.category}-${name}`}
+                className="inline-flex items-center gap-1.5 px-2 py-0.5 text-xs border border-border text-muted-foreground rounded-md leading-tight"
+              >
+                <span className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground/60">
+                  {group.category}
+                </span>
+                <span>{name}</span>
+              </span>
+            )
+          })
+        )}
+        {hiddenCount > 0 && (
+          <span className="px-2 py-0.5 text-xs text-muted-foreground/70">
+            +{hiddenCount}
+          </span>
+        )}
+      </div>
+    )
+  }
+
   return (
-    <div className={compact ? "space-y-2" : "space-y-4"}>
+    <div className="space-y-4">
       {groups.map((group) => (
-        <div key={group.category} className={compact ? "space-y-1.5" : "space-y-2"}>
+        <div key={group.category} className="space-y-2">
           <div className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground/70">
             {group.category}
           </div>
@@ -28,13 +57,9 @@ export default function TechnologyGroups({ technologies, compact = false, maxIte
               return (
                 <span
                   key={name}
-                  className={
-                    compact
-                      ? "px-2 py-0.5 text-xs border border-border text-muted-foreground rounded-md leading-tight"
-                      : "inline-flex items-center gap-2 px-3 py-1.5 text-sm border border-border rounded-lg hover:border-muted-foreground/50 transition-colors duration-300"
-                  }
+                  className="inline-flex items-center gap-2 px-3 py-1.5 text-sm border border-border rounded-lg hover:border-muted-foreground/50 transition-colors duration-300"
                 >
-                  {!compact && <Code2 className="w-4 h-4 text-muted-foreground" />}
+                  <Code2 className="w-4 h-4 text-muted-foreground" />
                   <span>{name}</span>
                 </span>
               )
