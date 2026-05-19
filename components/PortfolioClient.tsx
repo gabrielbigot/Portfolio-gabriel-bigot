@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import ContactForm from "@/components/contact-form"
+import TechnologyGroups from "@/components/TechnologyGroups"
 
 interface Project {
   id: string
@@ -322,16 +323,11 @@ export default function PortfolioClient({
                           </div>
                         </div>
 
-                        <div className="flex flex-wrap gap-1.5 lg:justify-end items-start content-start max-w-xs">
-                          {job.technologies.map((tech) => (
-                            <span
-                              key={tech}
-                              className="px-2 py-0.5 text-xs border border-border text-muted-foreground rounded group-hover:text-foreground group-hover:border-muted-foreground/50 transition-all duration-500 leading-tight whitespace-nowrap"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
+                        {job.technologies.length > 0 && (
+                          <div className="lg:max-w-sm">
+                            <TechnologyGroups technologies={job.technologies} compact maxItems={8} />
+                          </div>
+                        )}
                       </div>
 
                       <p className="text-muted-foreground leading-relaxed max-w-lg">{job.description}</p>

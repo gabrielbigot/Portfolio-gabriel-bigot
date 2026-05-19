@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { getCompanies } from "@/lib/portfolio-data"
 import { ArrowLeft, ArrowRight, Building2, MapPin, Calendar, Briefcase } from "lucide-react"
+import TechnologyGroups from "@/components/TechnologyGroups"
 
 export const metadata = {
   title: "Expériences professionnelles — Gabriel Bigot",
@@ -136,20 +137,8 @@ export default function WorkPage() {
 
                     {/* Technologies */}
                     {company.technologies && company.technologies.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5 pt-0.5">
-                        {company.technologies.slice(0, 6).map((tech: string) => (
-                          <span
-                            key={tech}
-                            className="px-2 py-0.5 text-xs border border-border rounded-md"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                        {company.technologies.length > 6 && (
-                          <span className="px-2 py-0.5 text-xs text-muted-foreground">
-                            +{company.technologies.length - 6}
-                          </span>
-                        )}
+                      <div className="pt-0.5">
+                        <TechnologyGroups technologies={company.technologies} compact maxItems={6} />
                       </div>
                     )}
                   </div>
