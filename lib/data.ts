@@ -1041,6 +1041,12 @@ export const projects = [
       "2-3 ans de réflexion sur son propre apprentissage valent n'importe quel cahier des charges"
     ],
     media: [
+      {
+        url: "/projects/unlimited-cognition/screentune-tutoriel.mp4",
+        caption: "Vidéo tutoriel ScreenTune — Démonstration guidée d'Unlimited Cognition",
+        type: "video",
+        poster: "/projects/unlimited-cognition/screenshot-01-home-upload.png"
+      },
       { url: "/projects/unlimited-cognition/screenshot-01-home-upload.png", caption: "Accueil — Importer ou déposer de nouvelles connaissances" },
       { url: "/projects/unlimited-cognition/screenshot-02-review-queue.png", caption: "Session de révision — Files de cartes prêtes à revoir" },
       { url: "/projects/unlimited-cognition/screenshot-03-library-decks.png", caption: "Library — Bibliothèque de decks, dossiers et catégories" },
@@ -1059,7 +1065,7 @@ export const projects = [
       { url: "/projects/unlimited-cognition/screenshot-16-annotations.png", caption: "Annotations — Notes contextuelles liées aux contenus" },
       { url: "/projects/unlimited-cognition/screenshot-17-audio-library.png", caption: "Bibliothèque audio — Écoute et révision multimédia" },
       { url: "/projects/unlimited-cognition/screenshot-18-mind-map.png", caption: "Mind Map — Visualisation des notions et liens conceptuels" }
-    ] as Array<{ url: string; caption?: string }>,
+    ] as Array<{ url: string; caption?: string; type?: "image" | "video"; poster?: string }>,
     content: [
       { type: 'heading', text: `Le constat` },
       { type: 'paragraph', text: `Tout a commencé par une observation simple, et assez inquiétante. Dans ma classe de prépa, j'ai des camarades que je côtoie depuis 3 ans. Quotidiennement. Et depuis l'explosion des LLMs, pour n'importe quel exercice, évaluation, ou concours blanc — ils délèguent tout. Absolument tout. Sans le moindre effort cognitif.` },
@@ -1269,13 +1275,19 @@ export const projects = [
       "Les templates injectés dans les prompts IA améliorent nettement la qualité et la cohérence des posts générés"
     ],
     media: [
+      {
+        url: "/projects/adn-dashboard/screentune-tutoriel.mp4",
+        caption: "Vidéo tutoriel ScreenTune — Démonstration guidée de l'ADN Dashboard",
+        type: "video",
+        poster: "/projects/adn-dashboard/accueil.png"
+      },
       { url: "/projects/adn-dashboard/accueil.png", caption: "Accueil — stats, lancement de la veille, sélecteur de template" },
       { url: "/projects/adn-dashboard/veille.png", caption: "Veille — articles analysés par IA avec score d'impact et filtres" },
       { url: "/projects/adn-dashboard/studio.png", caption: "Studio — éditeur avec aperçu LinkedIn et Instagram en temps réel" },
       { url: "/projects/adn-dashboard/calendrier.png", caption: "Calendrier — historique et planning des publications" },
       { url: "/projects/adn-dashboard/couts-api.png", caption: "Coûts API — suivi des dépenses IA par service et par opération" },
       { url: "/projects/adn-dashboard/parametres.png", caption: "Paramètres — sources RSS, prompts, modèles IA et templates" }
-    ] as Array<{ url: string; caption?: string }>,
+    ] as Array<{ url: string; caption?: string; type?: "image" | "video"; poster?: string }>,
     content: [
       { type: 'heading', text: `Pourquoi cette application ?` },
       { type: 'paragraph', text: `Pendant le stage, la veille automatisée tournait sur un outil tiers (n8n cloud). En février, la limite mensuelle était atteinte chaque mois, bloquant la veille. Notion stockait les posts générés, mais sans aperçu et sans pouvoir publier sur Instagram.` },
