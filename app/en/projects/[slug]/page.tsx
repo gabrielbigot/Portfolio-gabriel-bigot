@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { getLocalizedProject, getLocalizedProjects } from "@/lib/portfolio-i18n"
 import { ArrowLeft, Calendar, Building2, Zap, Code2 } from "lucide-react"
+import BlogContentRenderer from "@/components/BlogContentRenderer"
 import ProjectMediaCarousel from "@/components/ProjectMediaCarousel"
 import TechnologyGroups from "@/components/TechnologyGroups"
 import { getTechnologyName } from "@/lib/technology-categories"
@@ -112,85 +113,95 @@ export default async function EnglishProjectPage({ params }: { params: Promise<{
         <div className="grid lg:grid-cols-3 gap-12 lg:gap-16 py-12 sm:py-20">
           <div className="lg:col-span-2">
             <div className="space-y-12 sm:space-y-16">
-              {project.fullDescription && (
-                <section className="space-y-6">
-                  <h2 className="text-2xl sm:text-3xl font-light">Overview</h2>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    {project.fullDescription}
-                  </p>
-                </section>
-              )}
+              {project.content && project.content.length > 0 ? (
+                <BlogContentRenderer
+                  content={project.content.filter(
+                    (section: any) => !(section.type === "heading" && ["Médias", "Media"].includes(section.text))
+                  )}
+                />
+              ) : (
+                <>
+                  {project.fullDescription && (
+                    <section className="space-y-6">
+                      <h2 className="text-2xl sm:text-3xl font-light">Overview</h2>
+                      <p className="text-lg text-muted-foreground leading-relaxed">
+                        {project.fullDescription}
+                      </p>
+                    </section>
+                  )}
 
-              {project.problem && (
-                <section className="space-y-6">
-                  <h2 className="text-2xl sm:text-3xl font-light">Problem</h2>
-                  <div className="p-6 sm:p-8 bg-foreground/[0.02] border border-border rounded-lg">
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                      {project.problem}
-                    </p>
-                  </div>
-                </section>
-              )}
+                  {project.problem && (
+                    <section className="space-y-6">
+                      <h2 className="text-2xl sm:text-3xl font-light">Problem</h2>
+                      <div className="p-6 sm:p-8 bg-foreground/[0.02] border border-border rounded-lg">
+                        <p className="text-lg text-muted-foreground leading-relaxed">
+                          {project.problem}
+                        </p>
+                      </div>
+                    </section>
+                  )}
 
-              {project.solution && (
-                <section className="space-y-6">
-                  <h2 className="text-2xl sm:text-3xl font-light">Solution</h2>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    {project.solution}
-                  </p>
-                </section>
-              )}
+                  {project.solution && (
+                    <section className="space-y-6">
+                      <h2 className="text-2xl sm:text-3xl font-light">Solution</h2>
+                      <p className="text-lg text-muted-foreground leading-relaxed">
+                        {project.solution}
+                      </p>
+                    </section>
+                  )}
 
-              {project.impact && project.impact.length > 0 && (
-                <section className="space-y-6">
-                  <h2 className="text-2xl sm:text-3xl font-light">Impact & Results</h2>
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    {project.impact.map((item: string, index: number) => (
-                      <div key={index} className="p-6 border border-border rounded-lg hover:border-muted-foreground/50 transition-colors duration-300">
-                        <div className="flex items-start gap-3">
-                          <div className="w-8 h-8 rounded-full bg-foreground/5 flex items-center justify-center flex-shrink-0 mt-1">
-                            <Zap className="w-4 h-4 text-foreground/70" />
+                  {project.impact && project.impact.length > 0 && (
+                    <section className="space-y-6">
+                      <h2 className="text-2xl sm:text-3xl font-light">Impact & Results</h2>
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        {project.impact.map((item: string, index: number) => (
+                          <div key={index} className="p-6 border border-border rounded-lg hover:border-muted-foreground/50 transition-colors duration-300">
+                            <div className="flex items-start gap-3">
+                              <div className="w-8 h-8 rounded-full bg-foreground/5 flex items-center justify-center flex-shrink-0 mt-1">
+                                <Zap className="w-4 h-4 text-foreground/70" />
+                              </div>
+                              <p className="text-muted-foreground leading-relaxed">{item}</p>
+                            </div>
                           </div>
-                          <p className="text-muted-foreground leading-relaxed">{item}</p>
-                        </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                </section>
-              )}
+                    </section>
+                  )}
 
-              {project.technologies && project.technologies.length > 0 && (
-                <section className="space-y-6">
-                  <h2 className="text-2xl sm:text-3xl font-light">Technical Stack</h2>
-                  <TechnologyGroups technologies={project.technologies} locale="en" />
-                </section>
-              )}
+                  {project.technologies && project.technologies.length > 0 && (
+                    <section className="space-y-6">
+                      <h2 className="text-2xl sm:text-3xl font-light">Technical Stack</h2>
+                      <TechnologyGroups technologies={project.technologies} locale="en" />
+                    </section>
+                  )}
 
-              {project.challenges && project.challenges.length > 0 && (
-                <section className="space-y-6">
-                  <h2 className="text-2xl sm:text-3xl font-light">Technical Challenges</h2>
-                  <ul className="space-y-3">
-                    {project.challenges.map((challenge: string, index: number) => (
-                      <li key={index} className="flex gap-3 text-muted-foreground leading-relaxed">
-                        <span className="text-foreground/50 mt-1.5">•</span>
-                        <span>{challenge}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              )}
+                  {project.challenges && project.challenges.length > 0 && (
+                    <section className="space-y-6">
+                      <h2 className="text-2xl sm:text-3xl font-light">Technical Challenges</h2>
+                      <ul className="space-y-3">
+                        {project.challenges.map((challenge: string, index: number) => (
+                          <li key={index} className="flex gap-3 text-muted-foreground leading-relaxed">
+                            <span className="text-foreground/50 mt-1.5">•</span>
+                            <span>{challenge}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+                  )}
 
-              {project.learnings && project.learnings.length > 0 && (
-                <section className="space-y-6">
-                  <h2 className="text-2xl sm:text-3xl font-light">Key Learnings</h2>
-                  <div className="space-y-4">
-                    {project.learnings.map((learning: string, index: number) => (
-                      <div key={index} className="p-6 bg-foreground/[0.02] border border-border rounded-lg">
-                        <p className="text-muted-foreground leading-relaxed">{learning}</p>
+                  {project.learnings && project.learnings.length > 0 && (
+                    <section className="space-y-6">
+                      <h2 className="text-2xl sm:text-3xl font-light">Key Learnings</h2>
+                      <div className="space-y-4">
+                        {project.learnings.map((learning: string, index: number) => (
+                          <div key={index} className="p-6 bg-foreground/[0.02] border border-border rounded-lg">
+                            <p className="text-muted-foreground leading-relaxed">{learning}</p>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                </section>
+                    </section>
+                  )}
+                </>
               )}
 
               {(project as any).media && (project as any).media.length > 0 && (
