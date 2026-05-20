@@ -6,6 +6,7 @@ import {
   getSocialLinks,
   getWorkExperience,
 } from "@/lib/portfolio-data"
+import { projectTranslationsEn } from "@/lib/project-translations-en"
 
 export type PortfolioLocale = "fr" | "en"
 
@@ -222,17 +223,29 @@ const projectTranslations: Record<string, { title: string; shortDescription: str
   },
 }
 
+function getProjectTranslation(slug: string) {
+  return projectTranslationsEn[slug as keyof typeof projectTranslationsEn]
+}
+
 export function getLocalizedProjects(locale: PortfolioLocale = "fr") {
   const projects = getProjects()
   if (locale === "fr") {
     return projects
   }
 
-  return projects.map((project) => ({
-    ...project,
-    ...(projectTranslations[project.slug] ?? {}),
-    company: projectTranslations[project.slug]?.company ?? project.company,
-  }))
+  return projects.map((project) => {
+    const translatedProject = getProjectTranslation(project.slug)
+    const curatedLabels = projectTranslations[project.slug]
+
+    return {
+      ...project,
+      ...(translatedProject ?? {}),
+      categories: curatedLabels?.categories ?? (project as any).categories,
+      category: translatedProject?.category ?? curatedLabels?.category ?? project.category,
+      tags: translatedProject?.tags ?? curatedLabels?.tags ?? project.tags,
+      company: translatedProject?.company ?? curatedLabels?.company ?? project.company,
+    }
+  })
 }
 
 export function getLocalizedProject(slug: string, locale: PortfolioLocale = "fr") {
@@ -240,105 +253,7 @@ export function getLocalizedProject(slug: string, locale: PortfolioLocale = "fr"
     return getProject(slug)
   }
 
-  const project = getLocalizedProjects("en").find((item) => item.slug === slug)
-  if (!project) return null
-
-  const details = getEnglishProjectDetails(project)
-
-  return {
-    ...project,
-    fullDescription: details.overview,
-    problem: details.challenge,
-    solution: details.solution,
-    impact: details.outcomes,
-    content: undefined,
-  }
-}
-
-export function getEnglishProjectDetails(project: any) {
-  const defaults = {
-    overview: project.shortDescription,
-    challenge:
-      "The project started from a concrete operational friction: repetitive work, scattered information, or a workflow that was too fragile to scale reliably.",
-    solution:
-      "I designed a practical automation-oriented solution combining APIs, AI tools, data handling, and a user interface when needed.",
-    outcomes: [
-      "Reduced manual work and made the process easier to operate.",
-      "Connected business needs with concrete technical implementation.",
-      "Delivered a reusable workflow or product that can be maintained and improved.",
-    ],
-  }
-
-  const details: Record<string, Partial<typeof defaults>> = {
-    "veille-automatisee-contenus-linkedin": {
-      challenge: "ADN POTENTIEL needed a repeatable way to monitor relevant industry news and transform it into LinkedIn-ready content without manually scanning sources every day.",
-      solution: "I built three connected n8n workflows around RSS feeds, AI qualification, content drafting, image generation, and a Notion hub used as the validation interface.",
-      outcomes: [
-        "Automated the full chain from article discovery to publication-ready LinkedIn drafts.",
-        "Kept human validation in the loop through Notion.",
-        "Delivered documentation and tutorials so the client could operate the system independently.",
-      ],
-    },
-    "enrichissement-prospects-btp": {
-      challenge: "A large BTP prospect database lacked the information needed to prioritize commercial outreach by business owner age.",
-      solution: "I connected n8n to the Pappers API and Google Sheets to enrich more than 15,000 prospects and create actionable segmentation.",
-      outcomes: [
-        "Enabled targeted outreach by age range.",
-        "Reached 85%+ completion on the enrichment workflow.",
-        "Turned a static prospect file into a usable commercial dataset.",
-      ],
-    },
-    "adn-dashboard": {
-      challenge: "The previous n8n + Notion setup was reaching execution limits and could not provide realistic social media previews or direct Instagram publishing.",
-      solution: "I built a custom Next.js 16 dashboard with authentication, PostgreSQL storage, AI-assisted monitoring, post generation, previews, scheduling, and publishing workflows.",
-      outcomes: [
-        "Replaced a fragile automation stack with a controlled web application.",
-        "Separated data by user account with JWT authentication.",
-        "Created a more scalable foundation for ADN POTENTIEL's content operations.",
-      ],
-    },
-    "veille-ia-automatisee-n8n": {
-      challenge: "I needed a reliable way to stay informed about AI news without manually checking many sources every morning.",
-      solution: "I built a scheduled n8n workflow orchestrating AI research, report structuring, HTML formatting, and email delivery.",
-      outcomes: [
-        "Created a daily AI intelligence report.",
-        "Combined web and social sources into a structured format.",
-        "Improved my personal learning and monitoring workflow.",
-      ],
-    },
-    "veille-hub": {
-      challenge: "Saving dozens of AI-related posts per day made retrieval difficult when I needed to find a specific idea later.",
-      solution: "I built a personal search and annotation tool with AI-assisted retrieval, notes, and statistics.",
-      outcomes: [
-        "Made my AI watch searchable and reusable.",
-        "Reduced the loss of valuable saved content.",
-        "Created a personal knowledge base around fast-moving AI topics.",
-      ],
-    },
-    "unlimited-cognition": {
-      challenge: "Most AI learning tools make studying easier by replacing effort, while I wanted AI to support effort and memory.",
-      solution: "I built a learning app around SRS, quizzes, writing practice, annotations, planning, analytics, and AI generation.",
-      outcomes: [
-        "Designed AI as a support for cognitive effort.",
-        "Combined multiple study modes in one product.",
-        "Explored the link between learning science and AI interfaces.",
-      ],
-    },
-    screentune: {
-      challenge: "Client documentation often relies on static screenshots that do not explain gestures, timing, or interface focus clearly enough.",
-      solution: "I built a native macOS demo studio to add zooms, pauses, arrows, annotations, visual styling, and MP4 export.",
-      outcomes: [
-        "Made product explanations clearer for non-technical clients.",
-        "Reduced friction in handoff and onboarding materials.",
-        "Created a focused tool for freelance delivery workflows.",
-      ],
-    },
-  }
-
-  return {
-    ...defaults,
-    ...(details[project.slug] ?? {}),
-  }
+  return getLocalizedProjects("en").find((item) => item.slug === slug) ?? null
 }
 
 export function getPortfolioPageData(locale: PortfolioLocale = "fr") {
@@ -380,7 +295,8 @@ export function getPortfolioPageData(locale: PortfolioLocale = "fr") {
     },
     projects: projects.map((project) => ({
       ...project,
-      ...(projectTranslations[project.slug] ?? {}),
+      ...(getProjectTranslation(project.slug) ?? {}),
+      categories: projectTranslations[project.slug]?.categories ?? (project as any).categories,
     })),
   }
 }
