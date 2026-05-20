@@ -1,12 +1,8 @@
-import { getPersonalInfo, getSocialLinks, getWorkExperience, getSkills, getProjects } from "@/lib/portfolio-data"
 import PortfolioClient from "@/components/PortfolioClient"
+import { getPortfolioPageData } from "@/lib/portfolio-i18n"
 
 export default function PortfolioPage() {
-  const personalInfo = getPersonalInfo()
-  const socialLinks = getSocialLinks()
-  const workExperience = getWorkExperience()
-  const skills = getSkills()
-  const featuredProjects = getProjects().filter((p) => p.featured)
+  const { personalInfo, socialLinks, workExperience, skills, projects } = getPortfolioPageData("fr")
 
   return (
     <PortfolioClient
@@ -14,7 +10,8 @@ export default function PortfolioPage() {
       socialLinks={socialLinks}
       workExperience={workExperience}
       skills={skills}
-      projects={featuredProjects as any}
+      projects={projects as any}
+      locale="fr"
     />
   )
 }
