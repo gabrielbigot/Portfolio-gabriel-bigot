@@ -197,6 +197,7 @@ export default function PortfolioClient({
   const [isSwitchingLanguage, setIsSwitchingLanguage] = useState(false)
   const [streamedLanguageText, setStreamedLanguageText] = useState("")
   const sectionsRef = useRef<(HTMLElement | null)[]>([])
+  const routePrefix = locale === "en" ? "/en" : ""
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDark)
@@ -329,7 +330,7 @@ export default function PortfolioClient({
 
                 <div className="flex flex-wrap gap-3 pt-4">
                   <Link
-                    href="/projects"
+                    href={`${routePrefix}/projects`}
                     className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-lg hover:bg-foreground/90 transition-all duration-300 font-medium"
                   >
                     <span>{copy.projectsCta}</span>
@@ -343,13 +344,13 @@ export default function PortfolioClient({
                     </svg>
                   </Link>
                   <Link
-                    href="/about"
+                    href={`${routePrefix}/about`}
                     className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300"
                   >
                     <span>{copy.aboutCta}</span>
                   </Link>
                   <Link
-                    href="/uses"
+                    href={`${routePrefix}/uses`}
                     className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300"
                   >
                     <span>{copy.usesCta}</span>
@@ -400,7 +401,7 @@ export default function PortfolioClient({
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
               <h2 className="text-3xl sm:text-4xl font-light">{copy.workTitle}</h2>
               <Link
-                href="/projects"
+                href={`${routePrefix}/projects`}
                 className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 font-mono"
               >
                 <span>{copy.viewAllProjects}</span>
@@ -478,7 +479,7 @@ export default function PortfolioClient({
             {/* CTA: dive deeper into work experience */}
             <div className="pt-4">
               <Link
-                href="/work"
+                href={locale === "en" ? "/en/about" : "/work"}
                 className="group inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors duration-300"
               >
                 <span className="text-base border-b border-dashed border-muted-foreground/40 group-hover:border-foreground transition-colors duration-300">
@@ -500,7 +501,7 @@ export default function PortfolioClient({
               <div className="flex items-center justify-between">
                 <h3 className="text-xl sm:text-2xl font-light">{copy.featuredProjects}</h3>
                 <Link
-                  href="/projects"
+                  href={`${routePrefix}/projects`}
                   className="group text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
                 >
                   <span>{copy.viewAll}</span>

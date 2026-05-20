@@ -4,5 +4,5 @@ import ProjectsPageClient from "@/components/ProjectsPageClient"
 export default function ProjectsPage() {
   const personalInfo = getPersonalInfo()
   const projects = getProjects()
-  return <ProjectsPageClient projects={projects as any} cvUrl={(personalInfo as any).cvUrl} />
+  return <ProjectsPageClient projects={projects as any} cvUrl={(personalInfo as any).cvUrl} locale="fr" />
 }
