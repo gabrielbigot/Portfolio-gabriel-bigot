@@ -1,6 +1,8 @@
 "use client"
 
 import Link from "next/link"
+import { useRouter } from "next/navigation"
+import type { MouseEvent } from "react"
 import { useEffect, useRef, useState } from "react"
 import ContactForm from "@/components/contact-form"
 import TechnologyGroups from "@/components/TechnologyGroups"
@@ -82,6 +84,72 @@ interface PortfolioClientProps {
   workExperience: WorkExperience[]
   skills: Skills
   projects: Project[]
+  locale?: "fr" | "en"
+}
+
+const portfolioCopy = {
+  fr: {
+    current: "ACTUELLEMENT",
+    present: "Présent",
+    expertise: "EXPERTISE",
+    expertiseItems: ["Python", "IA & LLM", "Flask", "Excel/VBA", "Automatisation"],
+    projectsCta: "Voir mes projets",
+    aboutCta: "Mon histoire",
+    usesCta: "Ce que j'utilise",
+    contactCta: "Contact",
+    workTitle: "Expériences & Projets",
+    viewAllProjects: "VOIR TOUS LES PROJETS",
+    exploreWork: "Explorer mes expériences en détail",
+    featuredProjects: "Projets d'automatisation phares",
+    viewAll: "Voir tout →",
+    discoverProject: "Découvrir le projet",
+    skillsTitle: "Compétences Techniques",
+    softSkills: "SOFT SKILLS",
+    contactTitle: "Contactez-moi",
+    contactIntro: "Toujours intéressé par de nouveaux projets d'automatisation, des stages en IA, et des discussions sur la transformation digitale des PME.",
+    contactForm: "FORMULAIRE DE CONTACT",
+    directContact: "CONTACT DIRECT",
+    phone: "Téléphone",
+    socialLinks: "LIENS SOCIAUX",
+    downloadCv: "Télécharger mon CV",
+    footerRights: "Tous droits réservés.",
+    footerRole: "Développeur d'Automatisations IA • ESDHEM Lille",
+    languageLabel: "Version anglaise",
+    languageHref: "/en/portfolio",
+    languageCode: "EN",
+    languageTransition: "Translating portfolio to English",
+  },
+  en: {
+    current: "CURRENTLY",
+    present: "Present",
+    expertise: "EXPERTISE",
+    expertiseItems: ["Python", "AI & LLMs", "Flask", "Excel/VBA", "Automation"],
+    projectsCta: "View my projects",
+    aboutCta: "My story",
+    usesCta: "My tools",
+    contactCta: "Contact",
+    workTitle: "Experience & Projects",
+    viewAllProjects: "VIEW ALL PROJECTS",
+    exploreWork: "Explore my experience in detail",
+    featuredProjects: "Featured automation projects",
+    viewAll: "View all →",
+    discoverProject: "Discover the project",
+    skillsTitle: "Technical Skills",
+    softSkills: "SOFT SKILLS",
+    contactTitle: "Contact me",
+    contactIntro: "Always interested in new automation projects, AI internships, and conversations about digital transformation for SMEs.",
+    contactForm: "CONTACT FORM",
+    directContact: "DIRECT CONTACT",
+    phone: "Phone",
+    socialLinks: "SOCIAL LINKS",
+    downloadCv: "Download my CV",
+    footerRights: "All rights reserved.",
+    footerRole: "AI Automation Developer • ESDHEM Lille",
+    languageLabel: "Version française",
+    languageHref: "/portfolio",
+    languageCode: "FR",
+    languageTransition: "Retraduction du portfolio en français",
+  },
 }
 
 // Utility function to extract year from date string
@@ -120,9 +188,14 @@ export default function PortfolioClient({
   workExperience,
   skills,
   projects,
+  locale = "fr",
 }: PortfolioClientProps) {
+  const router = useRouter()
+  const copy = portfolioCopy[locale]
   const [isDark, setIsDark] = useState(true)
   const [activeSection, setActiveSection] = useState("")
+  const [isSwitchingLanguage, setIsSwitchingLanguage] = useState(false)
+  const [streamedLanguageText, setStreamedLanguageText] = useState("")
   const sectionsRef = useRef<(HTMLElement | null)[]>([])
 
   useEffect(() => {
@@ -153,8 +226,62 @@ export default function PortfolioClient({
     setIsDark(!isDark)
   }
 
+  useEffect(() => {
+    if (!isSwitchingLanguage) return
+
+    let index = 0
+    const message = copy.languageTransition
+    setStreamedLanguageText("")
+
+    const streamInterval = window.setInterval(() => {
+      index += 1
+      setStreamedLanguageText(message.slice(0, index))
+
+      if (index >= message.length) {
+        window.clearInterval(streamInterval)
+        window.setTimeout(() => {
+          router.push(copy.languageHref)
+        }, 280)
+      }
+    }, 24)
+
+    return () => window.clearInterval(streamInterval)
+  }, [copy.languageHref, copy.languageTransition, isSwitchingLanguage, router])
+
+  const handleLanguageSwitch = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault()
+    if (isSwitchingLanguage) return
+    setIsSwitchingLanguage(true)
+  }
+
   return (
     <div className="min-h-screen bg-background text-foreground relative">
+      <Link
+        href={copy.languageHref}
+        onClick={handleLanguageSwitch}
+        className="fixed right-6 top-6 z-50 inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-3 py-1.5 text-xs font-mono text-muted-foreground backdrop-blur-lg transition-colors duration-300 hover:border-muted-foreground/50 hover:text-foreground"
+        aria-label={copy.languageLabel}
+      >
+        <span>{locale.toUpperCase()}</span>
+        <span className="text-muted-foreground/40">/</span>
+        <span>{copy.languageCode}</span>
+      </Link>
+
+      {isSwitchingLanguage && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-background/80 backdrop-blur-md">
+          <div className="w-[min(92vw,32rem)] rounded-lg border border-border bg-background/90 p-5 shadow-2xl">
+            <div className="mb-3 flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-muted-foreground">
+              <span className="h-2 w-2 rounded-full bg-amber-500 animate-pulse" />
+              <span>{locale === "fr" ? "AI translation" : "Traduction IA"}</span>
+            </div>
+            <div className="min-h-8 text-lg text-foreground">
+              {streamedLanguageText}
+              <span className="ml-1 inline-block h-5 w-2 translate-y-0.5 bg-foreground animate-pulse" />
+            </div>
+          </div>
+        </div>
+      )}
+
       <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-10 hidden lg:block">
         <div className="flex flex-col gap-4">
           {["intro", "work", "skills", "connect"].map((section) => (
@@ -205,7 +332,7 @@ export default function PortfolioClient({
                     href="/projects"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-lg hover:bg-foreground/90 transition-all duration-300 font-medium"
                   >
-                    <span>Voir mes projets</span>
+                    <span>{copy.projectsCta}</span>
                     <svg
                       className="w-4 h-4"
                       fill="none"
@@ -219,19 +346,19 @@ export default function PortfolioClient({
                     href="/about"
                     className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300"
                   >
-                    <span>Mon histoire</span>
+                    <span>{copy.aboutCta}</span>
                   </Link>
                   <Link
                     href="/uses"
                     className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300"
                   >
-                    <span>Ce que j'utilise</span>
+                    <span>{copy.usesCta}</span>
                   </Link>
                   <Link
-                    href="/#connect"
+                    href="#connect"
                     className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300"
                   >
-                    <span>Contact</span>
+                    <span>{copy.contactCta}</span>
                   </Link>
                 </div>
               </div>
@@ -239,18 +366,18 @@ export default function PortfolioClient({
 
             <div className="lg:col-span-2 flex flex-col justify-end space-y-6 sm:space-y-8 mt-8 lg:mt-0">
               <div className="space-y-4">
-                <div className="text-sm text-muted-foreground font-mono">ACTUELLEMENT</div>
+                <div className="text-sm text-muted-foreground font-mono">{copy.current}</div>
                 <div className="space-y-2">
                   <div className="text-foreground">{personalInfo.currentRole.position}</div>
                   <div className="text-muted-foreground">@ {personalInfo.currentRole.company}</div>
-                  <div className="text-xs text-muted-foreground">{personalInfo.currentRole.startDate} — Présent</div>
+                  <div className="text-xs text-muted-foreground">{personalInfo.currentRole.startDate} — {copy.present}</div>
                 </div>
               </div>
 
               <div className="space-y-4">
-                <div className="text-sm text-muted-foreground font-mono">EXPERTISE</div>
+                <div className="text-sm text-muted-foreground font-mono">{copy.expertise}</div>
                 <div className="flex flex-wrap gap-2">
-                  {["Python", "IA & LLM", "Flask", "Excel/VBA", "Automatisation"].map((skill) => (
+                  {copy.expertiseItems.map((skill) => (
                     <span
                       key={skill}
                       className="px-3 py-1 text-xs border border-border rounded-full hover:border-muted-foreground/50 transition-colors duration-300"
@@ -271,12 +398,12 @@ export default function PortfolioClient({
         >
           <div className="space-y-12 sm:space-y-16">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-              <h2 className="text-3xl sm:text-4xl font-light">Expériences & Projets</h2>
+              <h2 className="text-3xl sm:text-4xl font-light">{copy.workTitle}</h2>
               <Link
                 href="/projects"
                 className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 font-mono"
               >
-                <span>VOIR TOUS LES PROJETS</span>
+                <span>{copy.viewAllProjects}</span>
                 <svg
                   className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
                   fill="none"
@@ -307,7 +434,7 @@ export default function PortfolioClient({
                         {extractYear(job.startDate)}
                       </div>
                       <div className="text-xs text-muted-foreground/70 mt-1 sm:hidden">
-                        {formatDateToDDMMYYYY(job.startDate)} - {formatDateToDDMMYYYY(job.endDate || "Présent")}
+                        {formatDateToDDMMYYYY(job.startDate)} - {formatDateToDDMMYYYY(job.endDate || copy.present)}
                       </div>
                     </div>
 
@@ -319,13 +446,13 @@ export default function PortfolioClient({
                           </h3>
                           <div className="text-muted-foreground">{job.company}</div>
                           <div className="text-xs text-muted-foreground/70 mt-1 hidden sm:block">
-                            {formatDateToDDMMYYYY(job.startDate)} - {formatDateToDDMMYYYY(job.endDate || "Présent")}
+                            {formatDateToDDMMYYYY(job.startDate)} - {formatDateToDDMMYYYY(job.endDate || copy.present)}
                           </div>
                         </div>
 
                         {job.technologies.length > 0 && (
                           <div className="lg:max-w-md">
-                            <TechnologyGroups technologies={job.technologies} compact maxItems={8} />
+                            <TechnologyGroups technologies={job.technologies} compact maxItems={8} locale={locale} />
                           </div>
                         )}
                       </div>
@@ -355,7 +482,7 @@ export default function PortfolioClient({
                 className="group inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors duration-300"
               >
                 <span className="text-base border-b border-dashed border-muted-foreground/40 group-hover:border-foreground transition-colors duration-300">
-                  Explorer mes expériences en détail
+                  {copy.exploreWork}
                 </span>
                 <svg
                   className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
@@ -371,12 +498,12 @@ export default function PortfolioClient({
             {/* Featured Projects Showcase */}
             <div className="pt-12 space-y-8">
               <div className="flex items-center justify-between">
-                <h3 className="text-xl sm:text-2xl font-light">Projets d'automatisation phares</h3>
+                <h3 className="text-xl sm:text-2xl font-light">{copy.featuredProjects}</h3>
                 <Link
                   href="/projects"
                   className="group text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
                 >
-                  <span>Voir tout →</span>
+                  <span>{copy.viewAll}</span>
                 </Link>
               </div>
 
@@ -444,7 +571,7 @@ export default function PortfolioClient({
                         </div>
 
                         <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300 pt-2">
-                          <span>Découvrir le projet</span>
+                          <span>{copy.discoverProject}</span>
                           <svg
                             className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
                             fill="none"
@@ -468,7 +595,7 @@ export default function PortfolioClient({
           className="py-20 sm:py-32"
         >
           <div className="space-y-12 sm:space-y-16">
-            <h2 className="text-3xl sm:text-4xl font-light">Compétences Techniques</h2>
+            <h2 className="text-3xl sm:text-4xl font-light">{copy.skillsTitle}</h2>
 
             <div className="grid gap-8 sm:gap-12 lg:grid-cols-2">
               {skills.technical.map((category, index) => (
@@ -497,7 +624,7 @@ export default function PortfolioClient({
             </div>
 
             <div className="pt-8 border-t border-border">
-              <div className="text-sm text-muted-foreground font-mono mb-4">SOFT SKILLS</div>
+              <div className="text-sm text-muted-foreground font-mono mb-4">{copy.softSkills}</div>
               <div className="flex flex-wrap gap-3">
                 {skills.soft.map((skill, index) => (
                   <div
@@ -515,9 +642,9 @@ export default function PortfolioClient({
         <section id="connect" ref={(el) => (sectionsRef.current[3] = el)} className="py-20 sm:py-32">
           <div className="space-y-16 sm:space-y-20">
             <div className="text-center max-w-3xl mx-auto space-y-6">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light">Contactez-moi</h2>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light">{copy.contactTitle}</h2>
               <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                Toujours intéressé par de nouveaux projets d'automatisation, des stages en IA, et des discussions sur la transformation digitale des PME.
+                {copy.contactIntro}
               </p>
             </div>
 
@@ -525,15 +652,15 @@ export default function PortfolioClient({
               {/* Left column - Contact Form */}
               <div className="lg:col-span-3">
                 <div className="space-y-6">
-                  <div className="text-sm text-muted-foreground font-mono">FORMULAIRE DE CONTACT</div>
-                  <ContactForm />
+                  <div className="text-sm text-muted-foreground font-mono">{copy.contactForm}</div>
+                  <ContactForm locale={locale} />
                 </div>
               </div>
 
               {/* Right column - Contact Info */}
               <div className="lg:col-span-2 space-y-8">
                 <div className="space-y-6">
-                  <div className="text-sm text-muted-foreground font-mono">CONTACT DIRECT</div>
+                  <div className="text-sm text-muted-foreground font-mono">{copy.directContact}</div>
 
                   <div className="space-y-4">
                     <Link
@@ -577,7 +704,7 @@ export default function PortfolioClient({
                         />
                       </svg>
                       <div>
-                        <div className="text-sm font-medium">Téléphone</div>
+                        <div className="text-sm font-medium">{copy.phone}</div>
                         <div className="text-sm">{personalInfo.phone}</div>
                       </div>
                     </Link>
@@ -585,7 +712,7 @@ export default function PortfolioClient({
                 </div>
 
                 <div className="space-y-4 pt-8 border-t border-border">
-                  <div className="text-sm text-muted-foreground font-mono">LIENS SOCIAUX</div>
+                  <div className="text-sm text-muted-foreground font-mono">{copy.socialLinks}</div>
 
                   <div className="space-y-2">
                     {socialLinks.map((social) => (
@@ -632,7 +759,7 @@ export default function PortfolioClient({
                         d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                       />
                     </svg>
-                    <span>Télécharger mon CV</span>
+                    <span>{copy.downloadCv}</span>
                   </Link>
                 </div>
               </div>
@@ -643,8 +770,8 @@ export default function PortfolioClient({
         <footer className="py-12 sm:py-16 border-t border-border">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 sm:gap-8">
             <div className="space-y-2">
-              <div className="text-sm text-muted-foreground">© 2025 {personalInfo.name}. Tous droits réservés.</div>
-              <div className="text-xs text-muted-foreground">Développeur d'Automatisations IA • ESDHEM Lille</div>
+              <div className="text-sm text-muted-foreground">© 2025 {personalInfo.name}. {copy.footerRights}</div>
+              <div className="text-xs text-muted-foreground">{copy.footerRole}</div>
             </div>
 
             <div className="flex items-center gap-4">
