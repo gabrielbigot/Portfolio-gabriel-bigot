@@ -141,7 +141,7 @@ const softSkillsEn = [
   { name: "Consulting posture", description: "Business-first approach before technical implementation" },
 ]
 
-const projectTranslations: Record<string, { title: string; shortDescription: string; category?: string; categories?: string[] }> = {
+const projectTranslations: Record<string, { title: string; shortDescription: string; category?: string; categories?: string[]; tags?: string[]; company?: string }> = {
   "veille-automatisee-contenus-linkedin": {
     title: "Automated Monitoring & LinkedIn Content Engine",
     shortDescription:
@@ -156,6 +156,82 @@ const projectTranslations: Record<string, { title: string; shortDescription: str
     category: "Automation",
     categories: ["Automation", "Data", "Prospecting"],
   },
+  "automatisation-rappels-sms-greminders": {
+    title: "Automated SMS Reminders — Greminders",
+    shortDescription: "Set up Greminders to automatically send SMS and email reminders before appointments, reducing no-shows without custom development.",
+    category: "No-code",
+    categories: ["No-code", "Automation"],
+    tags: ["Greminders", "Google Calendar", "No-code", "SMS", "Automation"],
+  },
+  "veille-ia-automatisee-n8n": {
+    title: "Automated AI Watch — n8n Workflow",
+    shortDescription: "Personal n8n workflow generating a daily AI intelligence report through Perplexity Deep Research and Grok, delivered by email.",
+    category: "Automation",
+    categories: ["Automation", "AI", "Watch"],
+    company: "Personal",
+  },
+  "excel-vba-automatisation-relances": {
+    title: "Customer Reminder Automation — Python/FastAPI + React",
+    shortDescription: "Automation suite for BIGOT Materiaux: AS/400 data processing with FastAPI/Pandas and formatted Excel generation through a React upload interface.",
+    category: "Automation",
+    categories: ["Automation", "Data"],
+  },
+  "as400-beta-2-automatisation-comptable": {
+    title: "Accounting App v1 — AS/400 Look & Feel",
+    shortDescription: "Web app reproducing key AS/400 workflows and automating recurring accounting entries to reduce manual input time.",
+    category: "Web App",
+    categories: ["Web App", "Accounting"],
+  },
+  "as400-horizontal-application-comptabilite-moderne": {
+    title: "Accounting App v2 — Horizontal Navigation + AI",
+    shortDescription: "Modern accounting app for TAC Hockey with horizontal navigation, conversational AI assistant, Supabase, and PDF/CSV exports.",
+    category: "Web App",
+    categories: ["Web App", "AI", "Accounting"],
+  },
+  "veille-hub": {
+    title: "Watch Hub — Intelligent Search Engine for AI Monitoring",
+    shortDescription: "Personal knowledge tool to retrieve saved AI-related tweets through AI search, annotations, notes, and usage statistics.",
+    category: "Personal tool",
+    categories: ["Personal tool", "AI", "Search"],
+  },
+  "unlimited-cognition": {
+    title: "Unlimited Cognition",
+    shortDescription: "Augmented learning web app: SRS, quizzes, writing, audio, annotations, smart planning, analytics, and AI generation designed to support cognitive effort.",
+    category: "Learning",
+    categories: ["Learning", "AI", "Web App"],
+  },
+  "screentune": {
+    title: "ScreenTune — Product Demo Studio for Freelancers",
+    shortDescription: "Native macOS app to turn screenshots or videos into clear client demos with zooms, pauses, arrows, annotations, styling, and MP4 export.",
+    category: "macOS App",
+    categories: ["macOS App", "Productivity"],
+  },
+  "adn-dashboard": {
+    title: "ADN Dashboard — Custom AI Web App",
+    shortDescription: "Custom web app for ADN POTENTIEL: AI-powered news monitoring, content studio with LinkedIn and Instagram previews, direct publishing, and isolated user accounts.",
+    category: "Web App",
+    categories: ["Web App", "AI", "Automation"],
+  },
+  "mecenes-hdf-prospection-enrichissement": {
+    title: "Patron Prospecting & Enrichment — Hauts-de-France",
+    shortDescription: "Automated workflow to identify potential patron companies and retrieve key contacts, enriching 48 companies in a few minutes.",
+    category: "Automation",
+    categories: ["Automation", "Prospecting", "AI"],
+    tags: ["n8n", "Gemini", "Pappers API", "Google Sheets", "Prospecting", "AI"],
+  },
+}
+
+export function getLocalizedProjects(locale: PortfolioLocale = "fr") {
+  const projects = getProjects()
+  if (locale === "fr") {
+    return projects
+  }
+
+  return projects.map((project) => ({
+    ...project,
+    ...(projectTranslations[project.slug] ?? {}),
+    company: projectTranslations[project.slug]?.company ?? project.company,
+  }))
 }
 
 export function getPortfolioPageData(locale: PortfolioLocale = "fr") {
@@ -163,7 +239,7 @@ export function getPortfolioPageData(locale: PortfolioLocale = "fr") {
   const socialLinks = getSocialLinks()
   const workExperience = getWorkExperience()
   const skills = getSkills()
-  const projects = getProjects().filter((p) => p.featured)
+  const projects = getLocalizedProjects(locale).filter((p) => p.featured)
 
   if (locale === "fr") {
     return { personalInfo, socialLinks, workExperience, skills, projects }

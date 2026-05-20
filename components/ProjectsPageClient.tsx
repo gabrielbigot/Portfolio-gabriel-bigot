@@ -23,9 +23,75 @@ interface Project {
 interface ProjectsPageClientProps {
   projects: Project[]
   cvUrl?: string
+  locale?: "fr" | "en"
 }
 
-export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClientProps) {
+const projectsCopy = {
+  fr: {
+    back: "Retour au portfolio",
+    eyebrow: "PROJETS & AUTOMATISATIONS",
+    title: "Transformer les processus métier avec l'IA",
+    intro: "Une sélection de mes projets d'automatisation et d'intelligence artificielle appliqués à des problématiques concrètes en PME.",
+    projectsDone: "Projets réalisés",
+    featured: "Projets phares",
+    timeSaved: "Gain de temps moyen",
+    smeTransformed: "PME transformée",
+    type: "TYPE",
+    all: "Tous",
+    personal: "Personnel",
+    professional: "Professionnel",
+    filterByCategory: "FILTRER PAR CATÉGORIE",
+    allProjects: "Tous les projets",
+    featuredLabel: "FEATURED",
+    viewProject: "Voir le projet",
+    allProjectsTitle: "Tous les projets",
+    personalProjects: "Projets personnels",
+    professionalProjects: "Projets professionnels",
+    projectSingular: "PROJET",
+    projectPlural: "PROJETS",
+    discover: "Découvrir",
+    empty: "Aucun projet trouvé dans cette catégorie.",
+    ctaTitle: "Intéressé par une collaboration ?",
+    ctaText: "Je suis toujours ouvert à discuter de nouveaux projets d'automatisation et d'IA, en particulier dans le contexte des PME et de la transformation digitale.",
+    contact: "Me contacter",
+    downloadCv: "Télécharger mon CV",
+    footer: "Développeur d'Automatisations IA",
+  },
+  en: {
+    back: "Back to portfolio",
+    eyebrow: "PROJECTS & AUTOMATIONS",
+    title: "Transforming business processes with AI",
+    intro: "A selection of my automation and artificial intelligence projects applied to concrete SME business problems.",
+    projectsDone: "Projects delivered",
+    featured: "Featured projects",
+    timeSaved: "Average time saved",
+    smeTransformed: "SME transformed",
+    type: "TYPE",
+    all: "All",
+    personal: "Personal",
+    professional: "Professional",
+    filterByCategory: "FILTER BY CATEGORY",
+    allProjects: "All projects",
+    featuredLabel: "FEATURED",
+    viewProject: "View project",
+    allProjectsTitle: "All projects",
+    personalProjects: "Personal projects",
+    professionalProjects: "Professional projects",
+    projectSingular: "PROJECT",
+    projectPlural: "PROJECTS",
+    discover: "Discover",
+    empty: "No project found in this category.",
+    ctaTitle: "Interested in working together?",
+    ctaText: "I am always open to discussing new automation and AI projects, especially in SME and digital transformation contexts.",
+    contact: "Contact me",
+    downloadCv: "Download my CV",
+    footer: "AI Automation Developer",
+  },
+}
+
+export default function ProjectsPageClient({ projects, cvUrl, locale = "fr" }: ProjectsPageClientProps) {
+  const copy = projectsCopy[locale]
+  const routePrefix = locale === "en" ? "/en" : ""
   const [filter, setFilter] = useState<string>("all")
   const [typeFilter, setTypeFilter] = useState<"all" | "perso" | "pro">("all")
 
@@ -48,11 +114,11 @@ export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClie
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 py-4">
           <Link
-            href="/"
+            href={`${routePrefix}/portfolio`}
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Retour au portfolio</span>
+            <span>{copy.back}</span>
           </Link>
         </div>
       </nav>
@@ -62,16 +128,15 @@ export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClie
         <header className="space-y-8 sm:space-y-12 pb-12 sm:pb-20">
           <div className="space-y-6">
             <div className="text-sm text-muted-foreground font-mono tracking-wider">
-              PROJETS & AUTOMATISATIONS
+              {copy.eyebrow}
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight max-w-3xl">
-              Transformer les processus métier avec l'IA
+              {copy.title}
             </h1>
 
             <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed max-w-3xl">
-              Une sélection de mes projets d'automatisation et d'intelligence artificielle appliqués
-              à des problématiques concrètes en PME.
+              {copy.intro}
             </p>
           </div>
 
@@ -79,19 +144,19 @@ export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClie
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
             <div className="space-y-2">
               <div className="text-3xl sm:text-4xl font-light">{projects.length}</div>
-              <div className="text-sm text-muted-foreground">Projets réalisés</div>
+              <div className="text-sm text-muted-foreground">{copy.projectsDone}</div>
             </div>
             <div className="space-y-2">
               <div className="text-3xl sm:text-4xl font-light">{featuredProjects.length}</div>
-              <div className="text-sm text-muted-foreground">Projets phares</div>
+              <div className="text-sm text-muted-foreground">{copy.featured}</div>
             </div>
             <div className="space-y-2">
               <div className="text-3xl sm:text-4xl font-light">80%</div>
-              <div className="text-sm text-muted-foreground">Gain de temps moyen</div>
+              <div className="text-sm text-muted-foreground">{copy.timeSaved}</div>
             </div>
             <div className="space-y-2">
               <div className="text-3xl sm:text-4xl font-light">1</div>
-              <div className="text-sm text-muted-foreground">PME transformée</div>
+              <div className="text-sm text-muted-foreground">{copy.smeTransformed}</div>
             </div>
           </div>
         </header>
@@ -99,7 +164,7 @@ export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClie
         {/* Filters */}
         <div className="pb-12 space-y-6">
           <div className="space-y-4">
-            <div className="text-sm text-muted-foreground font-mono">TYPE</div>
+            <div className="text-sm text-muted-foreground font-mono">{copy.type}</div>
             <div className="flex flex-wrap gap-3">
               {(["all", "perso", "pro"] as const).map((t) => (
                 <button
@@ -111,14 +176,14 @@ export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClie
                       : "border-border hover:border-muted-foreground/50"
                   }`}
                 >
-                  {t === "all" ? "Tous" : t === "perso" ? "Personnel" : "Professionnel"}
+                  {t === "all" ? copy.all : t === "perso" ? copy.personal : copy.professional}
                 </button>
               ))}
             </div>
           </div>
 
           <div className="space-y-4">
-            <div className="text-sm text-muted-foreground font-mono">FILTRER PAR CATÉGORIE</div>
+            <div className="text-sm text-muted-foreground font-mono">{copy.filterByCategory}</div>
             <div className="flex flex-wrap gap-3">
               {categories.map((category) => (
                 <button
@@ -130,7 +195,7 @@ export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClie
                       : "border-border hover:border-muted-foreground/50"
                   }`}
                 >
-                  {category === "all" ? "Tous les projets" : category}
+                  {category === "all" ? copy.allProjects : category}
                 </button>
               ))}
             </div>
@@ -142,10 +207,10 @@ export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClie
           <section className="pb-16 sm:pb-24">
             <div className="space-y-8 sm:space-y-12">
               <div className="flex items-end justify-between">
-                <h2 className="text-2xl sm:text-3xl font-light">Projets phares</h2>
+                <h2 className="text-2xl sm:text-3xl font-light">{copy.featured}</h2>
                 <div className="flex items-center gap-2 text-amber-500">
                   <span className="text-2xl">⭐</span>
-                  <span className="text-sm font-mono">FEATURED</span>
+                  <span className="text-sm font-mono">{copy.featuredLabel}</span>
                 </div>
               </div>
 
@@ -232,7 +297,7 @@ export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClie
                       </div>
 
                       <div className="flex items-center gap-2 text-sm text-foreground group-hover:text-muted-foreground transition-colors duration-300 pt-4">
-                        <span>Voir le projet</span>
+                        <span>{copy.viewProject}</span>
                         <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                       </div>
                     </div>
@@ -247,10 +312,10 @@ export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClie
         <section className="space-y-8 sm:space-y-12">
           <div className="flex items-end justify-between">
             <h2 className="text-2xl sm:text-3xl font-light">
-              {typeFilter === "perso" ? "Projets personnels" : typeFilter === "pro" ? "Projets professionnels" : filter === "all" ? "Tous les projets" : filter}
+              {typeFilter === "perso" ? copy.personalProjects : typeFilter === "pro" ? copy.professionalProjects : filter === "all" ? copy.allProjectsTitle : filter}
             </h2>
             <div className="text-sm text-muted-foreground font-mono">
-              {filteredProjects.length} {filteredProjects.length > 1 ? "PROJETS" : "PROJET"}
+              {filteredProjects.length} {filteredProjects.length > 1 ? copy.projectPlural : copy.projectSingular}
             </div>
           </div>
 
@@ -339,7 +404,7 @@ export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClie
                   </div>
 
                   <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300 pt-2">
-                    <span>Découvrir</span>
+                    <span>{copy.discover}</span>
                     <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                   </div>
                 </div>
@@ -350,7 +415,7 @@ export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClie
           {filteredProjects.length === 0 && (
             <div className="text-center py-20">
               <p className="text-xl text-muted-foreground">
-                Aucun projet trouvé dans cette catégorie.
+                {copy.empty}
               </p>
             </div>
           )}
@@ -359,17 +424,16 @@ export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClie
         {/* CTA Section */}
         <section className="pt-16 sm:pt-24 border-t border-border mt-16 sm:mt-24">
           <div className="max-w-3xl mx-auto text-center space-y-8">
-            <h2 className="text-3xl sm:text-4xl font-light">Intéressé par une collaboration ?</h2>
+            <h2 className="text-3xl sm:text-4xl font-light">{copy.ctaTitle}</h2>
             <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-              Je suis toujours ouvert à discuter de nouveaux projets d'automatisation et d'IA,
-              en particulier dans le contexte des PME et de la transformation digitale.
+              {copy.ctaText}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/#connect"
+                href={`${routePrefix}/portfolio#connect`}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-foreground text-background rounded-lg hover:bg-foreground/90 transition-all duration-300"
               >
-                <span>Me contacter</span>
+                <span>{copy.contact}</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
@@ -379,7 +443,7 @@ export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClie
                 rel={cvUrl?.startsWith("http") ? "noopener noreferrer" : undefined}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300"
               >
-                <span>Télécharger mon CV</span>
+                <span>{copy.downloadCv}</span>
               </Link>
             </div>
           </div>
@@ -389,7 +453,7 @@ export default function ProjectsPageClient({ projects, cvUrl }: ProjectsPageClie
       <footer className="border-t border-border py-12 mt-20">
         <div className="max-w-7xl mx-auto px-6 sm:px-8">
           <div className="text-center text-sm text-muted-foreground">
-            © 2025 Gabriel Bigot • Développeur d'Automatisations IA
+            © 2025 Gabriel Bigot • {copy.footer}
           </div>
         </div>
       </footer>
