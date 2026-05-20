@@ -218,7 +218,7 @@ export default function ProjectsPageClient({ projects, cvUrl, locale = "fr" }: P
                 {featuredProjects.map((project) => (
                   <Link
                     key={project.id}
-                    href={`/projects/${project.slug}`}
+                    href={`${routePrefix}/projects/${project.slug}`}
                     className="group relative border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-500 hover:shadow-2xl overflow-hidden"
                   >
                     {/* Image */}
@@ -323,7 +323,7 @@ export default function ProjectsPageClient({ projects, cvUrl, locale = "fr" }: P
             {filteredProjects.map((project) => (
               <Link
                 key={project.id}
-                href={`/projects/${project.slug}`}
+                href={`${routePrefix}/projects/${project.slug}`}
                 className="group border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300 hover:shadow-lg overflow-hidden"
               >
                 {/* Image */}
