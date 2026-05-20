@@ -479,7 +479,7 @@ export default function PortfolioClient({
             {/* CTA: dive deeper into work experience */}
             <div className="pt-4">
               <Link
-                href={locale === "en" ? "/en/about" : "/work"}
+                href={locale === "en" ? "/en/work" : "/work"}
                 className="group inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors duration-300"
               >
                 <span className="text-base border-b border-dashed border-muted-foreground/40 group-hover:border-foreground transition-colors duration-300">

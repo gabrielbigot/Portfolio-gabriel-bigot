@@ -240,7 +240,19 @@ export function getLocalizedProject(slug: string, locale: PortfolioLocale = "fr"
     return getProject(slug)
   }
 
-  return getLocalizedProjects("en").find((project) => project.slug === slug) ?? null
+  const project = getLocalizedProjects("en").find((item) => item.slug === slug)
+  if (!project) return null
+
+  const details = getEnglishProjectDetails(project)
+
+  return {
+    ...project,
+    fullDescription: details.overview,
+    problem: details.challenge,
+    solution: details.solution,
+    impact: details.outcomes,
+    content: undefined,
+  }
 }
 
 export function getEnglishProjectDetails(project: any) {
