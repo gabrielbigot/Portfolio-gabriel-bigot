@@ -8,21 +8,21 @@ export default function BlogContentRenderer({ content }: { content: ContentSecti
   if (!content || content.length === 0) return null
 
   return (
-    <div className="space-y-6">
+    <div className="essay-content space-y-7">
       {content.map((block, i) => {
         switch (block.type) {
           case "heading":
             return (
               <h2
                 key={i}
-                className="text-2xl sm:text-3xl font-light tracking-tight mt-12 mb-5 first:mt-0"
+                className="font-editorial text-3xl sm:text-4xl leading-tight mt-16 mb-6 first:mt-0"
               >
                 {block.text}
               </h2>
             )
           case "paragraph":
             return (
-              <p key={i} className="text-lg text-muted-foreground leading-relaxed">
+              <p key={i} className="font-editorial text-xl sm:text-[1.35rem] text-foreground/90 leading-[1.75]">
                 {block.text}
               </p>
             )
@@ -44,9 +44,9 @@ export default function BlogContentRenderer({ content }: { content: ContentSecti
             return (
               <blockquote
                 key={i}
-                className="border-l-4 border-foreground/20 pl-6 py-2 my-6"
+                className="border-l-2 border-accent pl-6 sm:pl-8 py-2 my-10"
               >
-                <p className="text-xl italic text-muted-foreground leading-relaxed">
+                <p className="font-editorial text-2xl sm:text-3xl italic text-foreground/90 leading-relaxed">
                   {block.text}
                 </p>
               </blockquote>

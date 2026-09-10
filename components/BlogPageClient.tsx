@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
+import { useMemo, useState } from "react"
 
 interface BlogPost {
   id: string
@@ -11,142 +11,65 @@ interface BlogPost {
   date: string
   readingTime: string
   category: string
-  featured: boolean
   published: boolean
 }
 
-interface BlogPageClientProps {
-  blogPosts: BlogPost[]
-}
-
-export default function BlogPageClient({ blogPosts }: BlogPageClientProps) {
+export default function BlogPageClient({ blogPosts }: { blogPosts: BlogPost[] }) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
-
-  console.log(`🖥️ BlogPageClient received ${blogPosts.length} posts`)
-  console.log(`📌 First post:`, blogPosts[0])
-
-  // Get unique categories
-  const categories = Array.from(new Set(blogPosts.map((post) => post.category).filter(Boolean)))
-
-  // Filter posts by category
-  const filteredPosts = selectedCategory
-    ? blogPosts.filter((post) => post.category === selectedCategory)
-    : blogPosts
+  const categories = useMemo(() => Array.from(new Set(blogPosts.map((post) => post.category))), [blogPosts])
+  const visiblePosts = selectedCategory ? blogPosts.filter((post) => post.category === selectedCategory) : blogPosts
+  const featured = visiblePosts.find((post) => post.published) ?? visiblePosts[0]
+  const remaining = visiblePosts.filter((post) => post.id !== featured?.id)
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <main className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-16 py-20">
-        {/* Header */}
-        <div className="mb-16 space-y-8">
-          <div className="space-y-4">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-              </svg>
-              <span>Retour au portfolio</span>
-            </Link>
+    <main className="min-h-screen bg-background text-foreground">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-16 py-8 sm:py-12">
+        <nav className="flex items-center justify-between border-b border-border pb-6">
+          <Link href="/portfolio" className="text-sm text-muted-foreground hover:text-accent transition-colors">← Portfolio</Link>
+          <span className="font-mono text-xs tracking-[0.16em] text-muted-foreground uppercase">Gabriel Bigot / Journal</span>
+        </nav>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight">
-              Réflexions & Articles
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl">
-              Mes réflexions sur l'IA, l'automatisation, le business et le développement personnel.
-            </p>
-          </div>
+        <header className="max-w-4xl pt-16 sm:pt-24 pb-14 sm:pb-20">
+          <div className="font-mono text-xs tracking-[0.18em] text-accent uppercase mb-6">Essais / IA, travail, apprentissage</div>
+          <h1 className="font-editorial text-5xl sm:text-7xl lg:text-8xl leading-[0.92]">Essais</h1>
+          <p className="mt-8 max-w-2xl text-xl sm:text-2xl leading-relaxed text-muted-foreground">
+            Des idées en cours de construction sur l&apos;intelligence artificielle, le travail et la manière de rester pleinement humain dans un monde qui s&apos;automatise.
+          </p>
+        </header>
 
-          {/* Category Filter */}
-          <div className="flex flex-wrap gap-3">
-            <button
-              onClick={() => setSelectedCategory(null)}
-              className={`px-4 py-2 rounded-lg border transition-all duration-300 ${
-                selectedCategory === null
-                  ? "bg-foreground text-background border-foreground"
-                  : "border-border hover:border-muted-foreground/50"
-              }`}
-            >
-              Tous les articles ({blogPosts.length})
-            </button>
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-lg border transition-all duration-300 ${
-                  selectedCategory === category
-                    ? "bg-foreground text-background border-foreground"
-                    : "border-border hover:border-muted-foreground/50"
-                }`}
-              >
-                {category} ({blogPosts.filter((p) => p.category === category).length})
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Articles Grid */}
-        <div className="grid gap-8 lg:grid-cols-2">
-          {filteredPosts.map((post) => (
-            <Link
-              key={post.id}
-              href={post.published ? `/blog/${post.slug}` : "#"}
-              className={`group relative p-8 border border-border rounded-lg transition-all duration-500 hover:shadow-lg ${
-                post.published
-                  ? "hover:border-muted-foreground/50 cursor-pointer"
-                  : "cursor-not-allowed opacity-75"
-              }`}
-            >
-              {!post.published && (
-                <div className="absolute top-4 right-4">
-                  <span className="px-2 py-1 text-xs bg-amber-500/10 text-amber-500 rounded border border-amber-500/20">
-                    À venir
-                  </span>
-                </div>
-              )}
-
-              <div className="space-y-4">
-                <div className="flex items-center justify-between text-xs text-muted-foreground font-mono">
-                  <span>{post.date}</span>
-                  <span>{post.readingTime}</span>
-                </div>
-
-                <div className="space-y-3">
-                  <span className="inline-block px-2 py-1 text-xs bg-background border border-border rounded">
-                    {post.category}
-                  </span>
-
-                  <h2 className="text-xl sm:text-2xl font-medium group-hover:text-muted-foreground transition-colors duration-300">
-                    {post.title}
-                  </h2>
-
-                  <p className="text-muted-foreground leading-relaxed">{post.excerpt}</p>
-                </div>
-
-                {post.published && (
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300 pt-2">
-                    <span>Lire l'article</span>
-                    <svg
-                      className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </div>
-                )}
-              </div>
-            </Link>
+        <div className="flex flex-wrap gap-x-6 gap-y-3 border-y border-border py-4 text-sm">
+          <button onClick={() => setSelectedCategory(null)} className={`transition-colors ${selectedCategory === null ? "text-accent" : "text-muted-foreground hover:text-foreground"}`}>Tous <span className="font-mono text-xs">({blogPosts.length})</span></button>
+          {categories.map((category) => (
+            <button key={category} onClick={() => setSelectedCategory(category)} className={`transition-colors ${selectedCategory === category ? "text-accent" : "text-muted-foreground hover:text-foreground"}`}>{category}</button>
           ))}
         </div>
 
-        {filteredPosts.length === 0 && (
-          <div className="text-center py-16">
-            <p className="text-muted-foreground text-lg">Aucun article trouvé dans cette catégorie.</p>
-          </div>
+        {featured && (
+          <section className="grid lg:grid-cols-12 gap-8 lg:gap-16 py-14 sm:py-20 border-b border-border">
+            <div className="lg:col-span-3 font-mono text-xs tracking-[0.16em] uppercase text-muted-foreground">À la une<br /><span className="text-accent">{featured.date}</span></div>
+            <article className="lg:col-span-9 max-w-3xl">
+              <div className="mb-5 text-xs font-mono tracking-[0.14em] text-muted-foreground uppercase">{featured.category} / {featured.readingTime}</div>
+              <h2 className="font-editorial text-4xl sm:text-6xl leading-[1.02]">{featured.title}</h2>
+              <p className="mt-7 text-xl leading-relaxed text-muted-foreground">{featured.excerpt}</p>
+              {featured.published ? <Link href={`/blog/${featured.slug}`} className="inline-flex mt-8 items-center gap-3 border-b border-accent pb-1 text-sm hover:text-accent transition-colors">Lire l&apos;essai <span aria-hidden="true">→</span></Link> : <span className="inline-block mt-8 text-sm text-muted-foreground">En cours d&apos;écriture</span>}
+            </article>
+          </section>
         )}
-      </main>
-    </div>
+
+        <section className="divide-y divide-border pb-20">
+          {remaining.map((post, index) => (
+            <article key={post.id} className="grid md:grid-cols-12 gap-4 md:gap-8 py-8 sm:py-10 group">
+              <div className="md:col-span-2 flex md:block justify-between font-mono text-xs text-muted-foreground"><span>{String(index + 2).padStart(2, "0")}</span><span>{post.date}</span></div>
+              <div className="md:col-span-7">
+                <div className="font-mono text-xs tracking-[0.14em] text-accent uppercase mb-3">{post.category} / {post.readingTime}</div>
+                {post.published ? <Link href={`/blog/${post.slug}`}><h2 className="font-editorial text-3xl sm:text-4xl leading-tight group-hover:text-accent transition-colors">{post.title}</h2></Link> : <h2 className="font-editorial text-3xl sm:text-4xl leading-tight text-muted-foreground">{post.title}</h2>}
+                <p className="mt-4 max-w-2xl text-muted-foreground leading-relaxed">{post.excerpt}</p>
+              </div>
+              <div className="md:col-span-3 md:text-right self-start">{post.published ? <Link href={`/blog/${post.slug}`} className="text-sm text-muted-foreground hover:text-accent transition-colors">Lire →</Link> : <span className="text-sm text-muted-foreground">À venir</span>}</div>
+            </article>
+          ))}
+        </section>
+      </div>
+    </main>
   )
 }
