@@ -3,6 +3,8 @@ import { notFound } from "next/navigation"
 import { getBlogPosts, getBlogPost } from "@/lib/portfolio-data"
 import ShareButtons from "@/components/ShareButtons"
 import BlogContentRenderer from "@/components/BlogContentRenderer"
+import { getHeadingId } from "@/components/BlogContentRenderer"
+import EssayContents from "@/components/EssayContents"
 
 export function generateStaticParams() {
   return getBlogPosts().map((post) => ({ slug: post.slug }))
@@ -40,7 +42,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <article className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-16 py-8 sm:py-12">
+      <article className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-16 py-8 sm:py-12">
         {/* Back Link */}
         <div className="mb-16 border-b border-border pb-6">
           <Link
@@ -76,14 +78,21 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         </header>
 
         {/* Content */}
-        <div className="max-w-none">
-          {post.content && post.content.length > 0 ? (
-            <BlogContentRenderer content={post.content as any} />
-          ) : (
-            <div className="text-center py-16 text-muted-foreground">
-              <p>Le contenu de cet article est en cours de rédaction...</p>
-            </div>
-          )}
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          <EssayContents
+            headings={(post.content ?? [])
+              .map((block: any, index: number) => block.type === "heading" && block.text ? { id: getHeadingId(block.text, index), text: block.text } : null)
+              .filter(Boolean) as { id: string; text: string }[]}
+          />
+          <div className="lg:col-span-8 lg:col-start-4 max-w-3xl">
+            {post.content && post.content.length > 0 ? (
+              <BlogContentRenderer content={post.content as any} />
+            ) : (
+              <div className="text-center py-16 text-muted-foreground">
+                <p>Le contenu de cet article est en cours de rédaction...</p>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Footer */}

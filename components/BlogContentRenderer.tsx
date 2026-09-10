@@ -4,6 +4,17 @@ type ContentSection = {
   items?: string[]
 }
 
+export function getHeadingId(text: string | undefined, index: number) {
+  const slug = (text || "section")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "")
+
+  return `${slug || "section"}-${index}`
+}
+
 export default function BlogContentRenderer({ content }: { content: ContentSection[] }) {
   if (!content || content.length === 0) return null
 
@@ -15,6 +26,7 @@ export default function BlogContentRenderer({ content }: { content: ContentSecti
             return (
               <h2
                 key={i}
+                id={getHeadingId(block.text, i)}
                 className="font-editorial text-3xl sm:text-4xl leading-tight mt-16 mb-6 first:mt-0"
               >
                 {block.text}
