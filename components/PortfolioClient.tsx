@@ -96,11 +96,17 @@ const portfolioCopy = {
     projectsCta: "Voir mes projets",
     aboutCta: "Mon histoire",
     usesCta: "Ce que j'utilise",
+    essaysCta: "Mes essais",
     contactCta: "Contact",
     workTitle: "Expériences & Projets",
     viewAllProjects: "VOIR TOUS LES PROJETS",
     exploreWork: "Explorer mes expériences en détail",
     featuredProjects: "Projets d'automatisation phares",
+    essaysTitle: "Essais & réflexions",
+    essaysIntro: "Des textes pour penser l'IA au-delà des outils : travail, apprentissage, économie et responsabilité.",
+    latestEssay: "Dernier essai",
+    readEssay: "Lire l'essai",
+    allEssays: "Voir tous les essais",
     viewAll: "Voir tout →",
     discoverProject: "Découvrir le projet",
     skillsTitle: "Compétences Techniques",
@@ -127,11 +133,17 @@ const portfolioCopy = {
     projectsCta: "View my projects",
     aboutCta: "My story",
     usesCta: "My tools",
+    essaysCta: "My essays",
     contactCta: "Contact",
     workTitle: "Experience & Projects",
     viewAllProjects: "VIEW ALL PROJECTS",
     exploreWork: "Explore my experience in detail",
     featuredProjects: "Featured automation projects",
+    essaysTitle: "Essays & reflections",
+    essaysIntro: "Writing that considers AI beyond tools: work, learning, economics, and responsibility.",
+    latestEssay: "Latest essay",
+    readEssay: "Read essay",
+    allEssays: "View all essays",
     viewAll: "View all →",
     discoverProject: "Discover the project",
     skillsTitle: "Technical Skills",
@@ -285,7 +297,7 @@ export default function PortfolioClient({
 
       <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-10 hidden lg:block">
         <div className="flex flex-col gap-4">
-          {["intro", "work", "skills", "connect"].map((section) => (
+          {["intro", "work", "essays", "skills", "connect"].map((section) => (
             <button
               key={section}
               onClick={() => document.getElementById(section)?.scrollIntoView({ behavior: "smooth" })}
@@ -301,14 +313,16 @@ export default function PortfolioClient({
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
         <header
           id="intro"
-          ref={(el) => (sectionsRef.current[0] = el)}
+          ref={(el) => {
+            sectionsRef.current[0] = el
+          }}
           className="min-h-screen flex items-center"
         >
           <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full">
             <div className="lg:col-span-3 space-y-6 sm:space-y-8">
               <div className="space-y-3 sm:space-y-2">
                 <div className="text-sm text-muted-foreground font-mono tracking-wider">PORTFOLIO / 2026</div>
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
+                <h1 className="font-editorial text-5xl sm:text-6xl lg:text-7xl leading-[0.95]">
                   {personalInfo.firstName}
                   <br />
                   <span className="text-muted-foreground">{personalInfo.lastName}</span>
@@ -356,6 +370,12 @@ export default function PortfolioClient({
                     <span>{copy.usesCta}</span>
                   </Link>
                   <Link
+                    href="/blog"
+                    className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-accent hover:bg-accent/10 transition-all duration-300"
+                  >
+                    <span>{copy.essaysCta}</span>
+                  </Link>
+                  <Link
                     href="#connect"
                     className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300"
                   >
@@ -394,7 +414,9 @@ export default function PortfolioClient({
 
         <section
           id="work"
-          ref={(el) => (sectionsRef.current[1] = el)}
+          ref={(el) => {
+            sectionsRef.current[1] = el
+          }}
           className="min-h-screen py-20 sm:py-32"
         >
           <div className="space-y-12 sm:space-y-16">
@@ -591,8 +613,43 @@ export default function PortfolioClient({
         </section>
 
         <section
+          id="essays"
+          ref={(el) => {
+            sectionsRef.current[2] = el
+          }}
+          className="py-20 sm:py-32"
+        >
+          <div className="border-y border-border py-12 sm:py-16">
+            <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
+              <div className="lg:col-span-5 space-y-5">
+                <div className="text-xs font-mono tracking-[0.18em] text-accent uppercase">01 / Journal</div>
+                <h2 className="font-editorial text-4xl sm:text-5xl leading-[1.02]">{copy.essaysTitle}</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">{copy.essaysIntro}</p>
+                <Link href="/blog" className="inline-flex items-center gap-2 border-b border-accent pb-1 text-sm text-foreground hover:text-accent transition-colors">
+                  {copy.allEssays} <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+              <Link href="/blog" className="group lg:col-span-7 block lg:border-l lg:border-border lg:pl-12">
+                <div className="text-xs font-mono tracking-[0.16em] text-muted-foreground uppercase mb-5">{copy.latestEssay} / 2025</div>
+                <h3 className="font-editorial text-3xl sm:text-4xl leading-tight group-hover:text-accent transition-colors duration-300">
+                  L&apos;IA ne doit pas penser à notre place.
+                </h3>
+                <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
+                  Comment construire des outils qui augmentent l&apos;effort humain, au lieu de le rendre invisible ?
+                </p>
+                <div className="mt-8 flex items-center gap-3 text-sm text-foreground group-hover:text-accent transition-colors">
+                  <span>{copy.readEssay}</span><span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <section
           id="skills"
-          ref={(el) => (sectionsRef.current[2] = el)}
+          ref={(el) => {
+            sectionsRef.current[3] = el
+          }}
           className="py-20 sm:py-32"
         >
           <div className="space-y-12 sm:space-y-16">
@@ -640,7 +697,13 @@ export default function PortfolioClient({
           </div>
         </section>
 
-        <section id="connect" ref={(el) => (sectionsRef.current[3] = el)} className="py-20 sm:py-32">
+        <section
+          id="connect"
+          ref={(el) => {
+            sectionsRef.current[4] = el
+          }}
+          className="py-20 sm:py-32"
+        >
           <div className="space-y-16 sm:space-y-20">
             <div className="text-center max-w-3xl mx-auto space-y-6">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light">{copy.contactTitle}</h2>

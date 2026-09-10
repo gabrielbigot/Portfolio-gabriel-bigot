@@ -40,9 +40,9 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <article className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16 py-20">
+      <article className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-16 py-8 sm:py-12">
         {/* Back Link */}
-        <div className="mb-12">
+        <div className="mb-16 border-b border-border pb-6">
           <Link
             href="/blog"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
@@ -55,7 +55,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         </div>
 
         {/* Header */}
-        <header className="mb-12 space-y-6">
+        <header className="mb-16 sm:mb-20 space-y-7">
           <div className="flex items-center gap-4 text-xs text-muted-foreground font-mono">
             <span className="px-2 py-1 bg-background border border-border rounded">
               {post.category}
@@ -64,11 +64,11 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <span>{post.readingTime}</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-tight">
+          <h1 className="font-editorial text-5xl sm:text-6xl lg:text-7xl leading-[0.98]">
             {post.title}
           </h1>
 
-          <p className="text-xl text-muted-foreground leading-relaxed">
+          <p className="font-editorial text-2xl sm:text-3xl text-muted-foreground leading-relaxed">
             {post.excerpt}
           </p>
 
