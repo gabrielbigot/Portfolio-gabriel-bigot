@@ -4,6 +4,9 @@ import { useEffect, useState } from "react"
 
 type Heading = { id: string; text: string }
 
+// Space kept above the target heading so it isn't stuck against the top of the viewport
+const HEADER_OFFSET = 112
+
 export default function EssayContents({ headings }: { headings: Heading[] }) {
   const [activeId, setActiveId] = useState(headings[0]?.id ?? "")
 
@@ -23,6 +26,18 @@ export default function EssayContents({ headings }: { headings: Heading[] }) {
     return () => observer.disconnect()
   }, [headings])
 
+  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    const target = document.getElementById(id)
+    if (!target) return
+
+    event.preventDefault()
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    const top = target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET
+    window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" })
+    history.replaceState(null, "", `#${id}`)
+    setActiveId(id)
+  }
+
   if (!headings.length) return null
 
   return (
@@ -33,6 +48,7 @@ export default function EssayContents({ headings }: { headings: Heading[] }) {
           <a
             key={heading.id}
             href={`#${heading.id}`}
+            onClick={(event) => handleClick(event, heading.id)}
             className={`relative block max-w-[16rem] py-2 pl-4 pr-2 text-sm leading-snug transition-colors duration-300 ${activeId === heading.id ? "text-accent" : "text-muted-foreground hover:text-foreground"}`}
           >
             {activeId === heading.id && <span className="absolute -left-px top-0 bottom-0 w-px bg-accent" />}
