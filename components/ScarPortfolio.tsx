@@ -4,7 +4,9 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, typ
 import Link from "next/link"
 import { ArrowRight, ArrowDown, Download, Moon, Sun } from "lucide-react"
 import { FIL_KIND, type FilItem, type FilKind } from "@/lib/fil"
-import { STORY_KIND, STORY_MILESTONES, type StoryCopy, type StoryLocale } from "@/lib/scar-story"
+import { STORY_MILESTONES, type StoryCopy, type StoryLocale } from "@/lib/scar-story"
+import { SC, SCAR_PTS, r1, spline } from "@/lib/scar-geometry"
+import ScarJourney from "@/components/ScarJourney"
 
 type SkillGroup = { category: string; skills: string[] }
 type Props = {
@@ -17,6 +19,8 @@ type Props = {
   linkedin?: string
   /** Optional photo of the scar, shown very softly behind the hero. */
   photo?: string
+  /** High-resolution version of the photo, used for the close-up journey. */
+  photoHd?: string
 }
 
 type Filter = "all" | "career" | "project" | "essay"
@@ -38,51 +42,9 @@ const rand = (seed: number) => {
   const v = Math.sin(seed * 127.1 + 311.7) * 43758.5453
   return v - Math.floor(v)
 }
-const r1 = (v: number) => Math.round(v * 10) / 10
-
-// The real scar, traced on the photo (900 x 675 units). The vector scar sits exactly on top of it.
-const SC = { cx: 465 / 900, cy: 435 / 675, endX: 716.7, endY: 428.3, startX: 213.3 }
-const SCAR_PTS = [
-  { x: 213.3, y: 402.7 },
-  { x: 256.7, y: 413.3 },
-  { x: 300, y: 420 },
-  { x: 340, y: 424 },
-  { x: 376.7, y: 430 },
-  { x: 423.3, y: 438.3 },
-  { x: 473.3, y: 448.3 },
-  { x: 516.7, y: 456.7 },
-  { x: 556.7, y: 457.3 },
-  { x: 590, y: 457.3 },
-  { x: 630, y: 452.7 },
-  { x: 673.3, y: 446 },
-  { x: 716.7, y: 428.3 },
-]
 type Scene = { left: number; top: number; w: number; h: number; endX: number; endY: number }
 
-// Uniform Catmull-Rom through the anchor points, sampled roughly every 10px.
-function spline(anchors: { x: number; y: number }[]) {
-  const out: { x: number; y: number }[] = []
-  for (let i = 0; i < anchors.length - 1; i++) {
-    const p0 = anchors[Math.max(0, i - 1)]
-    const p1 = anchors[i]
-    const p2 = anchors[i + 1]
-    const p3 = anchors[Math.min(anchors.length - 1, i + 2)]
-    const n = Math.max(4, Math.ceil(Math.hypot(p2.x - p1.x, p2.y - p1.y) / 10))
-    for (let k = 0; k < n; k++) {
-      const t = k / n
-      const t2 = t * t
-      const t3 = t2 * t
-      out.push({
-        x: 0.5 * (2 * p1.x + (-p0.x + p2.x) * t + (2 * p0.x - 5 * p1.x + 4 * p2.x - p3.x) * t2 + (-p0.x + 3 * p1.x - 3 * p2.x + p3.x) * t3),
-        y: 0.5 * (2 * p1.y + (-p0.y + p2.y) * t + (2 * p0.y - 5 * p1.y + 4 * p2.y - p3.y) * t2 + (-p0.y + 3 * p1.y - 3 * p2.y + p3.y) * t3),
-      })
-    }
-  }
-  out.push(anchors[anchors.length - 1])
-  return out
-}
-
-export default function ScarPortfolio({ locale, copy, items, skills, languages, cvUrl, linkedin, photo }: Props) {
+export default function ScarPortfolio({ locale, copy, items, skills, languages, cvUrl, linkedin, photo, photoHd }: Props) {
   const wrapRef = useRef<HTMLDivElement>(null)
   const progressRef = useRef<SVGPathElement>(null)
   const tipRef = useRef<SVGCircleElement>(null)
@@ -320,7 +282,7 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
   }, [geo])
 
   return (
-    <div className={`relative bg-background text-foreground ${theme === "dark" ? "scar-night" : ""}`}>
+    <div className={`relative overflow-x-clip bg-background text-foreground ${theme === "dark" ? "scar-night" : ""}`}>
       <style>{`
         .scar-night { --background: #121214; --foreground: #f2eee5; --card: #18181b; --border: #2c2c31; --muted-foreground: #a6a29a; --accent: #b9d4c0; color-scheme: dark; }
         @keyframes scarDraw { from { stroke-dashoffset: var(--len) } to { stroke-dashoffset: 0 } }
@@ -478,43 +440,23 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
           </div>
         </section>
 
-        {/* ───────── chapter 1: origin ───────── */}
-        <section id="origine" className="scroll-mt-16 px-6 pb-8 pt-24 sm:px-8 sm:pt-32">
-          <div className="mx-auto max-w-6xl">
-            <header className="max-w-3xl space-y-5 pl-12 md:pl-0 md:text-center md:mx-auto">
-              <div className="font-mono text-xs tracking-[0.2em] text-muted-foreground sm:text-sm">{copy.originKicker}</div>
-              <h2 className="font-editorial text-5xl leading-[0.98] sm:text-6xl lg:text-7xl">{copy.originTitle}</h2>
-              <p className="text-lg leading-relaxed text-muted-foreground">{copy.originIntro}</p>
-            </header>
-
-            <ol className="mt-16 sm:mt-24">
-              {milestones.map((m, i) => {
-                const kind = STORY_KIND[m.kind]
-                const left = i % 2 === 0
-                return (
-                  <li key={m.year + m.title} className="grid grid-cols-[40px_1fr] gap-x-4 pb-14 md:grid-cols-[1fr_72px_1fr] md:gap-x-8 md:pb-20">
-                    <div className="col-start-1 row-start-1 flex justify-center md:col-start-2">
-                      <div data-node={`o${i}`} data-color={kind.color} data-major={m.kind === "rupture" || m.kind === "peak" ? "1" : "0"} className="mt-2 h-6 w-6" />
-                    </div>
-                    <div className={`col-start-2 row-start-1 space-y-2 ${left ? "md:col-start-1 md:text-right" : "md:col-start-3"}`}>
-                      <div className={`flex items-baseline gap-3 font-mono text-xs tracking-wider ${left ? "md:justify-end" : ""}`}>
-                        <span className="text-base font-light tracking-normal text-muted-foreground">{m.year}</span>
-                        <span style={{ color: kind.color }}>{kind.label[locale].toUpperCase()}</span>
-                      </div>
-                      <h3 className="font-editorial text-3xl leading-tight sm:text-4xl">{m.title}</h3>
-                      <p className={`max-w-md leading-relaxed text-muted-foreground ${left ? "md:ml-auto" : ""}`}>{m.text}</p>
-                    </div>
-                  </li>
-                )
-              })}
-            </ol>
-            <div className="pl-12 md:pl-0 md:text-center">
-              <Link href={copy.storyHref} className="inline-flex items-center gap-2 text-sm transition-all duration-300 hover:gap-3">
-                {copy.originMore} <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-        </section>
+        {/* ───────── chapter 1: the journey along the real scar ───────── */}
+        <ScarJourney
+          locale={locale}
+          photo={photoHd ?? photo ?? ""}
+          milestones={milestones}
+          kicker={copy.originKicker}
+          title={copy.originTitle}
+          intro={copy.originIntro}
+          hint={copy.journeyHint}
+          more={copy.originMore}
+          storyHref={copy.storyHref}
+          offset={57}
+          theme={theme}
+          softLabel={copy.softLabel}
+          sharpLabel={copy.sharpLabel}
+          tabsLabel={copy.originTitle}
+        />
 
         {/* ───────── chapter 2: the thread ───────── */}
         <section id="fil" className="scroll-mt-16 px-6 pb-8 pt-28 sm:px-8 sm:pt-40">

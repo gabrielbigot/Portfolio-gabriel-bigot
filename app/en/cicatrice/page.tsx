@@ -16,6 +16,7 @@ export default function ScarPortfolioPage() {
   const groups = skills.technical.map((g) => ({ category: g.category, skills: g.skills.map((s) => s.name) }))
   // Optional: very softly shown behind the hero when the file exists (public/cicatrice/scar.webp).
   const photo = existsSync(join(process.cwd(), "public", "cicatrice", "scar.webp")) ? "/cicatrice/scar.webp" : undefined
+  const photoHd = existsSync(join(process.cwd(), "public", "cicatrice", "scar-hd.webp")) ? "/cicatrice/scar-hd.webp" : undefined
   const linkedin = socialLinks.find((l) => l.name === "LinkedIn")?.url
   return (
     <ScarPortfolio
@@ -27,6 +28,7 @@ export default function ScarPortfolioPage() {
       cvUrl={personalInfo.cvUrl}
       linkedin={linkedin}
       photo={photo}
+      photoHd={photoHd}
     />
   )
 }

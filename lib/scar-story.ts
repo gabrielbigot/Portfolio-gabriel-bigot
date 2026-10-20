@@ -60,6 +60,9 @@ export const STORY_COPY = {
     originIntro:
       "Mon parcours tient en trois fils : le hockey, les blessures et la construction de solutions concrètes. Le terrain m'a appris le collectif. Les épreuves m'ont appris la résilience. L'IA et le développement m'ont donné un moyen d'agir.",
     originMore: "Lire le récit complet",
+    journeyHint: "Faites défiler pour avancer le long de la cicatrice",
+    softLabel: "Atténuer l'image",
+    sharpLabel: "Voir nettement",
     threadKicker: "CHAPITRE 2 · LE FIL",
     threadTitle: "Parcours, projets, essais",
     threadIntro: "Tout ce que j'ai construit, dans l'ordre où c'est arrivé. Chaque agrafe est une étape ; la couleur du fil dit de quoi il s'agit.",
@@ -108,6 +111,9 @@ export const STORY_COPY = {
     originIntro:
       "My path runs on three threads: hockey, injuries, and building concrete solutions. The field taught me teamwork. Setbacks taught me resilience. AI and development gave me a way to act.",
     originMore: "Read the full story",
+    journeyHint: "Scroll to move along the scar",
+    softLabel: "Soften the image",
+    sharpLabel: "Show it sharp",
     threadKicker: "CHAPTER 2 · THE THREAD",
     threadTitle: "Career, projects, essays",
     threadIntro: "Everything I have built, in the order it happened. Each staple is a step; the colour of the thread tells you what it is.",
