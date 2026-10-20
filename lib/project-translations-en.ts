@@ -2215,6 +2215,10 @@ export const projectTranslationsEn = {
       }
     ],
     "media": [
+      {"url": "/projects/unlimited-cognition/native/native-demo.mp4", "caption": "Native macOS app — navigating Today, Library, Progress and Search", "type": "video", "poster": "/projects/unlimited-cognition/native/native-progres-cerveau.png"},
+      {"url": "/projects/unlimited-cognition/native/native-progres-cerveau.png", "caption": "Native macOS app — Progress: 3D brain visualization, memory estimated with FSRS"},
+      {"url": "/projects/unlimited-cognition/native/native-aujourdhui.png", "caption": "Native macOS app — Today: daily goal, due reviews, objectives"},
+      {"url": "/projects/unlimited-cognition/native/native-bibliotheque.png", "caption": "Native macOS app — Library: decks, cards, quizzes and mind maps"},
       {
         "url": "/projects/unlimited-cognition/screentune-tutoriel.mp4",
         "caption": "ScreenTune tutorial video — Guided demonstration of Unlimited Cognition",
