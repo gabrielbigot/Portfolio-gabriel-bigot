@@ -15,6 +15,8 @@ type Props = {
   languages: { name: string; level: string }[]
   cvUrl: string
   linkedin?: string
+  /** Optional photo of the scar, shown very softly behind the hero. */
+  photo?: string
 }
 
 type Filter = "all" | "career" | "project" | "essay"
@@ -37,6 +39,25 @@ const rand = (seed: number) => {
   return v - Math.floor(v)
 }
 const r1 = (v: number) => Math.round(v * 10) / 10
+
+// The real scar, traced on the photo (900 x 675 units). The vector scar sits exactly on top of it.
+const SC = { cx: 465 / 900, cy: 435 / 675, endX: 716.7, endY: 428.3, startX: 213.3 }
+const SCAR_PTS = [
+  { x: 213.3, y: 402.7 },
+  { x: 256.7, y: 413.3 },
+  { x: 300, y: 420 },
+  { x: 340, y: 424 },
+  { x: 376.7, y: 430 },
+  { x: 423.3, y: 438.3 },
+  { x: 473.3, y: 448.3 },
+  { x: 516.7, y: 456.7 },
+  { x: 556.7, y: 457.3 },
+  { x: 590, y: 457.3 },
+  { x: 630, y: 452.7 },
+  { x: 673.3, y: 446 },
+  { x: 716.7, y: 428.3 },
+]
+type Scene = { left: number; top: number; w: number; h: number; endX: number; endY: number }
 
 // Uniform Catmull-Rom through the anchor points, sampled roughly every 10px.
 function spline(anchors: { x: number; y: number }[]) {
@@ -61,7 +82,7 @@ function spline(anchors: { x: number; y: number }[]) {
   return out
 }
 
-export default function ScarPortfolio({ locale, copy, items, skills, languages, cvUrl, linkedin }: Props) {
+export default function ScarPortfolio({ locale, copy, items, skills, languages, cvUrl, linkedin, photo }: Props) {
   const wrapRef = useRef<HTMLDivElement>(null)
   const progressRef = useRef<SVGPathElement>(null)
   const tipRef = useRef<SVGCircleElement>(null)
@@ -71,6 +92,9 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
   const [introDone, setIntroDone] = useState(false)
   // Night is the default. The choice is remembered, and read after mount so server and client agree.
   const [theme, setTheme] = useState<"dark" | "light">("dark")
+  const [skipIntro, setSkipIntro] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const [scene, setScene] = useState<Scene | null>(null)
   const reduce = useRef(false)
 
   const milestones = STORY_MILESTONES[locale]
@@ -109,15 +133,22 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
     })
     if (!nodes.length) return
 
-    // The scar enters the hero as a big sweeping diagonal, then drops into the page and runs down it.
+    // The photo of the scar is placed so that its scar sits in the upper part of the hero, clear of the title.
     const first = nodes[0]
+    const scarW = desktop ? Math.min(w * 0.4, 560) : w * 0.9
+    const pw = scarW / ((SC.endX - SC.startX) / 900)
+    const ph = pw * 0.75
+    const left = (desktop ? w * 0.745 : w * 0.5) - SC.cx * pw
+    const top = (desktop ? hh * 0.3 : hh * 0.15) - SC.cy * ph
+    const endX = left + (SC.endX / 900) * pw
+    const endY = top + (SC.endY / 675) * ph
+    setScene({ left, top, w: pw, h: ph, endX, endY })
+    // The thread leaves the real scar by its right end, then drops into the page and runs down it.
     const anchors: { x: number; y: number }[] = [
-      { x: w * 1.04, y: hh * 0.06 },
-      { x: w * (desktop ? 0.7 : 0.8), y: hh * 0.26 },
-      { x: w * (desktop ? 0.3 : 0.35), y: hh * 0.5 },
-      { x: w * (desktop ? 0.62 : 0.55), y: hh * 0.78 },
+      { x: endX, y: endY },
+      { x: endX - 24, y: endY + 110 },
+      { x: r1(endX + (first.x - endX) * 0.55), y: Math.max(endY + 240, hh * 0.88) },
     ]
-    anchors.push({ x: (anchors[3].x + first.x) / 2, y: (anchors[3].y + first.y) / 2 })
     // organic wander between two distant nodes
     const amp = desktop ? 13 : 7
     nodes.forEach((n, i) => {
@@ -169,7 +200,7 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
 
   useLayoutEffect(() => {
     measure()
-  }, [measure, filter])
+  }, [measure, filter, mounted])
 
   useEffect(() => {
     reduce.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -184,6 +215,16 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
       window.removeEventListener("load", measure)
     }
   }, [measure])
+
+  useEffect(() => {
+    setMounted(true)
+    if (window.scrollY > 40) setSkipIntro(true)
+    const onFirstScroll = () => {
+      if (window.scrollY > 24) setSkipIntro(true)
+    }
+    window.addEventListener("scroll", onFirstScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onFirstScroll)
+  }, [])
 
   // ---- reading position along the thread ----
   useEffect(() => {
@@ -285,8 +326,15 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
         @keyframes scarDraw { from { stroke-dashoffset: var(--len) } to { stroke-dashoffset: 0 } }
         @keyframes scarRise { from { opacity: 0; transform: translateY(18px) } to { opacity: 1; transform: none } }
         @keyframes scarPulse { 0%,100% { r: 5; opacity: .9 } 50% { r: 9; opacity: .35 } }
+        @keyframes scarDezoom { 0% { transform: scale(11) } 14% { transform: scale(11) } 100% { transform: scale(1) } }
+        @keyframes scarPhoto { 0% { opacity: .36 } 100% { opacity: .14 } }
+        @keyframes scarFade { from { opacity: 0 } to { opacity: 1 } }
+        .scar-dezoom { animation: scarDezoom 3.9s cubic-bezier(.66,0,.2,1) both }
+        .scar-photo { animation: scarPhoto 3.9s ease-out both }
+        .scar-skip .scar-rise, .scar-skip .scar-fade { animation-delay: 0s !important; animation-duration: .01s !important }
+        .scar-fade { animation: scarFade 1s ease-out both }
         .scar-rise { animation: scarRise .9s cubic-bezier(.2,.7,.2,1) both }
-        @media (prefers-reduced-motion: reduce) { .scar-rise { animation: none } }
+        @media (prefers-reduced-motion: reduce) { .scar-rise, .scar-fade, .scar-dezoom, .scar-photo { animation: none } }
       `}</style>
 
       {/* ───────── top bar ───────── */}
@@ -383,23 +431,27 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
 
       <div ref={wrapRef} className="relative z-10">
         {/* ───────── hero ───────── */}
-        <section data-hero className="relative flex min-h-[100svh] flex-col justify-end px-6 pb-20 pt-32 sm:px-8 sm:pb-28">
-          <div className="mx-auto w-full max-w-6xl">
-            <div className="scar-rise font-mono text-xs tracking-[0.22em] text-muted-foreground sm:text-sm" style={{ animationDelay: ".1s" }}>
+        <section data-hero className={`relative flex min-h-[124svh] flex-col justify-end overflow-clip md:min-h-[100svh] px-6 pb-20 pt-32 sm:px-8 sm:pb-28 ${skipIntro ? "scar-skip" : ""}`}>
+          {mounted && scene && <HeroScene scene={scene} photo={photo} skip={skipIntro} label={copy.scarLabel} date={copy.scarDate} />}
+          <div className="relative mx-auto w-full max-w-6xl">
+            <div className="scar-rise font-mono text-xs tracking-[0.22em] text-muted-foreground sm:text-sm" style={{ animationDelay: "2.5s" }}>
               {copy.kicker}
             </div>
             <h1 className="font-editorial mt-5 text-[22vw] leading-[0.86] tracking-tight sm:text-[17vw] lg:text-[14rem]">
-              <span className="scar-rise block" style={{ animationDelay: ".25s" }}>
+              <span className="scar-rise block" style={{ animationDelay: "2.7s" }}>
                 {copy.heroLine1}
               </span>
-              <span className="scar-rise block text-muted-foreground" style={{ animationDelay: ".4s" }}>
+              <span className="scar-rise block text-muted-foreground" style={{ animationDelay: "2.9s" }}>
                 {copy.heroLine2}
               </span>
             </h1>
-            <p className="scar-rise mt-8 max-w-xl text-xl leading-relaxed text-muted-foreground sm:text-2xl" style={{ animationDelay: ".6s" }}>
+            <p className="scar-rise mt-8 max-w-xl text-xl leading-relaxed text-muted-foreground sm:text-2xl" style={{ animationDelay: "3.1s" }}>
               {copy.tagline}
             </p>
-            <div className="scar-rise mt-8 flex flex-wrap items-center gap-3" style={{ animationDelay: ".75s" }}>
+            <p className="scar-rise mt-4 max-w-xl font-mono text-xs leading-relaxed tracking-wide text-muted-foreground sm:text-sm" style={{ animationDelay: "3.3s" }}>
+              {copy.scarCaption}
+            </p>
+            <div className="scar-rise mt-8 flex flex-wrap items-center gap-3" style={{ animationDelay: "3.5s" }}>
               <button type="button" onClick={showProjects} className="inline-flex items-center gap-2 rounded-lg bg-foreground px-6 py-3 text-background transition-colors hover:bg-foreground/90">
                 {copy.ctaProjects} <ArrowRight className="h-4 w-4" />
               </button>
@@ -413,7 +465,7 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
                 <span className="h-2 w-2 rounded-full bg-emerald-500" /> {copy.availability}
               </span>
             </div>
-            <div className="scar-rise mt-10 flex flex-wrap gap-2" style={{ animationDelay: ".9s" }}>
+            <div className="scar-rise mt-10 flex flex-wrap gap-2" style={{ animationDelay: "3.7s" }}>
               {copy.expertise.map((e) => (
                 <span key={e} className="rounded-full border border-border px-3 py-1 font-mono text-xs text-muted-foreground">
                   {e}
@@ -640,5 +692,73 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
         </footer>
       </div>
     </div>
+  )
+}
+
+
+// ───────── hero: the real scar, then the whole page grows out of it ─────────
+const SCENE_MASK = `radial-gradient(ellipse 50% 46% at ${SC.cx * 100}% ${SC.cy * 100}%, #000 30%, transparent 100%)`
+
+function HeroScene({ scene, photo, skip, label, date }: { scene: Scene; photo?: string; skip: boolean; label: string; date: string }) {
+  const { d, staples } = useMemo(() => {
+    const dense = spline(SCAR_PTS)
+    let total = 0
+    const cum = dense.map((p, i) => {
+      if (i > 0) total += Math.hypot(p.x - dense[i - 1].x, p.y - dense[i - 1].y)
+      return total
+    })
+    const N = 26
+    const staples = Array.from({ length: N }, (_, k) => {
+      const target = (total * (k + 0.5)) / N
+      let i = 1
+      while (i < dense.length - 1 && cum[i] < target) i++
+      const a = dense[i - 1]
+      const b = dense[i]
+      return { x: r1(b.x), y: r1(b.y), a: r1((Math.atan2(b.y - a.y, b.x - a.x) * 180) / Math.PI + 90) }
+    })
+    return { d: dense.map((p, i) => `${i === 0 ? "M" : "L"}${r1(p.x)} ${r1(p.y)}`).join(" "), staples }
+  }, [])
+
+  return (
+    <>
+      <div
+        data-scene
+        aria-hidden="true"
+        className={`pointer-events-none absolute ${skip ? "" : "scar-dezoom"}`}
+        style={{ left: scene.left, top: scene.top, width: scene.w, height: scene.h, transformOrigin: `${SC.cx * 100}% ${SC.cy * 100}%` }}
+      >
+        {photo && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={photo}
+            alt=""
+            decoding="async"
+            className={`absolute inset-0 h-full w-full select-none ${skip ? "" : "scar-photo"}`}
+            style={{ filter: "grayscale(1) contrast(1.1) blur(2px)", opacity: skip ? 0.14 : undefined, WebkitMaskImage: SCENE_MASK, maskImage: SCENE_MASK }}
+          />
+        )}
+        <svg viewBox="0 0 900 675" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" style={{ overflow: "visible" }}>
+          <path d={d} fill="none" style={{ stroke: "var(--foreground)" }} strokeOpacity="0.28" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d={d} fill="none" stroke="#f87171" strokeOpacity="0.32" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" />
+          <path d={d} fill="none" style={{ stroke: "var(--background)" }} strokeOpacity="0.6" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round" />
+          {staples.map((st, i) => (
+            <g key={i} transform={`translate(${st.x} ${st.y}) rotate(${st.a})`}>
+              <line x1="-9" y1="0" x2="9" y2="0" stroke="#f87171" strokeWidth="2.4" strokeLinecap="round" />
+              <circle cx="-9" cy="0" r="2.4" style={{ fill: "var(--background)" }} stroke="#f87171" strokeWidth="1.2" />
+              <circle cx="9" cy="0" r="2.4" style={{ fill: "var(--background)" }} stroke="#f87171" strokeWidth="1.2" />
+            </g>
+          ))}
+        </svg>
+      </div>
+
+      {/* "this is my scar" */}
+      <div aria-hidden="true" className="scar-fade pointer-events-none absolute z-10" style={{ left: Math.max(8, scene.endX - 170), top: scene.endY - 64, width: 170, animationDelay: "3.7s" }}>
+        <div className="text-right font-mono text-[10px] leading-tight tracking-[0.18em]">
+          <div style={{ color: "#f87171" }}>{label}</div>
+          <div className="text-muted-foreground">{date}</div>
+        </div>
+      </div>
+      <div aria-hidden="true" className="scar-fade pointer-events-none absolute z-10 w-px bg-[#f87171]/50" style={{ left: scene.endX, top: scene.endY - 40, height: 34, animationDelay: "3.7s" }} />
+    </>
   )
 }
