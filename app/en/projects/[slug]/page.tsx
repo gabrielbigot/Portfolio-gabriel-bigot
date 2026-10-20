@@ -1,4 +1,6 @@
 import Link from "next/link"
+import FilStrip from "@/components/FilStrip"
+import { buildFil } from "@/lib/fil"
 import { getLocalizedProject, getLocalizedProjects } from "@/lib/portfolio-i18n"
 import { ArrowLeft, Calendar, Building2, Zap, Code2 } from "lucide-react"
 import BlogContentRenderer from "@/components/BlogContentRenderer"
@@ -50,6 +52,7 @@ export default async function EnglishProjectPage({ params }: { params: Promise<{
           </Link>
         </div>
       </nav>
+      <FilStrip items={buildFil("en")} currentId={`project:${slug}`} locale="en" />
 
       <main className="max-w-6xl mx-auto px-6 sm:px-8 py-12 sm:py-20">
         <header className="space-y-8 sm:space-y-12 pb-12 sm:pb-20 border-b border-border">
