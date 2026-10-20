@@ -1,6 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight } from "lucide-react"
+import ScarTimeline from "@/components/ScarTimeline"
+import Suture from "@/components/Suture"
 
 const milestones = [
   {
@@ -64,7 +66,8 @@ export default function EnglishAboutPage() {
         </div>
       </nav>
 
-      <main className="max-w-5xl mx-auto px-6 sm:px-8 py-12 sm:py-20">
+      <main>
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 pt-12 sm:pt-20">
         <header className="pb-20 sm:pb-28 border-b border-border">
           <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-end">
             <div className="space-y-7">
@@ -95,8 +98,14 @@ export default function EnglishAboutPage() {
             </figure>
           </div>
         </header>
+      </div>
 
-        <section className="py-20 sm:py-28 space-y-14">
+      <ScarTimeline locale="en" offset={57} storyHref="#recit" />
+
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 pb-12 sm:pb-20">
+        <Suture className="mt-16 sm:mt-20" />
+
+        <section id="recit" className="scroll-mt-20 py-20 sm:py-28 space-y-14">
           <div className="space-y-5">
             <h2 className="text-3xl sm:text-4xl font-light">Timeline</h2>
             <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
@@ -141,6 +150,7 @@ export default function EnglishAboutPage() {
             </Link>
           </div>
         </section>
+      </div>
       </main>
 
       <footer className="border-t border-border py-12">

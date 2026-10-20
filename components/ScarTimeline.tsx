@@ -2,30 +2,17 @@
 
 import { useEffect, useMemo, useRef, useState } from "react"
 import Link from "next/link"
-import { ArrowLeft, ArrowRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
+import { SCAR_MILESTONES, SCAR_UI, type ScarKind, type ScarLocale } from "@/lib/scar-milestones"
 
-type Kind = "origin" | "rise" | "peak" | "rupture" | "rebuild"
-
-const KIND: Record<Kind, { label: string; color: string }> = {
-  origin: { label: "Origine", color: "var(--muted-foreground)" },
-  rise: { label: "Progression", color: "#f59e0b" },
-  peak: { label: "Sommet", color: "#f59e0b" },
-  rupture: { label: "Épreuve", color: "#f87171" },
-  rebuild: { label: "Retour", color: "#10b981" },
+const KIND: Record<ScarKind, { label: Record<ScarLocale, string>; color: string }> = {
+  origin: { label: { fr: "Origine", en: "Origin" }, color: "var(--muted-foreground)" },
+  rise: { label: { fr: "Progression", en: "Growth" }, color: "#f59e0b" },
+  peak: { label: { fr: "Sommet", en: "Peak" }, color: "#f59e0b" },
+  rupture: { label: { fr: "Épreuve", en: "Setback" }, color: "#f87171" },
+  rebuild: { label: { fr: "Retour", en: "Comeback" }, color: "#10b981" },
+  build: { label: { fr: "Aujourd'hui", en: "Today" }, color: "var(--foreground)" },
 }
-
-// Prototype copy: short teasers distilled from /about. One staple = one milestone.
-const MILESTONES: { year: string; kind: Kind; title: string; text: string }[] = [
-  { year: "2008", kind: "origin", title: "Un stick dans les mains", text: "Premières crosses au TAC Hockey, Le Touquet. Le début de tout." },
-  { year: "Collège", kind: "rise", title: "Le talent, puis le brassard", text: "Mauvais perdant au départ, puis le talent, puis le brassard de capitaine." },
-  { year: "U16", kind: "peak", title: "Intouchable", text: "L'impression de pouvoir faire ce que je voulais sur le terrain." },
-  { year: "2019", kind: "rupture", title: "La première luxation", text: "Un entraînement banal, sans choc ni duel. En courant, le genou se dérobe." },
-  { year: "2019 — 2020", kind: "rebuild", title: "Première rééducation, premier retour", text: "Reprendre pas à pas, jusqu'au retour sur le terrain." },
-  { year: "2020 — 2022", kind: "rupture", title: "Les dislocations continuent", text: "Le lycée La Malassise, le bac, et des complications médicales qui assombrissent la période." },
-  { year: "Oct. 2022", kind: "rupture", title: "L'opération, l'infection", text: "L'opération, puis deux staphylocoques. C'est de là que vient la cicatrice." },
-  { year: "2023", kind: "rebuild", title: "Reconstruire, encore une fois", text: "Rééducation, reprise progressive et reconstruction de la confiance." },
-  { year: "2026", kind: "peak", title: "Le TAC retrouve l'Élite", text: "1ère place de Nationale 1, 16 victoires en 18 matchs et 100 buts inscrits." },
-]
 
 // ---- geometry (SVG user units, viewBox 1200 x 600) ----
 const VB_W = 1200
@@ -33,8 +20,6 @@ const VB_H = 600
 const X0 = 170
 const X1 = 1030
 const STAPLES_PER_GAP = 4
-const N = MILESTONES.length
-const TOTAL_STAPLES = (N - 1) * STAPLES_PER_GAP + 1
 
 const scarY = (x: number) => {
   const t = (x - X0) / (X1 - X0)
@@ -46,6 +31,9 @@ const rand = (seed: number) => {
   return v - Math.floor(v)
 }
 
+// Server and browser disagree after ~10 decimals on Math.sin/cos: round everything that is rendered.
+const r2 = (v: number) => Math.round(v * 100) / 100
+
 // Camera tuning
 const INTRO = 0.07
 const OUTRO = 0.93
@@ -53,22 +41,36 @@ const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v))
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t
 const smooth = (t: number) => t * t * (3 - 2 * t)
 
-export default function ScarTimeline() {
+type Props = {
+  locale?: ScarLocale
+  /** Height in px of a sticky bar above the scene (the page navigation). */
+  offset?: number
+  /** Where the "read the full story" link points. */
+  storyHref?: string
+}
+
+export default function ScarTimeline({ locale = "fr", offset = 0, storyHref = "#recit" }: Props) {
+  const milestones = SCAR_MILESTONES[locale]
+  const ui = SCAR_UI[locale]
+  const N = milestones.length
+  const totalStaples = (N - 1) * STAPLES_PER_GAP + 1
+
   const sectionRef = useRef<HTMLElement>(null)
+  const stickyRef = useRef<HTMLDivElement>(null)
   const cameraRef = useRef<SVGGElement>(null)
   const [active, setActive] = useState(-1)
 
   const { staples, scarPath, hairs } = useMemo(() => {
-    const staples = Array.from({ length: TOTAL_STAPLES }, (_, i) => {
-      const x = X0 + 40 + ((X1 - X0 - 80) * i) / (TOTAL_STAPLES - 1)
+    const staples = Array.from({ length: totalStaples }, (_, i) => {
+      const x = X0 + 40 + ((X1 - X0 - 80) * i) / (totalStaples - 1)
       const y = scarY(x)
       const slope = (scarY(x + 1) - scarY(x - 1)) / 2
       const normal = (Math.atan2(slope, 1) * 180) / Math.PI + 90
       const tilt = (rand(i + 1) - 0.5) * 16
       const milestone = i % STAPLES_PER_GAP === 0 ? i / STAPLES_PER_GAP : -1
-      return { x, y, angle: normal + tilt, milestone }
+      return { x: r2(x), y: r2(y), angle: r2(normal + tilt), milestone }
     })
-    const pts = Array.from({ length: 90 }, (_, i) => {
+    const scarPath = Array.from({ length: 90 }, (_, i) => {
       const x = X0 + ((X1 - X0) * i) / 89
       return `${i === 0 ? "M" : "L"}${x.toFixed(1)} ${(scarY(x) + (rand(i + 50) - 0.5) * 1.4).toFixed(1)}`
     }).join(" ")
@@ -77,98 +79,119 @@ export default function ScarTimeline() {
       const y = 175 + rand(i * 3 + 2) * 250
       const len = 6 + rand(i * 3 + 3) * 9
       const a = (-35 + (rand(i + 900) - 0.5) * 40) * (Math.PI / 180)
-      return { x, y, dx: Math.cos(a) * len, dy: Math.sin(a) * len }
+      return { x: r2(x), y: r2(y), x2: r2(x + Math.cos(a) * len), y2: r2(y + Math.sin(a) * len) }
     })
-    return { staples, scarPath: pts, hairs }
-  }, [])
+    return { staples, scarPath, hairs }
+  }, [totalStaples])
 
   const milestoneStaples = useMemo(() => staples.filter((s) => s.milestone >= 0), [staples])
 
   useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
     const cam = { px: 600, py: 300, fx: 600, fy: 300, s: 1 }
     let raf = 0
+    let running = false
     let lastActive = -2
 
     const tick = () => {
-      const section = sectionRef.current
       const group = cameraRef.current
-      if (section && group) {
-        const rect = section.getBoundingClientRect()
-        const total = rect.height - window.innerHeight
-        const p = clamp(-rect.top / total)
-        const desktop = window.innerWidth >= 1024
-        const zoom = desktop ? 3.4 : 4
+      const sticky = stickyRef.current
+      if (!group || !sticky) return
+      const rect = section.getBoundingClientRect()
+      const total = rect.height - sticky.offsetHeight
+      const p = clamp((offset - rect.top) / total)
+      const desktop = window.innerWidth >= 1024
+      const zoom = desktop ? 3.4 : 4
+      const base = desktop ? 1 : 1.35
 
-        const f = clamp((p - INTRO) / (OUTRO - INTRO)) * (N - 1)
-        const i0 = Math.floor(f)
-        const i1 = Math.min(N - 1, i0 + 1)
-        const k = smooth(f - i0)
-        const px = lerp(milestoneStaples[i0].x, milestoneStaples[i1].x, k)
-        const py = lerp(milestoneStaples[i0].y, milestoneStaples[i1].y, k)
+      const f = clamp((p - INTRO) / (OUTRO - INTRO)) * (N - 1)
+      const i0 = Math.floor(f)
+      const i1 = Math.min(N - 1, i0 + 1)
+      const k = smooth(f - i0)
+      const px = lerp(milestoneStaples[i0].x, milestoneStaples[i1].x, k)
+      const py = lerp(milestoneStaples[i0].y, milestoneStaples[i1].y, k)
 
-        let s = zoom
-        if (p < INTRO) s = lerp(1, zoom, smooth(p / INTRO))
-        else if (p > OUTRO) s = lerp(zoom, 1, smooth((p - OUTRO) / (1 - OUTRO)))
-        const w = (s - 1) / (zoom - 1)
+      let s = zoom
+      if (p < INTRO) s = lerp(base, zoom, smooth(p / INTRO))
+      else if (p > OUTRO) s = lerp(zoom, base, smooth((p - OUTRO) / (1 - OUTRO)))
+      const w = clamp((s - base) / (zoom - base))
 
-        const target = {
-          px: lerp(VB_W / 2, px, w),
-          py: lerp(VB_H / 2, py, w),
-          fx: lerp(VB_W / 2, desktop ? VB_W * 0.36 : VB_W / 2, w),
-          fy: lerp(VB_H / 2, desktop ? VB_H / 2 : 215, w),
-          s,
-        }
-        const a = reduce ? 1 : 0.14
-        ;(Object.keys(target) as (keyof typeof target)[]).forEach((key) => {
-          cam[key] = lerp(cam[key], target[key], a)
-        })
-        group.setAttribute(
-          "transform",
-          `translate(${cam.fx} ${cam.fy}) scale(${cam.s}) translate(${-cam.px} ${-cam.py})`,
-        )
-
-        const next = p < INTRO * 0.6 ? -1 : Math.round(f)
-        if (next !== lastActive) {
-          lastActive = next
-          setActive(next)
-        }
+      const target = {
+        px: lerp(VB_W / 2, px, w),
+        py: lerp(VB_H / 2, py, w),
+        fx: lerp(VB_W / 2, desktop ? VB_W * 0.36 : VB_W / 2, w),
+        fy: lerp(VB_H / 2, desktop ? VB_H / 2 : 215, w),
+        s,
       }
-      raf = requestAnimationFrame(tick)
+      const a = reduce ? 1 : 0.14
+      ;(Object.keys(target) as (keyof typeof target)[]).forEach((key) => {
+        cam[key] = lerp(cam[key], target[key], a)
+      })
+      group.setAttribute("transform", `translate(${cam.fx} ${cam.fy}) scale(${cam.s}) translate(${-cam.px} ${-cam.py})`)
+
+      const next = p < INTRO * 0.6 ? -1 : Math.round(f)
+      if (next !== lastActive) {
+        lastActive = next
+        setActive(next)
+      }
     }
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
-  }, [milestoneStaples])
+
+    const loop = () => {
+      tick()
+      raf = requestAnimationFrame(loop)
+    }
+
+    // Only animate while the scene is on screen.
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !running) {
+          running = true
+          raf = requestAnimationFrame(loop)
+        } else if (!entry.isIntersecting && running) {
+          running = false
+          cancelAnimationFrame(raf)
+        }
+      },
+      { rootMargin: "200px 0px" },
+    )
+    io.observe(section)
+    tick()
+    return () => {
+      io.disconnect()
+      cancelAnimationFrame(raf)
+    }
+  }, [milestoneStaples, N, offset])
 
   const goTo = (index: number) => {
     const section = sectionRef.current
-    if (!section) return
-    const total = section.offsetHeight - window.innerHeight
+    const sticky = stickyRef.current
+    if (!section || !sticky) return
+    const total = section.offsetHeight - sticky.offsetHeight
     const p = INTRO + (index / (N - 1)) * (OUTRO - INTRO)
-    const top = section.getBoundingClientRect().top + window.scrollY + p * total
+    // progress p is reached when section.top === offset - p * total
+    const top = window.scrollY + section.getBoundingClientRect().top - offset + p * total
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
     window.scrollTo({ top, behavior: reduce ? "auto" : "smooth" })
   }
 
-  const current = active >= 0 ? MILESTONES[active] : null
+  const current = active >= 0 ? milestones[active] : null
   const currentKind = current ? KIND[current.kind] : null
 
   return (
     <div className="bg-background text-foreground">
-      <section ref={sectionRef} style={{ height: `${(N + 2) * 85}vh` }} className="relative">
-        <div className="sticky top-0 h-[100svh] overflow-hidden">
-          {/* Back link */}
-          <Link
-            href="/"
-            className="absolute left-5 top-5 z-20 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Retour au portfolio</span>
-          </Link>
-          <div className="absolute right-5 top-5 z-20 text-[10px] font-mono tracking-[0.18em] uppercase text-muted-foreground">
-            Prototype · la cicatrice
-          </div>
+      {/* Full text for screen readers and search engines: the visible panel shows one milestone at a time. */}
+      <ol className="sr-only">
+        {milestones.map((m) => (
+          <li key={m.year + m.title}>
+            {m.year} — {m.title}. {m.text}
+          </li>
+        ))}
+      </ol>
 
+      <section ref={sectionRef} style={{ height: `${(N + 1) * 70}vh` }} className="relative">
+        <div ref={stickyRef} className="sticky overflow-hidden" style={{ top: offset, height: `calc(100svh - ${offset}px)` }}>
           {/* The scar */}
           <svg
             viewBox={`0 0 ${VB_W} ${VB_H}`}
@@ -176,7 +199,7 @@ export default function ScarTimeline() {
             className="absolute inset-0 h-full w-full"
             style={{ overflow: "visible" }}
             role="img"
-            aria-label="Une cicatrice fermée par des agrafes, chacune marquant un moment de mon parcours"
+            aria-label={ui.svgLabel}
           >
             <g ref={cameraRef}>
               {/* skin */}
@@ -190,8 +213,8 @@ export default function ScarTimeline() {
                   key={i}
                   x1={h.x}
                   y1={h.y}
-                  x2={h.x + h.dx}
-                  y2={h.y + h.dy}
+                  x2={h.x2}
+                  y2={h.y2}
                   style={{ stroke: "var(--foreground)" }}
                   strokeOpacity="0.14"
                   strokeWidth="0.6"
@@ -208,11 +231,11 @@ export default function ScarTimeline() {
               {staples.map((s, i) => {
                 const isMilestone = s.milestone >= 0
                 const isActive = s.milestone === active
-                const color = isMilestone ? KIND[MILESTONES[s.milestone].kind].color : "var(--muted-foreground)"
+                const color = isMilestone ? KIND[milestones[s.milestone].kind].color : "var(--muted-foreground)"
                 return (
                   <g
                     key={i}
-                    transform={`translate(${s.x} ${s.y}) rotate(${s.angle - 90})`}
+                    transform={`translate(${s.x} ${s.y}) rotate(${r2(s.angle - 90)})`}
                     onClick={isMilestone ? () => goTo(s.milestone) : undefined}
                     style={{ cursor: isMilestone ? "pointer" : "default" }}
                     opacity={isMilestone ? 1 : 0.55}
@@ -236,7 +259,7 @@ export default function ScarTimeline() {
                 <text
                   key={i}
                   x={s.x}
-                  y={s.y + 42}
+                  y={r2(s.y + 42)}
                   textAnchor="middle"
                   className="font-mono"
                   fontSize="7.5"
@@ -244,7 +267,7 @@ export default function ScarTimeline() {
                   style={{ fill: "var(--muted-foreground)", transition: "opacity .4s" }}
                   opacity={active === -1 || active === i ? 1 : 0.35}
                 >
-                  {MILESTONES[i].year.toUpperCase()}
+                  {milestones[i].year.toUpperCase()}
                 </text>
               ))}
             </g>
@@ -252,12 +275,13 @@ export default function ScarTimeline() {
 
           {/* Intro overlay */}
           <div
-            className="pointer-events-none absolute inset-x-0 top-[12%] z-10 px-6 text-center transition-all duration-700"
+            className="pointer-events-none absolute inset-x-0 top-[10%] z-10 px-6 text-center transition-all duration-700"
             style={{ opacity: active === -1 ? 1 : 0, transform: active === -1 ? "none" : "translateY(-12px)" }}
+            aria-hidden={active !== -1}
           >
-            <div className="text-sm text-muted-foreground font-mono tracking-wider">MON HISTOIRE, AGRAFE PAR AGRAFE</div>
-            <h1 className="font-editorial mt-4 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">Une cicatrice, neuf repères</h1>
-            <p className="mt-4 text-muted-foreground">Scrolle pour avancer le long de la cicatrice.</p>
+            <div className="text-sm text-muted-foreground font-mono tracking-wider">{ui.kicker}</div>
+            <h2 className="font-editorial mt-4 text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">{ui.heading}</h2>
+            <p className="mt-4 text-muted-foreground">{ui.hint}</p>
           </div>
 
           {/* Milestone panel */}
@@ -266,24 +290,29 @@ export default function ScarTimeline() {
               key={active}
               className="animate-fade-in-up absolute z-10 inset-x-4 bottom-6 lg:inset-x-auto lg:right-[6vw] lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 lg:w-[26rem]"
             >
-              <div className="rounded-lg border bg-background/75 backdrop-blur-md p-6 sm:p-7" style={{ borderColor: `color-mix(in srgb, ${currentKind.color} 35%, var(--border))` }}>
+              <div className="rounded-lg border bg-background/80 backdrop-blur-md p-6 sm:p-7" style={{ borderColor: `color-mix(in srgb, ${currentKind.color} 35%, var(--border))` }}>
                 <div className="flex items-baseline justify-between gap-4">
                   <div className="text-base text-muted-foreground">{current.year}</div>
                   <div className="text-xs font-mono" style={{ color: currentKind.color }}>
-                    {currentKind.label.toUpperCase()}
+                    {currentKind.label[locale].toUpperCase()}
                   </div>
                 </div>
-                <h2 className="font-editorial mt-3 text-2xl sm:text-3xl leading-tight">{current.title}</h2>
+                <h3 className="font-editorial mt-3 text-2xl sm:text-3xl leading-tight">{current.title}</h3>
                 <p className="mt-3 text-muted-foreground leading-relaxed">{current.text}</p>
 
                 {active === N - 1 && (
-                  <Link href="/about" className="mt-5 inline-flex items-center gap-2 text-sm hover:gap-3 transition-all duration-300">
-                    Lire l&apos;histoire complète <ArrowRight className="w-4 h-4" />
-                  </Link>
+                  <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+                    <Link href={ui.projectsHref} className="inline-flex items-center gap-2 hover:gap-3 transition-all duration-300">
+                      {ui.projects} <ArrowRight className="w-4 h-4" />
+                    </Link>
+                    <a href={storyHref} className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300">
+                      {ui.fullStory}
+                    </a>
+                  </div>
                 )}
 
-                <div className="mt-6 flex items-center gap-1.5" role="tablist" aria-label="Jalons">
-                  {MILESTONES.map((m, i) => (
+                <div className="mt-6 flex items-center gap-1.5" role="tablist" aria-label={ui.tabsLabel}>
+                  {milestones.map((m, i) => (
                     <button
                       key={i}
                       type="button"

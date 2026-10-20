@@ -35,7 +35,13 @@ export default function EssayContents({ headings }: { headings: Heading[] }) {
             href={`#${heading.id}`}
             className={`relative block max-w-[16rem] py-2 pl-4 pr-2 text-sm leading-snug transition-colors duration-300 ${activeId === heading.id ? "text-accent" : "text-muted-foreground hover:text-foreground"}`}
           >
-            {activeId === heading.id && <span className="absolute -left-px top-0 bottom-0 w-px bg-accent" />}
+            {activeId === heading.id && (
+              <>
+                <span className="absolute -left-px top-0 bottom-0 w-px bg-accent" />
+                {/* a small staple across the rule */}
+                <span aria-hidden className="absolute -left-[5px] top-1/2 h-[3px] w-[10px] -translate-y-1/2 rounded-full bg-accent" />
+              </>
+            )}
             <span className="mr-2 font-mono text-[10px] opacity-50">{String(index + 1).padStart(2, "0")}</span>
             {heading.text}
           </a>
