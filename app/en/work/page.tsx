@@ -12,7 +12,7 @@ const companies = [
     startDate: "April 2026",
     endDate: "May 2026",
     current: false,
-    shortDescription: "Built a custom Next.js 16 web application replacing n8n + Notion, plus prospect enrichment workflows — my first paid mission based on AI and full-stack skills.",
+    shortDescription: "Built a custom Next.js 16 web application replacing n8n + Notion, plus prospect enrichment workflows.",
     technologies: ["Next.js 16", "TypeScript", "Neon PostgreSQL", "Drizzle ORM", "Vercel", "OpenAI", "Anthropic"],
   },
   {
@@ -169,7 +169,7 @@ export default function EnglishWorkPage() {
       <footer className="border-t border-border py-12">
         <div className="max-w-5xl mx-auto px-6 sm:px-8">
           <div className="text-center text-sm text-muted-foreground">
-            © 2025 Gabriel Bigot • AI Automation Developer
+            © 2026 Gabriel Bigot • AI Automation Developer
           </div>
         </div>
       </footer>

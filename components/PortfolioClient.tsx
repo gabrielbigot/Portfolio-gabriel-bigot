@@ -101,7 +101,7 @@ const portfolioCopy = {
     workTitle: "Expériences & Projets",
     viewAllProjects: "VOIR TOUS LES PROJETS",
     exploreWork: "Explorer mes expériences en détail",
-    featuredProjects: "Projets d'automatisation phares",
+    featuredProjects: "Projets phares",
     essaysTitle: "Essais & réflexions",
     essaysIntro: "Des textes pour penser l'IA au-delà des outils : travail, apprentissage, économie et responsabilité.",
     latestEssay: "Dernier essai",
@@ -138,7 +138,7 @@ const portfolioCopy = {
     workTitle: "Experience & Projects",
     viewAllProjects: "VIEW ALL PROJECTS",
     exploreWork: "Explore my experience in detail",
-    featuredProjects: "Featured automation projects",
+    featuredProjects: "Featured projects",
     essaysTitle: "Essays & reflections",
     essaysIntro: "Writing that considers AI beyond tools: work, learning, economics, and responsibility.",
     latestEssay: "Latest essay",
@@ -834,7 +834,7 @@ export default function PortfolioClient({
         <footer className="py-12 sm:py-16 border-t border-border">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 sm:gap-8">
             <div className="space-y-2">
-              <div className="text-sm text-muted-foreground">© 2025 {personalInfo.name}. {copy.footerRights}</div>
+              <div className="text-sm text-muted-foreground">© 2026 {personalInfo.name}. {copy.footerRights}</div>
               <div className="text-xs text-muted-foreground">{copy.footerRole}</div>
             </div>
 

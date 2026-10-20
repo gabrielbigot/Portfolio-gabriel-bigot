@@ -17,6 +17,7 @@ interface Project {
   company: string
   technologies: string[]
   featured: boolean
+  status?: "actif" | "archive"
   image?: string
 }
 
@@ -36,6 +37,10 @@ const projectsCopy = {
     featured: "Projets phares",
     timeSaved: "Gain de temps moyen",
     smeTransformed: "PME transformée",
+    activeProjects: "Projets actifs",
+    archivedProjects: "Archivés",
+    statusActive: "ACTIF",
+    statusArchived: "ARCHIVÉ",
     type: "TYPE",
     all: "Tous",
     personal: "Personnel",
@@ -66,6 +71,10 @@ const projectsCopy = {
     featured: "Featured projects",
     timeSaved: "Average time saved",
     smeTransformed: "SME transformed",
+    activeProjects: "Active projects",
+    archivedProjects: "Archived",
+    statusActive: "ACTIVE",
+    statusArchived: "ARCHIVED",
     type: "TYPE",
     all: "All",
     personal: "Personal",
@@ -151,12 +160,12 @@ export default function ProjectsPageClient({ projects, cvUrl, locale = "fr" }: P
               <div className="text-sm text-muted-foreground">{copy.featured}</div>
             </div>
             <div className="space-y-2">
-              <div className="text-3xl sm:text-4xl font-light">80%</div>
-              <div className="text-sm text-muted-foreground">{copy.timeSaved}</div>
+              <div className="text-3xl sm:text-4xl font-light">{projects.filter((p) => p.status === "actif").length}</div>
+              <div className="text-sm text-muted-foreground">{copy.activeProjects}</div>
             </div>
             <div className="space-y-2">
-              <div className="text-3xl sm:text-4xl font-light">1</div>
-              <div className="text-sm text-muted-foreground">{copy.smeTransformed}</div>
+              <div className="text-3xl sm:text-4xl font-light">{projects.filter((p) => p.status === "archive").length}</div>
+              <div className="text-sm text-muted-foreground">{copy.archivedProjects}</div>
             </div>
           </div>
         </header>
@@ -235,6 +244,13 @@ export default function ProjectsPageClient({ projects, cvUrl, locale = "fr" }: P
                           <span className="text-xs font-mono text-muted-foreground/30 tracking-widest uppercase">{project.category}</span>
                         </div>
                       )}
+                      <div className="absolute top-3 left-3">
+                        {project.status && (
+                        <span className={`text-[10px] font-mono tracking-widest px-2 py-1 rounded border ${project.status === "actif" ? "border-emerald-500/40 text-emerald-600 dark:text-emerald-400" : "border-border text-muted-foreground"}`}>
+                          {project.status === "actif" ? copy.statusActive : copy.statusArchived}
+                        </span>
+                      )}
+                      </div>
                       <div className="absolute top-3 right-3">
                         <span className="text-xl">⭐</span>
                       </div>
@@ -360,9 +376,16 @@ export default function ProjectsPageClient({ projects, cvUrl, locale = "fr" }: P
                         </span>
                       )}
                     </div>
-                    {project.featured && (
-                      <span className="text-lg">⭐</span>
-                    )}
+                    <div className="flex items-center gap-2">
+                      {project.status && (
+                        <span className={`text-[10px] font-mono tracking-widest px-2 py-1 rounded border ${project.status === "actif" ? "border-emerald-500/40 text-emerald-600 dark:text-emerald-400" : "border-border text-muted-foreground"}`}>
+                          {project.status === "actif" ? copy.statusActive : copy.statusArchived}
+                        </span>
+                      )}
+                      {project.featured && (
+                        <span className="text-lg">⭐</span>
+                      )}
+                    </div>
                   </div>
 
                   <div className="space-y-3">
@@ -453,7 +476,7 @@ export default function ProjectsPageClient({ projects, cvUrl, locale = "fr" }: P
       <footer className="border-t border-border py-12 mt-20">
         <div className="max-w-7xl mx-auto px-6 sm:px-8">
           <div className="text-center text-sm text-muted-foreground">
-            © 2025 Gabriel Bigot • {copy.footer}
+            © 2026 Gabriel Bigot • {copy.footer}
           </div>
         </div>
       </footer>
