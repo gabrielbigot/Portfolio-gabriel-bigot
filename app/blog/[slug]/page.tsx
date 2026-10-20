@@ -1,4 +1,6 @@
 import Link from "next/link"
+import FilStrip from "@/components/FilStrip"
+import { buildFil } from "@/lib/fil"
 import { notFound } from "next/navigation"
 import { getBlogPosts, getBlogPost } from "@/lib/portfolio-data"
 import ShareButtons from "@/components/ShareButtons"
@@ -42,6 +44,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <FilStrip items={buildFil("fr")} currentId={`essay:${post.slug}`} locale="fr" />
       <article className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-16 py-8 sm:py-12">
         {/* Back Link */}
         <div className="mb-16 border-b border-border pb-6">

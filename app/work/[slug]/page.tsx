@@ -1,4 +1,6 @@
 import Link from "next/link"
+import FilStrip from "@/components/FilStrip"
+import { buildFil } from "@/lib/fil"
 import { getCompany, getCompanyProjects, getCompanies } from "@/lib/portfolio-data"
 import { ArrowLeft, ArrowRight, Building2, MapPin, Calendar, Briefcase, ExternalLink, Code2 } from "lucide-react"
 import { notFound } from "next/navigation"
@@ -70,6 +72,7 @@ export default function CompanyPage({ params }: { params: { slug: string } }) {
           </Link>
         </div>
       </nav>
+      <FilStrip items={buildFil("fr")} currentId={`experience:${params.slug}`} locale="fr" />
 
       <main className="max-w-5xl mx-auto px-6 sm:px-8 py-12 sm:py-20">
         {/* Hero */}

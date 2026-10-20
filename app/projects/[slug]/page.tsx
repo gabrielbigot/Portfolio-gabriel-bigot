@@ -1,4 +1,6 @@
 import Link from "next/link"
+import FilStrip from "@/components/FilStrip"
+import { buildFil } from "@/lib/fil"
 import { getProjects, getProject } from "@/lib/portfolio-data"
 import { ArrowLeft, ExternalLink, Github, Calendar, Building2, Zap, Code2 } from "lucide-react"
 import BlogContentRenderer from "@/components/BlogContentRenderer"
@@ -44,6 +46,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </Link>
         </div>
       </nav>
+      <FilStrip items={buildFil("fr")} currentId={`project:${slug}`} locale="fr" />
 
       <main className="max-w-6xl mx-auto px-6 sm:px-8 py-12 sm:py-20">
         {/* Hero Section */}
