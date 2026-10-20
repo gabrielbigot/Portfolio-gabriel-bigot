@@ -4,9 +4,9 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, typ
 import Link from "next/link"
 import { ArrowRight, ArrowDown, Download, Moon, Sun } from "lucide-react"
 import { FIL_KIND, type FilItem, type FilKind } from "@/lib/fil"
-import { STORY_MILESTONES, type StoryCopy, type StoryLocale } from "@/lib/scar-story"
+import { STORY_KIND, STORY_MILESTONES, type StoryCopy, type StoryLocale } from "@/lib/scar-story"
 import { SC, SCAR_PTS, r1, spline } from "@/lib/scar-geometry"
-import ScarJourney from "@/components/ScarJourney"
+import ScarJourney, { type JourneyStop } from "@/components/ScarJourney"
 
 type SkillGroup = { category: string; skills: string[] }
 type Props = {
@@ -23,8 +23,7 @@ type Props = {
   photoHd?: string
 }
 
-type Filter = "all" | "career" | "project" | "essay"
-const FILTER_OF: Record<FilKind, Exclude<Filter, "all">> = { origin: "career", experience: "career", project: "project", essay: "essay" }
+type Filter = "all" | "career" | "project"
 
 type Node = { id: string; x: number; y: number; color: string; major: boolean }
 type Geo = {
@@ -61,22 +60,60 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
 
   const milestones = STORY_MILESTONES[locale]
 
-  const threadItems = useMemo(
-    () => items.filter((i) => i.kind !== "origin").filter((i) => filter === "all" || FILTER_OF[i.kind] === filter),
-    [items, filter],
-  )
+  // chapter 2 keeps the essays (they are not part of the journey on the scar)
+  const threadItems = useMemo(() => items.filter((i) => i.kind === "essay"), [items])
   const years = useMemo(() => Array.from(new Set(threadItems.map((i) => i.year))), [threadItems])
   // alternate sides over the whole list, not per year, so the page stays balanced
   const sideOf = useMemo(() => new Map(threadItems.map((i, n) => [i.id, n % 2 === 1] as const)), [threadItems])
-  const counts = useMemo(() => {
-    const c: Record<Filter, number> = { all: 0, career: 0, project: 0, essay: 0 }
-    items.forEach((i) => {
-      if (i.kind === "origin") return
-      c.all += 1
-      c[FILTER_OF[i.kind]] += 1
-    })
-    return c
-  }, [items])
+
+  // chapter 1: the camera visits the story, then every experience and project, in order
+  const allStops = useMemo<JourneyStop[]>(() => {
+    const life: JourneyStop[] = milestones.map((m, i) => ({
+      id: `life:${i}`,
+      group: "life",
+      when: m.year,
+      kindLabel: STORY_KIND[m.kind].label[locale],
+      color: STORY_KIND[m.kind].color,
+      title: m.title,
+      text: m.text,
+      extra: i === milestones.length - 1 ? { href: copy.storyHref, label: copy.originMore } : undefined,
+    }))
+    const career: JourneyStop[] = items
+      .filter((i) => i.kind === "experience" || i.kind === "project")
+      .map((i) => ({
+        id: i.id,
+        group: i.kind === "experience" ? ("experience" as const) : ("project" as const),
+        when: i.range ?? i.when,
+        kindLabel: FIL_KIND[i.kind].label[locale],
+        color: FIL_KIND[i.kind].color,
+        title: i.label,
+        text: i.blurb ?? "",
+        sub: i.sub,
+        image: i.image,
+        href: i.href,
+        star: i.featured ? copy.featured : undefined,
+      }))
+    return [...life, ...career]
+  }, [items, milestones, locale, copy])
+
+  const journeyStops = useMemo(
+    () => allStops.filter((s) => filter === "all" || (filter === "career" ? s.group !== "project" : s.group === "project")),
+    [allStops, filter],
+  )
+  const journeyFilters = useMemo(
+    () => [
+      { key: "all", label: copy.filterAll, count: allStops.length },
+      { key: "career", label: copy.filterCareer, count: allStops.filter((s) => s.group !== "project").length },
+      { key: "project", label: copy.filterProject, count: allStops.filter((s) => s.group === "project").length },
+    ],
+    [allStops, copy],
+  )
+  // changing the filter changes the route: start again from the beginning of the scar
+  const pickFilter = (key: string) => {
+    const el = document.getElementById("origine")
+    if (el) window.scrollTo({ top: window.scrollY + el.getBoundingClientRect().top - 57, behavior: "auto" })
+    setFilter(key as Filter)
+  }
 
   // ---- measure the page and build the thread ----
   const measure = useCallback(() => {
@@ -114,15 +151,14 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
     // organic wander between two distant nodes
     const amp = desktop ? 13 : 7
     nodes.forEach((n, i) => {
-      if (i > 0) {
-        const prev = nodes[i - 1]
-        const gap = n.y - prev.y
-        if (gap > 140) {
-          const steps = Math.floor(gap / 110)
-          for (let s = 1; s <= steps; s++) {
-            const y = prev.y + (gap * s) / (steps + 1)
-            anchors.push({ x: r1(prev.x + (n.x - prev.x) * (s / (steps + 1)) + amp * Math.sin(y / 53 + i)), y: r1(y) })
-          }
+      // intermediate points on every long stretch, including the one between the hero and the first node
+      const prev = anchors[anchors.length - 1]
+      const gap = n.y - prev.y
+      if (gap > 140) {
+        const steps = Math.floor(gap / 110)
+        for (let s = 1; s <= steps; s++) {
+          const y = prev.y + (gap * s) / (steps + 1)
+          anchors.push({ x: r1(prev.x + (n.x - prev.x) * (s / (steps + 1)) + amp * Math.sin(y / 53 + i)), y: r1(y) })
         }
       }
       anchors.push({ x: n.x, y: n.y })
@@ -270,7 +306,7 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
   const go = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: reduce.current ? "auto" : "smooth", block: "start" })
   const showProjects = () => {
     setFilter("project")
-    window.setTimeout(() => go("fil"), 60)
+    window.setTimeout(() => go("origine"), 60)
   }
 
   // gradient stops follow the colour of each node: the thread remembers what it went through
@@ -442,15 +478,16 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
 
         {/* ───────── chapter 1: the journey along the real scar ───────── */}
         <ScarJourney
-          locale={locale}
           photo={photoHd ?? photo ?? ""}
-          milestones={milestones}
+          stops={journeyStops}
+          filters={journeyFilters}
+          filter={filter}
+          onFilter={pickFilter}
           kicker={copy.originKicker}
           title={copy.originTitle}
           intro={copy.originIntro}
           hint={copy.journeyHint}
-          more={copy.originMore}
-          storyHref={copy.storyHref}
+          openLabel={copy.open}
           offset={57}
           theme={theme}
           softLabel={copy.softLabel}
@@ -466,29 +503,6 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
               <h2 className="font-editorial text-5xl leading-[0.98] sm:text-6xl lg:text-7xl">{copy.threadTitle}</h2>
               <p className="text-lg leading-relaxed text-muted-foreground">{copy.threadIntro}</p>
             </header>
-
-            <div className="sticky top-[57px] z-30 -mx-6 mt-10 border-y border-border bg-background/80 px-6 py-3 backdrop-blur-lg sm:-mx-8 sm:px-8">
-              <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-2 md:justify-center" role="group" aria-label={copy.threadTitle}>
-                {(
-                  [
-                    ["all", copy.filterAll],
-                    ["career", copy.filterCareer],
-                    ["project", copy.filterProject],
-                    ["essay", copy.filterEssay],
-                  ] as [Filter, string][]
-                ).map(([f, label]) => (
-                  <button
-                    key={f}
-                    type="button"
-                    onClick={() => setFilter(f)}
-                    aria-pressed={filter === f}
-                    className={`rounded-full border px-4 py-1.5 text-sm transition-colors ${filter === f ? "border-foreground bg-foreground text-background" : "border-border text-muted-foreground hover:border-muted-foreground/60 hover:text-foreground"}`}
-                  >
-                    {label} <span className="ml-1 font-mono text-[11px] opacity-60">{counts[f]}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
 
             <ol className="mt-16 sm:mt-24">
               {years.map((year) => {
