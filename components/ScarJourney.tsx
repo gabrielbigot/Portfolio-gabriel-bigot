@@ -20,6 +20,8 @@ export type JourneyStop = {
   kindLabel: string
   color: string
   title: string
+  /** What made this necessary (shown first, in italics). */
+  lead?: string
   text: string
   sub?: string
   image?: string
@@ -305,7 +307,8 @@ export default function ScarJourney({ photo, stops, filters, filter, onFilter, k
               </div>
               <h3 className="font-editorial mt-3 text-3xl leading-[1.05] sm:text-4xl lg:text-5xl">{current.title}</h3>
               {current.sub && <p className="mt-2 text-sm text-muted-foreground">{current.sub}</p>}
-              {current.text && <p className="mt-3 line-clamp-4 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg lg:line-clamp-5">{current.text}</p>}
+              {current.lead && <p className="mt-3 max-w-md text-base italic leading-relaxed text-foreground/85 sm:text-lg">{current.lead}</p>}
+              {current.text && <p className={`mt-3 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg ${current.lead ? "line-clamp-2 lg:line-clamp-3" : "line-clamp-4 lg:line-clamp-5"}`}>{current.text}</p>}
               <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
                 {current.href && (
                   <Link href={current.href} className="inline-flex items-center gap-2 transition-all duration-300 hover:gap-3">

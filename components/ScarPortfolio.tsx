@@ -4,7 +4,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, typ
 import Link from "next/link"
 import { ArrowRight, ArrowDown, Download, Moon, Sun } from "lucide-react"
 import { FIL_KIND, type FilItem, type FilKind } from "@/lib/fil"
-import { STORY_KIND, STORY_MILESTONES, type StoryCopy, type StoryLocale } from "@/lib/scar-story"
+import { STORY_KIND, STORY_LEADS, STORY_MILESTONES, STORY_WHY, type StoryCopy, type StoryLocale } from "@/lib/scar-story"
 import { SC, SCAR_PTS, r1, spline } from "@/lib/scar-geometry"
 import ScarJourney, { type JourneyStop } from "@/components/ScarJourney"
 
@@ -59,6 +59,7 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
   const reduce = useRef(false)
 
   const milestones = STORY_MILESTONES[locale]
+  const why = STORY_WHY[locale]
 
   // chapter 2 keeps the essays (they are not part of the journey on the scar)
   const threadItems = useMemo(() => items.filter((i) => i.kind === "essay"), [items])
@@ -87,6 +88,7 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
         kindLabel: FIL_KIND[i.kind].label[locale],
         color: FIL_KIND[i.kind].color,
         title: i.label,
+        lead: STORY_LEADS[i.id]?.[locale],
         text: i.blurb ?? "",
         sub: i.sub,
         image: i.image,
@@ -344,6 +346,7 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
           <nav className="flex items-center gap-1 text-sm sm:gap-5" aria-label="Chapitres">
             {(
               [
+                ["pourquoi", copy.nav.why],
                 ["origine", copy.nav.origin],
                 ["fil", copy.nav.thread],
                 ["competences", copy.nav.skills],
@@ -453,7 +456,7 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
               <button type="button" onClick={showProjects} className="inline-flex items-center gap-2 rounded-lg bg-foreground px-6 py-3 text-background transition-colors hover:bg-foreground/90">
                 {copy.ctaProjects} <ArrowRight className="h-4 w-4" />
               </button>
-              <button type="button" onClick={() => go("origine")} className="rounded-lg border border-border px-6 py-3 transition-colors hover:border-muted-foreground/60">
+              <button type="button" onClick={() => go("pourquoi")} className="rounded-lg border border-border px-6 py-3 transition-colors hover:border-muted-foreground/60">
                 {copy.ctaStory}
               </button>
               <button type="button" onClick={() => go("contact")} className="rounded-lg border border-border px-6 py-3 transition-colors hover:border-muted-foreground/60">
@@ -473,6 +476,62 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
             <div className="mt-14 inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] text-muted-foreground">
               <ArrowDown className="h-3.5 w-3.5" /> {copy.scrollHint.toUpperCase()}
             </div>
+          </div>
+        </section>
+
+        {/* ───────── chapter 1: why AI ───────── */}
+        <section id="pourquoi" className="scroll-mt-16 px-6 pb-8 pt-28 sm:px-8 sm:pt-40">
+          <div className="mx-auto max-w-6xl">
+            <header className="max-w-3xl space-y-5 pl-12 md:mx-auto md:pl-0 md:text-center">
+              <div className="font-mono text-xs tracking-[0.2em] text-muted-foreground sm:text-sm">{why.kicker}</div>
+              <h2 className="font-editorial text-5xl leading-[0.98] sm:text-6xl lg:text-7xl">{why.title}</h2>
+              <p className="text-lg leading-relaxed text-muted-foreground">{why.intro}</p>
+            </header>
+
+            <ol className="mt-16 sm:mt-24">
+              {why.beats.map((b, i) => {
+                const left = i % 2 === 0
+                const color = ["#f59e0b", "#10b981", "#818cf8"][i % 3]
+                const last = i === why.beats.length - 1
+                return (
+                  <li key={b.title} className="grid grid-cols-[40px_1fr] gap-x-4 pb-14 md:grid-cols-[1fr_72px_1fr] md:gap-x-8 md:pb-20">
+                    <div className="col-start-1 row-start-1 flex justify-center md:col-start-2">
+                      <div data-node={`w${i}`} data-color={color} data-major="1" className="mt-2 h-6 w-6" />
+                    </div>
+                    <div className={`col-start-2 row-start-1 space-y-3 ${left ? "md:col-start-1 md:text-right" : "md:col-start-3"}`}>
+                      <div className="font-mono text-xs tracking-wider" style={{ color }}>
+                        {b.kicker}
+                      </div>
+                      <h3 className="font-editorial text-3xl leading-tight sm:text-4xl">{b.title}</h3>
+                      <p className={`max-w-md leading-relaxed text-muted-foreground ${left ? "md:ml-auto" : ""}`}>{b.text}</p>
+                      {b.links && (
+                        <div className={`flex flex-wrap gap-x-5 gap-y-1 pt-1 text-sm ${left ? "md:justify-end" : ""}`}>
+                          {b.links.map((l) => (
+                            <Link key={l.href} href={l.href} className="inline-flex items-center gap-1.5 underline-offset-4 hover:underline">
+                              {l.label} <ArrowRight className="h-3.5 w-3.5" />
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                      {last && (
+                        <div className="max-w-md space-y-3 pt-4">
+                          <div className="font-mono text-[11px] tracking-wider text-muted-foreground">{why.questionsTitle.toUpperCase()}</div>
+                          <ul className="space-y-1.5 text-[0.95rem]">
+                            {why.questions.map((q) => (
+                              <li key={q} className="flex gap-2">
+                                <span aria-hidden className="mt-2 h-px w-3 shrink-0 bg-muted-foreground" />
+                                {q}
+                              </li>
+                            ))}
+                          </ul>
+                          <p className="text-sm text-muted-foreground">{why.note}</p>
+                        </div>
+                      )}
+                    </div>
+                  </li>
+                )
+              })}
+            </ol>
           </div>
         </section>
 
