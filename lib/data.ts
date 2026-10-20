@@ -1009,7 +1009,7 @@ export const projects = [
     company: "",
     featured: true,
     status: "actif",
-    image: "/projects/unlimited-cognition/screenshot-01-home-upload.png",
+    image: "/projects/unlimited-cognition/native/native-progres-cerveau.png",
     problem: "Un constat alarmant : autour de moi, des camarades de classe côtoyés depuis 3 ans délèguent intégralement leur réflexion à l'IA — chaque exercice, chaque évaluation, chaque concours. Résultat observable : un appauvrissement cognitif réel et progressif. Je n'en étais pas exempt moi-même, dans une moindre mesure. Le problème n'est pas l'IA en soi, c'est l'absence d'effort cognitif délibéré. Les applications existantes (Quizlet, StudySmart…) existent en nombre, mais aucune ne proposait le niveau de personnalisation et les fonctionnalités que je cherchais.",
     solution: "Après avoir étudié les 3 étapes de l'apprentissage (Encodage, Automatisation, Métacognition), j'ai conçu une application multifonction taillée pour mes besoins : un système de répétition espacée (SRS) pour l'encodage et l'automatisation, un générateur de contenu piloté par l'IA (Claude) pour la production de matière, et un espace de travail riche (Prism) pour la métacognition — avec écriture LaTeX, mind maps, et snippets. L'idée centrale : utiliser l'IA comme outil de génération, jamais comme béquille cognitive.",
     impact: [
@@ -1050,6 +1050,10 @@ export const projects = [
       "2-3 ans de réflexion sur son propre apprentissage valent n'importe quel cahier des charges"
     ],
     media: [
+      {"url": "/projects/unlimited-cognition/native/native-demo.mp4", "caption": "Application native macOS — navigation entre Aujourd'hui, Bibliothèque, Progrès et Recherche", "type": "video", "poster": "/projects/unlimited-cognition/native/native-progres-cerveau.png"},
+      {"url": "/projects/unlimited-cognition/native/native-progres-cerveau.png", "caption": "Application native macOS — Progrès : visualisation 3D du cerveau, mémoire estimée par FSRS"},
+      {"url": "/projects/unlimited-cognition/native/native-aujourdhui.png", "caption": "Application native macOS — Aujourd'hui : objectif du jour, révisions dues, objectifs"},
+      {"url": "/projects/unlimited-cognition/native/native-bibliotheque.png", "caption": "Application native macOS — Bibliothèque : decks, cartes, quiz et mind maps"},
       {
         url: "/projects/unlimited-cognition/screentune-tutoriel.mp4",
         caption: "Vidéo tutoriel ScreenTune — Démonstration guidée d'Unlimited Cognition",
