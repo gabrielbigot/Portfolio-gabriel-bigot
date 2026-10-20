@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react"
 import Link from "next/link"
-import { ArrowRight, ArrowDown, Download } from "lucide-react"
+import { ArrowRight, ArrowDown, Download, Moon, Sun } from "lucide-react"
 import { FIL_KIND, type FilItem, type FilKind } from "@/lib/fil"
 import { STORY_KIND, STORY_MILESTONES, type StoryCopy, type StoryLocale } from "@/lib/scar-story"
 
@@ -69,6 +69,8 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
   const [reached, setReached] = useState(0)
   const [filter, setFilter] = useState<Filter>("all")
   const [introDone, setIntroDone] = useState(false)
+  // Night is the default. The choice is remembered, and read after mount so server and client agree.
+  const [theme, setTheme] = useState<"dark" | "light">("dark")
   const reduce = useRef(false)
 
   const milestones = STORY_MILESTONES[locale]
@@ -229,6 +231,32 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
     }
   }, [geo])
 
+  useEffect(() => {
+    try {
+      if (localStorage.getItem("scar-theme") === "light") setTheme("light")
+    } catch {}
+  }, [])
+
+  // keep the page edges (overscroll, rubber-banding) in the same tone as the page
+  useEffect(() => {
+    const body = document.body
+    const prev = body.style.backgroundColor
+    body.style.backgroundColor = theme === "dark" ? "#121214" : ""
+    document.documentElement.style.colorScheme = theme
+    return () => {
+      body.style.backgroundColor = prev
+      document.documentElement.style.colorScheme = ""
+    }
+  }, [theme])
+
+  const toggleTheme = () => {
+    const next = theme === "dark" ? "light" : "dark"
+    setTheme(next)
+    try {
+      localStorage.setItem("scar-theme", next)
+    } catch {}
+  }
+
   // one-time intro: the thread draws itself
   useEffect(() => {
     if (!geo || introDone) return
@@ -251,8 +279,9 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
   }, [geo])
 
   return (
-    <div className="relative bg-background text-foreground">
+    <div className={`relative bg-background text-foreground ${theme === "dark" ? "scar-night" : ""}`}>
       <style>{`
+        .scar-night { --background: #121214; --foreground: #f2eee5; --card: #18181b; --border: #2c2c31; --muted-foreground: #a6a29a; --accent: #b9d4c0; color-scheme: dark; }
         @keyframes scarDraw { from { stroke-dashoffset: var(--len) } to { stroke-dashoffset: 0 } }
         @keyframes scarRise { from { opacity: 0; transform: translateY(18px) } to { opacity: 1; transform: none } }
         @keyframes scarPulse { 0%,100% { r: 5; opacity: .9 } 50% { r: 9; opacity: .35 } }
@@ -279,6 +308,14 @@ export default function ScarPortfolio({ locale, copy, items, skills, languages, 
                 {label}
               </button>
             ))}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              aria-label={theme === "dark" ? copy.lightLabel : copy.darkLabel}
+              className="rounded border border-border p-1.5 text-muted-foreground transition-colors hover:text-foreground"
+            >
+              {theme === "dark" ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}
+            </button>
             <Link href={copy.langHref} className="rounded border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground">
               {copy.langLabel}
             </Link>
