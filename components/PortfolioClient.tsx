@@ -386,12 +386,6 @@ export default function PortfolioClient({
             </div>
 
             <div className="lg:col-span-2 flex flex-col justify-end space-y-6 sm:space-y-8 mt-8 lg:mt-0">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/profile/gabriel-bigot.png"
-                alt={`Portrait de ${personalInfo.name}`}
-                className="w-36 sm:w-44 h-auto self-start"
-              />
               <div className="space-y-4">
                 <div className="text-sm text-muted-foreground font-mono">{copy.current}</div>
                 <div className="space-y-2">
