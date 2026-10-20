@@ -1,6 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight } from "lucide-react"
+import ScarTimeline from "@/components/ScarTimeline"
+import Suture from "@/components/Suture"
 
 type MilestoneType = "origin" | "rise" | "peak" | "rupture" | "rebuild"
 
@@ -89,7 +91,8 @@ export default function AboutPage() {
         </div>
       </nav>
 
-      <main className="max-w-5xl mx-auto px-6 sm:px-8 py-12 sm:py-20">
+      <main>
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 pt-12 sm:pt-20">
 
         {/* ── HEADER ── */}
         <header className="pb-20 sm:pb-28 border-b border-border">
@@ -123,9 +126,15 @@ export default function AboutPage() {
             </figure>
           </div>
         </header>
+      </div>
+
+      <ScarTimeline locale="fr" offset={57} storyHref="#recit" />
+
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 pb-12 sm:pb-20">
+        <Suture className="mt-16 sm:mt-20" />
 
         {/* ── TIMELINE ── */}
-        <section className="py-20 sm:py-28">
+        <section id="recit" className="scroll-mt-20 py-20 sm:py-28">
           <div className="space-y-14 sm:space-y-16">
             <div className="space-y-5">
               <h2 className="text-3xl sm:text-4xl font-light">La chronologie</h2>
@@ -210,6 +219,7 @@ export default function AboutPage() {
             </Link>
           </div>
         </section>
+      </div>
       </main>
 
       <footer className="border-t border-border py-12">

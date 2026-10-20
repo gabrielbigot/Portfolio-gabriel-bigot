@@ -5,6 +5,7 @@ import ShareButtons from "@/components/ShareButtons"
 import BlogContentRenderer from "@/components/BlogContentRenderer"
 import { getHeadingId } from "@/components/BlogContentRenderer"
 import EssayContents from "@/components/EssayContents"
+import Suture from "@/components/Suture"
 
 export function generateStaticParams() {
   return getBlogPosts().map((post) => ({ slug: post.slug }))
@@ -74,7 +75,9 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             {post.excerpt}
           </p>
 
-          <div className="pt-6 border-t border-border" />
+          <div className="pt-6">
+            <Suture />
+          </div>
         </header>
 
         {/* Content */}
