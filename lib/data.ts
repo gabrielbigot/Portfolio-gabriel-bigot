@@ -12,7 +12,7 @@ export const personalInfo = {
   location: "Saint-Josse-sur-Mer, France",
   email: "gabriel.bigot2005@gmail.com",
   phone: "06.12.75.24.56",
-  availability: "Disponible dès maintenant",
+  availability: "Indisponible pour le moment",
 
   bio: {
     short: "Étudiant en économie-gestion, j'applique l'IA et l'automatisation à des processus métier réels. Mon parcours sportif forgé par le hockey m'a appris la rigueur, la résilience, la détermination et le travail d'équipe.",
@@ -1444,13 +1444,14 @@ export const projects = [
     company: "BIGOT Matériaux",
     featured: true,
     status: "archive",
+    image: "/projects/assistant-bigot-controle-prix-achat/interface.jpg",
     problem: "Les fournisseurs changent régulièrement leurs prix sans prévenir : vérifier à la main chaque ligne de facture contre la fiche article, dans un ERP en mode texte, prend du temps et laisse passer des écarts.",
     solution: "Un parcours en quatre étapes sur un PC Windows : lecture des bordereaux dans l'ERP, extraction des lignes de facture par OCR, rapprochement avec règle d'écart sur le prix unitaire, export Excel configurable. Les points sensibles (impression, validation des lignes OCR, décision de correction) restent humains.",
     impact: ["Lecture automatisée des bordereaux et du prix de fiche article via le terminal de l'ERP (règles d'arrêt, éco-contribution exclue)", "Extraction des lignes de facture PDF par OCR, avec conservation du JSON brut pour retrouver l'origine d'une décision", "Classeur Excel de rapprochement configurable ; données d'exemple entièrement fictives", "Application locale sur 127.0.0.1 ; clé d'API gardée en mémoire, jamais écrite dans les fichiers", "Limites assumées : pilote, validation humaine de chaque ligne et de chaque correction"],
     technologies: [{"name": "Node.js", "usage": "Serveur local, OCR, rapprochement des lignes"}, {"name": "Mistral OCR", "usage": "Extraction des lignes des factures PDF"}, {"name": "HACL / VBS (IBM Personal Communications)", "usage": "Pilotage du terminal de l'ERP"}, {"name": "Excel", "usage": "Classeur de rapprochement et d'écarts"}],
     challenges: ["Piloter un écran texte sans jamais modifier de données réelles par erreur (mode lecture seule, règles d'arrêt)", "Comparer des prix exprimés dans des unités différentes sans inventer de conversion", "Faire accepter l'OCR : conserver la trace brute et faire valider chaque ligne"],
     learnings: ["Un pilote utile vaut mieux qu'un robot autonome non maîtrisé", "La documentation des règles de calcul est aussi importante que le code", "Garder l'humain aux points de décision"],
-    media: [],
+    media: [{"url": "/projects/assistant-bigot-controle-prix-achat/interface.jpg", "caption": "Interface locale : vérification des prix d'achat, mode lot (aucune donnée réelle)"}],
     content: [{"type": "heading", "text": "Le problème"}, {"type": "paragraph", "text": "Dans un négoce de matériaux, les prix d'achat évoluent souvent sans avertissement. Contrôler chaque ligne de facture contre la fiche article est long et répétitif."}, {"type": "heading", "text": "Le pilote"}, {"type": "list", "items": ["Parcourir la file des bordereaux de réception et ouvrir chacun", "Lire les lignes et récupérer la référence de l'article", "Lire le prix de la fiche article", "Extraire les lignes de la facture PDF par OCR et calculer l'écart sur le prix unitaire"]}, {"type": "heading", "text": "Ce qui reste manuel, volontairement"}, {"type": "list", "items": ["Imprimer la facture", "Valider chaque ligne issue de l'OCR", "Décider quoi faire d'un écart détecté"]}, {"type": "heading", "text": "Sécurité"}, {"type": "paragraph", "text": "Application locale (127.0.0.1), clé d'API en mémoire, un dossier local par facture. Aucune donnée réelle n'est publiée : les exemples sont fictifs."}, {"type": "paragraph", "text": "Réalisé pour l'entreprise familiale. Pilote non déployé en production."}]
   },
   {
@@ -1465,13 +1466,14 @@ export const projects = [
     company: "BIGOT Matériaux",
     featured: false,
     status: "archive",
+    image: "/projects/simulateur-entrainement-as400/menu-general.jpg",
     problem: "Apprendre un ERP en mode texte directement sur la comptabilité réelle est risqué : une erreur de saisie ou de validation modifie de vraies données.",
     solution: "Un simulateur fidèle aux menus et aux réflexes de l'ERP, avec des scénarios guidés (relevé bancaire, facture fournisseur, règles, anomalies à détecter) et des fonctions de vérification et de réinitialisation.",
     impact: ["Entraînement sans risque : aucune donnée réelle, sauvegarde locale dans le navigateur", "Scénarios guidés avec vérification (F5) et réinitialisation (F7)", "Dossier d'exercices et de corrigés couvrant comptes, journaux, banque, balance, lettrage, relances et mission complète", "Application statique : un simple dossier à ouvrir, sans installation"],
     technologies: [{"name": "JavaScript", "usage": "Logique de l'ERP simulé, scénarios, vérifications"}, {"name": "HTML / CSS", "usage": "Interface en mode texte et touches de fonction cliquables"}, {"name": "localStorage", "usage": "Sauvegarde locale des données de simulation"}],
     challenges: ["Reproduire des réflexes (navigation clavier, touches de fonction) dans un navigateur qui intercepte certaines touches", "Garder des règles comptables cohérentes (lettrage limité aux écritures validées)", "Rendre les scénarios vérifiables automatiquement"],
     learnings: ["Un simulateur sans donnée réelle lève la peur de l'erreur", "Documenter les scénarios et leurs écritures attendues", "Séparer l'entraînement des corrigés"],
-    media: [],
+    media: [{"url": "/projects/simulateur-entrainement-as400/menu-general.jpg", "caption": "Menu général du simulateur (noms de sociétés fictifs)"}, {"url": "/projects/simulateur-entrainement-as400/menu-comptabilite.jpg", "caption": "Menu comptabilité : comptes, journaux, écritures, lettrage, relances, import bancaire"}],
     content: [{"type": "heading", "text": "Pourquoi un simulateur"}, {"type": "paragraph", "text": "Pour retrouver les réflexes d'un ERP en mode texte sans risquer de modifier de vraies données."}, {"type": "heading", "text": "Ce qu'il simule"}, {"type": "list", "items": ["Menus, choix de société, plan comptable, journaux", "Saisie d'écritures, brouillards, validation, journal d'actions", "Balance, grand livre, détail de compte, FEC", "Lettrage, relances clients, masques, règles bancaires"]}, {"type": "heading", "text": "Entraînement guidé"}, {"type": "paragraph", "text": "Scénarios intégrés (relevé bancaire, facture fournisseur, anomalies à détecter), vérification, réinitialisation, documents simulés et dossier d'exercices avec corrigés."}, {"type": "paragraph", "text": "Aucune donnée réelle n'est utilisée dans ce projet."}]
   }
 ];

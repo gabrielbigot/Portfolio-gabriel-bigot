@@ -3117,7 +3117,7 @@ export const projectTranslationsEn = {
               "usage": "Matching and gap workbook"
           }
       ],
-      "media": [],
+      "media": [{"url": "/projects/assistant-bigot-controle-prix-achat/interface.jpg", "caption": "Local interface: purchase price check, batch mode (no real data)"}],
       "content": [
           {
               "type": "heading",
@@ -3211,7 +3211,7 @@ export const projectTranslationsEn = {
               "usage": "Local save of simulation data"
           }
       ],
-      "media": [],
+      "media": [{"url": "/projects/simulateur-entrainement-as400/menu-general.jpg", "caption": "Simulator main menu (fictitious company names)"}, {"url": "/projects/simulateur-entrainement-as400/menu-comptabilite.jpg", "caption": "Accounting menu: accounts, journals, entries, matching, reminders, bank import"}],
       "content": [
           {
               "type": "heading",

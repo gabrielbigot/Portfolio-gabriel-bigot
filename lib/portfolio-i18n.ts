@@ -272,7 +272,7 @@ export function getPortfolioPageData(locale: PortfolioLocale = "fr") {
       ...personalInfo,
       title: "AI Automation Developer",
       tagline: "Economics and management student applying AI and automation to real business processes",
-      availability: "Available now",
+      availability: "Currently unavailable",
       currentRole: {
         ...personalInfo.currentRole,
         position: "Third-year Economics & Management student",
