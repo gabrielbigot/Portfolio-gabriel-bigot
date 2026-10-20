@@ -1404,6 +1404,7 @@ export const projects = [
     date: "2026-09",
     company: "",
     featured: true,
+    image: "/projects/atlas/atlas-programmes.png",
     status: "actif",
     problem: "Les exercices vus en vidéo sont dispersés (réseaux sociaux, notes), le matériel disponible n'est jamais pris en compte, et l'alimentation, l'entraînement et les données Garmin vivent dans des applications séparées.",
     solution: "Une seule application native iOS/iPadOS/macOS : chaque vidéo devient une fiche éditable analysée par l'IA, le filtrage par matériel et quantités ne propose que les exercices réalisables, et un module nutrition gère stock, recettes et courses avec des règles métier strictes.",
@@ -1411,7 +1412,11 @@ export const projects = [
     technologies: [{"name": "SwiftUI", "usage": "Interface native partagée iOS, iPadOS et macOS"}, {"name": "Supabase", "usage": "Base de données, règles d'accès par utilisateur (RLS), migrations"}, {"name": "Cloudflare Workers", "usage": "Analyse de repas et de courses, assistant nutrition, agent global"}, {"name": "Gemini API", "usage": "Analyse des vidéos d'exercices et des photos de repas"}, {"name": "CloudKit", "usage": "Synchronisation privée entre appareils"}, {"name": "Node.js (MCP)", "usage": "Serveur MCP de lecture/écriture des données"}, {"name": "Garmin / HealthKit", "usage": "Import des activités et de la récupération, séances structurées"}],
     challenges: ["Garder l'inventaire cohérent : réservation par repas planifié, décrément unique à la consommation, nettoyage ciblé des dépendances à la suppression", "Faire partager le même modèle de données au prototype web et à l'application native", "Protéger des vidéos et des données personnelles tout en utilisant des modèles d'IA externes"],
     learnings: ["Écrire les règles métier (stock, packs, quantités) avant l'interface", "Limiter ce qu'un assistant peut écrire grâce à un serveur MCP explicite", "Préférer des actions structurées à une suite de clics pour tester une application"],
-    media: [],
+    media: [
+      {"url": "/projects/atlas/atlas-programmes.png", "caption": "Programmes — semaine, régularité, séances du jour et lancement d'une séance"},
+      {"url": "/projects/atlas/atlas-materiel.png", "caption": "Matériel — inventaire avec poids et quantités, pour ne proposer que les exercices réalisables"},
+      {"url": "/projects/atlas/atlas-bibliotheque.png", "caption": "Bibliothèque — exercices enrichis par l'IA, filtres par muscle et matériel"}
+    ],
     content: [{"type": "heading", "text": "Une bibliothèque d'exercices enrichie par l'IA"}, {"type": "paragraph", "text": "Chaque lien ou fichier vidéo devient une fiche : vignette, muscles principaux et secondaires, matériel nécessaire avec quantités, niveau, consignes et précautions. L'analyse détecte aussi les vidéos contenant plusieurs exercices, enchaînés dans le temps ou en écran divisé, et crée une fiche par exercice."}, {"type": "heading", "text": "Nutrition et inventaire"}, {"type": "list", "items": ["Valeurs nutritionnelles exprimées pour 100 g, 100 ml ou une unité", "Une recette n'est enregistrable que si le stock couvre les quantités", "Les repas consommés sont exclus du calcul des courses"]}, {"type": "heading", "text": "Séances et Garmin"}, {"type": "paragraph", "text": "Mode séance, historique et métriques, séances planifiées avec horaire, import des activités Garmin (FIT, TCX) et éditeur de séances structurées."}, {"type": "heading", "text": "Assistant et MCP"}, {"type": "paragraph", "text": "Un agent global propose des actions que l'utilisateur confirme dans l'application. Un serveur MCP permet à un assistant de lire les données et d'écrire uniquement les séances, la nutrition et les séances Garmin planifiées."}, {"type": "paragraph", "text": "Projet personnel, actif. Aucune donnée de santé n'est montrée sur cette page."}]
   },
   {
