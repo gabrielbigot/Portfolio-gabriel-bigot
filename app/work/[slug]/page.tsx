@@ -297,7 +297,7 @@ export default function CompanyPage({ params }: { params: { slug: string } }) {
       <footer className="border-t border-border py-12">
         <div className="max-w-5xl mx-auto px-6 sm:px-8">
           <div className="text-center text-sm text-muted-foreground">
-            © 2025 Gabriel Bigot • Développeur d'Automatisations IA
+            © 2026 Gabriel Bigot • Développeur d'Automatisations IA
           </div>
         </div>
       </footer>

@@ -17,7 +17,7 @@ const workExperienceEn = [
     startDate: "April 2026",
     endDate: "May 2026",
     description:
-      "Freelance mission following a successful internship, requested directly by the client. First paid professional engagement based on AI and full-stack development skills.",
+      "Post-internship mission requested directly by the client, following the internship deliverables.",
     achievements: [
       "Migrated the n8n + Notion system to a custom Next.js 16 web application deployed on Vercel, replacing a fragile automation setup with a controlled SaaS-style dashboard.",
       "Built a full-stack workflow for RSS monitoring, AI-assisted content creation, LinkedIn and Instagram previews, AI image generation, and direct publishing from the dashboard.",
@@ -32,7 +32,7 @@ const workExperienceEn = [
     description:
       "Seven-week internship in a professional training and coaching company. Mission focused on digital transformation through automation and artificial intelligence.",
     achievements: [
-      "Designed and deployed 3 production n8n workflows: automated enrichment of 15,000+ BTP prospects, sector monitoring with AI scoring, and LinkedIn content generation.",
+      "Designed and deployed 3 production n8n workflows: automated enrichment of thousands of BTP prospects, sector monitoring with AI scoring, and LinkedIn content generation.",
       "Created a Notion hub with 5 interconnected databases as the operating interface for the whole system.",
       "Produced roughly 70 minutes of video tutorials and technical documentation to make the non-technical client autonomous.",
     ],
@@ -154,7 +154,7 @@ const projectTranslations: Record<string, { title: string; shortDescription: str
   "enrichissement-prospects-btp": {
     title: "Automated Enrichment of a BTP Prospect Database",
     shortDescription:
-      "n8n workflow connected to the Pappers API to enrich 15,000+ prospects and enable age-based commercial segmentation.",
+      "n8n workflow connected to the Pappers API to enrich thousands of prospects and enable age-based commercial segmentation.",
     category: "Automation",
     categories: ["Automation", "Data", "Prospecting"],
   },
@@ -272,7 +272,7 @@ export function getPortfolioPageData(locale: PortfolioLocale = "fr") {
       ...personalInfo,
       title: "AI Automation Developer",
       tagline: "Economics and management student applying AI and automation to real business processes",
-      availability: "Available now",
+      availability: "Open to opportunities",
       currentRole: {
         ...personalInfo.currentRole,
         position: "Third-year Economics & Management student",
