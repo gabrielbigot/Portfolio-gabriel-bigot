@@ -2922,7 +2922,11 @@ export const projectTranslationsEn = {
               "usage": "Import of activities and recovery, structured workouts"
           }
       ],
-      "media": [],
+      "media": [
+        {"url": "/projects/atlas/atlas-programmes.png", "caption": "Programs — week view, consistency, today's sessions and session launch"},
+        {"url": "/projects/atlas/atlas-materiel.png", "caption": "Equipment — inventory with weights and quantities, so only feasible exercises are suggested"},
+        {"url": "/projects/atlas/atlas-bibliotheque.png", "caption": "Library — AI-enriched exercises with muscle and equipment filters"}
+      ],
       "content": [
           {
               "type": "heading",
