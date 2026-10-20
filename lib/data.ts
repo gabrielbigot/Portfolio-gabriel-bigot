@@ -12,7 +12,7 @@ export const personalInfo = {
   location: "Saint-Josse-sur-Mer, France",
   email: "gabriel.bigot2005@gmail.com",
   phone: "06.12.75.24.56",
-  availability: "Indisponible pour le moment",
+  availability: "À l'écoute d'opportunités",
 
   bio: {
     short: "Étudiant en économie-gestion, j'applique l'IA et l'automatisation à des processus métier réels. Mon parcours sportif forgé par le hockey m'a appris la rigueur, la résilience, la détermination et le travail d'équipe.",
