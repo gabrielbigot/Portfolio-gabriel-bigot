@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation"
 import type { MouseEvent } from "react"
 import { useEffect, useRef, useState } from "react"
 import ContactForm from "@/components/contact-form"
-import TechnologyGroups from "@/components/TechnologyGroups"
 import AsciiField from "@/components/AsciiField"
 
 interface Project {
@@ -97,29 +96,6 @@ const extractYear = (dateString: string): string => {
   // Handle formats like "Juillet 2025", "2025", "Septembre 2025", etc.
   const yearMatch = dateString.match(/\d{4}/)
   return yearMatch ? yearMatch[0] : dateString
-}
-
-// Utility function to convert date to DD/MM/YYYY format
-const formatDateToDDMMYYYY = (dateString: string): string => {
-  // Map of French month names to month numbers
-  const monthMap: { [key: string]: string } = {
-    "janvier": "01", "février": "02", "mars": "03", "avril": "04",
-    "mai": "05", "juin": "06", "juillet": "07", "août": "08",
-    "septembre": "09", "octobre": "10", "novembre": "11", "décembre": "12"
-  }
-
-  // Try to parse "Juillet 2025" format
-  const parts = dateString.toLowerCase().trim().split(" ")
-  if (parts.length === 2) {
-    const month = monthMap[parts[0]]
-    const year = parts[1]
-    if (month && year) {
-      return `01/${month}/${year}`
-    }
-  }
-
-  // If it's already in a different format or just a year, return as is
-  return dateString
 }
 
 export default function PortfolioClient({
@@ -228,7 +204,7 @@ export default function PortfolioClient({
 
       <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-10 hidden lg:block">
         <div className="flex flex-col gap-4">
-          {["intro", "work", "essays", "skills", "connect"].map((section) => (
+          {["intro", "essays", "work", "skills", "connect"].map((section) => (
             <button
               key={section}
               onClick={() => document.getElementById(section)?.scrollIntoView({ behavior: "smooth" })}
@@ -302,11 +278,40 @@ export default function PortfolioClient({
         </header>
 
         <section
+          id="essays"
+          ref={(el) => {
+            sectionsRef.current[2] = el
+          }}
+          className="py-20 sm:py-32"
+        >
+          <div className="border-y border-border py-12 sm:py-16">
+            <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
+              <div className="lg:col-span-5 space-y-5">
+                <div className="text-xs font-mono tracking-[0.18em] text-accent uppercase">{t("01-journal")}</div>
+                <h2 className="font-editorial text-4xl sm:text-5xl leading-[1.02]">{copy.essaysTitle}</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">{copy.essaysIntro}</p>
+                <Link href="/articles" className="inline-flex items-center gap-2 border-b border-accent pb-1 text-sm text-foreground hover:text-accent transition-colors">
+                  {copy.allEssays} <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+              <Link href="/articles" className="group lg:col-span-7 block lg:border-l lg:border-border lg:pl-12">
+                <div className="text-xs font-mono tracking-[0.16em] text-muted-foreground uppercase mb-5">{copy.latestEssay} / 2025</div>
+                <h3 className="font-editorial text-3xl sm:text-4xl leading-tight group-hover:text-accent transition-colors duration-300">{t("l-ia-ne-doit-pas-penser")}</h3>
+                <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">{t("comment-construire-des-outils-qui-augmentent")}</p>
+                <div className="mt-8 flex items-center gap-3 text-sm text-foreground group-hover:text-accent transition-colors">
+                  <span>{copy.readEssay}</span><span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <section
           id="work"
           ref={(el) => {
             sectionsRef.current[1] = el
           }}
-          className="min-h-screen py-20 sm:py-32"
+          className="py-20 sm:py-32"
         >
           <div className="space-y-12 sm:space-y-16">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
@@ -327,61 +332,16 @@ export default function PortfolioClient({
               </Link>
             </div>
 
-            <div className="relative space-y-0">
-              {/* Timeline vertical line */}
-              <div className="absolute left-[7px] top-4 bottom-4 w-px bg-border hidden sm:block"></div>
-
+            <div className="divide-y divide-border border-y border-border">
               {workExperience.map((job, index) => (
-                <div
-                  key={index}
-                  className="group relative pb-12 sm:pb-16 last:pb-0"
-                >
-                  {/* Timeline dot */}
-                  <div className="absolute left-0 top-6 w-4 h-4 rounded-full border-2 border-border bg-background group-hover:border-foreground group-hover:bg-foreground transition-all duration-500 hidden sm:block z-10"></div>
-
-                  {/* Content */}
-                  <div className="sm:pl-12 grid lg:grid-cols-12 gap-4 sm:gap-8">
-                    <div className="lg:col-span-2">
-                      <div className="text-xl sm:text-2xl font-light text-muted-foreground group-hover:text-foreground transition-colors duration-500">
-                        {extractYear(job.startDate)}
-                      </div>
-                      <div className="text-xs text-muted-foreground/70 mt-1 sm:hidden">
-                        {formatDateToDDMMYYYY(job.startDate)} - {formatDateToDDMMYYYY(job.endDate || copy.present)}
-                      </div>
-                    </div>
-
-                    <div className="lg:col-span-10 space-y-3">
-                      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3">
-                        <div>
-                          <h3 className="text-lg sm:text-xl font-medium group-hover:text-foreground transition-colors duration-300">
-                            {job.position}
-                          </h3>
-                          <div className="text-muted-foreground">{job.company}</div>
-                          <div className="text-xs text-muted-foreground/70 mt-1 hidden sm:block">
-                            {formatDateToDDMMYYYY(job.startDate)} - {formatDateToDDMMYYYY(job.endDate || copy.present)}
-                          </div>
-                        </div>
-
-                        {job.technologies.length > 0 && (
-                          <div className="lg:max-w-md">
-                            <TechnologyGroups technologies={job.technologies} compact maxItems={8} locale={locale} />
-                          </div>
-                        )}
-                      </div>
-
-                      <p className="text-muted-foreground leading-relaxed max-w-lg">{job.description}</p>
-
-                      {job.achievements.length > 0 && (
-                        <ul className="space-y-2 mt-4">
-                          {job.achievements.slice(0, 3).map((achievement, i) => (
-                            <li key={i} className="text-sm text-muted-foreground flex gap-2">
-                              <span className="text-foreground/50">•</span>
-                              <span>{achievement}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
+                <div key={index} className="grid gap-2 py-6 sm:grid-cols-[5rem_1fr] sm:gap-8">
+                  <div className="text-sm font-mono text-muted-foreground">{extractYear(job.startDate)}</div>
+                  <div className="space-y-2">
+                    <h3 className="font-editorial text-xl">
+                      {job.position}
+                      <span className="text-muted-foreground"> · {job.company}</span>
+                    </h3>
+                    <p className="max-w-xl leading-relaxed text-muted-foreground">{job.description}</p>
                   </div>
                 </div>
               ))}
@@ -419,113 +379,23 @@ export default function PortfolioClient({
                 </Link>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-6">
-                {projects.slice(0, 2).map((project) => (
-                    <Link
-                      key={project.id}
-                      href={`/projects/${project.slug}`}
-                      className="group border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300 hover:shadow-lg overflow-hidden"
-                    >
-                      {/* Image */}
-                      <div className="relative w-full aspect-video bg-foreground/[0.03]">
-                        {project.image ? (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-foreground/[0.03] to-foreground/[0.07]">
-                            <span className="text-xs font-mono text-muted-foreground/30 tracking-widest uppercase">{project.category}</span>
-                          </div>
-                        )}
-                      </div>
-
-                      <div className="p-6 space-y-4">
-                        <div className="flex items-center justify-between">
-                          <div className="flex flex-wrap gap-1.5">
-                            {project.categories && project.categories.length > 0 ? (
-                              project.categories.slice(0, 2).map((cat) => (
-                                <span
-                                  key={cat}
-                                  className="text-xs px-2 py-1 bg-foreground/5 border border-border rounded"
-                                >
-                                  {cat}
-                                </span>
-                              ))
-                            ) : (
-                              <span className="text-xs px-2 py-1 bg-foreground/5 border border-border rounded">
-                                {project.category}
-                              </span>
-                            )}
-                          </div>
-                          <span className="text-lg">⭐</span>
-                        </div>
-
-                        <h4 className="text-lg font-medium group-hover:text-muted-foreground transition-colors duration-300">
-                          {project.title}
-                        </h4>
-
-                        <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
-                          {project.shortDescription}
-                        </p>
-
-                        <div className="flex flex-wrap gap-2">
-                          {project.tags.slice(0, 3).map((tag) => (
-                            <span
-                              key={tag}
-                              className="text-xs px-2 py-1 border border-border rounded text-muted-foreground/70"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300 pt-2">
-                          <span>{copy.discoverProject}</span>
-                          <svg
-                            className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                          </svg>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
+              <div className="divide-y divide-border border-y border-border">
+                {projects.slice(0, 3).map((project) => (
+                  <Link
+                    key={project.id}
+                    href={`${routePrefix}/projects/${project.slug}`}
+                    className="group grid gap-2 py-6 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-8"
+                  >
+                    <div className="space-y-2">
+                      <h4 className="font-editorial text-xl transition-colors duration-300 group-hover:text-muted-foreground">
+                        {project.title}
+                      </h4>
+                      <p className="max-w-xl leading-relaxed text-muted-foreground">{project.shortDescription}</p>
+                    </div>
+                    <span aria-hidden="true" className="text-muted-foreground transition-transform duration-300 group-hover:translate-x-1 group-hover:text-foreground">→</span>
+                  </Link>
+                ))}
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section
-          id="essays"
-          ref={(el) => {
-            sectionsRef.current[2] = el
-          }}
-          className="py-20 sm:py-32"
-        >
-          <div className="border-y border-border py-12 sm:py-16">
-            <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
-              <div className="lg:col-span-5 space-y-5">
-                <div className="text-xs font-mono tracking-[0.18em] text-accent uppercase">{t("01-journal")}</div>
-                <h2 className="font-editorial text-4xl sm:text-5xl leading-[1.02]">{copy.essaysTitle}</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">{copy.essaysIntro}</p>
-                <Link href="/articles" className="inline-flex items-center gap-2 border-b border-accent pb-1 text-sm text-foreground hover:text-accent transition-colors">
-                  {copy.allEssays} <span aria-hidden="true">→</span>
-                </Link>
-              </div>
-              <Link href="/articles" className="group lg:col-span-7 block lg:border-l lg:border-border lg:pl-12">
-                <div className="text-xs font-mono tracking-[0.16em] text-muted-foreground uppercase mb-5">{copy.latestEssay} / 2025</div>
-                <h3 className="font-editorial text-3xl sm:text-4xl leading-tight group-hover:text-accent transition-colors duration-300">{t("l-ia-ne-doit-pas-penser")}</h3>
-                <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">{t("comment-construire-des-outils-qui-augmentent")}</p>
-                <div className="mt-8 flex items-center gap-3 text-sm text-foreground group-hover:text-accent transition-colors">
-                  <span>{copy.readEssay}</span><span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
-                </div>
-              </Link>
             </div>
           </div>
         </section>
@@ -540,45 +410,26 @@ export default function PortfolioClient({
           <div className="space-y-12 sm:space-y-16">
             <h2 className="text-3xl sm:text-4xl font-light">{copy.skillsTitle}</h2>
 
-            <div className="grid gap-8 sm:gap-12 lg:grid-cols-2">
+            <div className="grid gap-10 lg:grid-cols-2">
               {skills.technical.map((category, index) => (
-                <div key={index} className="space-y-6">
+                <div key={index} className="space-y-4">
                   <h3 className="text-sm text-muted-foreground font-mono tracking-wider">{category.category.toUpperCase()}</h3>
-
-                  <div className="space-y-4">
+                  <dl className="space-y-3">
                     {category.skills.map((skill, skillIndex) => (
-                      <div key={skillIndex} className="space-y-2">
-                        <div className="flex justify-between items-baseline">
-                          <span className="text-foreground">{skill.name}</span>
-                          <span className="text-xs text-muted-foreground">{skill.level}%</span>
-                        </div>
-                        <div className="h-1.5 bg-border rounded-full overflow-hidden">
-                          <div
-                            className="h-full bg-foreground rounded-full transition-all duration-1000"
-                            style={{ width: `${skill.level}%` }}
-                          />
-                        </div>
-                        <p className="text-xs text-muted-foreground">{skill.description}</p>
+                      <div key={skillIndex}>
+                        <dt className="text-foreground">{skill.name}</dt>
+                        <dd className="text-sm leading-relaxed text-muted-foreground">{skill.description}</dd>
                       </div>
                     ))}
-                  </div>
+                  </dl>
                 </div>
               ))}
             </div>
 
-            <div className="pt-8 border-t border-border">
-              <div className="text-sm text-muted-foreground font-mono mb-4">{copy.softSkills}</div>
-              <div className="flex flex-wrap gap-3">
-                {skills.soft.map((skill, index) => (
-                  <div
-                    key={index}
-                    className="px-4 py-2 border border-border rounded-lg hover:border-muted-foreground/50 transition-colors duration-300"
-                  >
-                    <div className="text-sm font-medium">{skill.name}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <p className="border-t border-border pt-8 text-muted-foreground">
+              <span className="mr-3 text-sm font-mono">{copy.softSkills}</span>
+              {skills.soft.map((skill) => skill.name).join(" · ")}
+            </p>
           </div>
         </section>
 
