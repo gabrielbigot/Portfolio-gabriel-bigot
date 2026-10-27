@@ -250,8 +250,6 @@ export default function PortfolioClient({
 
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {personalInfo.currentRole.position} @ {personalInfo.currentRole.company} · {personalInfo.currentRole.startDate} — {copy.present}
-                <br />
-                {copy.expertiseItems.join(" · ")}
               </p>
 
               <div className="flex flex-col sm:flex-row sm:items-center gap-x-5 gap-y-1 text-sm text-muted-foreground">
