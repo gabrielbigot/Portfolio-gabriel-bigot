@@ -315,8 +315,8 @@
   },
   "enrichissement-prospects-btp": {
     "title": "Automated enrichment of the construction prospect base",
-    "shortDescription": "n8n workflow connected to the Pappers API to automatically enrich 15,000+ construction prospects with the age of managers and activate micro-segmentation by age group.",
-    "fullDescription": "Fully automated n8n workflow that enriches a database of 15,000+ BTP prospects with the age and date of birth of managers via the Pappers API. Objective: transform “blind” prospecting into precise targeting by age group (60-65 / 65-70 / 70+) to adapt the commercial discourse according to the maturity of the transmission project.",
+    "shortDescription": "n8n workflow connected to the Pappers API to automatically enrich thousands of construction prospects with the age of managers and activate micro-segmentation by age group.",
+    "fullDescription": "Fully automated n8n workflow that enriches a database of thousands of BTP prospects with the age and date of birth of managers via the Pappers API. Objective: transform “blind” prospecting into precise targeting by age group (60-65 / 65-70 / 70+) to adapt the commercial discourse according to the maturity of the transmission project.",
     "category": "Automation",
     "tags": [
       "n8n",
@@ -326,17 +326,17 @@
       "Construction"
     ],
     "company": "ADN POTENTIEL",
-    "problem": "Base of 15,000+ prospects without information on the age of managers. Blind prospecting: impossible to prioritize or segment. Manual enrichment impossible on this scale.",
+    "problem": "Base of thousands of prospects without information on the age of managers. Blind prospecting: impossible to prioritize or segment. Manual enrichment impossible on this scale.",
     "solution": "n8n workflow connected to the Pappers API to automatically retrieve the date of birth, calculated age, “senior” status (60+ years) and age range of each manager.",
     "impact": [
       "85.7% completion — operational workflow in production",
-      "Automatic processing of 15,000+ leads in batches",
+      "Automatic processing of thousands of leads in batches",
       "Micro-segmentation activated on 3 age groups",
       "Marginal cost: a few euros of API credits"
     ],
     "challenges": [
       "Graceful handling of missing data (date of birth not available in Pappers)",
-      "Batch processing for 15,000+ rows without saturating the API",
+      "Batch processing for thousands of rows without saturating the API",
       "Compliance with API rate limits"
     ],
     "learnings": [
@@ -379,7 +379,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Fully automated n8n workflow that enriches a database of 15,000+ BTP prospects with the age and date of birth of managers via the Pappers API. The objective: to transform “blind” prospecting into precise targeting, making it possible to prioritize managers aged 60 and over — main target of ADN POTENTIEL for its business transfer training."
+        "text": "Fully automated n8n workflow that enriches a database of thousands of BTP prospects with the age and date of birth of managers via the Pappers API. The objective: to transform “blind” prospecting into precise targeting, making it possible to prioritize managers aged 60 and over — main target of ADN POTENTIEL for its business transfer training."
       },
       {
         "type": "heading",
@@ -391,7 +391,7 @@
       },
       {
         "type": "paragraph",
-        "text": "The concrete problem: the company had a file of 15,000+ construction prospects (names, companies, contact details) but without any information on the age of the managers. It is therefore impossible to prioritize, segment, or adapt the commercial discourse."
+        "text": "The concrete problem: the company had a file of thousands of construction prospects (names, companies, contact details) but without any information on the age of the managers. It is therefore impossible to prioritize, segment, or adapt the commercial discourse."
       },
       {
         "type": "paragraph",
@@ -412,7 +412,7 @@
       {
         "type": "list",
         "items": [
-          "Base of 15,000+ prospects without information on the age of managers",
+          "Base of thousands of prospects without information on the age of managers",
           "Blind prospecting: impossible to prioritize or segment",
           "Manual enrichment impossible on this scale",
           "Sales time wasted on unqualified contacts",
@@ -448,7 +448,7 @@
         "type": "list",
         "items": [
           "✅ 85.7% completion — operational workflow in production",
-          "✅ Automatic processing of 15,000+ leads in batches",
+          "✅ Automatic processing of thousands of leads in batches",
           "✅ Micro-segmentation activated on 3 age groups",
           "✅ Complete video tutorial (~15-20 min) provided for total autonomy",
           "✅ Complete technical documentation (configuration, troubleshooting, maintenance)",
@@ -466,14 +466,14 @@
       {
         "type": "list",
         "items": [
-          "Reading prospects — Import from Google Sheets (15,000+ rows), batch processing to respect API limits",
+          "Reading prospects — Import from Google Sheets (thousands of rows), batch processing to respect API limits",
           "Pappers query — Automatic call by SIREN or company name to identify the manager",
           "Extraction of the manager — Recovery of last name, first name, date of birth, calculated age",
           "Senior status calculation — Automatic flag if age ≥ 60 years",
           "Segmentation by bracket — Automatic ranking: 60-65 / 65-70 / 70+",
           "Writing results — Real-time updating of rich columns in Google Sheets",
           "Graceful error handling — The workflow continues if data is missing (date of birth not available in Pappers) without interrupting processing",
-          "Pagination — Batch mechanism for all 15,000+ rows without saturating the API"
+          "Pagination — Batch mechanism for all rows without saturating the API"
         ]
       },
       {
@@ -2142,6 +2142,7 @@
     "problem": "An alarming observation: around me, classmates I have known for 3 years delegate their entire thinking to the AI ​​— each exercise, each assessment, each competition. Observable result: real and progressive cognitive impoverishment. I was not exempt from it myself, to a lesser extent. The problem isn't AI per se, it's the lack of deliberate cognitive effort. There are a number of existing applications (Quizlet, StudySmart, etc.), but none offered the level of customization and functionality I was looking for.",
     "solution": "After studying the 3 stages of learning (Encoding, Automation, Metacognition), I designed a multifunction application tailored to my needs: a spaced repetition system (SRS) for encoding and automation, an AI-driven content generator (Claude) for material production, and a rich workspace (Prism) for metacognition — with LaTeX writing, mind maps, and snippets. The central idea: use AI as a generation tool, never as a cognitive crutch.",
     "impact": [
+      "Native macOS/iOS/iPadOS app in SwiftUI with widgets, and an MCP server to drive the content from an assistant (I use the app daily)",
       "Personally enhanced memorization and revision skills thanks to SRS, quiz sessions and writing exercises",
       "Automated import of thousands of questions (TOEIC, Kwizmo, Tage Mage) — zero manual entry",
       "Intelligent planning with agenda, personalized rules and AI logs to organize sessions",
@@ -2211,6 +2212,24 @@
       }
     ],
     "media": [
+      {
+        "url": "/projects/unlimited-cognition/native/native-demo.mp4",
+        "caption": "Native macOS app — navigating Today, Library, Progress and Search",
+        "type": "video",
+        "poster": "/projects/unlimited-cognition/native/native-progres-cerveau.png"
+      },
+      {
+        "url": "/projects/unlimited-cognition/native/native-progres-cerveau.png",
+        "caption": "Native macOS app — Progress: 3D brain visualization, memory estimated with FSRS"
+      },
+      {
+        "url": "/projects/unlimited-cognition/native/native-aujourdhui.png",
+        "caption": "Native macOS app — Today: daily goal, due reviews, objectives"
+      },
+      {
+        "url": "/projects/unlimited-cognition/native/native-bibliotheque.png",
+        "caption": "Native macOS app — Library: decks, cards, quizzes and mind maps"
+      },
       {
         "url": "/projects/unlimited-cognition/screentune-tutoriel.mp4",
         "caption": "ScreenTune tutorial video — Guided demonstration of Unlimited Cognition",
@@ -2847,6 +2866,414 @@
       {
         "type": "paragraph",
         "text": "Workflow delivered with a video tutorial so the DNA team can use it alone. Top Tip: Check AI-generated contacts before sending."
+      }
+    ]
+  },
+  "atlas": {
+    "title": "Atlas — Fitness and nutrition on macOS, iPhone and iPad",
+    "shortDescription": "Native SwiftUI app combining an AI-enriched exercise library, workout tracking, nutrition (stock, recipes, planned meals) and Garmin import, with an MCP server so an assistant can work with the data.",
+    "fullDescription": "Atlas is a personal fitness and nutrition app. You import exercise videos (Instagram links or files), AI completes each card (muscles, equipment, instructions, precautions), then the app suggests exercises compatible with the equipment you actually own, records workouts and manages food inventory, recipes and planned meals. Educational reference only: no diagnosis, no medical advice.",
+    "category": "Native app",
+    "tags": [
+      "SwiftUI",
+      "Supabase",
+      "Cloudflare Workers",
+      "Gemini",
+      "MCP",
+      "Garmin",
+      "CloudKit"
+    ],
+    "company": "",
+    "problem": "Exercises seen in videos are scattered (social media, notes), available equipment is never taken into account, and nutrition, training and Garmin data live in separate apps.",
+    "solution": "One native iOS/iPadOS/macOS app: each video becomes an editable AI-analysed card, equipment and quantity filtering only suggests feasible exercises, and a nutrition module manages stock, recipes and shopping lists with strict business rules.",
+    "impact": [
+      "One database for exercises, workouts, nutrition and Garmin activities, on Mac, iPhone and iPad",
+      "Suggested exercises take the equipment you really own into account (for example “dumbbells × 2”)",
+      "A planned meal reserves stock; consuming a meal decrements inventory only once; shopping lists round up to the packs needed",
+      "MCP server: an assistant can read the data and write only workouts, nutrition and planned Garmin sessions (read-only mode available)",
+      "Private videos are analysed temporarily by AI then deleted; data protected by per-user access rules"
+    ],
+    "challenges": [
+      "Keeping inventory consistent: reservation per planned meal, single decrement on consumption, targeted cleanup of dependencies on deletion",
+      "Sharing one data model between the web prototype and the native app",
+      "Protecting videos and personal data while using external AI models"
+    ],
+    "learnings": [
+      "Write business rules (stock, packs, quantities) before the interface",
+      "Limit what an assistant can write with an explicit MCP server",
+      "Prefer structured actions to a series of clicks when testing an app"
+    ],
+    "technologies": [
+      {
+        "name": "SwiftUI",
+        "usage": "Native interface shared across iOS, iPadOS and macOS"
+      },
+      {
+        "name": "Supabase",
+        "usage": "Database, row-level security, migrations"
+      },
+      {
+        "name": "Cloudflare Workers",
+        "usage": "Meal and shopping analysis, nutrition assistant, global agent"
+      },
+      {
+        "name": "Gemini API",
+        "usage": "Analysis of exercise videos and meal photos"
+      },
+      {
+        "name": "CloudKit",
+        "usage": "Private sync between devices"
+      },
+      {
+        "name": "Node.js (MCP)",
+        "usage": "MCP server to read and write data"
+      },
+      {
+        "name": "Garmin / HealthKit",
+        "usage": "Import of activities and recovery, structured workouts"
+      }
+    ],
+    "media": [],
+    "content": [
+      {
+        "type": "heading",
+        "text": "An AI-enriched exercise library"
+      },
+      {
+        "type": "paragraph",
+        "text": "Each video link or file becomes a card: thumbnail, primary and secondary muscles, required equipment with quantities, level, instructions and precautions. The analysis also detects videos containing several exercises, chained over time or in split screen, and creates one card per exercise."
+      },
+      {
+        "type": "heading",
+        "text": "Nutrition and inventory"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Nutritional values expressed per 100 g, 100 ml or unit",
+          "A recipe can only be saved if the stock covers the quantities",
+          "Consumed meals are excluded from the shopping list"
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "Workouts and Garmin"
+      },
+      {
+        "type": "paragraph",
+        "text": "Workout mode, history and metrics, scheduled workouts with time, Garmin activity import (FIT, TCX) and a structured workout editor."
+      },
+      {
+        "type": "heading",
+        "text": "Assistant and MCP"
+      },
+      {
+        "type": "paragraph",
+        "text": "A global agent suggests actions that the user confirms in the app. An MCP server lets an assistant read the data and write only workouts, nutrition and planned Garmin sessions."
+      },
+      {
+        "type": "paragraph",
+        "text": "Personal project, active. No health data is shown on this page."
+      }
+    ]
+  },
+  "bookmarks-x-research": {
+    "title": "Chrome extension — Smart search in my X bookmarks and YouTube playlists",
+    "shortDescription": "A 100% local Chrome extension that indexes my X bookmarks and YouTube playlists and finds them by meaning, with statistics, trainable detectors and a sourced weekly journal.",
+    "fullDescription": "A search memory for everything I save on X and YouTube: hybrid search (keywords + embeddings), natural language, operators, statistics, trainable detectors, video transcripts and a weekly journal written only from collected sources. Everything runs locally by default: no server, no key, zero cost.",
+    "category": "Browser extension",
+    "tags": [
+      "Chrome Manifest V3",
+      "JavaScript",
+      "Embeddings",
+      "WebGPU",
+      "Playwright",
+      "OpenRouter"
+    ],
+    "company": "",
+    "problem": "Hundreds of saved tweets and videos become impossible to find: X bookmarks have no real search, neither do YouTube playlists, and no tool connects them.",
+    "solution": "An extension that captures bookmarks and playlists, indexes them locally (BM25 + EmbeddingGemma 300M on WebGPU/WASM) and offers semantic search, customizable statistics and a weekly journal with citations.",
+    "impact": [
+      "Search by meaning and by words, in natural language or with operators (from:, has:link, since:, playlist:, viewed:…)",
+      "100% local by default: no server, no key, zero cost; optional, capped AI features",
+      "Comparable, sliceable, exportable statistics (CSV, PNG); detectors that learn from my corrections",
+      "Weekly journal written from an evidence file, with citations and automatic review, capped cost",
+      "Version 0.27.1, unit and end-to-end tests"
+    ],
+    "challenges": [
+      "Capturing data despite format changes on X and YouTube (format alert, tests against fakes)",
+      "Computing embeddings without blocking the browser (indexing in small slices)",
+      "Protecting privacy: history is never sent to an external AI without explicit permission"
+    ],
+    "learnings": [
+      "Measure search quality with a benchmark (recall@10, MRR) rather than by eye",
+      "Cap and display AI costs before each call",
+      "Test against simulated services to avoid depending on x.com"
+    ],
+    "technologies": [
+      {
+        "name": "Chrome Manifest V3",
+        "usage": "Service worker, capture scripts, offscreen page"
+      },
+      {
+        "name": "EmbeddingGemma 300M",
+        "usage": "Local semantic search (WebGPU/WASM)"
+      },
+      {
+        "name": "BM25 + RRF",
+        "usage": "Keyword search and ranking fusion"
+      },
+      {
+        "name": "esbuild",
+        "usage": "Extension build"
+      },
+      {
+        "name": "Playwright",
+        "usage": "End-to-end tests against a fake X and fake YouTube"
+      },
+      {
+        "name": "OpenRouter",
+        "usage": "Optional writing and decision models"
+      }
+    ],
+    "media": [
+      {
+        "url": "/projects/bookmarks-x-research/stats.png",
+        "caption": "Statistics page (demo data)"
+      }
+    ],
+    "content": [
+      {
+        "type": "heading",
+        "text": "Finding by meaning"
+      },
+      {
+        "type": "paragraph",
+        "text": "Search merges keyword search (BM25) and semantic search (embeddings computed in the browser). You can write “the oldest tweet from OpenAI” or use operators."
+      },
+      {
+        "type": "heading",
+        "text": "Statistics and detectors"
+      },
+      {
+        "type": "paragraph",
+        "text": "Curves, heatmaps, series comparisons, trends. A detector is described by a sentence and a few examples; it learns from my corrections, and an optional decision model settles ambiguous cases with a spending cap."
+      },
+      {
+        "type": "heading",
+        "text": "Weekly journal"
+      },
+      {
+        "type": "paragraph",
+        "text": "A multi-page, newspaper-style edition: grouped topics, writing from an evidence file with citations, a review pass that removes unsupported sentences, cost estimated before generation."
+      },
+      {
+        "type": "heading",
+        "text": "Privacy"
+      },
+      {
+        "type": "paragraph",
+        "text": "Everything is local by default. YouTube history and transcripts are never sent to an external AI without explicit permission; the backup export can be encrypted."
+      },
+      {
+        "type": "paragraph",
+        "text": "Code: github.com/gabrielbigot/Bookmarks-X-research. Personal project, active."
+      }
+    ]
+  },
+  "assistant-bigot-controle-prix-achat": {
+    "title": "Assistant Bigot — Purchase price control (pilot)",
+    "shortDescription": "A controlled pilot that matches supplier invoice lines (OCR) against item-card prices in the legacy ERP, detects gaps and prepares an Excel workbook, with human validation at every sensitive step.",
+    "fullDescription": "A local assistant for a building-materials merchant: it browses goods-receipt slips in the legacy ERP terminal, reads PDF invoices with Mistral OCR, compares unit prices with item-card prices and produces an Excel file of gaps. It is a pilot with human checks, not an autonomous production robot.",
+    "category": "Automation",
+    "tags": [
+      "Node.js",
+      "Mistral OCR",
+      "HACL / VBS",
+      "Excel",
+      "Windows",
+      "AI"
+    ],
+    "company": "BIGOT Matériaux",
+    "problem": "Suppliers regularly change prices without notice: checking each invoice line by hand against the item card, in a text-mode ERP, takes time and lets gaps slip through.",
+    "solution": "A four-step flow on a Windows PC: reading slips in the ERP, extracting invoice lines by OCR, matching with a unit-price gap rule, configurable Excel export. Sensitive points (printing, OCR line validation, correction decisions) stay human.",
+    "impact": [
+      "Automated reading of slips and item-card prices through the ERP terminal (stop rules, eco-contribution excluded)",
+      "PDF invoice line extraction by OCR, keeping the raw JSON to trace the origin of a decision",
+      "Configurable Excel matching workbook; example data entirely fictitious",
+      "Local app on 127.0.0.1; API key kept in memory, never written to files",
+      "Stated limits: pilot, human validation of each line and each correction"
+    ],
+    "challenges": [
+      "Driving a text screen without ever changing real data by mistake (read-only mode, stop rules)",
+      "Comparing prices expressed in different units without inventing a conversion",
+      "Making OCR acceptable: keep the raw trace and have each line validated"
+    ],
+    "learnings": [
+      "A useful pilot beats an uncontrolled autonomous robot",
+      "Documenting calculation rules matters as much as code",
+      "Keep humans at decision points"
+    ],
+    "technologies": [
+      {
+        "name": "Node.js",
+        "usage": "Local server, OCR, line matching"
+      },
+      {
+        "name": "Mistral OCR",
+        "usage": "Extraction of PDF invoice lines"
+      },
+      {
+        "name": "HACL / VBS (IBM Personal Communications)",
+        "usage": "Driving the ERP terminal"
+      },
+      {
+        "name": "Excel",
+        "usage": "Matching and gap workbook"
+      }
+    ],
+    "media": [
+      {
+        "url": "/projects/assistant-bigot-controle-prix-achat/interface.jpg",
+        "caption": "Local interface: purchase price check, batch mode (no real data)"
+      }
+    ],
+    "content": [
+      {
+        "type": "heading",
+        "text": "The problem"
+      },
+      {
+        "type": "paragraph",
+        "text": "In a building-materials business, purchase prices often change without warning. Checking every invoice line against the item card is long and repetitive."
+      },
+      {
+        "type": "heading",
+        "text": "The pilot"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Browse the queue of goods-receipt slips and open each one",
+          "Read the lines and retrieve the item reference",
+          "Read the item-card price",
+          "Extract the PDF invoice lines by OCR and compute the unit-price gap"
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "What stays manual, on purpose"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Printing the invoice",
+          "Validating each OCR line",
+          "Deciding what to do about a detected gap"
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "Security"
+      },
+      {
+        "type": "paragraph",
+        "text": "Local application (127.0.0.1), API key in memory, one local folder per invoice. No real data is published: examples are fictitious."
+      },
+      {
+        "type": "paragraph",
+        "text": "Built for the family business. Pilot, not deployed to production."
+      }
+    ]
+  },
+  "simulateur-entrainement-as400": {
+    "title": "AS400 training simulator — Accounting without risk",
+    "shortDescription": "A static web app that recreates an AS400 ERP environment (menus, entry, drafts, matching, reminders) with fictitious data so one can practise without ever touching real data.",
+    "fullDescription": "A simulator in HTML, CSS and JavaScript, with no server and no real data: keyboard navigation, chart of accounts, journals, entry posting, drafts and validation, trial balance, general ledger, FEC export, matching, reminders, entry templates, bank rules, with guided scenarios and solved exercises.",
+    "category": "Web application",
+    "tags": [
+      "JavaScript",
+      "HTML/CSS",
+      "localStorage",
+      "Simulation",
+      "Accounting"
+    ],
+    "company": "BIGOT Matériaux",
+    "problem": "Learning a text-mode ERP directly on real accounting is risky: a wrong entry or validation changes real data.",
+    "solution": "A simulator faithful to the ERP's menus and reflexes, with guided scenarios (bank statement, supplier invoice, rules, anomalies to detect) and check and reset functions.",
+    "impact": [
+      "Risk-free practice: no real data, local save in the browser",
+      "Guided scenarios with check (F5) and reset (F7)",
+      "Exercise and answer folder covering accounts, journals, bank, trial balance, matching, reminders and a full mission",
+      "Static application: just open a folder, no installation"
+    ],
+    "challenges": [
+      "Reproducing reflexes (keyboard navigation, function keys) in a browser that intercepts some keys",
+      "Keeping accounting rules consistent (matching limited to validated entries)",
+      "Making scenarios automatically verifiable"
+    ],
+    "learnings": [
+      "A simulator without real data removes the fear of mistakes",
+      "Document scenarios and their expected entries",
+      "Keep practice separate from answers"
+    ],
+    "technologies": [
+      {
+        "name": "JavaScript",
+        "usage": "Simulated ERP logic, scenarios, checks"
+      },
+      {
+        "name": "HTML / CSS",
+        "usage": "Text-mode interface and clickable function keys"
+      },
+      {
+        "name": "localStorage",
+        "usage": "Local save of simulation data"
+      }
+    ],
+    "media": [
+      {
+        "url": "/projects/simulateur-entrainement-as400/menu-general.jpg",
+        "caption": "Simulator main menu (fictitious company names)"
+      },
+      {
+        "url": "/projects/simulateur-entrainement-as400/menu-comptabilite.jpg",
+        "caption": "Accounting menu: accounts, journals, entries, matching, reminders, bank import"
+      }
+    ],
+    "content": [
+      {
+        "type": "heading",
+        "text": "Why a simulator"
+      },
+      {
+        "type": "paragraph",
+        "text": "To rebuild the reflexes of a text-mode ERP without risking real data."
+      },
+      {
+        "type": "heading",
+        "text": "What it simulates"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Menus, company choice, chart of accounts, journals",
+          "Entry posting, drafts, validation, action log",
+          "Trial balance, general ledger, account detail, FEC",
+          "Matching, customer reminders, templates, bank rules"
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "Guided practice"
+      },
+      {
+        "type": "paragraph",
+        "text": "Built-in scenarios (bank statement, supplier invoice, anomalies to detect), check, reset, simulated documents and an exercise folder with answers."
+      },
+      {
+        "type": "paragraph",
+        "text": "No real data is used in this project."
       }
     ]
   }

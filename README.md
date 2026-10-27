@@ -1,49 +1,34 @@
-# Minimalist Portfolio Website
+# Portfolio de Gabriel Bigot
 
-A clean, modern portfolio website built with Next.js and Tailwind CSS, featuring smooth animations and dark/light theme support.
+Site personnel présentant mes projets d'automatisation et d'IA, mes expériences et mes essais.
 
-## ✨ Features
+- **Site** : https://gabriel-bigot-portfolio.vercel.app/portfolio
+- **Langues** : français (par défaut) et anglais (`/en`)
 
-- **Minimalist Design** - Clean typography with Geist font and strategic use of whitespace
-- **Responsive Layout** - Mobile-first design that works on all devices
-- **Theme Toggle** - Seamless dark/light mode switching
-- **Smooth Animations** - Subtle scroll-triggered animations and hover effects
-- **Modern Stack** - Built with Next.js 15, TypeScript, and Tailwind CSS
+## Pile technique
+Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS, shadcn/ui, déploiement sur Vercel.
 
-## 🚀 Built With
+## Où modifier le contenu
+Tout le contenu est dans `lib/data.ts` (identité, formation, expériences, compétences, projets, essais, frise, entreprises).
 
-- [Next.js](https://nextjs.org/) - React framework
-- [TypeScript](https://www.typescriptlang.org/) - Type safety
-- [Tailwind CSS](https://tailwindcss.com/) - Styling
-- [v0.dev](https://v0.dev/) - AI-powered development
+| Pour… | Modifier |
+|---|---|
+| ajouter ou éditer un projet | `projects` dans `lib/data.ts` (champs `featured` pour les projets phares, `status` : `actif` ou `archive`) |
+| la version anglaise d'un projet | `lib/project-translations-en.ts` (clé = `slug`) |
+| les textes de l'interface en anglais | `lib/portfolio-i18n.ts` |
+| les images et vidéos d'un projet | `public/projects/<slug>/` |
 
-## 📦 Getting Started
+## Développement
+```bash
+pnpm install
+pnpm dev        # http://localhost:3000
+pnpm build
+```
 
-\`\`\`bash
-# Clone the repository
-git clone https://github.com/felixmacaspac/v0-minimalist-portfolio.git
+## Confidentialité
+Le dépôt est **public** : ne jamais y committer de clé, de date de naissance, d'adresse, de capture contenant des données réelles ou de document personnel. Les statuts, chiffres et affirmations publiés doivent pouvoir être sourcés.
 
-# Install dependencies
-npm install
+## Documentation
+Les notes de migration Notion et de versionnement des articles sont dans `docs/notion/`.
 
-# Run development server
-npm run dev
-\`\`\`
-
-Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
-
-## 🎨 Customization
-
-The portfolio is designed to be easily customizable:
-
-- Update personal information in `app/page.tsx`
-- Modify colors and styling in `app/globals.css`
-- Add or remove sections as needed
-
-## 📄 License
-
-Open source and available under the [MIT License](LICENSE).
-
----
-
-**Built with ❤️ using [v0.dev](https://v0.dev) by Felix Macaspac**
+Le contenu du site est éditable via le studio (`STUDIO.md`) ; les articles sont décrits dans `ARTICLES.md`.

@@ -6,7 +6,7 @@
     "startDate": "Avril 2026",
     "endDate": "Mai 2026",
     "current": false,
-    "description": "Mission freelance post-stage sur sollicitation du client. Première rémunération professionnelle pour des compétences en IA. Engagement confirmant la qualité des livrables du stage.",
+    "description": "Mission post-stage sur sollicitation du client, à la suite des livrables du stage.",
     "achievements": [
       "Migration complète du système n8n + Notion vers une application web Next.js 16 sur-mesure déployée sur Vercel. Remplacement du système d'automatisation par une SaaS maison sans limite d'exécutions et entièrement contrôlable",
       "Développement full-stack : veille RSS automatisée (Perplexity AI + OpenAI/Anthropic), studio de contenu avec previews LinkedIn et Instagram en temps réel, génération d'images (DALL-E / Gemini), publication directe sur LinkedIn et Instagram depuis le dashboard",
@@ -40,7 +40,7 @@
     "current": false,
     "description": "Stage de 7 semaines au sein d'un cabinet de formation, conseil et coaching professionnel (certification Qualiopi). Mission centrée sur la transformation digitale via l'automatisation et l'intelligence artificielle.",
     "achievements": [
-      "Conception et déploiement de 3 workflows n8n en production : enrichissement automatique de 15 000+ prospects BTP (API Pappers), système de veille sectorielle avec qualification IA (score d'impact, catégorisation), génération et publication automatique de contenus LinkedIn",
+      "Conception et déploiement de 3 workflows n8n en production : enrichissement automatique de plusieurs milliers de prospects BTP (API Pappers), système de veille sectorielle avec qualification IA (score d'impact, catégorisation), génération et publication automatique de contenus LinkedIn",
       "Création d'un Hub Notion avec 5 bases de données interconnectées comme interface de pilotage de l'ensemble du système",
       "Production de 4 tutoriels vidéo (~70 minutes) et documentation technique complète pour garantir l'autonomie du client non-technique"
     ],

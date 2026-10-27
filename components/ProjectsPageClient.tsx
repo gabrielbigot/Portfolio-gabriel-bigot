@@ -18,6 +18,7 @@ interface Project {
   company: string
   technologies: string[]
   featured: boolean
+  status?: "actif" | "archive"
   image?: string
 }
 
@@ -105,7 +106,7 @@ export default function ProjectsPageClient({ projects, cvUrl, locale = "fr", ui,
               >
                 <div className="space-y-2">
                   <div className="font-mono text-xs text-muted-foreground">
-                    {[project.date, project.company].filter(Boolean).join(" · ")}
+                    {[project.date, project.company, project.status === "actif" ? copy.statusActive : project.status === "archive" ? copy.statusArchived : ""].filter(Boolean).join(" · ")}
                   </div>
                   <h3 className="font-editorial text-2xl transition-colors duration-300 group-hover:text-muted-foreground">{project.title}</h3>
                   <p className="font-editorial text-lg leading-[1.65] text-muted-foreground">{project.shortDescription}</p>
