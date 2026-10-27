@@ -16,6 +16,11 @@ const nextConfig = {
     return [
       { source: "/blog", destination: "/articles", permanent: true },
       { source: "/blog/:slug", destination: "/articles/:slug", permanent: true },
+      // pages « Mon histoire » et « Ce que j'utilise » retirées
+      { source: "/about", destination: "/portfolio", permanent: true },
+      { source: "/uses", destination: "/portfolio", permanent: true },
+      { source: "/en/about", destination: "/en/portfolio", permanent: true },
+      { source: "/en/uses", destination: "/en/portfolio", permanent: true },
     ]
   },
   async rewrites() {

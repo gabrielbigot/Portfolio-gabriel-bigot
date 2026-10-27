@@ -82,7 +82,7 @@ export function SectionPicker({ rect, clip, onPick, onPaste, onLibrary, onAi, on
 }
 
 /* ---------- bibliothèque : sections existantes des autres pages ---------- */
-export const SITE_ROUTES: [string, string][] = [["/portfolio", "Accueil"], ["/projects", "Projets"], ["/work", "Expériences"], ["/about", "À propos"], ["/uses", "Uses"], ["/blog", "Essais"], ["/en/portfolio", "Home (EN)"], ["/en/projects", "Projects (EN)"], ["/en/work", "Experience (EN)"], ["/en/about", "About (EN)"], ["/en/uses", "Uses (EN)"]]
+export const SITE_ROUTES: [string, string][] = [["/portfolio", "Accueil"], ["/projects", "Projets"], ["/work", "Expériences"], ["/blog", "Essais"], ["/en/portfolio", "Home (EN)"], ["/en/projects", "Projects (EN)"], ["/en/work", "Experience (EN)"]]
 export function SectionLibrary({ rect, onPick, onClose }: { rect: { left: number; top: number }; onPick: (html: string, label: string) => void; onClose: () => void }) {
   const [route, setRoute] = useState(SITE_ROUTES[0][0]); const [items, setItems] = useState<{ name: string; preview: string; html: string }[] | null>(null); const [err, setErr] = useState("")
   const [extra, setExtra] = useState<[string, string][]>([])

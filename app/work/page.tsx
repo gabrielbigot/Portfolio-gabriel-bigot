@@ -3,8 +3,7 @@ import { stripDeep } from "@/lib/studio/stega"
 import { getT } from "@/lib/strings"
 import Link from "next/link"
 import { getCompanies } from "@/lib/portfolio-data"
-import { ArrowLeft, ArrowRight, Building2, MapPin, Calendar, Briefcase } from "lucide-react"
-import TechnologyGroups from "@/components/TechnologyGroups"
+import { ArrowLeft } from "lucide-react"
 
 export async function generateMetadata() {
   const t = await getT("page.work")
@@ -31,7 +30,7 @@ export default async function WorkPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 py-4">
+        <div className="max-w-3xl mx-auto px-6 sm:px-8 py-4">
           <Link
             href="/"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300"
@@ -42,113 +41,37 @@ export default async function WorkPage() {
         </div>
       </nav>
 
-      <main className="max-w-5xl mx-auto px-6 sm:px-8 py-12 sm:py-20">
-        {/* Header */}
-        <header className="space-y-6 pb-16 border-b border-border">
+      <main className="max-w-3xl mx-auto px-6 sm:px-8 py-12 sm:py-20">
+        <header className="space-y-6 pb-10 sm:pb-14">
           <div className="text-sm text-muted-foreground font-mono tracking-wider">{t("experiences")}{" "}{new Date().getFullYear()}
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight">{t("ou-j-ai-travaille")}</h1>
-          <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">{t("les-entreprises-qui-m-ont-accueilli")}</p>
+          <h1 className="font-editorial text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">{t("ou-j-ai-travaille")}</h1>
+          <p className="font-editorial text-xl sm:text-2xl text-muted-foreground leading-[1.55]">{t("les-entreprises-qui-m-ont-accueilli")}</p>
         </header>
 
-        {/* Companies list */}
-        <div className="py-12 sm:py-16 space-y-6">
+        <div className="divide-y divide-border border-y border-border">
           {companies.map((company) => (
             <Link
               key={company.id}
               href={`/work/${company.slug}`}
-              className="group block p-6 sm:p-8 border border-border rounded-xl hover:border-muted-foreground/50 hover:shadow-lg transition-all duration-300"
+              className="group grid gap-2 py-7 sm:grid-cols-[1fr_auto] sm:gap-8"
             >
-              <div className="flex gap-5 sm:gap-6">
-                {/* Logo */}
-                <div className="flex-shrink-0">
-                  {company.logo ? (
-                    <div
-                      className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg border border-border overflow-hidden flex items-center justify-center"
-                      style={company.logoBackground ? { backgroundColor: company.logoBackground } : { backgroundColor: "white" }}
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={company.logo}
-                        alt={`Logo ${company.company}`}
-                        className="w-full h-full object-contain p-1.5"
-                      />
-                    </div>
-                  ) : (
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg border border-border bg-foreground/[0.03] flex items-center justify-center flex-shrink-0">
-                      <span className="text-lg font-light text-muted-foreground select-none">
-                        {company.company.charAt(0).toUpperCase()}
-                      </span>
-                    </div>
-                  )}
+              <div className="space-y-2">
+                <div className="font-mono text-xs text-muted-foreground">
+                  {formatDate(company.startDate)}
+                  {" — "}
+                  {company.current ? t("aujourd-hui") : formatDate(company.endDate)}
+                  {company.location ? ` · ${company.location}` : ""}
                 </div>
-
-                {/* Content */}
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 flex-1 min-w-0">
-                  <div className="space-y-2.5 flex-1 min-w-0">
-                    {/* Company + badges */}
-                    <div className="flex flex-wrap items-center gap-2.5">
-                      <h2 className="text-xl sm:text-2xl font-light group-hover:text-muted-foreground transition-colors duration-300">
-                        {company.company}
-                      </h2>
-                      {company.type && (
-                        <span className="px-2.5 py-0.5 text-xs bg-foreground/5 border border-border rounded-full">
-                          {company.type}
-                        </span>
-                      )}
-                      {company.current && (
-                        <span className="px-2.5 py-0.5 text-xs bg-amber-500/10 text-amber-500 border border-amber-500/20 rounded-full">{t("poste-actuel")}</span>
-                      )}
-                    </div>
-
-                    {/* Position */}
-                    {company.position && (
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <Briefcase className="w-3.5 h-3.5 flex-shrink-0" />
-                        <span>{company.position}</span>
-                      </div>
-                    )}
-
-                    {/* Meta */}
-                    <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-                      {company.location && (
-                        <div className="flex items-center gap-1.5">
-                          <MapPin className="w-3.5 h-3.5" />
-                          <span>{company.location}</span>
-                        </div>
-                      )}
-                      <div className="flex items-center gap-1.5">
-                        <Calendar className="w-3.5 h-3.5" />
-                        <span>
-                          {formatDate(company.startDate)}
-                          {" — "}
-                          {company.current ? t("aujourd-hui") : formatDate(company.endDate)}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Short description */}
-                    {company.shortDescription && (
-                      <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-                        {company.shortDescription}
-                      </p>
-                    )}
-
-                    {/* Technologies */}
-                    {company.technologies && company.technologies.length > 0 && (
-                      <div className="pt-0.5">
-                        <TechnologyGroups technologies={company.technologies} compact maxItems={6} />
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Arrow */}
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300 self-end sm:self-center flex-shrink-0">
-                    <span>{t("voir-le-detail")}</span>
-                    <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
-                  </div>
-                </div>
+                <h2 className="font-editorial text-2xl transition-colors duration-300 group-hover:text-muted-foreground">
+                  {company.company}
+                  {company.position && <span className="text-muted-foreground"> · {company.position}</span>}
+                </h2>
+                {company.shortDescription && (
+                  <p className="font-editorial max-w-xl text-lg leading-[1.65] text-muted-foreground">{company.shortDescription}</p>
+                )}
               </div>
+              <span aria-hidden="true" className="text-muted-foreground transition-transform duration-300 group-hover:translate-x-1 group-hover:text-foreground">→</span>
             </Link>
           ))}
         </div>
@@ -156,7 +79,7 @@ export default async function WorkPage() {
         </main>
 
       <footer className="border-t border-border py-12">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8">
+        <div className="max-w-3xl mx-auto px-6 sm:px-8">
           <div className="text-center text-sm text-muted-foreground">{t("2025-gabriel-bigot-developpeur-d-automatisations")}</div>
         </div>
       </footer>

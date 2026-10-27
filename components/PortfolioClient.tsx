@@ -267,8 +267,6 @@ export default function PortfolioClient({
               {[
                 { href: "/articles", label: copy.essaysCta },
                 { href: `${routePrefix}/projects`, label: copy.projectsCta },
-                { href: `${routePrefix}/about`, label: copy.aboutCta },
-                { href: `${routePrefix}/uses`, label: copy.usesCta },
                 { href: "#connect", label: copy.contactCta },
               ].map((item) => (
                 <Link

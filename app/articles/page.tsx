@@ -25,39 +25,34 @@ export default async function ArticlesPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 py-4">
+        <div className="max-w-3xl mx-auto px-6 sm:px-8 py-4">
           <Link href="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300">
             <ArrowLeft className="w-4 h-4" />
             <span>{tr("retour")}</span>
           </Link>
         </div>
       </nav>
-      <main className="max-w-5xl mx-auto px-6 sm:px-8 py-12 sm:py-20">
-        <header className="space-y-6 pb-12 border-b border-border">
+      <main className="max-w-3xl mx-auto px-6 sm:px-8 py-12 sm:py-20">
+        <header className="space-y-6 pb-10 sm:pb-14">
           <div className="text-sm text-muted-foreground font-mono tracking-wider">{tr("articles")}</div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight">{tr("dossiers-sources")}</h1>
-          <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">{tr("des-dossiers-longs-ou-chaque-chiffre")}</p>
+          <h1 className="font-editorial text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">{tr("dossiers-sources")}</h1>
+          <p className="font-editorial text-xl sm:text-2xl text-muted-foreground leading-[1.55]">{tr("des-dossiers-longs-ou-chaque-chiffre")}</p>
         </header>
-        <div className="py-10 space-y-4">
-          {articles.length === 0 && <p className="text-muted-foreground">{tr("aucun-article-publie-pour-l-instant")}</p>}
+        <div className="divide-y divide-border border-y border-border">
+          {articles.length === 0 && <p className="py-10 text-muted-foreground">{tr("aucun-article-publie-pour-l-instant")}</p>}
           {articles.map(a => (
-            <a key={a.slug} href={"/articles/" + a.slug} className="group relative block p-6 sm:p-7 border border-border rounded-xl hover:border-muted-foreground/50 transition-all duration-300">
+            <a key={a.slug} href={"/articles/" + a.slug} className="group relative block py-7">
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground font-mono tracking-wide">
                 <span>{fmt(a.published)}</span>
                 {a.readingMinutes ? <span>· {a.readingMinutes}{" "}{tr("min")}</span> : null}
                 {a.sourceCount ? <span>· {a.sourceCount}{" "}{tr("sources")}</span> : null}
                 {a.notes ? <span>· {a.notes}{" "}{tr("note")}{a.notes > 1 ? "s" : ""}{" "}{tr("de-l-auteur")}</span> : null}
-                {a.series && <span className="px-2 py-0.5 rounded-full border border-border">{a.series}</span>}
-                {a.status === "draft" && <span className="px-2 py-0.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-600">Brouillon · visible dans le studio seulement</span>}
+                {a.series && <span>· {a.series}</span>}
+                {a.status === "draft" && <span className="text-amber-600">· Brouillon, visible dans le studio seulement</span>}
               </div>
-              <h2 className="mt-3 text-2xl sm:text-3xl font-light tracking-tight group-hover:underline underline-offset-4 decoration-border">{a.title}</h2>
-              {a.subtitle && <p className="mt-1 text-muted-foreground">{a.subtitle}</p>}
-              {a.summary && <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-3xl">{a.summary}</p>}
-              {a.tags && a.tags.length > 0 && (
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {a.tags.slice(0, 6).map(t => <span key={t} className="px-2 py-0.5 text-xs rounded-full border border-border text-muted-foreground">{t}</span>)}
-                </div>
-              )}
+              <h2 className="font-editorial mt-3 text-2xl sm:text-3xl leading-tight transition-colors duration-300 group-hover:text-muted-foreground">{a.title}</h2>
+              {a.subtitle && <p className="font-editorial mt-1 text-lg italic text-muted-foreground">{a.subtitle}</p>}
+              {a.summary && a.summary !== a.subtitle && <p className="font-editorial mt-3 max-w-2xl text-lg leading-[1.65] text-muted-foreground">{a.summary}</p>}
               {isStudioMode() && <ArticleDeleteButton slug={a.slug} title={a.title} />}
             </a>
           ))}

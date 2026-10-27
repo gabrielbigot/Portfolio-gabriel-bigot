@@ -48,8 +48,8 @@
 /* ---------- couverture ---------- */
 .vra-cover { max-width: 1180px; margin: 0 auto; padding: clamp(40px, 8vw, 96px) 20px clamp(28px, 5vw, 56px); }
 .vra-kicker { font: 600 .78rem/1.2 var(--vra-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--vra-c1); margin: 0 0 1.4rem; }
-.vra-cover h1 { font: 600 clamp(2.5rem, 7.4vw, 5.2rem)/1.02 var(--vra-serif); letter-spacing: -.025em; margin: 0 0 1.4rem; max-width: 15em; text-wrap: balance; }
-.vra-dek { font: 400 clamp(1.15rem, 2.3vw, 1.5rem)/1.45 var(--vra-serif); color: var(--vra-mid); max-width: 38em; margin: 0 0 1.8rem; }
+.vra-cover h1 { font: 600 clamp(2.1rem, 5.2vw, 3.5rem)/1.08 var(--vra-serif); letter-spacing: -.02em; margin: 0 0 1.2rem; max-width: 18em; text-wrap: balance; }
+.vra-dek { font: italic 400 clamp(1.15rem, 2.3vw, 1.4rem)/1.5 var(--vra-serif); color: var(--vra-mid); max-width: 38em; margin: 0 0 1.8rem; }
 .vra-byline { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; font: 500 .82rem/1.4 var(--vra-sans); color: var(--vra-mid); margin: 0 0 2.4rem; }
 .vra-byline strong { color: var(--vra-ink); font-weight: 600; }
 .vra-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0; border-top: 2px solid var(--vra-ink); }

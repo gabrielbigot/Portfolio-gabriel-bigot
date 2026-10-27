@@ -3,8 +3,7 @@ import { stripDeep } from "@/lib/studio/stega"
 import { getT } from "@/lib/strings"
 import { getContent } from "@/lib/site-content"
 import Link from "next/link"
-import { ArrowLeft, ArrowRight, Briefcase, Calendar, MapPin } from "lucide-react"
-import TechnologyGroups from "@/components/TechnologyGroups"
+import { ArrowLeft } from "lucide-react"
 
 export async function generateMetadata() {
   const t = await getT("page.en-work")
@@ -20,7 +19,7 @@ export default async function EnglishWorkPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 py-4">
+        <div className="max-w-3xl mx-auto px-6 sm:px-8 py-4">
           <Link href="/en/portfolio" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300">
             <ArrowLeft className="w-4 h-4" />
             <span>{t("back-to-portfolio")}</span>
@@ -28,76 +27,37 @@ export default async function EnglishWorkPage() {
         </div>
       </nav>
 
-      <main className="max-w-5xl mx-auto px-6 sm:px-8 py-12 sm:py-20">
-        <header className="space-y-6 pb-16 border-b border-border">
+      <main className="max-w-3xl mx-auto px-6 sm:px-8 py-12 sm:py-20">
+        <header className="space-y-6 pb-10 sm:pb-14">
           <div className="text-sm text-muted-foreground font-mono tracking-wider">{t("experience")}{" "}{new Date().getFullYear()}
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight">{t("where-i-have-worked")}</h1>
-          <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">{t("the-organizations-that-trusted-me-the")}</p>
+          <h1 className="font-editorial text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">{t("where-i-have-worked")}</h1>
+          <p className="font-editorial text-xl sm:text-2xl text-muted-foreground leading-[1.55]">{t("the-organizations-that-trusted-me-the")}</p>
         </header>
 
-        <div className="py-12 sm:py-16 space-y-6">
+        <div className="divide-y divide-border border-y border-border">
           {companies.map((company) => (
-            <div key={company.slug} className="group block p-6 sm:p-8 border border-border rounded-xl hover:border-muted-foreground/50 hover:shadow-lg transition-all duration-300">
-              <div className="flex gap-5 sm:gap-6">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg border border-border bg-foreground/[0.03] flex items-center justify-center flex-shrink-0">
-                  <span className="text-lg font-light text-muted-foreground select-none">
-                    {company.company.charAt(0).toUpperCase()}
-                  </span>
+            <Link key={company.slug} href="/en/projects" className="group grid gap-2 py-7 sm:grid-cols-[1fr_auto] sm:gap-8">
+              <div className="space-y-2">
+                <div className="font-mono text-xs text-muted-foreground">
+                  {company.startDate} — {company.endDate}
+                  {company.location ? ` · ${company.location}` : ""}
                 </div>
-
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 flex-1 min-w-0">
-                  <div className="space-y-2.5 flex-1 min-w-0">
-                    <div className="flex flex-wrap items-center gap-2.5">
-                      <h2 className="text-xl sm:text-2xl font-light group-hover:text-muted-foreground transition-colors duration-300">
-                        {company.company}
-                      </h2>
-                      <span className="px-2.5 py-0.5 text-xs bg-foreground/5 border border-border rounded-full">
-                        {company.type}
-                      </span>
-                    </div>
-
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Briefcase className="w-3.5 h-3.5 flex-shrink-0" />
-                      <span>{company.position}</span>
-                    </div>
-
-                    <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-                      <div className="flex items-center gap-1.5">
-                        <MapPin className="w-3.5 h-3.5" />
-                        <span>{company.location}</span>
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <Calendar className="w-3.5 h-3.5" />
-                        <span>{company.startDate} — {company.endDate}</span>
-                      </div>
-                    </div>
-
-                    <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-                      {company.shortDescription}
-                    </p>
-
-                    {company.technologies.length > 0 && (
-                      <div className="pt-0.5">
-                        <TechnologyGroups technologies={company.technologies} compact maxItems={6} locale="en" />
-                      </div>
-                    )}
-                  </div>
-
-                  <Link href={`/en/projects`} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 self-end sm:self-center flex-shrink-0">
-                    <span>{t("see-related-projects")}</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
+                <h2 className="font-editorial text-2xl transition-colors duration-300 group-hover:text-muted-foreground">
+                  {company.company}
+                  {company.position && <span className="text-muted-foreground"> · {company.position}</span>}
+                </h2>
+                <p className="font-editorial max-w-xl text-lg leading-[1.65] text-muted-foreground">{company.shortDescription}</p>
               </div>
-            </div>
+              <span aria-hidden="true" className="text-muted-foreground transition-transform duration-300 group-hover:translate-x-1 group-hover:text-foreground">→</span>
+            </Link>
           ))}
         </div>
       <ExtraBlocks page="/en/work" />
         </main>
 
       <footer className="border-t border-border py-12">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8">
+        <div className="max-w-3xl mx-auto px-6 sm:px-8">
           <div className="text-center text-sm text-muted-foreground">{t("2025-gabriel-bigot-ai-automation-developer")}</div>
         </div>
       </footer>

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react"
 import Link from "next/link"
-import { ArrowLeft, ArrowRight } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 import { SCAR_PHOTO, SCAR_STAPLES } from "@/lib/scar-trace"
 
 type Kind = "origin" | "rise" | "peak" | "rupture" | "rebuild"
@@ -406,12 +406,6 @@ export default function ScarTimeline() {
                 </div>
                 <h2 className="font-editorial mt-3 text-2xl sm:text-3xl leading-tight">{current.title}</h2>
                 <p className="mt-3 text-muted-foreground leading-relaxed">{current.text}</p>
-
-                {active === N - 1 && (
-                  <Link href="/about" className="mt-5 inline-flex items-center gap-2 text-sm hover:gap-3 transition-all duration-300">
-                    Lire l&apos;histoire complète <ArrowRight className="w-4 h-4" />
-                  </Link>
-                )}
 
                 <div className="mt-6 flex items-center gap-1.5" role="tablist" aria-label="Jalons">
                   {MILESTONES.map((m, i) => (
