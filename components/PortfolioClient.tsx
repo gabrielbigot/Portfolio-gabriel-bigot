@@ -128,7 +128,8 @@ export default function PortfolioClient({
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in-up")
+            // le hero est déjà visible au chargement : pas de fondu, sinon il clignote
+            if (entry.target.id !== "intro") entry.target.classList.add("animate-fade-in-up")
             setActiveSection(entry.target.id)
           }
         })
@@ -218,7 +219,7 @@ export default function PortfolioClient({
         </div>
       </nav>
 
-      <AsciiField className="absolute inset-x-0 top-0 z-0 h-screen w-full opacity-[0.16] sm:opacity-[0.3]" />
+      <AsciiField className="fixed inset-0 z-0 opacity-[0.16] sm:opacity-[0.3]" />
 
       <main className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
         <header
@@ -244,7 +245,7 @@ export default function PortfolioClient({
               </p>
 
               {personalInfo.intro && (
-                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">{personalInfo.intro}</p>
+                <p className="font-editorial text-lg sm:text-xl text-muted-foreground leading-[1.65]">{personalInfo.intro}</p>
               )}
 
               <p className="text-sm text-muted-foreground leading-relaxed">
@@ -294,7 +295,7 @@ export default function PortfolioClient({
               <div className="lg:col-span-5 space-y-5">
                 <div className="text-xs font-mono tracking-[0.18em] text-accent uppercase">{t("01-journal")}</div>
                 <h2 className="font-editorial text-4xl sm:text-5xl leading-[1.02]">{copy.essaysTitle}</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">{copy.essaysIntro}</p>
+                <p className="font-editorial text-xl text-muted-foreground leading-[1.65]">{copy.essaysIntro}</p>
                 <Link href="/articles" className="inline-flex items-center gap-2 border-b border-accent pb-1 text-sm text-foreground hover:text-accent transition-colors">
                   {copy.allEssays} <span aria-hidden="true">→</span>
                 </Link>
@@ -302,7 +303,7 @@ export default function PortfolioClient({
               <Link href="/articles" className="group lg:col-span-7 block lg:border-l lg:border-border lg:pl-12">
                 <div className="text-xs font-mono tracking-[0.16em] text-muted-foreground uppercase mb-5">{copy.latestEssay} / 2025</div>
                 <h3 className="font-editorial text-3xl sm:text-4xl leading-tight group-hover:text-accent transition-colors duration-300">{t("l-ia-ne-doit-pas-penser")}</h3>
-                <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">{t("comment-construire-des-outils-qui-augmentent")}</p>
+                <p className="font-editorial mt-5 max-w-xl text-xl leading-[1.65] text-muted-foreground">{t("comment-construire-des-outils-qui-augmentent")}</p>
                 <div className="mt-8 flex items-center gap-3 text-sm text-foreground group-hover:text-accent transition-colors">
                   <span>{copy.readEssay}</span><span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
                 </div>
@@ -346,7 +347,7 @@ export default function PortfolioClient({
                       {job.position}
                       <span className="text-muted-foreground"> · {job.company}</span>
                     </h3>
-                    <p className="max-w-xl leading-relaxed text-muted-foreground">{job.description}</p>
+                    <p className="font-editorial max-w-xl text-lg leading-[1.65] text-muted-foreground">{job.description}</p>
                   </div>
                 </div>
               ))}
@@ -395,7 +396,7 @@ export default function PortfolioClient({
                       <h4 className="font-editorial text-xl transition-colors duration-300 group-hover:text-muted-foreground">
                         {project.title}
                       </h4>
-                      <p className="max-w-xl leading-relaxed text-muted-foreground">{project.shortDescription}</p>
+                      <p className="font-editorial max-w-xl text-lg leading-[1.65] text-muted-foreground">{project.shortDescription}</p>
                     </div>
                     <span aria-hidden="true" className="text-muted-foreground transition-transform duration-300 group-hover:translate-x-1 group-hover:text-foreground">→</span>
                   </Link>

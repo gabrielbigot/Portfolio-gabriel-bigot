@@ -2,6 +2,7 @@ import { stripDeep } from "@/lib/studio/stega"
 import type React from "react"
 import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
+import { Newsreader } from "next/font/google"
 import "./globals.css"
 import { getSiteMetadata } from "@/lib/portfolio-data"
 import { getComponentStrings } from "@/lib/strings"
@@ -11,6 +12,8 @@ import LayoutRules from "@/components/blocks/LayoutRules"
 import { StringsProvider } from "@/components/strings-provider"
 import { studioEnabled } from "@/lib/studio/guard"
 import InlineEditorLoader from "@/components/studio/InlineEditorLoader"
+
+const newsreader = Newsreader({ subsets: ["latin"], variable: "--font-newsreader", display: "swap", style: ["normal", "italic"] })
 
 export async function generateMetadata(): Promise<Metadata> {
   const siteMetadata = await getSiteMetadata()
@@ -72,7 +75,7 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="fr" className={GeistSans.variable}>
+    <html lang="fr" className={`${GeistSans.variable} ${newsreader.variable}`}>
       <head><style id="site-theme" dangerouslySetInnerHTML={{ __html: themeCss((await getContent("theme")) as any) }} /></head>
       <body className="font-sans antialiased"><StringsProvider dict={await getComponentStrings()}><LayoutRules all={((await getContent("layout")) as any).rules} />{children}</StringsProvider>{studioEnabled() && <InlineEditorLoader />}</body>
     </html>

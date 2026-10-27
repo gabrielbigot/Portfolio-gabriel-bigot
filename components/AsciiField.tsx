@@ -21,6 +21,8 @@ const K = 0.062
 // fondu vers le bas, et plus discret à gauche, là où se trouve le texte
 const MASK = "linear-gradient(to bottom, black 45%, transparent 100%), linear-gradient(to right, rgba(0,0,0,0.18), black 70%)"
 
+const COLONY = { feed: 0.054, k: 0.062 }
+
 type Field = { cols: number; rows: number; u: Float32Array; v: Float32Array; nu: Float32Array; nv: Float32Array }
 
 function createField(cols: number, rows: number): Field {
@@ -95,13 +97,25 @@ export default function AsciiField({ className = "" }: { className?: string }) {
     let field = createField(1, 1)
     let levels = new Uint8Array(0)
     let raf = 0
-    let visible = true
     let frame = 0
     let color = "#000"
     let lastTick = 0
+    let heroProgress = 0
+    let lastW = 0
+    let lastH = 0
+    let last: { x: number; y: number } | null = null
+
+    const onScroll = () => {
+      heroProgress = Math.min(1, window.scrollY / window.innerHeight)
+      canvas.style.opacity = String(1 - 0.65 * heroProgress)
+    }
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect()
+      // la barre d'adresse mobile change la hauteur au scroll : on ne réinitialise pas pour si peu
+      if (lastW && rect.width === lastW && Math.abs(rect.height - lastH) < 120) return
+      lastW = rect.width
+      lastH = rect.height
       const dpr = Math.min(window.devicePixelRatio || 1, 2)
       canvas.width = Math.round(rect.width * dpr)
       canvas.height = Math.round(rect.height * dpr)
@@ -110,7 +124,7 @@ export default function AsciiField({ className = "" }: { className?: string }) {
       const rows = Math.max(8, Math.floor(rect.height / CELL_H))
       field = createField(cols, rows)
       levels = new Uint8Array(cols * rows)
-      for (let i = 0; i < 260; i++) step(field, 0.055)
+      for (let i = 0; i < 260; i++) step(field, COLONY.feed)
       draw()
     }
 
@@ -143,10 +157,10 @@ export default function AsciiField({ className = "" }: { className?: string }) {
 
     const tick = (now: number) => {
       raf = requestAnimationFrame(tick)
-      if (!visible || document.hidden || now - lastTick < 50) return
+      if (document.hidden || now - lastTick < 50) return
       lastTick = now
       frame++
-      const feed = 0.054 + 0.004 * Math.sin(frame / 160)
+      const feed = COLONY.feed + 0.003 * Math.sin(frame / 160)
       for (let i = 0; i < 5; i++) step(field, feed)
       if (frame % 120 === 0) {
         let sum = 0
@@ -156,14 +170,20 @@ export default function AsciiField({ className = "" }: { className?: string }) {
       draw()
     }
 
+    // traînée : on ensemence le long du trajet du curseur, la colonie pousse ensuite toute seule (accueil uniquement)
     const onPointer = (event: PointerEvent) => {
-      if (!visible) return
+      if (heroProgress > 0.8) {
+        last = null
+        return
+      }
       const rect = canvas.getBoundingClientRect()
-      const x = event.clientX - rect.left
-      const y = event.clientY - rect.top
-      if (x < 0 || y < 0 || x > rect.width || y > rect.height) return
-      const offX = (rect.width - field.cols * CELL_W) / 2
-      seed(field, (x - offX) / CELL_W, y / CELL_H, 1.6)
+      const x = (event.clientX - rect.left - (rect.width - field.cols * CELL_W) / 2) / CELL_W
+      const y = (event.clientY - rect.top) / CELL_H
+      const from = last ?? { x, y }
+      const dist = Math.hypot(x - from.x, y - from.y)
+      const n = Math.max(1, Math.ceil(dist / 1.5))
+      for (let i = 1; i <= n; i++) seed(field, from.x + ((x - from.x) * i) / n, from.y + ((y - from.y) * i) / n, 1.4)
+      last = { x, y }
     }
 
     resize()
@@ -173,9 +193,9 @@ export default function AsciiField({ className = "" }: { className?: string }) {
       resizeTimer = window.setTimeout(resize, 200)
     }
     window.addEventListener("resize", onResize)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    onScroll()
 
-    const observer = new IntersectionObserver(([entry]) => (visible = entry.isIntersecting))
-    observer.observe(canvas)
 
     if (animated) {
       window.addEventListener("pointermove", onPointer, { passive: true })
@@ -187,21 +207,22 @@ export default function AsciiField({ className = "" }: { className?: string }) {
       window.clearTimeout(resizeTimer)
       window.removeEventListener("resize", onResize)
       window.removeEventListener("pointermove", onPointer)
-      observer.disconnect()
+      window.removeEventListener("scroll", onScroll)
     }
   }, [])
 
   return (
-    <canvas
-      ref={canvasRef}
-      aria-hidden="true"
-      className={`pointer-events-none text-foreground ${className}`}
-      style={{
-        maskImage: MASK,
-        WebkitMaskImage: MASK,
-        maskComposite: "intersect",
-        WebkitMaskComposite: "source-in",
-      }}
-    />
+    <div aria-hidden="true" className={`pointer-events-none ${className}`}>
+      <canvas
+        ref={canvasRef}
+        className="h-full w-full text-foreground"
+        style={{
+          maskImage: MASK,
+          WebkitMaskImage: MASK,
+          maskComposite: "intersect",
+          WebkitMaskComposite: "source-in",
+        }}
+      />
+    </div>
   )
 }
