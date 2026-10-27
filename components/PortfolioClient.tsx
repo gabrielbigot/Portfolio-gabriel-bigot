@@ -179,7 +179,7 @@ export default function PortfolioClient({
       <Link
         href={copy.languageHref}
         onClick={handleLanguageSwitch}
-        className="fixed right-6 top-6 z-50 inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-3 py-1.5 text-xs font-mono text-muted-foreground backdrop-blur-lg transition-colors duration-300 hover:border-muted-foreground/50 hover:text-foreground"
+        className="fixed right-6 top-6 z-50 inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-foreground/[0.06] backdrop-blur-xl backdrop-saturate-150 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] px-3 py-1.5 text-xs font-mono text-muted-foreground transition-colors duration-300 hover:border-foreground/30 hover:text-foreground"
         aria-label={copy.languageLabel}
       >
         <span>{locale.toUpperCase()}</span>
@@ -203,7 +203,7 @@ export default function PortfolioClient({
       )}
 
       <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-10 hidden lg:block">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 rounded-full border border-foreground/15 bg-foreground/[0.06] backdrop-blur-xl backdrop-saturate-150 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] px-2.5 py-4">
           {["intro", "essays", "work", "skills", "connect"].map((section) => (
             <button
               key={section}
@@ -217,7 +217,7 @@ export default function PortfolioClient({
         </div>
       </nav>
 
-      <AsciiField className="absolute inset-x-0 top-0 z-0 h-screen w-full opacity-[0.3]" />
+      <AsciiField className="absolute inset-x-0 top-0 z-0 h-screen w-full opacity-[0.16] sm:opacity-[0.3]" />
 
       <main className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
         <header
