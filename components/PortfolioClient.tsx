@@ -1,11 +1,13 @@
 "use client"
 
+import { useT } from "@/components/strings-provider"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import type { MouseEvent } from "react"
 import { useEffect, useRef, useState } from "react"
 import ContactForm from "@/components/contact-form"
 import TechnologyGroups from "@/components/TechnologyGroups"
+import AsciiField from "@/components/AsciiField"
 
 interface Project {
   id: string
@@ -85,86 +87,12 @@ interface PortfolioClientProps {
   skills: Skills
   projects: Project[]
   locale?: "fr" | "en"
+  /** textes d'interface (content/site/ui-portfolio.json) */
+  ui: Record<"fr" | "en", any>
+  /** sections ajoutées (content/site/pages.json) */
+  extra?: React.ReactNode
 }
 
-const portfolioCopy = {
-  fr: {
-    current: "ACTUELLEMENT",
-    present: "Présent",
-    expertise: "EXPERTISE",
-    expertiseItems: ["Python", "IA & LLM", "Flask", "Excel/VBA", "Automatisation"],
-    projectsCta: "Voir mes projets",
-    aboutCta: "Mon histoire",
-    usesCta: "Ce que j'utilise",
-    essaysCta: "Mes essais",
-    contactCta: "Contact",
-    workTitle: "Expériences & Projets",
-    viewAllProjects: "VOIR TOUS LES PROJETS",
-    exploreWork: "Explorer mes expériences en détail",
-    featuredProjects: "Projets d'automatisation phares",
-    essaysTitle: "Essais & réflexions",
-    essaysIntro: "Des textes pour penser l'IA au-delà des outils : travail, apprentissage, économie et responsabilité.",
-    latestEssay: "Dernier essai",
-    readEssay: "Lire l'essai",
-    allEssays: "Voir tous les essais",
-    viewAll: "Voir tout →",
-    discoverProject: "Découvrir le projet",
-    skillsTitle: "Compétences Techniques",
-    softSkills: "SOFT SKILLS",
-    contactTitle: "Contactez-moi",
-    contactIntro: "Toujours intéressé par de nouveaux projets d'automatisation, des stages en IA, et des discussions sur la transformation digitale des PME.",
-    contactForm: "FORMULAIRE DE CONTACT",
-    directContact: "CONTACT DIRECT",
-    phone: "Téléphone",
-    socialLinks: "LIENS SOCIAUX",
-    downloadCv: "Télécharger mon CV",
-    footerRights: "Tous droits réservés.",
-    footerRole: "Développeur d'Automatisations IA • ESDHEM Lille",
-    languageLabel: "Version anglaise",
-    languageHref: "/en/portfolio",
-    languageCode: "EN",
-    languageTransition: "Translating portfolio to English",
-  },
-  en: {
-    current: "CURRENTLY",
-    present: "Present",
-    expertise: "EXPERTISE",
-    expertiseItems: ["Python", "AI & LLMs", "Flask", "Excel/VBA", "Automation"],
-    projectsCta: "View my projects",
-    aboutCta: "My story",
-    usesCta: "My tools",
-    essaysCta: "My essays",
-    contactCta: "Contact",
-    workTitle: "Experience & Projects",
-    viewAllProjects: "VIEW ALL PROJECTS",
-    exploreWork: "Explore my experience in detail",
-    featuredProjects: "Featured automation projects",
-    essaysTitle: "Essays & reflections",
-    essaysIntro: "Writing that considers AI beyond tools: work, learning, economics, and responsibility.",
-    latestEssay: "Latest essay",
-    readEssay: "Read essay",
-    allEssays: "View all essays",
-    viewAll: "View all →",
-    discoverProject: "Discover the project",
-    skillsTitle: "Technical Skills",
-    softSkills: "SOFT SKILLS",
-    contactTitle: "Contact me",
-    contactIntro: "Always interested in new automation projects, AI internships, and conversations about digital transformation for SMEs.",
-    contactForm: "CONTACT FORM",
-    directContact: "DIRECT CONTACT",
-    phone: "Phone",
-    socialLinks: "SOCIAL LINKS",
-    downloadCv: "Download my CV",
-    footerRights: "All rights reserved.",
-    footerRole: "AI Automation Developer • ESDHEM Lille",
-    languageLabel: "Version française",
-    languageHref: "/portfolio",
-    languageCode: "FR",
-    languageTransition: "Retraduction du portfolio en français",
-  },
-}
-
-// Utility function to extract year from date string
 const extractYear = (dateString: string): string => {
   // Handle formats like "Juillet 2025", "2025", "Septembre 2025", etc.
   const yearMatch = dateString.match(/\d{4}/)
@@ -201,9 +129,12 @@ export default function PortfolioClient({
   skills,
   projects,
   locale = "fr",
+  ui,
+  extra,
 }: PortfolioClientProps) {
+  const t = useT("component.PortfolioClient")
   const router = useRouter()
-  const copy = portfolioCopy[locale]
+  const copy = ui[locale]
   const [isDark, setIsDark] = useState(true)
   const [activeSection, setActiveSection] = useState("")
   const [isSwitchingLanguage, setIsSwitchingLanguage] = useState(false)
@@ -285,7 +216,7 @@ export default function PortfolioClient({
           <div className="w-[min(92vw,32rem)] rounded-lg border border-border bg-background/90 p-5 shadow-2xl">
             <div className="mb-3 flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-muted-foreground">
               <span className="h-2 w-2 rounded-full bg-amber-500 animate-pulse" />
-              <span>{locale === "fr" ? "AI translation" : "Traduction IA"}</span>
+              <span>{locale === "fr" ? t("ai-translation") : t("traduction-ia")}</span>
             </div>
             <div className="min-h-8 text-lg text-foreground">
               {streamedLanguageText}
@@ -310,7 +241,9 @@ export default function PortfolioClient({
         </div>
       </nav>
 
-      <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
+      <AsciiField className="absolute inset-x-0 top-0 z-0 h-screen w-full opacity-[0.3]" />
+
+      <main className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
         <header
           id="intro"
           ref={(el) => {
@@ -318,97 +251,53 @@ export default function PortfolioClient({
           }}
           className="min-h-screen flex items-center"
         >
-          <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full">
-            <div className="lg:col-span-3 space-y-6 sm:space-y-8">
-              <div className="space-y-3 sm:space-y-2">
-                <div className="text-sm text-muted-foreground font-mono tracking-wider">PORTFOLIO / 2026</div>
-                <h1 className="font-editorial text-5xl sm:text-6xl lg:text-7xl leading-[0.95]">
-                  {personalInfo.firstName}
-                  <br />
-                  <span className="text-muted-foreground">{personalInfo.lastName}</span>
-                </h1>
-              </div>
+          <div className="w-full max-w-xl space-y-8 sm:space-y-10">
+            <div className="space-y-3 sm:space-y-2">
+              <div className="text-sm text-muted-foreground font-mono tracking-wider">{t("portfolio-2026")}</div>
+              <h1 className="font-editorial text-5xl sm:text-6xl lg:text-7xl leading-[0.95]">
+                {personalInfo.firstName}
+                <br />
+                <span className="text-muted-foreground">{personalInfo.lastName}</span>
+              </h1>
+            </div>
 
-              <div className="space-y-6 max-w-md">
-                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                  {personalInfo.tagline}
-                </p>
+            <div className="space-y-5">
+              <p className="font-editorial text-xl sm:text-2xl text-foreground/85 leading-snug">
+                {personalInfo.tagline}
+              </p>
 
-                <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
-                    {personalInfo.availability}
-                  </div>
-                  <div>{personalInfo.location}</div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {personalInfo.currentRole.position} @ {personalInfo.currentRole.company} · {personalInfo.currentRole.startDate} — {copy.present}
+                <br />
+                {copy.expertiseItems.join(" · ")}
+              </p>
+
+              <div className="flex flex-col sm:flex-row sm:items-center gap-x-5 gap-y-1 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-amber-500 rounded-full"></div>
+                  {personalInfo.availability}
                 </div>
-
-                <div className="flex flex-wrap gap-3 pt-4">
-                  <Link
-                    href={`${routePrefix}/projects`}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-lg hover:bg-foreground/90 transition-all duration-300 font-medium"
-                  >
-                    <span>{copy.projectsCta}</span>
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </Link>
-                  <Link
-                    href={`${routePrefix}/about`}
-                    className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300"
-                  >
-                    <span>{copy.aboutCta}</span>
-                  </Link>
-                  <Link
-                    href={`${routePrefix}/uses`}
-                    className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300"
-                  >
-                    <span>{copy.usesCta}</span>
-                  </Link>
-                  <Link
-                    href="/blog"
-                    className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-accent hover:bg-accent/10 transition-all duration-300"
-                  >
-                    <span>{copy.essaysCta}</span>
-                  </Link>
-                  <Link
-                    href="#connect"
-                    className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300"
-                  >
-                    <span>{copy.contactCta}</span>
-                  </Link>
-                </div>
+                <div>{personalInfo.location}</div>
               </div>
             </div>
 
-            <div className="lg:col-span-2 flex flex-col justify-end space-y-6 sm:space-y-8 mt-8 lg:mt-0">
-              <div className="space-y-4">
-                <div className="text-sm text-muted-foreground font-mono">{copy.current}</div>
-                <div className="space-y-2">
-                  <div className="text-foreground">{personalInfo.currentRole.position}</div>
-                  <div className="text-muted-foreground">@ {personalInfo.currentRole.company}</div>
-                  <div className="text-xs text-muted-foreground">{personalInfo.currentRole.startDate} — {copy.present}</div>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="text-sm text-muted-foreground font-mono">{copy.expertise}</div>
-                <div className="flex flex-wrap gap-2">
-                  {copy.expertiseItems.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1 text-xs border border-border rounded-full hover:border-muted-foreground/50 transition-colors duration-300"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <nav className="flex flex-wrap gap-x-6 gap-y-2 pt-2 text-base">
+              {[
+                { href: "/articles", label: copy.essaysCta },
+                { href: `${routePrefix}/projects`, label: copy.projectsCta },
+                { href: `${routePrefix}/about`, label: copy.aboutCta },
+                { href: `${routePrefix}/uses`, label: copy.usesCta },
+                { href: "#connect", label: copy.contactCta },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="underline decoration-border underline-offset-[6px] transition-colors duration-300 hover:decoration-foreground"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
           </div>
         </header>
 
@@ -622,21 +511,17 @@ export default function PortfolioClient({
           <div className="border-y border-border py-12 sm:py-16">
             <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
               <div className="lg:col-span-5 space-y-5">
-                <div className="text-xs font-mono tracking-[0.18em] text-accent uppercase">01 / Journal</div>
+                <div className="text-xs font-mono tracking-[0.18em] text-accent uppercase">{t("01-journal")}</div>
                 <h2 className="font-editorial text-4xl sm:text-5xl leading-[1.02]">{copy.essaysTitle}</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">{copy.essaysIntro}</p>
-                <Link href="/blog" className="inline-flex items-center gap-2 border-b border-accent pb-1 text-sm text-foreground hover:text-accent transition-colors">
+                <Link href="/articles" className="inline-flex items-center gap-2 border-b border-accent pb-1 text-sm text-foreground hover:text-accent transition-colors">
                   {copy.allEssays} <span aria-hidden="true">→</span>
                 </Link>
               </div>
-              <Link href="/blog" className="group lg:col-span-7 block lg:border-l lg:border-border lg:pl-12">
+              <Link href="/articles" className="group lg:col-span-7 block lg:border-l lg:border-border lg:pl-12">
                 <div className="text-xs font-mono tracking-[0.16em] text-muted-foreground uppercase mb-5">{copy.latestEssay} / 2025</div>
-                <h3 className="font-editorial text-3xl sm:text-4xl leading-tight group-hover:text-accent transition-colors duration-300">
-                  L&apos;IA ne doit pas penser à notre place.
-                </h3>
-                <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                  Comment construire des outils qui augmentent l&apos;effort humain, au lieu de le rendre invisible ?
-                </p>
+                <h3 className="font-editorial text-3xl sm:text-4xl leading-tight group-hover:text-accent transition-colors duration-300">{t("l-ia-ne-doit-pas-penser")}</h3>
+                <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">{t("comment-construire-des-outils-qui-augmentent")}</p>
                 <div className="mt-8 flex items-center gap-3 text-sm text-foreground group-hover:text-accent transition-colors">
                   <span>{copy.readEssay}</span><span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
                 </div>
@@ -745,7 +630,7 @@ export default function PortfolioClient({
                         />
                       </svg>
                       <div>
-                        <div className="text-sm font-medium">Email</div>
+                        <div className="text-sm font-medium">{t("email")}</div>
                         <div className="text-sm break-all">{personalInfo.email}</div>
                       </div>
                     </Link>
@@ -812,7 +697,7 @@ export default function PortfolioClient({
                     href={personalInfo.cvUrl || "/cv-gabriel-bigot.pdf"}
                     download={!personalInfo.cvUrl?.startsWith("http")}
                     target={personalInfo.cvUrl?.startsWith("http") ? "_blank" : undefined}
-                    rel={personalInfo.cvUrl?.startsWith("http") ? "noopener noreferrer" : undefined}
+                    rel={personalInfo.cvUrl?.startsWith("http") ? t("noopener-noreferrer") : undefined}
                     className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300 hover:shadow-sm"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -842,7 +727,7 @@ export default function PortfolioClient({
               <button
                 onClick={toggleTheme}
                 className="group p-3 rounded-lg border border-border hover:border-muted-foreground/50 transition-all duration-300"
-                aria-label="Toggle theme"
+                aria-label={t("toggle-theme")}
               >
                 {isDark ? (
                   <svg
@@ -885,6 +770,7 @@ export default function PortfolioClient({
             </div>
           </div>
         </footer>
+        {extra}
       </main>
 
       <div className="fixed bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none"></div>

@@ -1,0 +1,56 @@
+[
+  {
+    "year": "2026",
+    "title": "Montée en Élite avec le TAC",
+    "description": "1ère place de Nationale 1, 16 victoires en 18 matchs et 100 buts inscrits",
+    "type": "achievement"
+  },
+  {
+    "year": "2026",
+    "title": "Objectif SKEMA Business School",
+    "description": "Concours et spécialisation en IA & Business Transformation",
+    "type": "education"
+  },
+  {
+    "year": "2025",
+    "title": "Développeur d'Automatisations - BIGOT Matériaux",
+    "description": "Applications web, automatisations comptables et RH",
+    "type": "work"
+  },
+  {
+    "year": "2023",
+    "title": "ESDHEM - Licence Éco-Gestion",
+    "description": "Début des études supérieures à Lille",
+    "type": "education"
+  },
+  {
+    "year": "2022-2023",
+    "title": "Opération, rééducation et retour",
+    "description": "Blessures au genou, complications, reprise progressive et reconstruction de la confiance",
+    "type": "life"
+  },
+  {
+    "year": "2022-2023",
+    "title": "Découverte Passion IA",
+    "description": "Bascule vers l'IA et l'automatisation, veille et prototypage",
+    "type": "milestone"
+  },
+  {
+    "year": "2020-2023",
+    "title": "Lycée La Malassise",
+    "description": "Baccalauréat malgré complications médicales majeures",
+    "type": "education"
+  },
+  {
+    "year": "2008",
+    "title": "Débuts Hockey sur Gazon",
+    "description": "Premières crosses au TAC Hockey, Le Touquet",
+    "type": "life"
+  },
+  {
+    "year": "2005",
+    "title": "Naissance",
+    "description": "Boulogne-sur-Mer",
+    "type": "life"
+  }
+]

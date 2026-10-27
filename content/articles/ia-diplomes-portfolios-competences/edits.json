@@ -1,0 +1,547 @@
+{
+ "pages": {
+  "": {
+   "order": [
+    "x-intro",
+    "x-ce-que-j-observe-en-clas-1",
+    "x-les-donnees-confirment-c-2",
+    "x-l-impact-massif-sur-l-em-3",
+    "x-le-declin-cognitif-lie-a-4",
+    "x-la-mort-du-diplome-comme-5",
+    "x-pourquoi-les-diplomes-va-6",
+    "x-ce-qui-va-remplacer-le-d-7",
+    "x-mais-attendez-on-peut-tr-8",
+    "x-le-paradoxe-l-ia-revele--9",
+    "x-ma-strategie-personnelle-10",
+    "x-l-education-va-devoir-se-11",
+    "x-une-question-qui-reste-e-12",
+    "x-ma-conviction-finale-13"
+   ],
+   "hidden": [],
+   "added": [
+    {
+     "id": "x-intro",
+     "kind": "blocks",
+     "title": "Introduction",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Il y a un truc qui me tracasse vraiment depuis quelques mois. Un truc que j'observe tous les jours en classe et qui me fait me poser des questions sur l'avenir de l'éducation."
+      },
+      {
+       "type": "p",
+       "text": "Mes camarades deviennent de plus en plus dépendants de l'IA, font de moins en moins d'efforts... et pourtant, ça n'empêche pas d'avoir le diplôme. Parfois, ça augmente même leurs chances."
+      },
+      {
+       "type": "p",
+       "text": "Alors je me demande : est-ce que finalement, les diplômes et l'école ne vont plus avoir beaucoup de valeur au final ?"
+      }
+     ]
+    },
+    {
+     "id": "x-ce-que-j-observe-en-clas-1",
+     "kind": "blocks",
+     "title": "Ce que j'observe en classe : un phénomène inquiétant",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Depuis trois ans que je suis à SKEMA, j'ai vu une transformation radicale. ChatGPT arrive fin 2022, et dès 2023, tout change."
+      },
+      {
+       "type": "p",
+       "text": "Mes camarades utilisent l'IA pour tout :"
+      },
+      {
+       "type": "ul",
+       "items": [
+        "Les devoirs écrits ? ChatGPT",
+        "Les analyses de cas ? ChatGPT",
+        "Les présentations ? ChatGPT",
+        "Même les révisions d'examens ? ChatGPT qui résume les cours"
+       ]
+      },
+      {
+       "type": "p",
+       "text": "Le résultat ? Ils développent beaucoup moins de compétences réelles. Leur capacité d'analyse diminue. Leur esprit critique s'atrophie. Leur créativité s'évapore."
+      },
+      {
+       "type": "p",
+       "text": "Mais voilà le truc le plus troublant : ça ne change rien à leur capacité d'obtenir le diplôme. Voire même, parfois, ça améliore leurs notes."
+      },
+      {
+       "type": "p",
+       "text": "Et ça me pose une question fondamentale : si on peut avoir le diplôme sans les compétences, à quoi sert le diplôme ?"
+      }
+     ]
+    },
+    {
+     "id": "x-les-donnees-confirment-c-2",
+     "kind": "blocks",
+     "title": "Les données confirment : ce n'est pas qu'à SKEMA",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "J'ai creusé le sujet, et ce que j'observe n'est pas un cas isolé. C'est un phénomène généralisé."
+      }
+     ]
+    },
+    {
+     "id": "x-l-impact-massif-sur-l-em-3",
+     "kind": "blocks",
+     "title": "L'impact massif sur l'emploi des jeunes diplômés",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Les chiffres sont brutaux :"
+      },
+      {
+       "type": "ul",
+       "items": [
+        "En Inde, le recrutement de jeunes diplômés dans les grandes entreprises IT a chuté de 70% entre 2023 et 2024 : de 225 000 à 60 000 recrutements.",
+        "Aux États-Unis, une étude de Stanford montre que les jeunes de 22-25 ans dans les secteurs exposés à l'IA ont significativement moins d'opportunités que leurs aînés.",
+        "Pourquoi ? Parce que les entreprises automatisent les tâches qu'on confiait traditionnellement aux juniors : codage simple, analyse de données de base, rédaction de documents..."
+       ]
+      },
+      {
+       "type": "p",
+       "text": "Résultat : les entreprises privilégient maintenant l'expérience. Elles préfèrent recruter des profils confirmés plutôt que de former des juniors dont les compétences de base ne sont plus nécessaires."
+      }
+     ]
+    },
+    {
+     "id": "x-le-declin-cognitif-lie-a-4",
+     "kind": "blocks",
+     "title": "Le déclin cognitif lié à l'IA",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Un post LinkedIn que j'ai sauvegardé pose la vraie question :"
+      },
+      {
+       "type": "quote",
+       "text": "\"Si l'intelligence artificielle accomplit une tâche mieux et plus vite, à quoi sert d'apprendre à la reproduire manuellement ?\"",
+       "cite": ""
+      },
+      {
+       "type": "p",
+       "text": "La réponse est évidente : l'école a longtemps valorisé la mémorisation, la répétition, la restitution. Or, ces compétences sont désormais automatisables."
+      },
+      {
+       "type": "p",
+       "text": "Les compétences qui comptent maintenant :"
+      },
+      {
+       "type": "ul",
+       "items": [
+        "La curiosité",
+        "La pensée critique",
+        "La collaboration homme-machine",
+        "La créativité authentique"
+       ]
+      },
+      {
+       "type": "p",
+       "text": "Mais voilà le problème : mes camarades ne développent même pas ces compétences-là. Ils utilisent l'IA comme une béquille pour éviter l'effort, pas comme un levier pour aller plus loin."
+      }
+     ]
+    },
+    {
+     "id": "x-la-mort-du-diplome-comme-5",
+     "kind": "blocks",
+     "title": "La mort du diplôme comme signal de compétence",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Alors voici ma conviction : le diplôme est en train de perdre sa valeur comme signal de compétence."
+      }
+     ]
+    },
+    {
+     "id": "x-pourquoi-les-diplomes-va-6",
+     "kind": "blocks",
+     "title": "Pourquoi les diplômes valaient quelque chose",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Historiquement, un diplôme servait de signal au marché du travail. Il disait :"
+      },
+      {
+       "type": "ul",
+       "items": [
+        "\"Cette personne a acquis un socle de connaissances\"",
+        "\"Elle a la capacité de travailler dur et de terminer ce qu'elle commence\"",
+        "\"Elle peut analyser des problèmes complexes\""
+       ]
+      },
+      {
+       "type": "p",
+       "text": "Mais si l'IA permet d'obtenir le diplôme sans développer ces capacités, le signal devient du bruit."
+      },
+      {
+       "type": "p",
+       "text": "Le diplôme ne garantit plus les compétences. Il garantit juste qu'on a su naviguer dans un système qui n'a pas encore compris comment évaluer les compétences réelles à l'ère de l'IA."
+      }
+     ]
+    },
+    {
+     "id": "x-ce-qui-va-remplacer-le-d-7",
+     "kind": "blocks",
+     "title": "Ce qui va remplacer le diplôme",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Je suis convaincu que les entreprises vont devoir refondre complètement leur système de recrutement."
+      },
+      {
+       "type": "p",
+       "text": "Voici vers quoi on se dirige :"
+      },
+      {
+       "type": "p",
+       "text": "1. Le portfolio de projets réels"
+      },
+      {
+       "type": "p",
+       "text": "Au lieu de demander \"Vous avez quel diplôme ?\", les recruteurs vont demander \"Montrez-moi ce que vous avez construit.\""
+      },
+      {
+       "type": "p",
+       "text": "Un portfolio qui montre :"
+      },
+      {
+       "type": "ul",
+       "items": [
+        "Des projets concrets que vous avez menés",
+        "Les problèmes que vous avez résolus",
+        "La valeur que vous avez créée",
+        "Comment vous avez utilisé les outils (y compris l'IA) pour y arriver"
+       ]
+      },
+      {
+       "type": "p",
+       "text": "C'est exactement ce que je fais avec MoveThink. Je construis quelque chose de réel, qui crée de la valeur mesurable. Ça vaut infiniment plus qu'une bonne moyenne dans des devoirs rédigés par ChatGPT."
+      },
+      {
+       "type": "p",
+       "text": "2. Les avis et recommandations professionnels"
+      },
+      {
+       "type": "p",
+       "text": "L'équivalent des notes Google pour les restaurants, mais pour les professionnels."
+      },
+      {
+       "type": "p",
+       "text": "Imaginez :"
+      },
+      {
+       "type": "ul",
+       "items": [
+        "Vous travaillez sur un projet",
+        "Les personnes avec qui vous collaborez (tuteurs, clients, collègues) laissent des avis détaillés sur vos compétences réelles",
+        "Ces avis sont vérifiés, datés, contextualisés"
+       ]
+      },
+      {
+       "type": "p",
+       "text": "C'est beaucoup plus difficile à tricher qu'un diplôme obtenu avec l'aide de ChatGPT."
+      },
+      {
+       "type": "p",
+       "text": "3. Les évaluations de compétences en situation réelle"
+      },
+      {
+       "type": "p",
+       "text": "Plutôt que d'évaluer ce que vous savez en théorie, on va évaluer ce que vous savez faire en pratique."
+      },
+      {
+       "type": "ul",
+       "items": [
+        "Des tests de codage en live",
+        "Des études de cas à résoudre en temps limité",
+        "Des projets pilotes courts pour démontrer votre valeur"
+       ]
+      },
+      {
+       "type": "p",
+       "text": "On ne pourra pas se cacher derrière l'IA pour ces évaluations. Soit vous savez faire, soit vous ne savez pas."
+      }
+     ]
+    },
+    {
+     "id": "x-mais-attendez-on-peut-tr-8",
+     "kind": "blocks",
+     "title": "Mais attendez... on peut tricher sur un portfolio aussi ?",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "C'est vrai. On peut mettre n'importe quoi sur un portfolio. Mais c'est là que les avis deviennent cruciaux."
+      },
+      {
+       "type": "p",
+       "text": "Si je dis \"J'ai créé MoveThink, une startup qui conditionne l'accès à l'IA à l'effort physique\", quelqu'un peut vérifier :"
+      },
+      {
+       "type": "ul",
+       "items": [
+        "Est-ce que la startup existe vraiment ?",
+        "Est-ce que Gabriel Bigot en est vraiment le fondateur ?",
+        "Est-ce que le produit fonctionne ?",
+        "Qu'en disent les utilisateurs ?",
+        "Qu'en dit le tuteur de stage qui l'a supervisé ?"
+       ]
+      },
+      {
+       "type": "p",
+       "text": "L'écosystème de vérification fait toute la différence."
+      },
+      {
+       "type": "p",
+       "text": "C'est comme sur Amazon : on peut dire qu'on vend le meilleur produit du monde, mais si les avis disent le contraire, personne n'achète."
+      }
+     ]
+    },
+    {
+     "id": "x-le-paradoxe-l-ia-revele--9",
+     "kind": "blocks",
+     "title": "Le paradoxe : l'IA révèle qui crée vraiment de la valeur",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Voici l'ironie de la situation : l'IA, en rendant les diplômes moins fiables, va forcer le marché à se concentrer sur ce qui compte vraiment : la capacité à créer de la valeur."
+      },
+      {
+       "type": "p",
+       "text": "Dans ma classe, il y a deux types de personnes :"
+      },
+      {
+       "type": "p",
+       "text": "Type 1 : Ceux qui utilisent l'IA pour éviter l'effort"
+      },
+      {
+       "type": "ul",
+       "items": [
+        "Ils demandent à ChatGPT de faire leurs devoirs",
+        "Ils obtiennent de bonnes notes",
+        "Ils auront le diplôme",
+        "Mais ils n'ont développé aucune compétence réelle",
+        "Le marché du travail va les démasquer rapidement"
+       ]
+      },
+      {
+       "type": "p",
+       "text": "Type 2 : Ceux qui utilisent l'IA comme levier"
+      },
+      {
+       "type": "ul",
+       "items": [
+        "Ils utilisent l'IA pour automatiser les tâches répétitives",
+        "Ils se concentrent sur la création de valeur réelle",
+        "Ils construisent des projets, des entreprises, des solutions",
+        "Ils développent des compétences que l'IA ne peut pas remplacer",
+        "Le marché du travail va les valoriser énormément"
+       ]
+      },
+      {
+       "type": "p",
+       "text": "Je fais partie du Type 2. Et je pense que c'est le seul choix viable à long terme."
+      }
+     ]
+    },
+    {
+     "id": "x-ma-strategie-personnelle-10",
+     "kind": "blocks",
+     "title": "Ma stratégie personnelle : construire pendant que les autres trichent",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Pendant que mes camarades utilisent ChatGPT pour avoir 14/20 à un devoir qu'ils ne comprennent pas, moi je fais autre chose :"
+      },
+      {
+       "type": "p",
+       "text": "Je construis MoveThink."
+      },
+      {
+       "type": "ul",
+       "items": [
+        "Une vraie startup, avec une vraie SASU",
+        "Un vrai produit qui crée de la valeur",
+        "Une vraie problématique résolue : conditionner l'accès à l'IA à l'effort",
+        "Un vrai business model : B2C à 15€/mois",
+        "De vraies compétences développées : architecture technique, APIs, n8n, Supabase, stratégie, positionnement"
+       ]
+      },
+      {
+       "type": "p",
+       "text": "Je crée un portfolio concret."
+      },
+      {
+       "type": "ul",
+       "items": [
+        "Des automatisations qui ont généré 85% de gain de temps dans l'entreprise familiale",
+        "Des articles de blog qui démontrent ma capacité d'analyse (comme celui-ci)",
+        "Un projet entrepreneurial qui montre que je sais identifier des problèmes et construire des solutions"
+       ]
+      },
+      {
+       "type": "p",
+       "text": "Je développe des compétences irremplaçables."
+      },
+      {
+       "type": "ul",
+       "items": [
+        "Comprendre où l'IA crée de la valeur",
+        "Savoir déployer des solutions techniques",
+        "Penser de manière critique et stratégique",
+        "Avoir une vision long terme sur l'évolution du marché"
+       ]
+      },
+      {
+       "type": "p",
+       "text": "Quand le marché du travail va réaliser que les diplômes ne veulent plus rien dire, ceux qui auront construit quelque chose de réel auront une longueur d'avance massive."
+      }
+     ]
+    },
+    {
+     "id": "x-l-education-va-devoir-se-11",
+     "kind": "blocks",
+     "title": "L'éducation va devoir se réinventer",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Les écoles et universités vont devoir s'adapter. Elles n'ont pas le choix."
+      },
+      {
+       "type": "p",
+       "text": "Voici ce qui doit changer :"
+      },
+      {
+       "type": "p",
+       "text": "1. Arrêter d'évaluer la restitution, évaluer la création"
+      },
+      {
+       "type": "p",
+       "text": "Plus de devoirs à rendre qu'on peut faire rédiger par ChatGPT. À la place :"
+      },
+      {
+       "type": "ul",
+       "items": [
+        "Des projets réels à construire",
+        "Des problèmes concrets à résoudre",
+        "Des présentations orales où on doit défendre ses idées en live"
+       ]
+      },
+      {
+       "type": "p",
+       "text": "2. Enseigner l'utilisation intelligente de l'IA"
+      },
+      {
+       "type": "p",
+       "text": "Plutôt que d'interdire ChatGPT (ce qui est ridicule et inefficace), apprendre aux étudiants :"
+      },
+      {
+       "type": "ul",
+       "items": [
+        "Comment utiliser l'IA comme levier",
+        "Où l'IA apporte de la valeur et où elle n'en apporte pas",
+        "Comment vérifier et critiquer ce que produit l'IA",
+        "Comment l'intégrer dans un workflow de création de valeur"
+       ]
+      },
+      {
+       "type": "p",
+       "text": "3. Créer des systèmes de validation de compétences réelles"
+      },
+      {
+       "type": "p",
+       "text": "Les écoles doivent devenir des certificateurs de compétences, pas des distributeurs de diplômes."
+      },
+      {
+       "type": "ul",
+       "items": [
+        "Portfolio vérifié de projets menés pendant les études",
+        "Évaluations en situation réelle",
+        "Avis de professionnels qui ont collaboré avec l'étudiant"
+       ]
+      },
+      {
+       "type": "p",
+       "text": "Si les écoles ne font pas cette transition, elles vont devenir obsolètes. Les entreprises arrêteront de faire confiance aux diplômes et créeront leurs propres systèmes d'évaluation."
+      }
+     ]
+    },
+    {
+     "id": "x-une-question-qui-reste-e-12",
+     "kind": "blocks",
+     "title": "Une question qui reste : est-ce partout pareil ?",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "J'observe ça à SKEMA depuis trois ans. Mais est-ce que c'est représentatif de ce qui se passe en France ? En Europe ? Dans le monde ?"
+      },
+      {
+       "type": "p",
+       "text": "La réponse est oui. Les données montrent que c'est un phénomène global :"
+      },
+      {
+       "type": "ul",
+       "items": [
+        "68% des entreprises de plus de 500 employés utilisent déjà l'IA dans le recrutement en 2025",
+        "Les études sur l'impact de l'IA sur l'emploi des jeunes diplômés touchent tous les pays développés",
+        "Les discussions sur \"l'IA dans l'éducation\" explosent partout"
+       ]
+      },
+      {
+       "type": "p",
+       "text": "Ce n'est pas spécifique à ma classe. Ce n'est pas spécifique à mon école. C'est une transformation systémique du rapport entre éducation, compétences et emploi."
+      },
+      {
+       "type": "p",
+       "text": "Certaines écoles s'adaptent plus vite que d'autres. Certains étudiants comprennent l'enjeu plus vite que d'autres. Mais tout le monde est concerné."
+      }
+     ]
+    },
+    {
+     "id": "x-ma-conviction-finale-13",
+     "kind": "blocks",
+     "title": "Ma conviction finale",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Le diplôme n'est pas mort. Mais le diplôme comme unique signal de compétence est en train de mourir."
+      },
+      {
+       "type": "p",
+       "text": "L'IA force une évolution qui était nécessaire depuis longtemps : passer d'un système qui valorise la conformité et la restitution à un système qui valorise la création de valeur et les compétences réelles."
+      },
+      {
+       "type": "p",
+       "text": "Ceux qui l'ont compris ont une opportunité massive. Pendant que la majorité continue à jouer au jeu de \"avoir le diplôme avec le moins d'effort possible\", ceux qui construisent vraiment quelque chose se distinguent de plus en plus."
+      },
+      {
+       "type": "p",
+       "text": "Dans cinq ans, quand un recruteur me demandera ce que j'ai fait pendant mes études, je ne dirai pas \"J'ai eu ma licence avec mention.\""
+      },
+      {
+       "type": "p",
+       "text": "Je dirai : \"J'ai créé MoveThink, une startup qui conditionne l'accès à l'IA à l'effort physique. J'ai automatisé les processus d'une entreprise familiale avec 85% de gain de temps. J'ai écrit des analyses de fond sur l'économie de l'IA. J'ai construit des compétences techniques réelles.\""
+      },
+      {
+       "type": "p",
+       "text": "Et ça, aucun ChatGPT ne peut le faire à ma place."
+      },
+      {
+       "type": "p",
+       "text": "Le futur du travail ne récompensera pas ceux qui ont su naviguer dans un système d'évaluation obsolète. Il récompensera ceux qui ont su créer de la valeur réelle."
+      },
+      {
+       "type": "p",
+       "text": "Et je compte bien en faire partie."
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "figures": {},
+ "evidence": []
+}

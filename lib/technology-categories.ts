@@ -74,7 +74,7 @@ export function groupTechnologies(technologies: TechnologyItem[] = []) {
     }))
 }
 
-export function formatTechnologyGroups(technologies: TechnologyItem[] = [], maxItems = 8) {
+export function formatTechnologyGroups(technologies: TechnologyItem[] = [], maxItems = 8, label: (category: string) => string = (c) => c) {
   const groups = groupTechnologies(technologies)
   let remaining = maxItems
   const parts: string[] = []
@@ -86,7 +86,7 @@ export function formatTechnologyGroups(technologies: TechnologyItem[] = [], maxI
     remaining -= names.length
 
     if (names.length > 0) {
-      parts.push(`${group.category}: ${names.join(", ")}`)
+      parts.push(`${label(group.category)}: ${names.join(", ")}`)
     }
   }
 

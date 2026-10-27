@@ -1,65 +1,29 @@
+import ExtraBlocks from "@/components/blocks/ExtraBlocks"
+import { stripDeep } from "@/lib/studio/stega"
+import { getT } from "@/lib/strings"
+import { getContent } from "@/lib/site-content"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
-const milestones = [
-  {
-    year: "2008",
-    label: "Origin",
-    title: "A hockey stick in my hands",
-    text: "My father had played since childhood, my mother started around her twenties, and when I was three they naturally put a stick in my hands. I did not really choose the sport. It was part of my life before I even understood what that meant.",
-  },
-  {
-    year: "Middle school",
-    label: "Growth",
-    title: "Talent, then responsibility",
-    text: "At first I was a very bad loser. Over time, a natural ability started to show. My teammates chose me as captain unanimously, and I began training outside regular sessions. Work had joined talent.",
-  },
-  {
-    year: "U16",
-    label: "Peak",
-    title: "Feeling unstoppable",
-    text: "During that period I felt I could do almost anything on the field. I had started training with the first team, the dream I had carried since watching them from the sideline as a child.",
-  },
-  {
-    year: "2019",
-    label: "Setback",
-    title: "The first dislocation",
-    text: "A completely ordinary training session changed everything. My knee dislocated while running. The diagnosis came later: hereditary trochlear dysplasia, making my kneecap far less stable than it should be.",
-  },
-  {
-    year: "2022",
-    label: "Setback",
-    title: "Surgery, infection, and recovery",
-    text: "I had surgery during my final year of high school. Three weeks later, an infection led to emergency surgery and three weeks in hospital. I returned to school with treatment, rehab, and classes to catch up at the same time.",
-  },
-  {
-    year: "2023",
-    label: "Rebuild",
-    title: "Rebuilding again",
-    text: "I graduated, joined ESDHEM on SKEMA Business School's Lille campus, and returned to hockey. At the same time, I started building concrete automation and AI projects.",
-  },
-  {
-    year: "2026",
-    label: "Peak",
-    title: "TAC returns to the Elite league",
-    text: "With TAC's first team, the season ended with first place in Nationale 1 and promotion to the highest level of French hockey. Since 2019, the path had been a succession of trials. I needed it to mean something. I did not give up.",
-  },
-]
-
-export const metadata = {
-  title: "My story — Gabriel Bigot",
-  description: "The personal story behind Gabriel Bigot's path: field hockey, injuries, resilience, and AI automation.",
+export async function generateMetadata() {
+  const t = await getT("page.en-about")
+  return stripDeep({
+    title: t("my-story-gabriel-bigot"),
+    description: t("the-personal-story-behind-gabriel-bigot"),
+  })
 }
 
-export default function EnglishAboutPage() {
+export default async function EnglishAboutPage() {
+  const t = await getT("page.en-about")
+  const milestones = await getContent("aboutEn")
   return (
     <div className="min-h-screen bg-background text-foreground">
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 py-4">
           <Link href="/en/portfolio" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300">
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to portfolio</span>
+            <span>{t("back-to-portfolio")}</span>
           </Link>
         </div>
       </nav>
@@ -68,40 +32,31 @@ export default function EnglishAboutPage() {
         <header className="pb-20 sm:pb-28 border-b border-border">
           <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-end">
             <div className="space-y-7">
-              <div className="text-sm text-muted-foreground font-mono tracking-wider">MY STORY</div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight">
-                Hold on, come back, build
-              </h1>
-              <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed">
-                My path is built around three threads: field hockey, injuries, and creating concrete solutions.
-                Sport taught me teamwork. Setbacks taught me resilience. AI and development gave me a way to act.
-              </p>
+              <div className="text-sm text-muted-foreground font-mono tracking-wider">{t("my-story")}</div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight">{t("hold-on-come-back-build")}</h1>
+              <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed">{t("my-path-is-built-around-three")}</p>
             </div>
 
             <figure className="space-y-3">
               <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-foreground/[0.02]">
                 <Image
                   src="/about/story/nationale-1-trophy.jpg"
-                  alt="TAC team lifting the Nationale 1 trophy"
+                  alt={t("tac-team-lifting-the-nationale-1")}
                   fill
                   priority
                   sizes="(min-width: 1024px) 520px, calc(100vw - 48px)"
                   className="object-cover"
                 />
               </div>
-              <figcaption className="text-sm text-muted-foreground">
-                TAC Hockey, 2026. First place in Nationale 1 and promotion to the Elite league.
-              </figcaption>
+              <figcaption className="text-sm text-muted-foreground">{t("tac-hockey-2026-first-place-in")}</figcaption>
             </figure>
           </div>
         </header>
 
         <section className="py-20 sm:py-28 space-y-14">
           <div className="space-y-5">
-            <h2 className="text-3xl sm:text-4xl font-light">Timeline</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              Not linear, not simple. A series of setbacks and returns, each one followed by rebuilding.
-            </p>
+            <h2 className="text-3xl sm:text-4xl font-light">{t("timeline")}</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">{t("not-linear-not-simple-a-series")}</p>
           </div>
 
           <div className="relative">
@@ -133,21 +88,20 @@ export default function EnglishAboutPage() {
         <section className="py-16 sm:py-20 border-t border-border">
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/en/projects" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-foreground text-background rounded-lg hover:bg-foreground/90 transition-all duration-300">
-              <span>View my projects</span>
+              <span>{t("view-my-projects")}</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link href="/en/portfolio#connect" className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300">
-              <span>Contact me</span>
+              <span>{t("contact-me")}</span>
             </Link>
           </div>
         </section>
-      </main>
+      <ExtraBlocks page="/en/about" />
+        </main>
 
       <footer className="border-t border-border py-12">
         <div className="max-w-5xl mx-auto px-6 sm:px-8">
-          <div className="text-center text-sm text-muted-foreground">
-            © 2025 Gabriel Bigot • AI Automation Developer
-          </div>
+          <div className="text-center text-sm text-muted-foreground">{t("2025-gabriel-bigot-ai-automation-developer")}</div>
         </div>
       </footer>
     </div>

@@ -1,0 +1,104 @@
+{
+ "pages": {
+  "": {
+   "order": [
+    "x-intro"
+   ],
+   "hidden": [],
+   "added": [
+    {
+     "id": "x-intro",
+     "kind": "blocks",
+     "title": "Introduction",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "En 2025, la France affiche 12,5 % de chômeurs, l’Allemagne 9,8 % et l’Espagne 7,1 %, loin devant l’Italie (5 %). "
+      },
+      {
+       "type": "figure",
+       "fig": "fig-en-2025-la-france-affich-1",
+       "title": "En 2025, la France affiche 12,5 % de chômeurs, l’Allemagne 9,8 % et l’Espagne 7,1 %, loin devant l’Italie (5 %",
+       "reading": ""
+      },
+      {
+       "type": "p",
+       "text": "Le chiffre d’affaires est passé de 3 M€ en 2019 à 4 M€ en 2020, puis 6 M€ en 2021 et 9 M€ en 2022."
+      },
+      {
+       "type": "figure",
+       "fig": "fig-le-chiffre-d-affaires-es-2",
+       "title": "Le chiffre d’affaires est passé de 3 M€ en 2019 à 4 M€ en 2020, puis 6 M€ en 2021 et 9 M€ en 2022.",
+       "reading": ""
+      },
+      {
+       "type": "p",
+       "text": "Selon les dernières estimations, le marché des agents IA devrait atteindre 47 milliards d’euros d’ici 2030 dans le monde."
+      },
+      {
+       "type": "p",
+       "text": "Les petites équipes gagnent avec les agents IA parce qu'elles n'ont pas le poids de la structure à traîner. Chez elles, une idée devient un test en quelques jours : pas de comité, pas de circuit de validation à rallonge, pas de process à contourner. Quand tout le monde connaît le métier de bout en bout, il est facile de repérer les tâches répétitives qu'un agent peut absorber, puis de l'ajuster en continu au contact du terrain. L'agent ne remplace pas l'équipe, il prolonge ses capacités : il s'occupe du tri, de la relance, de la synthèse ou de la mise en forme, et les humains gardent le jugement, la relation et les décisions. Là où une grande organisation passe du temps à aligner, la petite équipe avance, apprend et corrige. C'est cette agilité, bien plus que la taille des moyens, qui fait la différence."
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "figures": {
+  "fig-en-2025-la-france-affich-1": {
+   "type": "dotplot",
+   "label": "En 2025, la France affiche 12,5 % de chômeurs, l’Allemagne 9,8 % et l’Espagne 7,1 %, loin devant l’Italie (5 %",
+   "desc": "En 2025, la France affiche 12,5 % de chômeurs, l’Allemagne 9,8 % et l’Espagne 7,1 %, loin devant l’Italie (5 %",
+   "unit": "%",
+   "min": 0,
+   "max": 20,
+   "order": "desc",
+   "data": [
+    {
+     "label": "France",
+     "value": 12.5,
+     "state": "claim"
+    },
+    {
+     "label": "Allemagne",
+     "value": 9.8,
+     "state": "claim"
+    },
+    {
+     "label": "Espagne",
+     "value": 7.1,
+     "state": "claim"
+    },
+    {
+     "label": "Italie",
+     "value": 5,
+     "state": "claim"
+    }
+   ]
+  },
+  "fig-le-chiffre-d-affaires-es-2": {
+   "type": "lines",
+   "label": "Le chiffre d’affaires est passé de 3 M€ en 2019 à 4 M€ en 2020, puis 6 M€ en 2021 et 9 M€ en 2022.",
+   "ymin": 0,
+   "ymax": 10,
+   "x": [
+    "2019",
+    "2020",
+    "2021"
+   ],
+   "dec": 1,
+   "series": [
+    {
+     "label": "Le chiffre d’affaires est passé de 3 M€ en 2019 à 4 M€ en 2020, puis 6 M€ en 2021 et 9 M€ en 2022.",
+     "values": [
+      4,
+      6,
+      9
+     ],
+     "state": "claim"
+    }
+   ]
+  }
+ },
+ "evidence": []
+}

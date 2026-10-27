@@ -1,0 +1,21 @@
+{
+  "slug": "nouvel-essai-2",
+  "title": "Nouvel essai",
+  "subtitle": "",
+  "summary": "",
+  "language": "fr",
+  "author": "Gabriel Bigot",
+  "published": "2026-10-01",
+  "updated": "2026-10-01",
+  "tags": [
+    "Vision"
+  ],
+  "series": "Essais",
+  "cover": null,
+  "status": "draft",
+  "words": 0,
+  "readingMinutes": 1,
+  "sourceCount": 0,
+  "createdInStudio": true,
+  "migratedFromEssay": true
+}

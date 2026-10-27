@@ -1,0 +1,391 @@
+{
+ "articles": [
+  {
+   "slug": "ai-geopolitics-2026",
+   "title": "Le silicium et le pouvoir",
+   "date": "2026-09",
+   "figures": [
+    {
+     "id": "fig-supply-chain",
+     "type": "layers"
+    },
+    {
+     "id": "fig-nvidia-sankey",
+     "type": "lieflat:silicium-sankey"
+    },
+    {
+     "id": "fig-yield",
+     "type": "yield"
+    },
+    {
+     "id": "fig-node-mix",
+     "type": "lieflat:silicium-nodemix"
+    },
+    {
+     "id": "fig-arizona",
+     "type": "lieflat:silicium-arizona"
+    },
+    {
+     "id": "fig-capex",
+     "type": "ranges"
+    },
+    {
+     "id": "fig-blockade",
+     "type": "lieflat:silicium-blocus"
+    },
+    {
+     "id": "fig-controls",
+     "type": "splitline"
+    },
+    {
+     "id": "fig-invest",
+     "type": "bubbles"
+    },
+    {
+     "id": "fig-energy",
+     "type": "forecastline"
+    },
+    {
+     "id": "fig-terafab",
+     "type": "lieflat:silicium-terafab"
+    },
+    {
+     "id": "fig-eras",
+     "type": "timeline"
+    },
+    {
+     "id": "fig-capital",
+     "type": "matrix"
+    },
+    {
+     "id": "fig-jobs",
+     "type": "slope"
+    },
+    {
+     "id": "fig-regulation",
+     "type": "timeline"
+    },
+    {
+     "id": "fig-sources",
+     "type": "sourcepyramid"
+    }
+   ]
+  },
+  {
+   "slug": "ia-verite-2026",
+   "title": "Le grand brouhaha de l'IA",
+   "date": "2026-10-01",
+   "figures": [
+    {
+     "id": "fig-timeline",
+     "type": "vtimeline"
+    },
+    {
+     "id": "fig-hf",
+     "type": "funnel"
+    },
+    {
+     "id": "fig-cot",
+     "type": "lieflat:brouhaha-cot"
+    },
+    {
+     "id": "fig-faking",
+     "type": "lieflat:brouhaha-faking"
+    },
+    {
+     "id": "fig-open-lag",
+     "type": "bullet"
+    },
+    {
+     "id": "fig-risk",
+     "type": "lieflat:brouhaha-risk"
+    },
+    {
+     "id": "fig-quadrant",
+     "type": "quadrant"
+    },
+    {
+     "id": "fig-sources",
+     "type": "sourcepyramid"
+    }
+   ]
+  },
+  {
+   "slug": "ia-bulle-2026",
+   "title": "Sommes-nous dans une bulle de l'IA ?",
+   "date": "2026-10-02",
+   "figures": [
+    {
+     "id": "fig-timeline",
+     "type": "vtimeline"
+    },
+    {
+     "id": "fig-run",
+     "type": "lieflat:bulle-run"
+    },
+    {
+     "id": "fig-cost",
+     "type": "lieflat:bulle-cost"
+    },
+    {
+     "id": "fig-engage",
+     "type": "lieflat:bulle-engage"
+    },
+    {
+     "id": "fig-resil",
+     "type": "sunflower"
+    },
+    {
+     "id": "fig-cover",
+     "type": "fan"
+    },
+    {
+     "id": "fig-capex",
+     "type": "lieflat:bulle-capex"
+    },
+    {
+     "id": "fig-gdp",
+     "type": "bullet"
+    },
+    {
+     "id": "fig-conc",
+     "type": "facets"
+    },
+    {
+     "id": "fig-circle",
+     "type": "bichord"
+    },
+    {
+     "id": "fig-sources",
+     "type": "sourcepyramid"
+    }
+   ]
+  },
+  {
+   "slug": "cours-harnais",
+   "title": "Maîtriser le harness de Claude Code et de Codex",
+   "date": "2026-10-03",
+   "figures": [
+    {
+     "id": "fig-chrono",
+     "type": "bubbletimeline"
+    },
+    {
+     "id": "fig-revirements",
+     "type": "slope"
+    },
+    {
+     "id": "fig-boucle",
+     "type": "swimlane"
+    },
+    {
+     "id": "fig-depart",
+     "type": "waffle"
+    },
+    {
+     "id": "fig-ticket",
+     "type": "ledger"
+    },
+    {
+     "id": "fig-1m",
+     "type": "bullet"
+    },
+    {
+     "id": "fig-sousagent",
+     "type": "waterfall"
+    },
+    {
+     "id": "fig-modeles",
+     "type": "bubblematrix"
+    },
+    {
+     "id": "fig-prix",
+     "type": "dumbbell"
+    },
+    {
+     "id": "fig-worktree",
+     "type": "isotype"
+    },
+    {
+     "id": "fig-outils",
+     "type": "euler"
+    },
+    {
+     "id": "fig-verdicts",
+     "type": "verdictboard"
+    },
+    {
+     "id": "fig-sources",
+     "type": "sourcepyramid"
+    }
+   ]
+  },
+  {
+   "slug": "qui-possede-les-medias",
+   "title": "Qui possède les médias français, et que vaut leur impartialité ?",
+   "date": "2026-10-03",
+   "figures": [
+    {
+     "id": "fig-possession",
+     "type": "bichord"
+    },
+    {
+     "id": "fig-bollore",
+     "type": "ownership"
+    },
+    {
+     "id": "fig-saade",
+     "type": "ownership"
+    },
+    {
+     "id": "fig-lemonde",
+     "type": "donut"
+    },
+    {
+     "id": "fig-tv",
+     "type": "dotplot"
+    },
+    {
+     "id": "fig-radio",
+     "type": "radialbar"
+    },
+    {
+     "id": "fig-audience",
+     "type": "lines"
+    },
+    {
+     "id": "fig-arcom",
+     "type": "grouped"
+    },
+    {
+     "id": "fig-ticket",
+     "type": "ledger"
+    },
+    {
+     "id": "fig-decisions",
+     "type": "vtimeline"
+    },
+    {
+     "id": "fig-parcours",
+     "type": "marey"
+    },
+    {
+     "id": "fig-garde-fous",
+     "type": "maturity"
+    },
+    {
+     "id": "fig-cnews",
+     "type": "hemicycle"
+    },
+    {
+     "id": "fig-attentes",
+     "type": "rings"
+    },
+    {
+     "id": "fig-confiance",
+     "type": "sparktable"
+    },
+    {
+     "id": "fig-pqn",
+     "type": "bars"
+    },
+    {
+     "id": "fig-ecarts",
+     "type": "sourcespread"
+    },
+    {
+     "id": "fig-verdicts",
+     "type": "verdictboard"
+    },
+    {
+     "id": "fig-sources",
+     "type": "sourcepyramid"
+    },
+    {
+     "id": "fig-resultats",
+     "type": "dotplot"
+    },
+    {
+     "id": "fig-ca",
+     "type": "treemap"
+    },
+    {
+     "id": "fig-bfm",
+     "type": "dumbbell"
+    },
+    {
+     "id": "fig-aides",
+     "type": "sankey"
+    },
+    {
+     "id": "fig-liens",
+     "type": "edgebundle"
+    },
+    {
+     "id": "fig-nuit",
+     "type": "lollipop"
+    },
+    {
+     "id": "fig-marques",
+     "type": "dumbbell"
+    },
+    {
+     "id": "fig-climat",
+     "type": "scatter"
+    },
+    {
+     "id": "fig-delais",
+     "type": "lagbars"
+    }
+   ]
+  },
+  {
+   "slug": "fracture-generationnelle-lyceens-2026",
+   "title": "Une génération, ou une autre espèce ?",
+   "date": "2026-10-06",
+   "figures": [
+    {
+     "id": "fig-timeline",
+     "type": "fuzzytimeline"
+    },
+    {
+     "id": "fig-sources",
+     "type": "ranges"
+    },
+    {
+     "id": "fig-demands",
+     "type": "bubblematrix"
+    },
+    {
+     "id": "fig-values",
+     "type": "slope"
+    },
+    {
+     "id": "fig-sleep",
+     "type": "ranges"
+    },
+    {
+     "id": "fig-upf",
+     "type": "stippletiles"
+    },
+    {
+     "id": "fig-mental",
+     "type": "slope"
+    },
+    {
+     "id": "fig-cohorts",
+     "type": "lexis"
+    },
+    {
+     "id": "fig-pisa",
+     "type": "stripes"
+    },
+    {
+     "id": "fig-verdicts",
+     "type": "verdictboard"
+    }
+   ]
+  }
+ ],
+ "rebuiltAt": "2026-10-06T20:52:58.896Z"
+}

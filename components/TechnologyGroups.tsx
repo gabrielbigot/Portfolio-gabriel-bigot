@@ -1,3 +1,6 @@
+"use client"
+
+import { useT } from "@/components/strings-provider"
 import { Code2 } from "lucide-react"
 import { getTechnologyName, groupTechnologies, type TechnologyItem } from "@/lib/technology-categories"
 
@@ -8,36 +11,12 @@ interface TechnologyGroupsProps {
   locale?: "fr" | "en"
 }
 
-const categoryLabels: Record<"fr" | "en", Record<string, string>> = {
-  fr: {},
-  en: {
-    IA: "AI",
-    "Déploiement": "Deployment",
-    Langage: "Language",
-    Productivité: "Productivity",
-    Automatisation: "Automation",
-    "Outils métier": "Business tools",
-    Autres: "Other",
-  },
-}
-
-const technologyLabels: Record<"fr" | "en", Record<string, string>> = {
-  fr: {},
-  en: {
-    "Automatisation UI": "UI Automation",
-    "Logiciels comptables": "Accounting software",
-  },
-}
-
-function getCategoryLabel(category: string, locale: "fr" | "en") {
-  return categoryLabels[locale][category] ?? category
-}
-
-function getTechnologyLabel(name: string, locale: "fr" | "en") {
-  return technologyLabels[locale][name] ?? name
-}
+type Translate = ReturnType<typeof useT>
+function getCategoryLabel(t: Translate, category: string, locale: "fr" | "en") { const k = `${locale === "en" ? "" : "fr-"}category-${category}`; return t.has(k) ? t(k) : category }
+function getTechnologyLabel(t: Translate, name: string, locale: "fr" | "en") { return locale === "en" && t.has(`technology-${name}`) ? t(`technology-${name}`) : name }
 
 export default function TechnologyGroups({ technologies, compact = false, maxItems, locale = "fr" }: TechnologyGroupsProps) {
+  const t = useT("component.TechnologyGroups")
   const visibleTechnologies = maxItems ? technologies.slice(0, maxItems) : technologies
   const hiddenCount = maxItems ? Math.max(technologies.length - maxItems, 0) : 0
   const groups = groupTechnologies(visibleTechnologies)
@@ -50,7 +29,7 @@ export default function TechnologyGroups({ technologies, compact = false, maxIte
         {groups.flatMap((group) =>
           group.technologies.map((technology) => {
             const name = getTechnologyName(technology)
-            const label = getTechnologyLabel(name, locale)
+            const label = getTechnologyLabel(t, name, locale)
 
             return (
               <span
@@ -58,7 +37,7 @@ export default function TechnologyGroups({ technologies, compact = false, maxIte
                 className="inline-flex items-center gap-1.5 px-2 py-0.5 text-xs border border-border text-muted-foreground rounded-md leading-tight"
               >
                 <span className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground/60">
-                  {getCategoryLabel(group.category, locale)}
+                  {getCategoryLabel(t, group.category, locale)}
                 </span>
                 <span>{label}</span>
               </span>
@@ -79,12 +58,12 @@ export default function TechnologyGroups({ technologies, compact = false, maxIte
       {groups.map((group) => (
         <div key={group.category} className="space-y-2">
           <div className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground/70">
-            {getCategoryLabel(group.category, locale)}
+            {getCategoryLabel(t, group.category, locale)}
           </div>
           <div className="flex flex-wrap gap-1.5">
             {group.technologies.map((technology) => {
               const name = getTechnologyName(technology)
-              const label = getTechnologyLabel(name, locale)
+              const label = getTechnologyLabel(t, name, locale)
 
               return (
                 <span
@@ -101,7 +80,7 @@ export default function TechnologyGroups({ technologies, compact = false, maxIte
       ))}
       {hiddenCount > 0 && (
         <div className="text-xs text-muted-foreground">
-          +{hiddenCount} technologie{hiddenCount > 1 ? "s" : ""}
+          +{hiddenCount}{" "}{t("technologie")}{hiddenCount > 1 ? "s" : ""}
         </div>
       )}
     </div>

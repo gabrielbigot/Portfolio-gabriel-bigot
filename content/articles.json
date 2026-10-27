@@ -1,0 +1,227 @@
+{
+  "articles": [
+    {
+      "slug": "nouvel-article",
+      "title": "Nouvel article",
+      "subtitle": "",
+      "summary": "",
+      "tags": [],
+      "series": "Articles",
+      "published": "2026-10-08",
+      "updated": "2026-10-09",
+      "readingMinutes": 1,
+      "sourceCount": 0,
+      "status": "draft"
+    },
+    {
+      "slug": "fracture-generationnelle-lyceens-2026",
+      "title": "Une génération, ou une autre espèce ?",
+      "subtitle": "Ce que la révolte lycéenne de 2026 dit, et ne dit pas, de l'écart entre les générations",
+      "summary": "Le mouvement lycéen d'octobre 2026 est massif. Ses revendications sont surtout matérielles, mais l'écart entre générations existe-t-il ? Ce dossier teste neuf affirmations (sommeil, écrans, alimentation, devoirs, IA, « espèce ») contre les sources.",
+      "tags": [
+        "lycéens",
+        "générations",
+        "sommeil",
+        "éducation",
+        "Harari"
+      ],
+      "series": "Dossiers",
+      "published": "2026-10-05",
+      "updated": "2026-10-06",
+      "readingMinutes": 41,
+      "sourceCount": 65,
+      "status": "draft"
+    },
+    {
+      "slug": "harness-claude-code-codex-2026",
+      "title": "Maîtriser le harness de Claude Code et de Codex",
+      "subtitle": "24 vidéos, 15 mois d'évolutions, recoupées avec la documentation officielle",
+      "summary": "Un cours en français sur le harness des agents de code : contexte, mémoire, skills, hooks, sous-agents, /goal et worktrees, avec les conseils classés par date et les chiffres recoupés.",
+      "tags": [
+        "claude code",
+        "codex",
+        "harness",
+        "agents",
+        "cours"
+      ],
+      "series": "Dossiers",
+      "published": "2026-10-03",
+      "updated": "2026-10-03",
+      "readingMinutes": 21,
+      "sourceCount": 62,
+      "status": "draft"
+    },
+    {
+      "slug": "qui-possede-les-medias-2026",
+      "title": "Qui possède les médias français, et que vaut leur impartialité ?",
+      "subtitle": "Propriétaires, parcours, décisions de l'Arcom, audiences et confiance du public",
+      "summary": "Une cartographie sourcée des propriétaires de la télévision, de la radio, de la presse et des chaînes YouTube, avec les décisions de l'Arcom, les garde-fous d'indépendance et les limites de ce qu'on peut conclure.",
+      "tags": [
+        "médias",
+        "propriété",
+        "pluralisme",
+        "Arcom"
+      ],
+      "series": "Dossiers",
+      "published": "2026-10-03",
+      "updated": "2026-10-03",
+      "readingMinutes": 69,
+      "sourceCount": 183,
+      "status": "draft"
+    },
+    {
+      "slug": "bulle-ia-septembre-2026",
+      "title": "Sommes-nous dans une bulle de l'IA ?",
+      "subtitle": "Les chiffres, les mécanismes financiers, l'histoire et la question de la responsabilité",
+      "summary": "Revenus, engagements, dette, amortissements, valorisations, demande réelle, et la déclaration d'Alex Karp sur le rôle de l'État : un dossier source par source, avec démonstrations interactives et les opinions bien séparées des faits.",
+      "tags": [
+        "IA",
+        "Bulle",
+        "Finance",
+        "Anthropic",
+        "OpenAI",
+        "Régulation"
+      ],
+      "series": "Dossiers",
+      "published": "2026-10-02",
+      "updated": "2026-10-03",
+      "readingMinutes": 36,
+      "sourceCount": 73,
+      "status": "draft"
+    },
+    {
+      "slug": "demeler-le-vrai-ia-septembre-2026",
+      "title": "Le grand brouhaha de l'IA",
+      "subtitle": "Ce qui est établi, ce qui est contesté, ce qui est faux — et les concepts pour s'y retrouver",
+      "summary": "En quelques semaines, un incident d'agents, une démission, une preuve de mathématiques, des essais de PDG et des déclarations de chefs d'État se sont télescopés. Ce dossier recoupe chaque affirmation avec des sources datées, explique les concepts (alignement, chaîne de pensée, mesa-objectif, RSI, open weights) avec des démonstrations interactives et un cerveau 3D, et sépare les faits des opinions.",
+      "tags": [
+        "IA",
+        "Alignement",
+        "Sécurité",
+        "Open source",
+        "Chaîne de pensée",
+        "RSI",
+        "Neurosciences",
+        "Régulation"
+      ],
+      "series": "Dossiers",
+      "published": "2026-10-01",
+      "updated": "2026-10-03",
+      "readingMinutes": 50,
+      "sourceCount": 97,
+      "status": "draft"
+    },
+    {
+      "slug": "silicium-et-pouvoir-geopolitique-ia",
+      "title": "Le silicium et le pouvoir",
+      "subtitle": "Écosystème et géopolitique de l'IA, de l'électron au scrutin",
+      "summary": "L'IA se fabrique comme une industrie lourde : puces, machines, électricité, licences d'export, capital, lois. Cartographie des points d'étranglement qui décident de qui calcule, de qui gouverne et de qui travaille encore, appuyée sur trois émissions et un registre de sources daté.",
+      "tags": [
+        "IA",
+        "Géopolitique",
+        "Semi-conducteurs",
+        "TSMC",
+        "Nvidia",
+        "Énergie",
+        "Régulation",
+        "Travail"
+      ],
+      "series": "Dossiers",
+      "published": "2026-10-01",
+      "updated": "2026-10-03",
+      "readingMinutes": 42,
+      "sourceCount": 71,
+      "status": "draft"
+    },
+    {
+      "slug": "impact-ia-metiers-du-futur",
+      "title": "L'impact de l'IA sur les métiers du futur",
+      "subtitle": "90% des métiers actuels vont disparaître avec l'IA. Ce n'est pas du catastrophisme, c'est une observation lucide de ce qui est déjà en train de se passer sous nos yeux.",
+      "summary": "90% des métiers actuels vont disparaître avec l'IA. Ce n'est pas du catastrophisme, c'est une observation lucide de ce qui est déjà en train de se passer sous nos yeux.",
+      "tags": [
+        "Vision"
+      ],
+      "series": "Essais",
+      "published": "2025-10-01",
+      "updated": "2025-10-01",
+      "readingMinutes": 8,
+      "sourceCount": 0,
+      "status": "public"
+    },
+    {
+      "slug": "ia-ethique-responsabilite-trois-scenarios",
+      "title": "IA, éthique et responsabilité: trois scénarios possibles",
+      "subtitle": "Je ne veux pas être responsable de l'abrutissement cognitif de ma génération. Mais je veux aussi contribuer à une IA qui aide vraiment les humains. Comment naviguer entre ces deux injonctions ?",
+      "summary": "Je ne veux pas être responsable de l'abrutissement cognitif de ma génération. Mais je veux aussi contribuer à une IA qui aide vraiment les humains. Comment naviguer entre ces deux injonctions ?",
+      "tags": [
+        "Éthique"
+      ],
+      "series": "Essais",
+      "published": "2025-10-01",
+      "updated": "2025-10-01",
+      "readingMinutes": 6,
+      "sourceCount": 0,
+      "status": "public"
+    },
+    {
+      "slug": "bulle-ia-analyse-copie",
+      "title": "Sommes-nous dans une bulle IA ?",
+      "subtitle": "Suis-je en train de monter dans un train qui va dérailler ? Avec Michael Burry qui parie contre Nvidia et les valorisations qui explosent, j'ai voulu analyser la situation moi-même.",
+      "summary": "Suis-je en train de monter dans un train qui va dérailler ? Avec Michael Burry qui parie contre Nvidia et les valorisations qui explosent, j'ai voulu analyser la situation moi-même.",
+      "tags": [
+        "Marché"
+      ],
+      "series": "Essais",
+      "published": "2025-10-01",
+      "updated": "2025-10-01",
+      "readingMinutes": 12,
+      "sourceCount": 0,
+      "status": "public"
+    },
+    {
+      "slug": "api-vs-interface-web-securite-donnees",
+      "title": "API vs Interface Web : pourquoi je ne mettrai jamais mes données sensibles dans ChatGPT",
+      "subtitle": "79% des données exposées via l'IA transitent par ChatGPT. Pourtant, il existe une alternative beaucoup plus sécurisée pour les entreprises : l'API directe.",
+      "summary": "79% des données exposées via l'IA transitent par ChatGPT. Pourtant, il existe une alternative beaucoup plus sécurisée pour les entreprises : l'API directe.",
+      "tags": [
+        "Technique"
+      ],
+      "series": "Essais",
+      "published": "2025-11-01",
+      "updated": "2025-11-01",
+      "readingMinutes": 10,
+      "sourceCount": 0,
+      "status": "public"
+    },
+    {
+      "slug": "economie-ia-2025-fin-gratuite",
+      "title": "L'économie de l'IA en 2025 : pourquoi la gratuité touche à sa fin",
+      "subtitle": "OpenAI perd 5 milliards malgré 10 milliards de revenus. Google développe des puces 4x plus efficaces. Et si la gratuité de l'IA n'était qu'une phase d'acquisition ?",
+      "summary": "OpenAI perd 5 milliards malgré 10 milliards de revenus. Google développe des puces 4x plus efficaces. Et si la gratuité de l'IA n'était qu'une phase d'acquisition ?",
+      "tags": [
+        "Marché"
+      ],
+      "series": "Essais",
+      "published": "2025-11-01",
+      "updated": "2025-11-01",
+      "readingMinutes": 10,
+      "sourceCount": 0,
+      "status": "public"
+    },
+    {
+      "slug": "ia-diplomes-portfolios-competences",
+      "title": "Quand l'IA tue la valeur des diplômes : vers l'ère du portfolio",
+      "subtitle": "Dans ma classe, c'est flagrant : l'IA permet d'avoir le diplôme sans développer les compétences. Ma génération est la première à vivre cette rupture. Et si les portfolios remplaçaient les diplômes ?",
+      "summary": "Dans ma classe, c'est flagrant : l'IA permet d'avoir le diplôme sans développer les compétences. Ma génération est la première à vivre cette rupture. Et si les portfolios remplaçaient les diplômes ?",
+      "tags": [
+        "Vision"
+      ],
+      "series": "Essais",
+      "published": "2025-12-01",
+      "updated": "2025-12-01",
+      "readingMinutes": 12,
+      "sourceCount": 0,
+      "status": "public"
+    }
+  ]
+}

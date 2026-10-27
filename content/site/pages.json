@@ -1,0 +1,24 @@
+{
+  "pages": [],
+  "extras": {
+    "/portfolio": [],
+    "/en/portfolio": [],
+    "/projects": [],
+    "/en/projects": [],
+    "/work": [],
+    "/en/work": [],
+    "/about": [],
+    "/en/about": [],
+    "/uses": [],
+    "/en/uses": [],
+    "/blog": [],
+    "/blog/nouvel-essai": [
+      {
+        "id": "cb-w1n6rr",
+        "type": "text",
+        "title": "Titre du texte",
+        "body": "Écrivez votre texte ici.\n\nUn deuxième paragraphe, avec du **gras** et un [lien](https://example.com)."
+      }
+    ]
+  }
+}

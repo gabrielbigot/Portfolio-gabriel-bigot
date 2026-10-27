@@ -1,3 +1,6 @@
+import ExtraBlocks from "@/components/blocks/ExtraBlocks"
+import { stripMarks } from "@/lib/studio/stega"
+import { getT } from "@/lib/strings"
 import Link from "next/link"
 import { getProjects, getProject } from "@/lib/portfolio-data"
 import { ArrowLeft, ExternalLink, Github, Calendar, Building2, Zap, Code2 } from "lucide-react"
@@ -6,26 +9,25 @@ import ProjectMediaCarousel from "@/components/ProjectMediaCarousel"
 import TechnologyGroups from "@/components/TechnologyGroups"
 import { getTechnologyName } from "@/lib/technology-categories"
 
-export function generateStaticParams() {
-  return getProjects().map((project) => ({ slug: project.slug }))
+export async function generateStaticParams() {
+  return (await getProjects()).map((project) => ({ slug: project.slug }))
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+  const t = await getT("page.projects-slug")
   const { slug } = await params
-  const project = getProject(slug)
+  const project = await getProject(slug)
 
   if (!project) {
     return (
       <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-light">Projet introuvable</h1>
+          <h1 className="text-4xl font-light">{t("projet-introuvable")}</h1>
           <Link
             href="/"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" />
-            Retour à l'accueil
-          </Link>
+            <ArrowLeft className="w-4 h-4" />{t("retour-a-l-accueil")}</Link>
         </div>
       </div>
     )
@@ -40,7 +42,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Retour au portfolio</span>
+            <span>{t("retour-au-portfolio")}</span>
           </Link>
         </div>
       </nav>
@@ -54,9 +56,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 {project.category}
               </span>
               {project.featured && (
-                <span className="px-3 py-1 text-xs bg-amber-500/10 text-amber-500 border border-amber-500/20 rounded-full">
-                  ⭐ Projet phare
-                </span>
+                <span className="px-3 py-1 text-xs bg-amber-500/10 text-amber-500 border border-amber-500/20 rounded-full">{t("projet-phare")}</span>
               )}
             </div>
 
@@ -72,25 +72,19 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <div className="grid sm:grid-cols-3 gap-6 sm:gap-8">
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm text-muted-foreground font-mono">
-                <Calendar className="w-4 h-4" />
-                DATE
-              </div>
+                <Calendar className="w-4 h-4" />{t("date")}</div>
               <div className="text-foreground">{project.date}</div>
             </div>
 
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm text-muted-foreground font-mono">
-                <Building2 className="w-4 h-4" />
-                ENTREPRISE
-              </div>
+                <Building2 className="w-4 h-4" />{t("entreprise")}</div>
               <div className="text-foreground">{project.company}</div>
             </div>
 
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm text-muted-foreground font-mono">
-                <Code2 className="w-4 h-4" />
-                TECHNOLOGIES
-              </div>
+                <Code2 className="w-4 h-4" />{t("technologies")}</div>
               <div className="flex flex-wrap gap-2">
                 {(project.technologies && project.technologies.length > 0
                   ? project.technologies.slice(0, 3)
@@ -114,7 +108,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               {(project as any).content && (project as any).content.length > 0 ? (
                 <BlogContentRenderer
                   content={(project as any).content.filter(
-                    (s: any) => !(s.type === 'heading' && s.text === 'Médias')
+                    (s: any) => !(s.type === 'heading' && stripMarks(String(s.text)) === 'Médias')
                   )}
                 />
               ) : (
@@ -122,7 +116,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                   {/* Overview */}
                   {project.fullDescription && (
                     <section className="space-y-6">
-                      <h2 className="text-2xl sm:text-3xl font-light">Vue d'ensemble</h2>
+                      <h2 className="text-2xl sm:text-3xl font-light">{t("vue-d-ensemble")}</h2>
                       <p className="text-lg text-muted-foreground leading-relaxed">
                         {project.fullDescription}
                       </p>
@@ -132,7 +126,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                   {/* Problem */}
                   {project.problem && (
                     <section className="space-y-6">
-                      <h2 className="text-2xl sm:text-3xl font-light">Problématique</h2>
+                      <h2 className="text-2xl sm:text-3xl font-light">{t("problematique")}</h2>
                       <div className="p-6 sm:p-8 bg-foreground/[0.02] border border-border rounded-lg">
                         <p className="text-lg text-muted-foreground leading-relaxed">
                           {project.problem}
@@ -144,7 +138,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                   {/* Solution */}
                   {project.solution && (
                     <section className="space-y-6">
-                      <h2 className="text-2xl sm:text-3xl font-light">Solution apportée</h2>
+                      <h2 className="text-2xl sm:text-3xl font-light">{t("solution-apportee")}</h2>
                       <p className="text-lg text-muted-foreground leading-relaxed">
                         {project.solution}
                       </p>
@@ -154,7 +148,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                   {/* Impact */}
                   {project.impact && project.impact.length > 0 && (
                     <section className="space-y-6">
-                      <h2 className="text-2xl sm:text-3xl font-light">Impact & Résultats</h2>
+                      <h2 className="text-2xl sm:text-3xl font-light">{t("impact-resultats")}</h2>
                       <div className="grid sm:grid-cols-2 gap-4">
                         {project.impact.map((item: string, index: number) => (
                           <div
@@ -176,7 +170,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                   {/* Technologies */}
                   {project.technologies && project.technologies.length > 0 && (
                     <section className="space-y-6">
-                      <h2 className="text-2xl sm:text-3xl font-light">Stack Technique</h2>
+                      <h2 className="text-2xl sm:text-3xl font-light">{t("stack-technique")}</h2>
                       <TechnologyGroups technologies={project.technologies} />
                     </section>
                   )}
@@ -184,7 +178,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                   {/* Challenges */}
                   {project.challenges && project.challenges.length > 0 && (
                     <section className="space-y-6">
-                      <h2 className="text-2xl sm:text-3xl font-light">Défis techniques</h2>
+                      <h2 className="text-2xl sm:text-3xl font-light">{t("defis-techniques")}</h2>
                       <ul className="space-y-3">
                         {project.challenges.map((challenge: string, index: number) => (
                           <li
@@ -202,7 +196,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                   {/* Learnings */}
                   {project.learnings && project.learnings.length > 0 && (
                     <section className="space-y-6">
-                      <h2 className="text-2xl sm:text-3xl font-light">Apprentissages clés</h2>
+                      <h2 className="text-2xl sm:text-3xl font-light">{t("apprentissages-cles")}</h2>
                       <div className="space-y-4">
                         {project.learnings.map((learning: string, index: number) => (
                           <div
@@ -231,12 +225,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               {/* Technologies */}
               {project.technologies && project.technologies.length > 0 ? (
                 <div className="space-y-4">
-                  <h3 className="text-sm text-muted-foreground font-mono">TECHNOLOGIES</h3>
+                  <h3 className="text-sm text-muted-foreground font-mono">{t("technologies")}</h3>
                   <TechnologyGroups technologies={project.technologies} />
                 </div>
               ) : project.tags && project.tags.length > 0 ? (
                 <div className="space-y-4">
-                  <h3 className="text-sm text-muted-foreground font-mono">TAGS</h3>
+                  <h3 className="text-sm text-muted-foreground font-mono">{t("tags")}</h3>
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag: string) => (
                       <span
@@ -252,14 +246,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
               {/* Navigation */}
               <div className="pt-8 border-t border-border space-y-4">
-                <h3 className="text-sm text-muted-foreground font-mono">NAVIGATION</h3>
+                <h3 className="text-sm text-muted-foreground font-mono">{t("navigation")}</h3>
                 <div className="space-y-2">
                   <Link
                     href="/projects"
                     className="block p-4 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-foreground">Tous les projets</span>
+                      <span className="text-foreground">{t("tous-les-projets")}</span>
                       <ArrowLeft className="w-4 h-4 text-muted-foreground rotate-180" />
                     </div>
                   </Link>
@@ -269,7 +263,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     className="block p-4 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-foreground">Expériences</span>
+                      <span className="text-foreground">{t("experiences")}</span>
                       <ArrowLeft className="w-4 h-4 text-muted-foreground rotate-180" />
                     </div>
                   </Link>
@@ -279,7 +273,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     className="block p-4 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-foreground">Me contacter</span>
+                      <span className="text-foreground">{t("me-contacter")}</span>
                       <ArrowLeft className="w-4 h-4 text-muted-foreground rotate-180" />
                     </div>
                   </Link>
@@ -291,28 +285,28 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
         {/* Other Projects */}
         <OtherProjectsSection currentProjectId={project.id} />
+      <ExtraBlocks page={`/projects/${slug}`} />
       </main>
 
       <footer className="border-t border-border py-12">
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
-          <div className="text-center text-sm text-muted-foreground">
-            © 2025 Gabriel Bigot • Développeur d'Automatisations IA
-          </div>
+          <div className="text-center text-sm text-muted-foreground">{t("2025-gabriel-bigot-developpeur-d-automatisations")}</div>
         </div>
       </footer>
     </div>
   )
 }
 
-function OtherProjectsSection({ currentProjectId }: { currentProjectId: string }) {
-  const otherProjects = getProjects()
+async function OtherProjectsSection({ currentProjectId }: { currentProjectId: string }) {
+  const t = await getT("page.projects-slug")
+  const otherProjects = (await getProjects())
     .filter((p) => p.id !== currentProjectId)
     .slice(0, 3)
 
   return (
     <section className="pt-12 sm:pt-20 border-t border-border">
       <div className="space-y-8 sm:space-y-12">
-        <h2 className="text-2xl sm:text-3xl font-light">Autres projets</h2>
+        <h2 className="text-2xl sm:text-3xl font-light">{t("autres-projets")}</h2>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {otherProjects.map((otherProject) => (
@@ -338,7 +332,7 @@ function OtherProjectsSection({ currentProjectId }: { currentProjectId: string }
                 </p>
 
                 <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                  <span>Voir le projet</span>
+                  <span>{t("voir-le-projet")}</span>
                   <ArrowLeft className="w-4 h-4 rotate-180 transform group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
               </div>

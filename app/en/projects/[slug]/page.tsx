@@ -1,3 +1,7 @@
+import ExtraBlocks from "@/components/blocks/ExtraBlocks"
+import { stripDeep } from "@/lib/studio/stega"
+import { stripMarks } from "@/lib/studio/stega"
+import { getT } from "@/lib/strings"
 import Link from "next/link"
 import { getLocalizedProject, getLocalizedProjects } from "@/lib/portfolio-i18n"
 import { ArrowLeft, Calendar, Building2, Zap, Code2 } from "lucide-react"
@@ -6,35 +10,34 @@ import ProjectMediaCarousel from "@/components/ProjectMediaCarousel"
 import TechnologyGroups from "@/components/TechnologyGroups"
 import { getTechnologyName } from "@/lib/technology-categories"
 
-export function generateStaticParams() {
-  return getLocalizedProjects("en").map((project) => ({ slug: project.slug }))
+export async function generateStaticParams() {
+  return (await getLocalizedProjects("en")).map((project) => ({ slug: project.slug }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const project = getLocalizedProject(slug, "en")
+  const project = await getLocalizedProject(slug, "en")
 
-  if (!project) return { title: "Project not found" }
+  if (!project) return stripDeep({ title: (await getT("page.en-projects-slug"))("project-not-found") })
 
-  return {
+  return stripDeep({
     title: `${project.title} — Gabriel Bigot`,
     description: project.shortDescription,
-  }
+  })
 }
 
 export default async function EnglishProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+  const t = await getT("page.en-projects-slug")
   const { slug } = await params
-  const project = getLocalizedProject(slug, "en") as any
+  const project = (await getLocalizedProject(slug, "en")) as any
 
   if (!project) {
     return (
       <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-light">Project not found</h1>
+          <h1 className="text-4xl font-light">{t("project-not-found")}</h1>
           <Link href="/en/projects" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-            <ArrowLeft className="w-4 h-4" />
-            Back to projects
-          </Link>
+            <ArrowLeft className="w-4 h-4" />{t("back-to-projects")}</Link>
         </div>
       </div>
     )
@@ -46,7 +49,7 @@ export default async function EnglishProjectPage({ params }: { params: Promise<{
         <div className="max-w-6xl mx-auto px-6 sm:px-8 py-4">
           <Link href="/en/portfolio" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300">
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to portfolio</span>
+            <span>{t("back-to-portfolio")}</span>
           </Link>
         </div>
       </nav>
@@ -59,9 +62,7 @@ export default async function EnglishProjectPage({ params }: { params: Promise<{
                 {project.category}
               </span>
               {project.featured && (
-                <span className="px-3 py-1 text-xs bg-amber-500/10 text-amber-500 border border-amber-500/20 rounded-full">
-                  Featured project
-                </span>
+                <span className="px-3 py-1 text-xs bg-amber-500/10 text-amber-500 border border-amber-500/20 rounded-full">{t("featured-project")}</span>
               )}
             </div>
 
@@ -77,25 +78,19 @@ export default async function EnglishProjectPage({ params }: { params: Promise<{
           <div className="grid sm:grid-cols-3 gap-6 sm:gap-8">
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm text-muted-foreground font-mono">
-                <Calendar className="w-4 h-4" />
-                DATE
-              </div>
+                <Calendar className="w-4 h-4" />{t("date")}</div>
               <div className="text-foreground">{project.date}</div>
             </div>
 
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm text-muted-foreground font-mono">
-                <Building2 className="w-4 h-4" />
-                ORGANIZATION
-              </div>
+                <Building2 className="w-4 h-4" />{t("organization")}</div>
               <div className="text-foreground">{project.company || "Personal"}</div>
             </div>
 
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm text-muted-foreground font-mono">
-                <Code2 className="w-4 h-4" />
-                TECHNOLOGIES
-              </div>
+                <Code2 className="w-4 h-4" />{t("technologies")}</div>
               <div className="flex flex-wrap gap-2">
                 {(project.technologies && project.technologies.length > 0
                   ? project.technologies.slice(0, 3)
@@ -116,14 +111,14 @@ export default async function EnglishProjectPage({ params }: { params: Promise<{
               {project.content && project.content.length > 0 ? (
                 <BlogContentRenderer
                   content={project.content.filter(
-                    (section: any) => !(section.type === "heading" && ["Médias", "Media"].includes(section.text))
+                    (section: any) => !(section.type === "heading" && ["Médias", "Media"].includes(stripMarks(String(section.text))))
                   )}
                 />
               ) : (
                 <>
                   {project.fullDescription && (
                     <section className="space-y-6">
-                      <h2 className="text-2xl sm:text-3xl font-light">Overview</h2>
+                      <h2 className="text-2xl sm:text-3xl font-light">{t("overview")}</h2>
                       <p className="text-lg text-muted-foreground leading-relaxed">
                         {project.fullDescription}
                       </p>
@@ -132,7 +127,7 @@ export default async function EnglishProjectPage({ params }: { params: Promise<{
 
                   {project.problem && (
                     <section className="space-y-6">
-                      <h2 className="text-2xl sm:text-3xl font-light">Problem</h2>
+                      <h2 className="text-2xl sm:text-3xl font-light">{t("problem")}</h2>
                       <div className="p-6 sm:p-8 bg-foreground/[0.02] border border-border rounded-lg">
                         <p className="text-lg text-muted-foreground leading-relaxed">
                           {project.problem}
@@ -143,7 +138,7 @@ export default async function EnglishProjectPage({ params }: { params: Promise<{
 
                   {project.solution && (
                     <section className="space-y-6">
-                      <h2 className="text-2xl sm:text-3xl font-light">Solution</h2>
+                      <h2 className="text-2xl sm:text-3xl font-light">{t("solution")}</h2>
                       <p className="text-lg text-muted-foreground leading-relaxed">
                         {project.solution}
                       </p>
@@ -152,7 +147,7 @@ export default async function EnglishProjectPage({ params }: { params: Promise<{
 
                   {project.impact && project.impact.length > 0 && (
                     <section className="space-y-6">
-                      <h2 className="text-2xl sm:text-3xl font-light">Impact & Results</h2>
+                      <h2 className="text-2xl sm:text-3xl font-light">{t("impact-results")}</h2>
                       <div className="grid sm:grid-cols-2 gap-4">
                         {project.impact.map((item: string, index: number) => (
                           <div key={index} className="p-6 border border-border rounded-lg hover:border-muted-foreground/50 transition-colors duration-300">
@@ -170,14 +165,14 @@ export default async function EnglishProjectPage({ params }: { params: Promise<{
 
                   {project.technologies && project.technologies.length > 0 && (
                     <section className="space-y-6">
-                      <h2 className="text-2xl sm:text-3xl font-light">Technical Stack</h2>
+                      <h2 className="text-2xl sm:text-3xl font-light">{t("technical-stack")}</h2>
                       <TechnologyGroups technologies={project.technologies} locale="en" />
                     </section>
                   )}
 
                   {project.challenges && project.challenges.length > 0 && (
                     <section className="space-y-6">
-                      <h2 className="text-2xl sm:text-3xl font-light">Technical Challenges</h2>
+                      <h2 className="text-2xl sm:text-3xl font-light">{t("technical-challenges")}</h2>
                       <ul className="space-y-3">
                         {project.challenges.map((challenge: string, index: number) => (
                           <li key={index} className="flex gap-3 text-muted-foreground leading-relaxed">
@@ -191,7 +186,7 @@ export default async function EnglishProjectPage({ params }: { params: Promise<{
 
                   {project.learnings && project.learnings.length > 0 && (
                     <section className="space-y-6">
-                      <h2 className="text-2xl sm:text-3xl font-light">Key Learnings</h2>
+                      <h2 className="text-2xl sm:text-3xl font-light">{t("key-learnings")}</h2>
                       <div className="space-y-4">
                         {project.learnings.map((learning: string, index: number) => (
                           <div key={index} className="p-6 bg-foreground/[0.02] border border-border rounded-lg">
@@ -214,12 +209,12 @@ export default async function EnglishProjectPage({ params }: { params: Promise<{
             <div className="sticky top-24 space-y-8">
               {project.technologies && project.technologies.length > 0 ? (
                 <div className="space-y-4">
-                  <h3 className="text-sm text-muted-foreground font-mono">TECHNOLOGIES</h3>
+                  <h3 className="text-sm text-muted-foreground font-mono">{t("technologies")}</h3>
                   <TechnologyGroups technologies={project.technologies} locale="en" />
                 </div>
               ) : project.tags && project.tags.length > 0 ? (
                 <div className="space-y-4">
-                  <h3 className="text-sm text-muted-foreground font-mono">TAGS</h3>
+                  <h3 className="text-sm text-muted-foreground font-mono">{t("tags")}</h3>
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag: string) => (
                       <span key={tag} className="px-3 py-1.5 text-sm border border-border rounded-lg hover:border-muted-foreground/50 transition-colors duration-300">
@@ -231,25 +226,25 @@ export default async function EnglishProjectPage({ params }: { params: Promise<{
               ) : null}
 
               <div className="pt-8 border-t border-border space-y-4">
-                <h3 className="text-sm text-muted-foreground font-mono">NAVIGATION</h3>
+                <h3 className="text-sm text-muted-foreground font-mono">{t("navigation")}</h3>
                 <div className="space-y-2">
                   <Link href="/en/projects" className="block p-4 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300">
                     <div className="flex items-center justify-between">
-                      <span className="text-foreground">All projects</span>
+                      <span className="text-foreground">{t("all-projects")}</span>
                       <ArrowLeft className="w-4 h-4 text-muted-foreground rotate-180" />
                     </div>
                   </Link>
 
                   <Link href="/en/work" className="block p-4 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300">
                     <div className="flex items-center justify-between">
-                      <span className="text-foreground">Experience</span>
+                      <span className="text-foreground">{t("experience")}</span>
                       <ArrowLeft className="w-4 h-4 text-muted-foreground rotate-180" />
                     </div>
                   </Link>
 
                   <Link href="/en/portfolio#connect" className="block p-4 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300">
                     <div className="flex items-center justify-between">
-                      <span className="text-foreground">Contact me</span>
+                      <span className="text-foreground">{t("contact-me")}</span>
                       <ArrowLeft className="w-4 h-4 text-muted-foreground rotate-180" />
                     </div>
                   </Link>
@@ -260,28 +255,28 @@ export default async function EnglishProjectPage({ params }: { params: Promise<{
         </div>
 
         <OtherProjectsSection currentProjectId={project.id} />
+      <ExtraBlocks page={`/en/projects/${slug}`} />
       </main>
 
       <footer className="border-t border-border py-12">
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
-          <div className="text-center text-sm text-muted-foreground">
-            © 2025 Gabriel Bigot • AI Automation Developer
-          </div>
+          <div className="text-center text-sm text-muted-foreground">{t("2025-gabriel-bigot-ai-automation-developer")}</div>
         </div>
       </footer>
     </div>
   )
 }
 
-function OtherProjectsSection({ currentProjectId }: { currentProjectId: string }) {
-  const otherProjects = getLocalizedProjects("en")
+async function OtherProjectsSection({ currentProjectId }: { currentProjectId: string }) {
+  const t = await getT("page.en-projects-slug")
+  const otherProjects = (await getLocalizedProjects("en"))
     .filter((p) => p.id !== currentProjectId)
     .slice(0, 3)
 
   return (
     <section className="pt-12 sm:pt-20 border-t border-border">
       <div className="space-y-8 sm:space-y-12">
-        <h2 className="text-2xl sm:text-3xl font-light">Other projects</h2>
+        <h2 className="text-2xl sm:text-3xl font-light">{t("other-projects")}</h2>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {otherProjects.map((otherProject) => (
@@ -291,7 +286,7 @@ function OtherProjectsSection({ currentProjectId }: { currentProjectId: string }
                   <span className="text-xs px-2 py-1 bg-foreground/5 border border-border rounded">
                     {otherProject.category}
                   </span>
-                  {otherProject.featured && <span className="text-amber-500">Featured</span>}
+                  {otherProject.featured && <span className="text-amber-500">{t("featured")}</span>}
                 </div>
 
                 <h3 className="text-lg font-medium group-hover:text-muted-foreground transition-colors duration-300">
@@ -303,7 +298,7 @@ function OtherProjectsSection({ currentProjectId }: { currentProjectId: string }
                 </p>
 
                 <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                  <span>View project</span>
+                  <span>{t("view-project")}</span>
                   <ArrowLeft className="w-4 h-4 rotate-180 transform group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
               </div>

@@ -1,10 +1,16 @@
 "use client"
 
+import { useT } from "@/components/strings-provider"
 import { useEffect, useState } from "react"
 
 type Heading = { id: string; text: string }
 
-export default function EssayContents({ headings }: { headings: Heading[] }) {
+export default function EssayContents({ headings: initial }: { headings: Heading[] }) {
+  // studio : l'éditeur d'écriture publie les titres en direct (événement « essay-headings ») ; sinon ceux du serveur
+  const [live, setLive] = useState<Heading[] | null>(null)
+  useEffect(() => { const f = (e: Event) => setLive((e as CustomEvent<Heading[]>).detail); window.addEventListener("essay-headings", f); return () => window.removeEventListener("essay-headings", f) }, [])
+  const headings = live ?? initial
+  const t = useT("component.EssayContents")
   const [activeId, setActiveId] = useState(headings[0]?.id ?? "")
 
   useEffect(() => {
@@ -26,8 +32,8 @@ export default function EssayContents({ headings }: { headings: Heading[] }) {
   if (!headings.length) return null
 
   return (
-    <aside className="hidden lg:block lg:col-span-3 sticky top-28 self-start min-w-0" aria-label="Sommaire de l'essai">
-      <div className="text-[10px] font-mono tracking-[0.18em] uppercase text-muted-foreground mb-5">Sommaire</div>
+    <aside className="hidden lg:block lg:col-span-3 sticky top-28 self-start min-w-0" aria-label={t("sommaire-de-l-essai")}>
+      <div className="text-[10px] font-mono tracking-[0.18em] uppercase text-muted-foreground mb-5">{t("sommaire")}</div>
       <nav className="border-l border-border">
         {headings.map((heading, index) => (
           <a

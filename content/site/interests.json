@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Hockey sur Gazon",
+    "icon": "🏑",
+    "description": "Pratique depuis l'enfance au TAC Hockey. Saison 2026 : 1ère place de Nationale 1 et montée en Élite, le plus haut niveau français."
+  },
+  {
+    "name": "Course à Pied",
+    "icon": "🏃",
+    "description": "Entraînements réguliers, excellent palmares aux cross inter-collèges (sélections départementales et régionales)."
+  },
+  {
+    "name": "Veille Technologique IA",
+    "icon": "🤖",
+    "description": "Veille quotidienne sur les avancées en IA, LLM et automatisation. Prototypage de nouvelles solutions."
+  },
+  {
+    "name": "Automatisation & Productivité",
+    "icon": "⚡",
+    "description": "Passion pour optimiser et automatiser les processus, toujours à la recherche de gains d'efficacité."
+  }
+]

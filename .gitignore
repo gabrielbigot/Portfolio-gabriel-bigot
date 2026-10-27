@@ -27,3 +27,11 @@ yarn-error.log*
 next-env.d.ts
 .env.local
 package-lock.json
+
+# articles : sources, brouillons et annotations privées ne partent jamais sur GitHub
+/articles-src/
+/public/articles-draft/
+/public/articles/
+
+# données locales du studio (traces de l'IA…)
+/.studio/

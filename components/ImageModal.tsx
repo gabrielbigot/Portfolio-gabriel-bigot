@@ -1,5 +1,6 @@
 "use client"
 
+import { useT } from "@/components/strings-provider"
 import { useEffect } from "react"
 import { X } from "lucide-react"
 import Image from "next/image"
@@ -25,6 +26,7 @@ export default function ImageModal({
   tags,
   link,
 }: ImageModalProps) {
+  const t = useT("component.ImageModal")
   // Fermer avec la touche Escape
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -58,7 +60,7 @@ export default function ImageModal({
         <button
           onClick={onClose}
           className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors duration-200 text-white"
-          aria-label="Fermer"
+          aria-label={t("fermer")}
         >
           <X className="w-6 h-6" />
         </button>
@@ -106,9 +108,7 @@ export default function ImageModal({
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-medium rounded-lg hover:bg-gray-200 transition-colors duration-200"
-                >
-                  Voir le projet
-                  <svg
+                >{t("voir-le-projet")}<svg
                     className="w-4 h-4"
                     fill="none"
                     stroke="currentColor"

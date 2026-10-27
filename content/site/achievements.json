@@ -1,0 +1,23 @@
+[
+  {
+    "title": "1ère place de Nationale 1",
+    "organization": "TAC Hockey",
+    "date": "2026",
+    "description": "Saison historique avec montée en Élite, le plus haut niveau du hockey sur gazon français",
+    "icon": "trophy"
+  },
+  {
+    "title": "Retour en Élite",
+    "organization": "TAC Hockey",
+    "date": "2026",
+    "description": "18 matchs, 16 victoires, 100 buts inscrits et meilleure défense de Nationale 1",
+    "icon": "medal"
+  },
+  {
+    "title": "Podium en cross départemental",
+    "organization": "UNSS",
+    "date": "2017",
+    "description": "Représentation du collège en compétition départementale",
+    "icon": "award"
+  }
+]

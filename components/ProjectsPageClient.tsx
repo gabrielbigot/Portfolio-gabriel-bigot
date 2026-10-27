@@ -1,5 +1,6 @@
 "use client"
 
+import { useT } from "@/components/strings-provider"
 import Link from "next/link"
 import { useState } from "react"
 import { ArrowLeft, ArrowRight, Calendar, Building2, Code2 } from "lucide-react"
@@ -24,73 +25,17 @@ interface ProjectsPageClientProps {
   projects: Project[]
   cvUrl?: string
   locale?: "fr" | "en"
+  /** textes d'interface (content/site/ui-projects.json) */
+  ui: Record<"fr" | "en", any>
+  /** sections ajoutées (content/site/pages.json) */
+  extra?: React.ReactNode
 }
 
-const projectsCopy = {
-  fr: {
-    back: "Retour au portfolio",
-    eyebrow: "PROJETS & AUTOMATISATIONS",
-    title: "Transformer les processus métier avec l'IA",
-    intro: "Une sélection de mes projets d'automatisation et d'intelligence artificielle appliqués à des problématiques concrètes en PME.",
-    projectsDone: "Projets réalisés",
-    featured: "Projets phares",
-    timeSaved: "Gain de temps moyen",
-    smeTransformed: "PME transformée",
-    type: "TYPE",
-    all: "Tous",
-    personal: "Personnel",
-    professional: "Professionnel",
-    filterByCategory: "FILTRER PAR CATÉGORIE",
-    allProjects: "Tous les projets",
-    featuredLabel: "FEATURED",
-    viewProject: "Voir le projet",
-    allProjectsTitle: "Tous les projets",
-    personalProjects: "Projets personnels",
-    professionalProjects: "Projets professionnels",
-    projectSingular: "PROJET",
-    projectPlural: "PROJETS",
-    discover: "Découvrir",
-    empty: "Aucun projet trouvé dans cette catégorie.",
-    ctaTitle: "Intéressé par une collaboration ?",
-    ctaText: "Je suis toujours ouvert à discuter de nouveaux projets d'automatisation et d'IA, en particulier dans le contexte des PME et de la transformation digitale.",
-    contact: "Me contacter",
-    downloadCv: "Télécharger mon CV",
-    footer: "Développeur d'Automatisations IA",
-  },
-  en: {
-    back: "Back to portfolio",
-    eyebrow: "PROJECTS & AUTOMATIONS",
-    title: "Transforming business processes with AI",
-    intro: "A selection of my automation and artificial intelligence projects applied to concrete SME business problems.",
-    projectsDone: "Projects delivered",
-    featured: "Featured projects",
-    timeSaved: "Average time saved",
-    smeTransformed: "SME transformed",
-    type: "TYPE",
-    all: "All",
-    personal: "Personal",
-    professional: "Professional",
-    filterByCategory: "FILTER BY CATEGORY",
-    allProjects: "All projects",
-    featuredLabel: "FEATURED",
-    viewProject: "View project",
-    allProjectsTitle: "All projects",
-    personalProjects: "Personal projects",
-    professionalProjects: "Professional projects",
-    projectSingular: "PROJECT",
-    projectPlural: "PROJECTS",
-    discover: "Discover",
-    empty: "No project found in this category.",
-    ctaTitle: "Interested in working together?",
-    ctaText: "I am always open to discussing new automation and AI projects, especially in SME and digital transformation contexts.",
-    contact: "Contact me",
-    downloadCv: "Download my CV",
-    footer: "AI Automation Developer",
-  },
-}
-
-export default function ProjectsPageClient({ projects, cvUrl, locale = "fr" }: ProjectsPageClientProps) {
-  const copy = projectsCopy[locale]
+export default function ProjectsPageClient({ projects, cvUrl, locale = "fr", ui, extra }: ProjectsPageClientProps) {
+  const tr = useT("component.ProjectsPageClient")
+  const techT = useT("component.TechnologyGroups")
+  const catLabel = (c: string) => { const k = `${locale === "en" ? "" : "fr-"}category-${c}`; return techT.has(k) ? techT(k) : c }
+  const copy = ui[locale]
   const routePrefix = locale === "en" ? "/en" : ""
   const [filter, setFilter] = useState<string>("all")
   const [typeFilter, setTypeFilter] = useState<"all" | "perso" | "pro">("all")
@@ -280,7 +225,7 @@ export default function ProjectsPageClient({ projects, cvUrl, locale = "fr" }: P
                         {project.technologies && project.technologies.length > 0 && (
                           <div className="flex items-start gap-2 text-sm text-muted-foreground">
                             <Code2 className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                            <span>{formatTechnologyGroups(project.technologies, 10)}</span>
+                            <span>{formatTechnologyGroups(project.technologies, 10, catLabel)}</span>
                           </div>
                         )}
                       </div>
@@ -387,7 +332,7 @@ export default function ProjectsPageClient({ projects, cvUrl, locale = "fr" }: P
                     {project.technologies && project.technologies.length > 0 && (
                       <div className="flex items-start gap-2">
                         <Code2 className="w-3 h-3 mt-0.5 flex-shrink-0" />
-                        <span className="line-clamp-3">{formatTechnologyGroups(project.technologies, 6)}</span>
+                        <span className="line-clamp-3">{formatTechnologyGroups(project.technologies, 6, catLabel)}</span>
                       </div>
                     )}
                   </div>
@@ -440,7 +385,7 @@ export default function ProjectsPageClient({ projects, cvUrl, locale = "fr" }: P
                 href={cvUrl || "/cv-gabriel-bigot.pdf"}
                 download={!cvUrl?.startsWith("http")}
                 target={cvUrl?.startsWith("http") ? "_blank" : undefined}
-                rel={cvUrl?.startsWith("http") ? "noopener noreferrer" : undefined}
+                rel={cvUrl?.startsWith("http") ? tr("noopener-noreferrer") : undefined}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300"
               >
                 <span>{copy.downloadCv}</span>
@@ -448,12 +393,12 @@ export default function ProjectsPageClient({ projects, cvUrl, locale = "fr" }: P
             </div>
           </div>
         </section>
+        {extra}
       </main>
 
       <footer className="border-t border-border py-12 mt-20">
         <div className="max-w-7xl mx-auto px-6 sm:px-8">
-          <div className="text-center text-sm text-muted-foreground">
-            © 2025 Gabriel Bigot • {copy.footer}
+          <div className="text-center text-sm text-muted-foreground">{tr("2025-gabriel-bigot")}{" "}{copy.footer}
           </div>
         </div>
       </footer>

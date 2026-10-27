@@ -1,0 +1,132 @@
+[
+  {
+    "position": "Développeur Freelance IA & Full-Stack",
+    "company": "ADN POTENTIEL",
+    "location": "Télétravail — Remote, France",
+    "startDate": "Avril 2026",
+    "endDate": "Mai 2026",
+    "current": false,
+    "description": "Mission freelance post-stage sur sollicitation du client. Première rémunération professionnelle pour des compétences en IA. Engagement confirmant la qualité des livrables du stage.",
+    "achievements": [
+      "Migration complète du système n8n + Notion vers une application web Next.js 16 sur-mesure déployée sur Vercel. Remplacement du système d'automatisation par une SaaS maison sans limite d'exécutions et entièrement contrôlable",
+      "Développement full-stack : veille RSS automatisée (Perplexity AI + OpenAI/Anthropic), studio de contenu avec previews LinkedIn et Instagram en temps réel, génération d'images (DALL-E / Gemini), publication directe sur LinkedIn et Instagram depuis le dashboard",
+      "Système d'authentification JWT avec isolation totale des données par utilisateur. Chaque compte accède uniquement à ses propres articles, posts et paramètres",
+      "Intégration Apify pour récupérer les stats d'engagement LinkedIn (likes, commentaires, profils des commentateurs) en contournement des restrictions de scope de l'API officielle",
+      "Workflow Perplexity AI pour enrichir 48 entreprises mécènes potentielles du Nord/Pas-de-Calais : recherche automatique des contacts RSE, Communication et PDG avec emails et téléphones",
+      "Livraison de vidéos tutoriels pour l'onboarding du nouveau stagiaire du client"
+    ],
+    "technologies": [
+      "Next.js 16",
+      "TypeScript",
+      "Neon PostgreSQL",
+      "Drizzle ORM",
+      "Vercel",
+      "JWT / bcryptjs",
+      "Instagram Graph API",
+      "Apify",
+      "OpenAI",
+      "Anthropic",
+      "Perplexity AI",
+      "Gemini",
+      "DALL-E"
+    ]
+  },
+  {
+    "position": "Assistant en développement commercial et automatisation digitale",
+    "company": "ADN POTENTIEL",
+    "location": "Télétravail — Lille, France",
+    "startDate": "Janvier 2026",
+    "endDate": "Février 2026",
+    "current": false,
+    "description": "Stage de 7 semaines au sein d'un cabinet de formation, conseil et coaching professionnel (certification Qualiopi). Mission centrée sur la transformation digitale via l'automatisation et l'intelligence artificielle.",
+    "achievements": [
+      "Conception et déploiement de 3 workflows n8n en production : enrichissement automatique de 15 000+ prospects BTP (API Pappers), système de veille sectorielle avec qualification IA (score d'impact, catégorisation), génération et publication automatique de contenus LinkedIn",
+      "Création d'un Hub Notion avec 5 bases de données interconnectées comme interface de pilotage de l'ensemble du système",
+      "Production de 4 tutoriels vidéo (~70 minutes) et documentation technique complète pour garantir l'autonomie du client non-technique"
+    ],
+    "technologies": [
+      "n8n",
+      "Notion",
+      "OpenAI",
+      "Google Gemini",
+      "LinkedIn API",
+      "Pappers API",
+      "Perplexity AI"
+    ]
+  },
+  {
+    "position": "Assistant RH/Compta & Développeur d'Automatisations",
+    "company": "BIGOT Matériaux",
+    "location": "Étaples, France",
+    "startDate": "Juillet 2025",
+    "endDate": "Septembre 2025",
+    "current": false,
+    "description": "Développement d'automatisations stratégiques pour optimiser les processus RH et comptables de la PME familiale.",
+    "achievements": [
+      "Création d'une application web complète pour automatiser la comptabilité (saisies répétitives, génération d'écritures) avec Python, Flask et base de données cloud",
+      "Développement d'un système de traitement automatique de relevés bancaires : extraction PDF, mise en forme Excel, préparation import comptable",
+      "Conception d'automatisations Excel avancées : relances clients automatiques, regroupement de données, calculs et suppression de doublons",
+      "Automatisation de la génération de procès-verbaux d'assemblées générales"
+    ],
+    "technologies": [
+      "Python",
+      "Flask",
+      "Supabase",
+      "Excel/VBA",
+      "OCR",
+      "PDF Parsing",
+      "Automatisation UI"
+    ]
+  },
+  {
+    "position": "Vendeur",
+    "company": "TEXTI",
+    "location": "Le Touquet Paris-Plage, France",
+    "startDate": "Juillet 2024",
+    "endDate": "Août 2024",
+    "current": false,
+    "description": "Job d'été dans le secteur du textile.",
+    "achievements": [
+      "Relation client et conseil personnalisé",
+      "Tenue de caisse et gestion des transactions",
+      "Merchandising et présentation produits",
+      "Gestion de stock et inventaires"
+    ],
+    "technologies": []
+  },
+  {
+    "position": "Assistant RH & Comptable",
+    "company": "BIGOT Matériaux",
+    "location": "Étaples, France",
+    "startDate": "Juillet 2023",
+    "endDate": "Juillet 2023",
+    "current": false,
+    "description": "Premier contact avec les processus administratifs de l'entreprise familiale.",
+    "achievements": [
+      "Archivage et organisation de documents RH",
+      "Inventaires et gestion de stock",
+      "Saisie et lettrage comptable",
+      "Découverte des outils internes (AS400)"
+    ],
+    "technologies": [
+      "Excel",
+      "Logiciels comptables"
+    ]
+  },
+  {
+    "position": "Animateur & Entraîneur",
+    "company": "TAC Hockey",
+    "location": "Le Touquet Paris-Plage, France",
+    "startDate": "Juillet 2022",
+    "endDate": "Juillet 2022",
+    "current": false,
+    "description": "Encadrement de jeunes joueurs de hockey.",
+    "achievements": [
+      "Encadrement et animation de groupes de jeunes",
+      "Pédagogie sportive et transmission de techniques",
+      "Responsabilité de groupe et sécurité",
+      "Organisation d'exercices et de jeux"
+    ],
+    "technologies": []
+  }
+]

@@ -1,0 +1,89 @@
+{
+ "pages": {
+  "": {
+   "order": [
+    "x-243fbc43",
+    "x-a8bf3112",
+    "x-essentiel",
+    "x-methode",
+    "x-9ca6b155"
+   ],
+   "hidden": [],
+   "added": [
+    {
+     "id": "x-essentiel",
+     "kind": "blocks",
+     "title": "L'essentiel",
+     "blocks": [
+      {
+       "type": "lede",
+       "text": "La réponse directe à la question du dossier, en quelques phrases : ce qui est établi, ce qui est contesté, ce qui reste inconnu."
+      },
+      {
+       "type": "p",
+       "text": "Un premier paragraphe. Tapez / pour ajouter un titre, une liste, un tableau, un graphique, une source ou un encadré."
+      },
+      {
+       "type": "callout",
+       "variant": "keep",
+       "title": "Comment lire ce dossier",
+       "text": "Les figures encodent l'état de la preuve : **réel**, **estimation**, **prévision**, **calculé**, **affirmation**, **lacune**. Les pastilles K renvoient à une source datée ; les opinions de l'auteur sont dans des encadrés « Position de l'auteur »."
+      }
+     ]
+    },
+    {
+     "id": "x-methode",
+     "kind": "blocks",
+     "title": "Méthode et limites",
+     "blocks": [
+      {
+       "type": "callout",
+       "variant": "opinion",
+       "title": "Position de l'auteur",
+       "text": "Les opinions de l'auteur sont séparées des faits, dans ce type d'encadré."
+      },
+      {
+       "type": "gloss",
+       "terms": []
+      },
+      {
+       "type": "p",
+       "text": "Comment ce dossier a été construit : quelles sources ont été lues, lesquelles n'ont pas pu l'être, ce qui n'a pas été vérifié."
+      }
+     ]
+    },
+    {
+     "id": "x-243fbc43",
+     "kind": "blocks",
+     "title": "Nouvelle section",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Une petite équipe n'a pas de temps à perdre, et c'est précisément ce qui la rend redoutable avec les agents IA. Peu de strates de validation, des décisions prises en une conversation, des processus qu'on peut réécrire dans la journée : tout ce qui ralentit les grandes structures disparaît. Un agent qui prend en charge les tâches répétitives (tri, relances, recherches, premiers jets) libère immédiatement les quelques personnes qui comptent pour ce qui demande du jugement. Là où une grande organisation passe des mois à aligner les services, une petite équipe teste, ajuste et déploie. Elle connaît ses processus de bout en bout, sait donc quoi automatiser en priorité, et voit tout de suite si ça marche. L'agent ne remplace pas l'équipe : il lui donne la force de frappe d'une structure plus grande, sans en payer la lourdeur."
+      }
+     ]
+    },
+    {
+     "id": "x-9ca6b155",
+     "kind": "blocks",
+     "title": "Nouvelle section",
+     "blocks": [
+      {
+       "type": "p",
+       "text": ""
+      }
+     ]
+    },
+    {
+     "id": "x-a8bf3112",
+     "kind": "blocks",
+     "title": "Nouvelle section",
+     "blocks": []
+    }
+   ],
+   "text": {}
+  }
+ },
+ "figures": {},
+ "evidence": []
+}

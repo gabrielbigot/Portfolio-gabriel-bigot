@@ -1,11 +1,17 @@
+import ExtraBlocks from "@/components/blocks/ExtraBlocks"
+import { stripDeep } from "@/lib/studio/stega"
+import { getT } from "@/lib/strings"
 import Link from "next/link"
 import { getCompanies } from "@/lib/portfolio-data"
 import { ArrowLeft, ArrowRight, Building2, MapPin, Calendar, Briefcase } from "lucide-react"
 import TechnologyGroups from "@/components/TechnologyGroups"
 
-export const metadata = {
-  title: "Expériences professionnelles — Gabriel Bigot",
-  description: "Découvrez les entreprises où j'ai travaillé, les projets réalisés et ce que j'y ai appris.",
+export async function generateMetadata() {
+  const t = await getT("page.work")
+  return stripDeep({
+    title: t("experiences-professionnelles-gabriel-bigot"),
+    description: t("decouvrez-les-entreprises-ou-j-ai"),
+  })
 }
 
 function formatDate(dateString: string): string {
@@ -18,8 +24,9 @@ function formatDate(dateString: string): string {
   }
 }
 
-export default function WorkPage() {
-  const companies = getCompanies()
+export default async function WorkPage() {
+  const t = await getT("page.work")
+  const companies = await getCompanies()
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -30,7 +37,7 @@ export default function WorkPage() {
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Retour au portfolio</span>
+            <span>{t("retour-au-portfolio")}</span>
           </Link>
         </div>
       </nav>
@@ -38,16 +45,10 @@ export default function WorkPage() {
       <main className="max-w-5xl mx-auto px-6 sm:px-8 py-12 sm:py-20">
         {/* Header */}
         <header className="space-y-6 pb-16 border-b border-border">
-          <div className="text-sm text-muted-foreground font-mono tracking-wider">
-            EXPÉRIENCES / {new Date().getFullYear()}
+          <div className="text-sm text-muted-foreground font-mono tracking-wider">{t("experiences")}{" "}{new Date().getFullYear()}
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight">
-            Où j'ai travaillé
-          </h1>
-          <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
-            Les entreprises qui m'ont accueilli, les projets que j'y ai menés,
-            et ce que chaque expérience m'a apporté.
-          </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight">{t("ou-j-ai-travaille")}</h1>
+          <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">{t("les-entreprises-qui-m-ont-accueilli")}</p>
         </header>
 
         {/* Companies list */}
@@ -96,9 +97,7 @@ export default function WorkPage() {
                         </span>
                       )}
                       {company.current && (
-                        <span className="px-2.5 py-0.5 text-xs bg-amber-500/10 text-amber-500 border border-amber-500/20 rounded-full">
-                          Poste actuel
-                        </span>
+                        <span className="px-2.5 py-0.5 text-xs bg-amber-500/10 text-amber-500 border border-amber-500/20 rounded-full">{t("poste-actuel")}</span>
                       )}
                     </div>
 
@@ -123,7 +122,7 @@ export default function WorkPage() {
                         <span>
                           {formatDate(company.startDate)}
                           {" — "}
-                          {company.current ? "Aujourd'hui" : formatDate(company.endDate)}
+                          {company.current ? t("aujourd-hui") : formatDate(company.endDate)}
                         </span>
                       </div>
                     </div>
@@ -145,7 +144,7 @@ export default function WorkPage() {
 
                   {/* Arrow */}
                   <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300 self-end sm:self-center flex-shrink-0">
-                    <span>Voir le détail</span>
+                    <span>{t("voir-le-detail")}</span>
                     <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                   </div>
                 </div>
@@ -153,13 +152,12 @@ export default function WorkPage() {
             </Link>
           ))}
         </div>
-      </main>
+      <ExtraBlocks page="/work" />
+        </main>
 
       <footer className="border-t border-border py-12">
         <div className="max-w-5xl mx-auto px-6 sm:px-8">
-          <div className="text-center text-sm text-muted-foreground">
-            © 2025 Gabriel Bigot • Développeur d'Automatisations IA
-          </div>
+          <div className="text-center text-sm text-muted-foreground">{t("2025-gabriel-bigot-developpeur-d-automatisations")}</div>
         </div>
       </footer>
     </div>

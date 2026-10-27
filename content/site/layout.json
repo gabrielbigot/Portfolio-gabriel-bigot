@@ -1,0 +1,29 @@
+{
+  "rules": {
+    "/portfolio": {},
+    "/en/portfolio": {},
+    "/projects": {},
+    "/en/projects": {},
+    "/work": {},
+    "/en/work": {},
+    "/about": {},
+    "/en/about": {},
+    "/uses": {},
+    "/en/uses": {},
+    "/blog": {},
+    "/blog/nouvel-essai": {
+      ":nth-child(1)": {
+        "order": 10
+      },
+      ":nth-child(2)": {
+        "order": 20
+      },
+      ":nth-child(3)": {
+        "order": 30
+      },
+      "[data-cb=\"cb-w1n6rr\"]": {
+        "order": 40
+      }
+    }
+  }
+}
