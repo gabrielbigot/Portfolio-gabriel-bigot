@@ -35,3 +35,12 @@ package-lock.json
 
 # données locales du studio (traces de l'IA…)
 /.studio/
+
+# dossiers en brouillon : jamais dans git (le dépôt est public)
+content/articles/nouvel-article/
+content/articles/fracture-generationnelle-lyceens-2026/
+content/articles/harness-claude-code-codex-2026/
+content/articles/qui-possede-les-medias-2026/
+content/articles/bulle-ia-septembre-2026/
+content/articles/demeler-le-vrai-ia-septembre-2026/
+content/articles/silicium-et-pouvoir-geopolitique-ia/
