@@ -26,6 +26,7 @@ interface PersonalInfo {
   lastName: string
   title: string
   tagline: string
+  intro?: string
   location: string
   email: string
   phone: string
@@ -241,6 +242,10 @@ export default function PortfolioClient({
               <p className="font-editorial text-xl sm:text-2xl text-foreground/85 leading-snug">
                 {personalInfo.tagline}
               </p>
+
+              {personalInfo.intro && (
+                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">{personalInfo.intro}</p>
+              )}
 
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {personalInfo.currentRole.position} @ {personalInfo.currentRole.company} · {personalInfo.currentRole.startDate} — {copy.present}
