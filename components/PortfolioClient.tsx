@@ -219,7 +219,7 @@ export default function PortfolioClient({
         </div>
       </nav>
 
-      <AsciiField className="fixed inset-0 z-0 opacity-[0.16] sm:opacity-[0.3]" />
+      <AsciiField className="absolute inset-x-0 top-0 z-0 h-screen opacity-[0.16] sm:opacity-[0.3]" />
 
       <main className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
         <header
