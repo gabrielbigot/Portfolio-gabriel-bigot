@@ -16,6 +16,7 @@
     if (opts.standalone) root.setAttribute('data-standalone', '');
     initTheme(root, opts);
     initEvidence(root);
+    initPeek(root);
     initFigures(root);
     initNav(root);
   }
@@ -43,6 +44,42 @@
         apply(); btn.setAttribute('aria-pressed', manual === 'dark');
       });
     }
+  }
+
+  /* ---------- aperçu de source au survol (essais) ----------
+   * Les renvois {{K1}} sont affichés en numéros (1, 2…) ; au survol ou au focus, une petite carte résume la source
+   * (type, titre, date, ce qu'elle dit, ses limites). Un clic ouvre toujours la fiche complète. */
+  function initPeek(root) {
+    if (root.getAttribute('data-kind') !== 'essay') return;
+    const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    const refs = [...root.querySelectorAll('a.src[data-src]')].filter(a => !a.closest('#vra-evidence') && EV[a.getAttribute('data-src')]);
+    for (const a of refs) { a.removeAttribute('title'); a.textContent = a.getAttribute('data-src').replace(/^[A-Z]/, ''); a.setAttribute('aria-label', 'Source ' + a.textContent + ' : ' + EV[a.getAttribute('data-src')].sourceName); }
+    const tip = document.createElement('div');
+    tip.className = 'vra-peek'; tip.hidden = true; tip.setAttribute('role', 'tooltip');
+    root.appendChild(tip);
+    let timer = 0, cur = null;
+    const hide = () => { clearTimeout(timer); tip.hidden = true; cur = null; };
+    const show = a => {
+      const e = EV[a.getAttribute('data-src')]; if (!e) return;
+      cur = a;
+      tip.innerHTML = '<p class="pk-meta">' + esc(CLASS[e.sourceClass] || 'Source') + (e.publicationDate ? ' · ' + esc(e.publicationDate) : '') + '</p>'
+        + '<p class="pk-name">' + esc(e.sourceName) + '</p>'
+        + '<p class="pk-fact">' + esc(e.fact) + '</p>'
+        + (e.limitations ? '<p class="pk-lim"><strong>Limites.</strong> ' + esc(e.limitations) + '</p>' : '')
+        + '<p class="pk-more">Clic : fiche complète</p>';
+      tip.hidden = false;
+      const r = a.getBoundingClientRect(), w = tip.offsetWidth, h = tip.offsetHeight, pad = 10;
+      const left = Math.min(Math.max(pad, r.left + r.width / 2 - w / 2), window.innerWidth - w - pad);
+      const above = r.top - h - 10 >= pad;
+      tip.style.left = left + 'px';
+      tip.style.top = (above ? r.top - h - 10 : Math.min(r.bottom + 10, window.innerHeight - h - pad)) + 'px';
+    };
+    root.addEventListener('pointerover', ev => { const a = ev.target.closest && ev.target.closest('a.src[data-src]'); if (a && !a.closest('#vra-evidence') && ev.pointerType !== 'touch') { clearTimeout(timer); timer = setTimeout(() => show(a), 140); } });
+    root.addEventListener('pointerout', ev => { if (ev.target.closest && ev.target.closest('a.src[data-src]')) hide(); });
+    root.addEventListener('focusin', ev => { const a = ev.target.closest && ev.target.closest('a.src[data-src]'); if (a && !a.closest('#vra-evidence')) show(a); });
+    root.addEventListener('focusout', hide);
+    root.addEventListener('keydown', ev => { if (ev.key === 'Escape') hide(); });
+    window.addEventListener('scroll', () => { if (cur) hide(); }, { passive: true });
   }
 
   /* ---------- carte de preuve (source drill-down) ---------- */

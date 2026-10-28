@@ -133,8 +133,8 @@
       {
        "type": "ul",
        "items": [
-        "**MIT Media Lab, « Your Brain on ChatGPT » (2025).** Des participants rédigent un texte avec ou sans aide. Le groupe assisté montre une connectivité neuronale plus faible et se sent moins auteur de son texte. Mais c'est un préprint non relu par des pairs, sur 54 personnes, une seule tâche, un seul modèle, et d'autres chercheurs jugent ses conclusions probablement surestimées.",
-        "**METR, essai randomisé (2025).** Seize développeurs expérimentés, 246 tâches réelles : avec l'IA, ils ont mis environ 19 % de temps en plus, alors qu'ils pensaient être allés environ 20 % plus vite. Petit échantillon, outils du début 2025, et METR présente lui-même ce résultat comme daté dans une mise à jour de 2026. Ce qu'il faut retenir, c'est l'écart entre le ressenti et le mesuré."
+        "**MIT Media Lab, « Your Brain on ChatGPT » (2025).** Des participants rédigent un texte avec ou sans aide. Le groupe assisté par un modèle de langage montre la connectivité neuronale la plus faible et se sent le moins auteur de son texte{{K1}}. Mais c'est un préprint, sans relecture par des pairs indiquée, sur 54 personnes et une seule tâche, et un commentaire publié depuis recommande d'interpréter ses résultats plus prudemment, notamment à cause de la taille limitée de l'échantillon{{K2}}.",
+        "**METR, essai randomisé (2025).** Seize développeurs expérimentés, 246 tâches réelles : avec l'IA, ils ont mis environ 19 % de temps en plus, alors qu'ils avaient prévu d'aller 24 % plus vite et pensaient, après coup, avoir gagné environ 20 %{{K3}}. Petit échantillon, outils du début 2025, temps déclarés par les participants. Une mise à jour de février 2026 juge que ce protocole ne mesure plus correctement l'effet actuel : ses nouvelles estimations vont plutôt vers un gain, mais leurs intervalles incluent zéro, donc elles ne le prouvent pas non plus{{K4}}. Ce qu'il faut retenir, c'est l'écart entre le ressenti et le mesuré."
        ]
       },
       {
@@ -291,5 +291,62 @@
   }
  },
  "figures": {},
- "evidence": []
+ "evidence": [
+  {
+   "key": "K1",
+   "fact": "Rédaction d'un essai avec un assistant IA, un moteur de recherche ou sans outil : les utilisateurs de l'assistant montrent la connectivité EEG la plus faible et le sentiment d'appropriation le plus bas",
+   "value": "54 participants",
+   "state": "actual",
+   "unit": "",
+   "sourceClass": "paper",
+   "sourceName": "Kosmyna et al., « Your Brain on ChatGPT » (arXiv:2506.08872)",
+   "publicationDate": "2025-06-10",
+   "observationDate": "",
+   "url": "https://arxiv.org/abs/2506.08872",
+   "formula": "",
+   "limitations": "Préprint sur arXiv, sans relecture par des pairs indiquée ; 54 participants aux séances 1 à 3, 18 à la séance 4 ; une seule tâche (la rédaction)."
+  },
+  {
+   "key": "K2",
+   "fact": "Un commentaire salue les données de l'étude mais recommande d'interpréter certains résultats plus prudemment, en raison notamment de la taille limitée de l'échantillon",
+   "value": "",
+   "state": "actual",
+   "unit": "",
+   "sourceClass": "paper",
+   "sourceName": "Stankovic et al., commentaire sur « Your Brain on ChatGPT » (arXiv:2601.00856)",
+   "publicationDate": "2025-12-29",
+   "observationDate": "",
+   "url": "https://arxiv.org/abs/2601.00856",
+   "formula": "",
+   "limitations": "Commentaire de quatre auteurs publié sur arXiv ; je n'en ai lu que la page de présentation."
+  },
+  {
+   "key": "K3",
+   "fact": "Essai randomisé : 16 développeurs expérimentés, 246 tâches réelles, avec ou sans outils d'IA. Les développeurs avaient prévu un gain de 24 % et pensaient, après coup, avoir gagné environ 20 %",
+   "value": "+19 % de temps (IC 95 % : +2 % à +39 %)",
+   "state": "actual",
+   "unit": "",
+   "sourceClass": "paper",
+   "sourceName": "METR, « Measuring the impact of early-2025 AI on experienced open-source developer productivity »",
+   "publicationDate": "2025-07-10",
+   "observationDate": "début 2025",
+   "url": "https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/",
+   "formula": "",
+   "limitations": "Petit échantillon, une seule catégorie de travail (développement logiciel), outils du début 2025 (surtout Cursor Pro avec Claude 3.5 et 3.7), temps déclarés par les participants ; METR indique que ces résultats sont dépassés."
+  },
+  {
+   "key": "K4",
+   "fact": "Nouvelles estimations de la même expérience (fin 2025) : un gain de temps estimé, mais avec des intervalles qui incluent zéro. METR juge que son protocole ne mesure plus l'effet actuel de l'IA et le change",
+   "value": "−18 % (IC −38 % à +9 %) et −4 % (IC −15 % à +9 %) selon les sous-groupes",
+   "state": "estimate",
+   "unit": "",
+   "sourceClass": "paper",
+   "sourceName": "METR, « We are Changing our Developer Productivity Experiment Design »",
+   "publicationDate": "2026-02-24",
+   "observationDate": "fin 2025",
+   "url": "https://metr.org/blog/2026-02-24-uplift-update/",
+   "formula": "",
+   "limitations": "Biais de sélection (des développeurs refusent de travailler sans IA), tâches retenues non représentatives, temps difficile à mesurer quand des agents travaillent en parallèle."
+  }
+ ]
 }

@@ -514,3 +514,22 @@ body:has(.vra[data-kind="essay"]) .pf-back:hover { background: none; text-decora
 .vra[data-kind="essay"] *, .vra[data-kind="essay"] *::before, .vra[data-kind="essay"] *::after { animation: none !important; transition: none !important; }
 html:has(.vra[data-kind="essay"]) { scroll-behavior: auto !important; }
 @media (max-width: 1079px) { .vra[data-kind="essay"] .vra-toc > small { display: none; } }
+
+/* essais : lettrine, liens, renvois de source et aperçu au survol */
+.vra[data-kind="essay"] .vra-main > section:first-of-type h2 + p::first-letter { float: left; font: 600 4.35em/.78 var(--vra-serif); padding: .07em .09em 0 0; margin-top: .02em; color: var(--vra-ink); }
+.vra[data-kind="essay"] .vra-main a:not(.src):not(.ev-reg) { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; text-decoration-color: color-mix(in srgb, var(--vra-ink) 38%, transparent); }
+.vra[data-kind="essay"] .vra-main a:not(.src):not(.ev-reg):hover { text-decoration-color: var(--vra-ink); }
+.vra[data-kind="essay"] .vra-main a[href^="http"]:not(.src)::after { content: "\2197"; font: 500 .7em/1 var(--vra-sans); margin-left: .18em; color: var(--vra-mid); text-decoration: none; display: inline-block; }
+.vra[data-kind="essay"] a.src { border: 0; background: none; padding: 0 .1em; margin: 0 .05em; position: relative; top: -.45em; font: 600 .68em/0 var(--vra-sans); color: var(--vra-c1); text-decoration: none; }
+.vra[data-kind="essay"] a.src:hover, .vra[data-kind="essay"] a.src:focus-visible { background: color-mix(in srgb, var(--vra-c1) 14%, transparent); border-radius: 3px; }
+.vra[data-kind="essay"] .vra-main ol.sources { max-width: 41rem; font: 400 .98rem/1.55 var(--vra-sans); color: var(--vra-ink); padding-left: 1.4rem; }
+.vra[data-kind="essay"] .vra-main ol.sources li { margin-bottom: .9em; scroll-margin-top: 24px; }
+.vra[data-kind="essay"] .vra-main ol.sources .src-lim { display: block; color: var(--vra-mid); font-size: .9em; margin-top: .15em; }
+.vra[data-kind="essay"] .vra-main ol.sources li:target { background: color-mix(in srgb, var(--vra-c1) 10%, transparent); }
+.vra-peek { position: fixed; z-index: 95; width: min(22rem, calc(100vw - 20px)); padding: .85rem 1rem; background: var(--vra-bg); color: var(--vra-ink); border: 1px solid var(--vra-line); border-radius: 6px; box-shadow: 0 10px 30px rgb(0 0 0 / .18); font: 400 .84rem/1.45 var(--vra-sans); pointer-events: none; }
+.vra-peek p { margin: 0 0 .45rem; max-width: none; }
+.vra-peek p:last-child { margin: 0; }
+.vra-peek .pk-meta { font: 500 .72rem/1.2 var(--vra-mono); letter-spacing: .04em; color: var(--vra-mid); }
+.vra-peek .pk-name { font: 600 .95rem/1.3 var(--vra-serif); }
+.vra-peek .pk-lim { color: var(--vra-mid); font-size: .8rem; }
+.vra-peek .pk-more { font: 500 .72rem/1.2 var(--vra-sans); color: var(--vra-c1); }
