@@ -44,7 +44,7 @@
      "blocks": [
       {
        "type": "p",
-       "text": "Ma première conviction est celle dont découlent toutes les autres : l'IA n'est pas une innovation parmi d'autres, c'est une révolution de l'ampleur du chemin de fer, de l'électricité ou d'Internet. Avec une différence qui me frappe. Les révolutions précédentes ont transformé des secteurs, des distances, des façons de communiquer. L'IA touche à ce qui nous a toujours servi à transformer le reste : comprendre, décider, concevoir. Une technologie qui améliore la manière dont on fabrique les technologies change la vitesse de tout le reste. Je crois que c'est le genre de bouleversement qui ne se produit qu'une fois."
+       "text": "Ma première conviction est celle dont découlent toutes les autres : l'IA n'est pas une innovation parmi d'autres, c'est une révolution de l'ampleur du chemin de fer, de l'électricité ou d'Internet.{{note: C'est une comparaison, pas une mesure. On ne saura que qu'avec le recul si elle tenait.}} Avec une différence qui me frappe. Les révolutions précédentes ont transformé des secteurs, des distances, des façons de communiquer. L'IA touche à ce qui nous a toujours servi à transformer le reste : comprendre, décider, concevoir. Une technologie qui améliore la manière dont on fabrique les technologies change la vitesse de tout le reste. Je crois que c'est le genre de bouleversement qui ne se produit qu'une fois."
       },
       {
        "type": "p",
@@ -63,7 +63,7 @@
      "blocks": [
       {
        "type": "p",
-       "text": "On me dit parfois : si c'est inévitable, à quoi bon en parler ? Je pense l'inverse. Je crois qu'on ne pourra pas empêcher ces technologies de se répandre à long terme : trop d'argent, trop d'intérêts, trop de pays en concurrence. Ceux qui s'y opposent frontalement ne les arrêteront pas, ils renonceront simplement à les influencer."
+       "text": "On me dit parfois : si c'est inévitable, à quoi bon en parler ? Je pense l'inverse. Je crois qu'on ne pourra pas empêcher ces technologies de se répandre à long terme : trop d'argent, trop d'intérêts, trop de pays en concurrence. Ceux qui s'y opposent frontalement ne les arrêteront pas, ils renonceront simplement à les influencer.{{note: Je ne dis pas qu'il ne faut jamais refuser un usage précis. Je dis qu'un refus global n'a pas de prise sur la trajectoire.}}"
       },
       {
        "type": "p",
@@ -105,7 +105,7 @@
       },
       {
        "type": "p",
-       "text": "Je ne dis pas qu'il faut renoncer à l'espoir. Je dis qu'une technologie aussi puissante ne mérite de croître que si nous restons capables de ne pas être aveuglés par ce qu'elle promet. C'est une exigence de lucidité, pas de pessimisme."
+       "text": "Je ne dis pas qu'il faut renoncer à l'espoir.{{note: C'est le passage de l'essai où je suis le moins sûr de ma formulation. Si vous voyez mieux comment le dire, écrivez-moi.}} Je dis qu'une technologie aussi puissante ne mérite de croître que si nous restons capables de ne pas être aveuglés par ce qu'elle promet. C'est une exigence de lucidité, pas de pessimisme."
       }
      ]
     },

@@ -5,6 +5,7 @@
  */
 (function (global) {
   'use strict';
+  const SCRIPT_URL = (document.currentScript && document.currentScript.src) || (document.baseURI + 'assets/article.js');
   const DATA = global.VRA_DATA || { evidence: [], figures: {} };
   const EV = Object.fromEntries(DATA.evidence.map(e => [e.key, e]));
   const STATE = { actual: 'Réel', estimate: 'Estimation', forecast: 'Prévision', derived: 'Calculé', claim: 'Affirmation orale', gap: 'Lacune' };
@@ -17,6 +18,8 @@
     initTheme(root, opts);
     initEvidence(root);
     initPeek(root);
+    initNotes(root);
+    initArt(root);
     initFigures(root);
     initNav(root);
   }
@@ -44,6 +47,51 @@
         apply(); btn.setAttribute('aria-pressed', manual === 'dark');
       });
     }
+  }
+
+  /* ---------- figure ASCII vivante (essais) ----------
+   * La page est servie avec la figure de départ (texte, lisible sans JavaScript). Ici on charge le même module et on poursuit
+   * la simulation : elle évolue lentement, se met en pause hors écran, et le curseur peut y semer une colonie.
+   * Mouvement réduit : la figure reste figée. */
+  function initArt(root) {
+    if (root.getAttribute('data-kind') !== 'essay') return;
+    const pre = root.querySelector('.vra-art pre');
+    if (!pre || (global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+    const slug = (global.VRA_AI && global.VRA_AI.slug) || location.pathname.split('/').filter(Boolean).pop();
+    import(new URL('ascii-art.mjs', SCRIPT_URL).href).then(m => {
+      const st = m.buildState(slug), ROWS = 9;
+      let frame = 0, visible = true, timer = 0;
+      const draw = () => { pre.textContent = m.renderState(st, ROWS).text; };
+      const tick = () => {
+        if (!visible || document.hidden) return;
+        frame++;
+        m.stepState(st, 5, 0.003 * Math.sin(frame / 90));
+        if (frame % 40 === 0 && m.renderState(st, ROWS).density < 0.04) m.seedBlob(st, Math.random() * st.cols, st.top + Math.random() * ROWS, 2);
+        draw();
+      };
+      new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(pre);
+      pre.addEventListener('pointermove', ev => {
+        const cs = getComputedStyle(pre), r = pre.getBoundingClientRect();
+        const cw = parseFloat(cs.fontSize) * 0.6 + (parseFloat(cs.letterSpacing) || 0), chh = parseFloat(cs.lineHeight) || 15;
+        m.seedBlob(st, (ev.clientX - r.left) / cw, st.top + (ev.clientY - r.top) / chh, 1);
+      }, { passive: true });
+      timer = setInterval(tick, 90);
+      addEventListener('pagehide', () => clearInterval(timer));
+    }).catch(() => { /* module indisponible : la figure de départ reste affichée */ });
+  }
+
+  /* ---------- notes en marge (essais) ----------
+   * {{note: …}} devient un numéro dans le texte ; large écran : la note s'affiche dans la marge, à la hauteur de la ligne ;
+   * écran étroit : un clic (ou Entrée) déplie la note sous le paragraphe. */
+  function initNotes(root) {
+    if (root.getAttribute('data-kind') !== 'essay') return;
+    [...root.querySelectorAll('.sn')].forEach((sn, i) => {
+      const num = sn.querySelector('.sn-num'); if (!num) return;
+      num.setAttribute('role', 'button'); num.setAttribute('tabindex', '0'); num.setAttribute('aria-expanded', 'false'); num.setAttribute('aria-label', 'Note ' + (i + 1));
+      const toggle = () => { const open = sn.hasAttribute('data-open'); if (open) sn.removeAttribute('data-open'); else sn.setAttribute('data-open', ''); num.setAttribute('aria-expanded', String(!open)); };
+      num.addEventListener('click', toggle);
+      num.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggle(); } });
+    });
   }
 
   /* ---------- aperçu de source au survol (essais) ----------
