@@ -556,3 +556,10 @@ html:has(.vra[data-kind="essay"]) { scroll-behavior: auto !important; }
   .vra[data-kind="essay"][data-js] .sn-body, .vra[data-kind="essay"][data-js] .sn[data-open] .sn-body { display: block; float: right; clear: right; width: 15rem; margin: .1rem -17.5rem 1rem 0; padding: 0; border: 0; }
   .vra[data-kind="essay"] .sn-num { cursor: default; }
 }
+
+/* essais : citation mise en valeur (bloc « citation » sans source) */
+.vra[data-kind="essay"] .vra-main blockquote.pull { position: relative; clear: right; max-width: 46rem; margin: 3rem 0 3.1rem; padding: 1.5rem 0 0; border: 0; font: italic 500 clamp(1.65rem, 3vw, 2.5rem)/1.25 var(--vra-serif); letter-spacing: -.01em; color: var(--vra-ink); text-wrap: balance; }
+.vra[data-kind="essay"] .vra-main blockquote.pull::before { content: ""; position: absolute; top: 0; left: 0; width: 3.2rem; height: 2px; background: var(--vra-c1); }
+.vra[data-kind="essay"] .vra-main blockquote.pull p { max-width: none; margin: 0; }
+@media (min-width: 1080px) { .vra[data-kind="essay"] .vra-main blockquote.pull { margin-left: -1.2rem; } }
+@media (max-width: 640px) { .vra[data-kind="essay"] .vra-main blockquote.pull { margin: 2.2rem 0 2.4rem; font-size: 1.45rem; } }
