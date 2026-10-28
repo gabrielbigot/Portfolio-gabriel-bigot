@@ -468,3 +468,49 @@
 .vra figure.art svg { color: var(--vra-ink); }
 .vra figure.art .t { font-family: var(--vra-sans); fill: var(--vra-ink); }
 .vra figure.art .m { fill: var(--vra-mid); font-family: var(--vra-sans); }
+
+/* ---------- essais : lecture simple, une seule colonne, rien d'animé ----------
+ * Même moteur que les dossiers, mais seuls le texte, le sommaire et la date comptent : pas de barre de progression,
+ * pas de repères numérotés, pas d'accent de couleur sur le texte courant. Activé par data-kind="essay" sur <article class="vra">. */
+.vra[data-kind="essay"] { font-size: 1.25rem; line-height: 1.75; }
+.vra[data-kind="essay"] .vra-progress { display: none; }
+.vra[data-kind="essay"] .marker { display: none; }
+
+/* couverture : titre aligné sur la colonne de texte, comme le sommaire à gauche */
+.vra[data-kind="essay"] .vra-cover, .vra[data-kind="essay"] .vra-shell { max-width: 62rem; }
+@media (min-width: 1080px) { .vra[data-kind="essay"] .vra-cover { padding-left: calc(20px + 266px); } }
+.vra[data-kind="essay"] .vra-cover { padding-top: clamp(56px, 9vw, 112px); padding-bottom: clamp(24px, 4vw, 44px); }
+.vra[data-kind="essay"] .vra-kicker { font: 500 .8rem/1.2 var(--vra-sans); letter-spacing: .08em; color: var(--vra-mid); margin-bottom: 1.1rem; }
+.vra[data-kind="essay"] .vra-cover h1 { font: 600 clamp(2rem, 4.4vw, 3rem)/1.12 var(--vra-serif); letter-spacing: -.015em; max-width: 19em; margin-bottom: 1rem; }
+.vra[data-kind="essay"] .vra-dek { font-size: clamp(1.1rem, 2vw, 1.3rem); line-height: 1.5; margin-bottom: 1.3rem; }
+.vra[data-kind="essay"] .vra-byline { margin-bottom: 0; font-size: .875rem; }
+
+/* bascule clair / sombre : discrète, en haut à droite, sans fond */
+.vra[data-kind="essay"] .vra-toolbar { position: fixed; top: 12px; right: 16px; margin: 0; z-index: 70; }
+.vra[data-kind="essay"] .vra-toolbar button { border: 0; background: none; padding: .35rem .2rem; border-radius: 0; font: 500 .8rem/1 var(--vra-sans); color: var(--vra-mid); text-decoration: underline; text-decoration-color: var(--vra-line); text-underline-offset: 4px; }
+.vra[data-kind="essay"] .vra-toolbar button:hover { color: var(--vra-ink); text-decoration-color: var(--vra-ink); }
+
+/* sommaire : texte seul, sans pastille ni filet coloré */
+.vra[data-kind="essay"] .vra-toc { font-size: .875rem; line-height: 1.4; }
+.vra[data-kind="essay"] .vra-toc small { font: 500 .8rem/1 var(--vra-sans); letter-spacing: 0; text-transform: none; color: var(--vra-ink); }
+.vra[data-kind="essay"] .vra-toc ol { border-left: 0; }
+.vra[data-kind="essay"] .vra-toc a { border-left: 0; margin-left: 0; padding: .3rem 0; }
+.vra[data-kind="essay"] .vra-toc a[aria-current="true"] { border-left-color: transparent; font-weight: 600; }
+.vra[data-kind="essay"] .vra-toc-toggle { border: 0; background: none; padding: 0; font: 500 .85rem/1 var(--vra-sans); color: var(--vra-mid); text-decoration: underline; text-underline-offset: 4px; }
+
+/* texte : titres de section sobres, paragraphes aérés, citations sans filet coloré */
+.vra[data-kind="essay"] .vra-main > section { padding-top: clamp(2rem, 4vw, 3rem); }
+.vra[data-kind="essay"] .vra-main h2 { font: 600 clamp(1.5rem, 3vw, 1.9rem)/1.2 var(--vra-serif); letter-spacing: -.01em; margin-bottom: 1rem; }
+.vra[data-kind="essay"] .vra-main h3 { font: italic 600 1.15rem/1.35 var(--vra-serif); margin: 1.8rem 0 .6rem; }
+.vra[data-kind="essay"] .vra-main p { margin-bottom: 1.2em; }
+.vra[data-kind="essay"] .vra-main blockquote { border-left: 2px solid var(--vra-line); }
+.vra[data-kind="essay"] .vra-main ul.prose, .vra[data-kind="essay"] .vra-main ol.prose { max-width: 41rem; }
+
+/* lien de retour : texte simple au lieu d'une pastille */
+body:has(.vra[data-kind="essay"]) .pf-back { top: 12px; left: 16px; padding: .35rem .2rem; border: 0; border-radius: 0; background: none; backdrop-filter: none; font-weight: 500; font-size: 13px; text-decoration: underline; text-decoration-color: var(--vra-line, #d5d0c5); text-underline-offset: 4px; }
+body:has(.vra[data-kind="essay"]) .pf-back:hover { background: none; text-decoration-color: currentColor; }
+
+/* rien d'animé dans un essai */
+.vra[data-kind="essay"] *, .vra[data-kind="essay"] *::before, .vra[data-kind="essay"] *::after { animation: none !important; transition: none !important; }
+html:has(.vra[data-kind="essay"]) { scroll-behavior: auto !important; }
+@media (max-width: 1079px) { .vra[data-kind="essay"] .vra-toc > small { display: none; } }
