@@ -1,0 +1,173 @@
+{
+  "technical": [
+    {
+      "category": "Développement & Automatisation",
+      "skills": [
+        {
+          "name": "Python",
+          "level": 85,
+          "description": "Scripts data, automatisations, Flask"
+        },
+        {
+          "name": "Flask",
+          "level": 75,
+          "description": "Applications web, APIs"
+        },
+        {
+          "name": "Excel/VBA",
+          "level": 90,
+          "description": "Automatisations avancées, macros complexes"
+        },
+        {
+          "name": "UI Automation",
+          "level": 80,
+          "description": "Automatisation d'interfaces"
+        },
+        {
+          "name": "n8n",
+          "level": 80,
+          "description": "Conception et déploiement de workflows d'automatisation no-code en production"
+        },
+        {
+          "name": "Intégration APIs",
+          "level": 75,
+          "description": "REST, OAuth2, webhooks — Pappers, OpenAI, LinkedIn API v2, Google Sheets"
+        },
+        {
+          "name": "Next.js / React",
+          "level": 75,
+          "description": "App Router, Server Components, API routes, Vercel Cron"
+        },
+        {
+          "name": "TypeScript",
+          "level": 72,
+          "description": "Typage strict, interfaces, types génériques"
+        }
+      ]
+    },
+    {
+      "category": "Données & Bases de Données",
+      "skills": [
+        {
+          "name": "SQL",
+          "level": 75,
+          "description": "Requêtes, gestion de bases"
+        },
+        {
+          "name": "Supabase",
+          "level": 70,
+          "description": "Backend as a Service"
+        },
+        {
+          "name": "Drizzle ORM",
+          "level": 68,
+          "description": "ORM typé, schéma Neon PostgreSQL, migrations SQL"
+        },
+        {
+          "name": "Pandas",
+          "level": 80,
+          "description": "Manipulation et analyse de données"
+        },
+        {
+          "name": "Excel Avancé",
+          "level": 95,
+          "description": "Tableaux croisés, formules complexes, Power Query"
+        }
+      ]
+    },
+    {
+      "category": "Intelligence Artificielle",
+      "skills": [
+        {
+          "name": "Prototypage LLM",
+          "level": 85,
+          "description": "GPT, Claude, intégration d'APIs"
+        },
+        {
+          "name": "Prompt Design",
+          "level": 90,
+          "description": "Optimisation de prompts, chaînage"
+        },
+        {
+          "name": "OCR & Parsing",
+          "level": 80,
+          "description": "Extraction de données de documents"
+        },
+        {
+          "name": "Agents IA",
+          "level": 75,
+          "description": "Systèmes multi-agents, workflows"
+        }
+      ]
+    },
+    {
+      "category": "Outils & Productivité",
+      "skills": [
+        {
+          "name": "Suite Microsoft",
+          "level": 95,
+          "description": "Word, Excel, PowerPoint, Outlook"
+        },
+        {
+          "name": "Git",
+          "level": 70,
+          "description": "Contrôle de version"
+        },
+        {
+          "name": "VS Code",
+          "level": 85,
+          "description": "Environnement de développement"
+        },
+        {
+          "name": "Notion avancé",
+          "level": 75,
+          "description": "Bases de données interconnectées, hub CRM, interface de pilotage"
+        }
+      ]
+    }
+  ],
+  "soft": [
+    {
+      "name": "Résilience",
+      "description": "Capacité à surmonter les obstacles, démontrée par le parcours médical et sportif"
+    },
+    {
+      "name": "Travail d'équipe",
+      "description": "Capitaine d'équipe de hockey, coordination et leadership"
+    },
+    {
+      "name": "Autonomie d'apprentissage",
+      "description": "Auto-formation en IA et automatisation, veille technologique quotidienne"
+    },
+    {
+      "name": "Résolution de problèmes",
+      "description": "Approche analytique pour identifier et automatiser les processus"
+    },
+    {
+      "name": "Modestie",
+      "description": "Conscience de ses limites, toujours en apprentissage"
+    },
+    {
+      "name": "Sens du collectif",
+      "description": "Orientation équipe, partage de connaissances"
+    },
+    {
+      "name": "Pédagogie & Formation",
+      "description": "Production de tutoriels vidéo (~70 min) et documentation technique pour clients non-techniques"
+    },
+    {
+      "name": "Posture consultant",
+      "description": "Compréhension des enjeux business avant la technique, gestion de projet client"
+    }
+  ],
+  "languages": [
+    {
+      "name": "Français",
+      "level": "Natif"
+    },
+    {
+      "name": "Anglais",
+      "level": "Opérationnel"
+    }
+  ]
+}

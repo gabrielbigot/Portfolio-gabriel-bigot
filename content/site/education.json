@@ -1,0 +1,41 @@
+[
+  {
+    "degree": "Licence 3 Économie-Gestion",
+    "school": "ESDHEM",
+    "location": "Lille, France",
+    "startDate": "2023",
+    "endDate": "2026 (en cours)",
+    "description": "Formation en économie et gestion avec préparation aux concours des grandes écoles. Objectif : intégrer SKEMA Business School.",
+    "highlights": [
+      "Spécialisation envisagée : MSc in Artificial Intelligence & Business Transformation",
+      "Alternative : MSc in Data Analytics & Artificial Intelligence",
+      "Préparation concours parallèles"
+    ]
+  },
+  {
+    "degree": "Baccalauréat",
+    "school": "Lycée La Malassise",
+    "location": "Saint-Omer, France",
+    "startDate": "2020",
+    "endDate": "2023",
+    "description": "Parcours exigeant en internat, avec un équilibre constant entre études, hockey, blessures, rééducation et responsabilités personnelles.",
+    "highlights": [
+      "Baccalauréat obtenu dans une période de reconstruction physique",
+      "Internat pendant 3 ans",
+      "Continuité du hockey au TAC malgré la distance, les arrêts et les reprises progressives"
+    ]
+  },
+  {
+    "degree": "Brevet des Collèges",
+    "school": "Collège Sainte-Austreberthe",
+    "location": "Montreuil-sur-Mer, France",
+    "startDate": "2016",
+    "endDate": "2020",
+    "description": "Excellents résultats académiques et sportifs.",
+    "highlights": [
+      "Moyennes 16-17 en 6e-5e",
+      "Sélections cross district, départemental, régional",
+      "Révélation au cross : 2e place en 6e"
+    ]
+  }
+]

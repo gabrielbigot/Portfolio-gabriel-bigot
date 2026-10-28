@@ -1,0 +1,26 @@
+{
+  "siteTitle": "Gabriel Bigot | Développeur d'Automatisations IA",
+  "siteDescription": "Portfolio de Gabriel Bigot, développeur spécialisé en automatisation et intelligence artificielle. Étudiant en économie-gestion passionné par la transformation digitale des PME.",
+  "siteKeywords": [
+    "Gabriel Bigot",
+    "automatisation",
+    "intelligence artificielle",
+    "IA",
+    "Python",
+    "Flask",
+    "développeur",
+    "ESDHEM",
+    "SKEMA",
+    "hockey",
+    "PME",
+    "transformation digitale",
+    "Excel VBA",
+    "LLM",
+    "prompt engineering"
+  ],
+  "siteUrl": "https://gabrielbigot.com",
+  "ogImage": "/og-image.jpg",
+  "twitterHandle": "@gabrielbigot",
+  "siteName": "Gabriel Bigot Portfolio",
+  "ogImageAlt": "Gabriel Bigot - Développeur d'Automatisations IA"
+}

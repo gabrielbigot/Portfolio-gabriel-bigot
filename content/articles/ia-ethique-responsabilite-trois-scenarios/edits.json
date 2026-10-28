@@ -1,0 +1,165 @@
+{
+ "pages": {
+  "": {
+   "order": [
+    "x-intro",
+    "x-le-dilemme-qui-me-pousse-1",
+    "x-l-analogie-avec-nos-capa-2",
+    "x-mes-trois-scenarios-pour-3",
+    "x-pourquoi-je-choisis-quan-4",
+    "x-un-choix-a-assumer-5"
+   ],
+   "hidden": [],
+   "added": [
+    {
+     "id": "x-intro",
+     "kind": "blocks",
+     "title": "Introduction",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Depuis trois ans maintenant, je suis de près l'évolution de l'intelligence artificielle. Depuis sa sortie fin 2022, je passe mes journées à me tenir informé, à tester, à comprendre les implications de cette technologie. Et plus j'avance dans cette exploration, plus une question me hante : comment concilier mon engagement dans l'IA avec ma responsabilité éthique ?"
+      }
+     ]
+    },
+    {
+     "id": "x-le-dilemme-qui-me-pousse-1",
+     "kind": "blocks",
+     "title": "Le dilemme qui me pousse à réfléchir",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Quand je regarde autour de moi, je vois l'impact des technologies sur nos capacités cognitives. TikTok, les réseaux sociaux, maintenant les chatbots IA... tout ça a déjà commencé à modifier notre façon de penser, de réfléchir. 90% des gens utilisent l'IA pour qu'elle fasse le travail de réflexion à leur place. Et ça, ça me pose un vrai problème."
+      },
+      {
+       "type": "p",
+       "text": "Je ne veux pas être responsable de l'abrutissement cognitif de ma génération. Je ne veux pas proposer mes services en IA si c'est pour contribuer à la dégradation des capacités intellectuelles des gens auxquels je m'adresse."
+      }
+     ]
+    },
+    {
+     "id": "x-l-analogie-avec-nos-capa-2",
+     "kind": "blocks",
+     "title": "L'analogie avec nos capacités physiques",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Pensez-y : il y a des siècles, les humains étaient naturellement musclés et sveltes. Pourquoi ? Parce que leur travail nécessitait des efforts physiques constants. Ils se musclaient inconsciemment, simplement en travaillant. Puis nous avons mécanisé, automatisé, facilité. Aujourd'hui, ceux qui font du sport doivent le faire consciemment, avec discipline."
+      },
+      {
+       "type": "p",
+       "text": "Le même phénomène est en train de se produire avec nos capacités cognitives. Nous utilisions notre réflexion inconsciemment parce qu'elle était nécessaire à notre travail. Avec l'IA, nous allons de moins en moins solliciter ces capacités. Et voilà le danger : si nous perdons nos capacités cognitives, nous ne pourrons plus nous forcer consciemment à réfléchir. Nous nous lèverons, mangerons, et repartirons dormir. Comme des animaux."
+      },
+      {
+       "type": "p",
+       "text": "Je ne pense pas qu'une majorité d'humains soit favorable à ça. En tout cas, moi non."
+      }
+     ]
+    },
+    {
+     "id": "x-mes-trois-scenarios-pour-3",
+     "kind": "blocks",
+     "title": "Mes trois scénarios pour assumer mon orientation",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Face à ce dilemme, j'ai identifié trois voies possibles qui me permettraient de poursuivre dans l'IA tout en assumant ma responsabilité :"
+      },
+      {
+       "type": "h3",
+       "text": "1. Miser sur la régulation conditionnelle"
+      },
+      {
+       "type": "p",
+       "text": "Premier scénario : je me persuade que, sur le long terme, quelqu'un va inventer une réglementation qui donnera accès à l'IA seulement aux personnes qui fournissent un effort physique et cognitif quotidien."
+      },
+      {
+       "type": "p",
+       "text": "Une sorte de \"permis d'utilisation de l'IA\" conditionné à des preuves d'efforts. Vous voulez utiliser l'IA ? Prouvez d'abord que vous maintenez vos capacités intellectuelles et physiques à niveau. Cela forcerait les gens à rester actifs mentalement et physiquement, tout en bénéficiant des avantages de l'IA."
+      },
+      {
+       "type": "p",
+       "text": "C'est optimiste, peut-être naïf, mais ça me permettrait de travailler dans ce domaine avec la conscience tranquille."
+      },
+      {
+       "type": "h3",
+       "text": "2. Le pari économique"
+      },
+      {
+       "type": "p",
+       "text": "Deuxième scénario : je me convaincs que l'impact économique positif de l'IA justifie mon engagement."
+      },
+      {
+       "type": "p",
+       "text": "Matthias Baccino, directeur Europe de Trade Republic, a dit quelque chose qui m'a marqué : \"L'IA peut générer 1% de croissance supplémentaire par an, ce qui aurait un impact considérable sur les salaires, le budget de l'État et le développement des entreprises. Mais à une condition : pour qu'il y ait 1% de croissance en plus grâce à l'IA, il faut que 70% des entreprises s'en servent. Aujourd'hui, seulement 10% l'utilisent en France. L'enjeu, c'est l'adoption et la formation.\""
+      },
+      {
+       "type": "p",
+       "text": "Si je pars du principe que mon travail contribue à cette adoption massive nécessaire, et que cette adoption va effectivement générer cette croissance bénéfique pour tous, alors je peux justifier mon orientation."
+      },
+      {
+       "type": "p",
+       "text": "C'est un pari sur l'impact économique collectif qui compenserait les risques individuels de dégradation cognitive."
+      },
+      {
+       "type": "h3",
+       "text": "3. Assumer pleinement ma responsabilité"
+      },
+      {
+       "type": "p",
+       "text": "Troisième scénario : le plus brutal, le plus honnête aussi. Je me lance dans l'IA sans excuse, sans filet de sécurité moral. Et si aucun des deux premiers scénarios ne se réalise, j'assume ma part de responsabilité dans ce qui pourrait advenir."
+      },
+      {
+       "type": "p",
+       "text": "Pas d'échappatoire, pas de justification a posteriori. J'y vais les yeux ouverts, en sachant que je contribue peut-être à quelque chose de néfaste, mais en acceptant d'en porter la responsabilité."
+      }
+     ]
+    },
+    {
+     "id": "x-pourquoi-je-choisis-quan-4",
+     "kind": "blocks",
+     "title": "Pourquoi je choisis quand même l'IA",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Malgré ces préoccupations éthiques, je reste convaincu d'une chose : je ne veux pas subir cette révolution, je veux la construire."
+      },
+      {
+       "type": "p",
+       "text": "J'ai 20 ans. J'ai trois ans d'avance sur la plupart des gens autour de moi dans ce domaine. J'ai développé une expertise autodidacte qui me permet de voir immédiatement où l'IA peut apporter une vraie plus-value. J'ai automatisé des processus dans l'entreprise familiale, j'ai créé des solutions concrètes, j'ai compris les mécanismes."
+      },
+      {
+       "type": "p",
+       "text": "Les métiers du futur ? Pour moi, c'est clair : santé, bien-être, sport, IA, arts. Le reste va disparaître ou se transformer radicalement. Je ne veux pas me former pendant trois ans dans un domaine qui n'existera plus dans dix ans."
+      }
+     ]
+    },
+    {
+     "id": "x-un-choix-a-assumer-5",
+     "kind": "blocks",
+     "title": "Un choix à assumer",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Alors oui, il y a cette tension entre éthique et opportunité. Entre mes principes et la réalité du marché. Entre ce que je pense être juste et ce que je sais être possible."
+      },
+      {
+       "type": "p",
+       "text": "Mais au fond, j'ai fait mon choix. Je vais dans l'IA. Peut-être en espérant le premier scénario. Probablement en pariant sur le deuxième. Certainement en étant prêt à assumer le troisième."
+      },
+      {
+       "type": "p",
+       "text": "Parce qu'au final, rester en retrait ne changerait rien. D'autres prendront ma place. Autant être de ceux qui construisent, qui réfléchissent, qui essaient de faire les choses avec conscience."
+      },
+      {
+       "type": "p",
+       "text": "L'enfer est pavé de bonnes intentions, dit-on. Mais l'inaction aussi a ses responsabilités."
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "figures": {},
+ "evidence": []
+}

@@ -1,13 +1,20 @@
+import ExtraBlocks from "@/components/blocks/ExtraBlocks"
+import { stripDeep } from "@/lib/studio/stega"
+import { getT } from "@/lib/strings"
 import PortfolioClient from "@/components/PortfolioClient"
 import { getPortfolioPageData } from "@/lib/portfolio-i18n"
+import { getContent } from "@/lib/site-content"
 
-export const metadata = {
-  title: "Gabriel Bigot | AI Automation Developer",
-  description: "English portfolio of Gabriel Bigot, focused on AI automation, full-stack tools, and business process transformation.",
+export async function generateMetadata() {
+  const t = await getT("page.en-portfolio")
+  return stripDeep({
+    title: t("gabriel-bigot-ai-automation-developer"),
+    description: t("english-portfolio-of-gabriel-bigot-focused"),
+  })
 }
 
-export default function EnglishPortfolioPage() {
-  const { personalInfo, socialLinks, workExperience, skills, projects } = getPortfolioPageData("en")
+export default async function EnglishPortfolioPage() {
+  const { personalInfo, socialLinks, workExperience, skills, projects } = await getPortfolioPageData("en")
 
   return (
     <PortfolioClient
@@ -17,6 +24,8 @@ export default function EnglishPortfolioPage() {
       skills={skills}
       projects={projects as any}
       locale="en"
+      ui={await getContent("uiPortfolio")}
+      extra={<ExtraBlocks page="/en/portfolio" />}
     />
   )
 }

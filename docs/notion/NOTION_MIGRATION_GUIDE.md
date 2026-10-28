@@ -19,7 +19,7 @@ Ce document contient toutes vos données actuelles formatées pour faciliter leu
 | Email | **Email** | gabriel.bigot2005@gmail.com |
 | Phone | **Phone number** | 06.12.75.24.56 |
 | Availability | **Text** | Recherche stage IA - Jan-Fév 2026 |
-| BirthDate | **Date** | AAAA-MM-JJ |
+| BirthDate | **Date** | 2005-05-19 |
 | ShortBio | **Text** | Étudiant en économie-gestion, j'applique l'IA et l'automatisation à des processus métier réels. Mon parcours sportif forgé par le hockey m'a appris la rigueur, la résilience et le travail d'équipe. |
 | FullBio | **Text** | Passionné par l'intelligence artificielle et l'automatisation depuis 2022, je transforme des processus métier complexes en solutions efficaces. Mon expérience en PME familiale m'a naturellement orienté vers l'IA : d'abord pour résoudre des tâches répétitives, puis pour repenser des flux entiers.<br><br>Mon parcours sportif de haut niveau en hockey sur gazon m'a forgé une résilience exceptionnelle, notamment après avoir surmonté de graves blessures pour revenir au plus haut niveau. Cette expérience m'a appris la persévérance, le travail d'équipe et la capacité à me relever face aux difficultés.<br><br>Mon objectif est d'intégrer SKEMA Business School avec une spécialisation en IA et transformation digitale, pour développer une expertise à l'intersection du business et de la technologie. |
 | CurrentPosition | **Text** | Étudiant en Licence 3 Éco-Gestion |
@@ -546,7 +546,7 @@ Ce document contient toutes vos données actuelles formatées pour faciliter leu
 | Propriété | Valeur |
 |-----------|--------|
 | Title (Title) | Naissance |
-| Date | AAAA-MM-JJ |
+| Date | 2005-05-19 |
 | Year | 2005 |
 | Description | Boulogne-sur-Mer |
 | Category | Personal |

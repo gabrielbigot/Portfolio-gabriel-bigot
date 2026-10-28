@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="assets/article.css">
+<style>html,body{margin:0;background:transparent}body{padding:0}.vra{background:transparent!important}</style>
+</head>
+<body>
+<article class="vra" id="root"><main class="vra-main" style="max-width:none;margin:0;padding:0"><figure class="fig" style="margin:0"><div class="vra-chart" id="c"></div></figure></main></article>
+<script src="vendor/d3.min.js"></script>
+<script>window.VRA_DATA = { evidence: [], figures: {} };</script>
+<script src="assets/charts.js"></script>
+<script src="assets/charts-extra.js"></script>
+<script src="assets/charts-more.js"></script>
+<script>
+// Cadre d'affichage d'une figure dans une page du site (essais, aperçus du studio) : le parent envoie { type: "fig", figure, theme } ;
+// le cadre dessine avec le moteur des dossiers puis renvoie sa hauteur. Aucune donnée n'est chargée depuis l'extérieur.
+(function () {
+  var c = document.getElementById('c'), root = document.getElementById('root'), last = 0;
+  function report() { var h = Math.ceil(document.documentElement.scrollHeight); if (h && h !== last) { last = h; parent.postMessage({ type: 'fig-height', h: h }, '*'); } }
+  addEventListener('message', function (e) {
+    var d = e.data; if (!d || d.type !== 'fig' || !d.figure) return;
+    root.setAttribute('data-theme', d.theme === 'dark' ? 'dark' : 'light'); c.innerHTML = ''; window.VRA_DATA.evidence = Array.isArray(d.evidence) ? d.evidence : [];
+    try { VRACharts.render(c, d.figure); } catch (er) { c.textContent = 'Figure impossible à afficher : ' + er.message; }
+    setTimeout(report, 50); setTimeout(report, 600); setTimeout(report, 1800);
+  });
+  if (window.ResizeObserver) new ResizeObserver(report).observe(document.body);
+  parent.postMessage({ type: 'fig-ready' }, '*');
+})();
+</script>
+</body>
+</html>

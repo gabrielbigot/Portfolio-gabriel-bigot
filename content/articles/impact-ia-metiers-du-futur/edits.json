@@ -1,0 +1,253 @@
+{
+ "pages": {
+  "": {
+   "order": [
+    "x-intro",
+    "x-la-fin-d-une-ere-1",
+    "x-les-metiers-qui-vont-sur-2",
+    "x-le-grand-basculement-soc-3",
+    "x-de-la-productivite-au-bi-4",
+    "x-pourquoi-cette-convictio-5",
+    "x-les-competences-du-futur-6",
+    "x-une-revolution-a-constru-7"
+   ],
+   "hidden": [],
+   "added": [
+    {
+     "id": "x-intro",
+     "kind": "blocks",
+     "title": "Introduction",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Je vais vous partager une conviction qui guide toutes mes décisions d'orientation professionnelle : 90% des métiers actuels vont disparaître avec l'intelligence artificielle."
+      },
+      {
+       "type": "p",
+       "text": "Pas \"évoluer\". Pas \"se transformer légèrement\". Disparaître."
+      },
+      {
+       "type": "p",
+       "text": "Et ce n'est pas une prédiction catastrophiste. C'est une observation lucide de ce qui est déjà en train de se passer sous nos yeux."
+      }
+     ]
+    },
+    {
+     "id": "x-la-fin-d-une-ere-1",
+     "kind": "blocks",
+     "title": "La fin d'une ère",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Regardez autour de vous. Combien de tâches dans votre travail quotidien pourraient déjà être automatisées par l'IA ? Combien de métiers reposent essentiellement sur le traitement d'informations, la rédaction de documents, l'analyse de données, la production de contenus répétitifs ?"
+      },
+      {
+       "type": "p",
+       "text": "J'ai eu l'occasion de travailler dans l'entreprise familiale. J'ai vu des tâches administratives et comptables qui prenaient des heures. J'ai créé des automatisations qui les font maintenant en quelques minutes. Pipeline d'extraction de relevés bancaires, automatisation des relances clients, génération de procès-verbaux... Tout ça, c'était du travail humain il y a encore quelques années. Aujourd'hui, c'est du code."
+      },
+      {
+       "type": "p",
+       "text": "Et ce n'est que le début."
+      }
+     ]
+    },
+    {
+     "id": "x-les-metiers-qui-vont-sur-2",
+     "kind": "blocks",
+     "title": "Les métiers qui vont survivre",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Face à cette transformation radicale, une question s'impose : quels métiers vont perdurer ?"
+      },
+      {
+       "type": "p",
+       "text": "Pour moi, la réponse est claire. Six catégories vont résister à l'automatisation :"
+      },
+      {
+       "type": "h3",
+       "text": "1. Les experts en intelligence artificielle"
+      },
+      {
+       "type": "p",
+       "text": "Évident, non ? Tant qu'on construira, déploiera et maintiendra des systèmes d'IA, il faudra des gens qui comprennent comment ça fonctionne. La demande de connaissances dans ce domaine va exploser."
+      },
+      {
+       "type": "h3",
+       "text": "2. Les ingénieurs"
+      },
+      {
+       "type": "p",
+       "text": "Quelqu'un devra bien intégrer l'IA dans le monde physique. Robots humanoïdes, bras robotiques, infrastructures intelligentes... L'IA est puissante, mais elle a besoin d'interfaces avec le réel. Et ça, c'est le boulot des ingénieurs."
+      },
+      {
+       "type": "h3",
+       "text": "3. Les métiers du sport"
+      },
+      {
+       "type": "p",
+       "text": "Le corps humain ne se virtualise pas. Le besoin de mouvement, de compétition physique, d'entraînement restera. Et dans un monde où l'effort physique disparaît du travail, le sport deviendra encore plus central."
+      },
+      {
+       "type": "h3",
+       "text": "4. Les professions de santé et du bien-être"
+      },
+      {
+       "type": "p",
+       "text": "Médecins, infirmiers, kinés, nutritionnistes... Tant qu'il y aura des corps humains, il faudra s'en occuper. Et peut-être même plus qu'avant, justement parce que le reste de notre vie sera facilité."
+      },
+      {
+       "type": "h3",
+       "text": "5. La psychologie et l'accompagnement mental"
+      },
+      {
+       "type": "p",
+       "text": "Dans un monde où 90% des gens n'auront plus de travail traditionnel, qui va gérer la crise existentielle collective ? Les psychologues. Le besoin d'accompagnement mental va exploser quand les gens devront redéfinir leur identité en dehors du travail."
+      },
+      {
+       "type": "h3",
+       "text": "6. Les métiers artistiques"
+      },
+      {
+       "type": "p",
+       "text": "La créativité authentique, l'expression personnelle, l'art qui vient d'une expérience humaine unique... L'IA peut imiter, mais elle ne peut pas vivre. Et c'est ça que les gens chercheront de plus en plus."
+      }
+     ]
+    },
+    {
+     "id": "x-le-grand-basculement-soc-3",
+     "kind": "blocks",
+     "title": "Le grand basculement sociétal",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Mais au-delà de la question des métiers, ce qui m'intéresse vraiment, c'est la transformation sociétale que ça va provoquer."
+      },
+      {
+       "type": "p",
+       "text": "Aujourd'hui, nous vivons dans une société de la productivité. Notre valeur est mesurée par notre capacité à produire, à être efficaces, à générer des résultats. Nos conversations tournent autour du travail. Notre identité est liée à notre métier."
+      },
+      {
+       "type": "p",
+       "text": "Demain ? Nous vivrons dans une société du bien-être."
+      }
+     ]
+    },
+    {
+     "id": "x-de-la-productivite-au-bi-4",
+     "kind": "blocks",
+     "title": "De la productivité au bien-être",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Pensez-y : quand 90% des métiers auront disparu, quand l'IA fera le gros du travail de production, sur quoi allons-nous concentrer notre attention ?"
+      },
+      {
+       "type": "p",
+       "text": "Sur nous-mêmes. Sur notre santé. Sur notre développement personnel. Sur nos relations. Sur notre épanouissement."
+      },
+      {
+       "type": "p",
+       "text": "On ne se demandera plus \"Comment puis-je être plus productif ?\" mais \"Comment puis-je être mieux ?\""
+      },
+      {
+       "type": "ul",
+       "items": [
+        "Quelle est la meilleure alimentation pour mon corps ?",
+        "Comment optimiser mon sommeil ?",
+        "Quelles activités physiques me conviennent le mieux ?",
+        "Comment cultiver ma créativité ?",
+        "Comment approfondir mes relations ?"
+       ]
+      },
+      {
+       "type": "p",
+       "text": "C'est pour ça que je suis convaincu que les métiers liés à la santé, au sport, au bien-être et à la psychologie vont exploser. Nous n'aurons plus à nous préoccuper de la productivité, nous pourrons enfin nous préoccuper de vivre bien."
+      }
+     ]
+    },
+    {
+     "id": "x-pourquoi-cette-convictio-5",
+     "kind": "blocks",
+     "title": "Pourquoi cette conviction guide mon orientation",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Vous comprenez maintenant pourquoi je me dirige vers l'IA ?"
+      },
+      {
+       "type": "p",
+       "text": "Je n'ai aucune envie de passer trois ans à me former dans un domaine qui n'existera plus dans dix ans. Je n'ai aucune envie de subir cette transformation en spectateur."
+      },
+      {
+       "type": "p",
+       "text": "La comptabilité ? Dans quelques années, l'IA fera tout le travail technique. Il restera du conseil de haut niveau, mais il faudra être expert-comptable pour avoir un impact, et même là..."
+      },
+      {
+       "type": "p",
+       "text": "La finance ? Saturé. Et en plus, l'IA va automatiser une grande partie de l'analyse financière."
+      },
+      {
+       "type": "p",
+       "text": "Le marketing digital ? Déjà submergé par l'IA générative qui produit du contenu à l'infini."
+      },
+      {
+       "type": "p",
+       "text": "Non, je veux être du côté de ceux qui construisent cette révolution. Pas du côté de ceux qui la subissent."
+      }
+     ]
+    },
+    {
+     "id": "x-les-competences-du-futur-6",
+     "kind": "blocks",
+     "title": "Les compétences du futur",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Si ma vision se réalise, et je suis persuadé qu'elle se réalisera, quelles compétences faudra-t-il cultiver ?"
+      },
+      {
+       "type": "ul",
+       "items": [
+        "Comprendre l'IA et savoir l'utiliser - Pas forcément coder des modèles, mais au minimum savoir identifier où l'IA peut apporter de la valeur et comment la déployer.",
+        "Développer sa créativité authentique - Ce qui nous rendra irremplaçables, c'est notre capacité à créer quelque chose d'unique, né de notre expérience humaine.",
+        "Cultiver les compétences relationnelles - Dans un monde automatisé, la connexion humaine authentique deviendra rare et précieuse.",
+        "Maîtriser le bien-être physique et mental - Savoir prendre soin de soi et des autres sera la compétence centrale d'une société post-productivité.",
+        "Être capable de traduire la technologie en usage - Faire le pont entre les capacités de l'IA et les besoins humains réels."
+       ]
+      }
+     ]
+    },
+    {
+     "id": "x-une-revolution-a-constru-7",
+     "kind": "blocks",
+     "title": "Une révolution à construire, pas à subir",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Voilà ma vision. Peut-être trop radicale pour certains. Peut-être trop rapide. Mais je préfère anticiper et me préparer à un changement majeur plutôt que de me réveiller dans cinq ans en réalisant que j'ai passé mon temps à acquérir des compétences obsolètes."
+      },
+      {
+       "type": "p",
+       "text": "Je n'ai pas envie de subir cette révolution. J'ai envie de la construire."
+      },
+      {
+       "type": "p",
+       "text": "Et si je me trompe ? Si seulement 50% des métiers disparaissent ? Si ça prend vingt ans au lieu de dix ?"
+      },
+      {
+       "type": "p",
+       "text": "Dans tous les cas, je serai du bon côté de la transformation. Avec des compétences en IA qui seront utiles quoi qu'il arrive. Prêt à naviguer dans ce nouveau monde plutôt qu'à y chercher désespérément ma place."
+      },
+      {
+       "type": "p",
+       "text": "Le futur du travail est en train de se redéfinir. Et je compte bien avoir mon mot à dire dans sa construction."
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "figures": {},
+ "evidence": []
+}

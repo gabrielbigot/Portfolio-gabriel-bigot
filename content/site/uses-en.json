@@ -1,0 +1,116 @@
+[
+  {
+    "title": "Languages & Frameworks",
+    "subtitle": "What I build with",
+    "items": [
+      {
+        "name": "Python",
+        "description": "My main language for automation, data processing, and backend scripts.",
+        "tag": "Main"
+      },
+      {
+        "name": "TypeScript / Next.js",
+        "description": "For modern web interfaces and full-stack applications.",
+        "url": "https://nextjs.org"
+      },
+      {
+        "name": "Flask",
+        "description": "Lightweight Python framework for APIs and small web services.",
+        "url": "https://flask.palletsprojects.com"
+      },
+      {
+        "name": "SQL (Supabase / PostgreSQL)",
+        "description": "For storing and managing structured data in automation projects.",
+        "url": "https://supabase.com"
+      },
+      {
+        "name": "Excel / VBA",
+        "description": "Still very useful for automating SME processes that live inside spreadsheets."
+      }
+    ]
+  },
+  {
+    "title": "AI & Automation",
+    "subtitle": "The core of my work",
+    "items": [
+      {
+        "name": "n8n",
+        "description": "My favorite no-code/low-code automation tool for orchestrating API workflows.",
+        "url": "https://n8n.io",
+        "tag": "Favorite"
+      },
+      {
+        "name": "OpenAI API",
+        "description": "For data extraction, text generation, classification, and AI-assisted workflows.",
+        "url": "https://platform.openai.com"
+      },
+      {
+        "name": "Google Gemini",
+        "description": "Useful for multimodal tasks and integration with the Google ecosystem.",
+        "url": "https://ai.google.dev"
+      },
+      {
+        "name": "Claude (Anthropic)",
+        "description": "For deeper reasoning and complex instruction-following tasks.",
+        "url": "https://claude.ai"
+      },
+      {
+        "name": "LinkedIn API / Pappers API",
+        "description": "Used to enrich prospect databases and automate business development workflows."
+      }
+    ]
+  },
+  {
+    "title": "Development tools",
+    "subtitle": "My daily environment",
+    "items": [
+      {
+        "name": "VS Code",
+        "description": "My main editor: lightweight, extensible, and strong for Python/TypeScript.",
+        "url": "https://code.visualstudio.com",
+        "tag": "Main"
+      },
+      {
+        "name": "GitHub",
+        "description": "For version control, collaboration, and deployment workflows.",
+        "url": "https://github.com"
+      },
+      {
+        "name": "Vercel",
+        "description": "Deployment for this portfolio and my Next.js projects.",
+        "url": "https://vercel.com"
+      },
+      {
+        "name": "Supabase",
+        "description": "Backend-as-a-service with PostgreSQL, auth, and storage.",
+        "url": "https://supabase.com"
+      }
+    ]
+  },
+  {
+    "title": "Productivity",
+    "subtitle": "Organizing thinking and work",
+    "items": [
+      {
+        "name": "Notion",
+        "description": "My operating system for content, projects, notes, and client documentation.",
+        "url": "https://notion.so",
+        "tag": "Essential"
+      },
+      {
+        "name": "ChatGPT / Claude",
+        "description": "Daily thinking, writing, debugging, and learning assistants."
+      },
+      {
+        "name": "Obsidian",
+        "description": "For personal notes, technical watch files, and long-term reflections.",
+        "url": "https://obsidian.md"
+      },
+      {
+        "name": "Linear",
+        "description": "Clean project management for personal and professional work.",
+        "url": "https://linear.app"
+      }
+    ]
+  }
+]

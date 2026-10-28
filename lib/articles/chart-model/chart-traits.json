@@ -1,0 +1,655 @@
+{
+"note": "Traits des formes pour le modèle de décision. [min,max] = nombre d'éléments principaux lisibles ; flags : s=valeurs négatives ok · p=parts d'un tout · t=temps · h=hiérarchie · x=deux mesures · u=incertitude/fourchettes · P=lecture précise · I=impression d'ensemble · W=grand public · E=expert · r=relations/liens · g=espace/géographie",
+"types": {
+"alluvial": [
+3,
+12,
+"rE"
+],
+"arc": [
+6,
+40,
+"rE"
+],
+"arrowplot": [
+3,
+12,
+"sxP"
+],
+"balloons": [
+3,
+10,
+"Wx"
+],
+"bars": [
+2,
+20,
+"P"
+],
+"beeswarm": [
+20,
+300,
+"PuE"
+],
+"bichord": [
+3,
+16,
+"rE"
+],
+"bookshelf": [
+5,
+24,
+"WxI"
+],
+"boxplot": [
+3,
+12,
+"PuE"
+],
+"bracket": [
+4,
+16,
+"u"
+],
+"branches": [
+6,
+25,
+"hI"
+],
+"bubblematrix": [
+8,
+120,
+"IP"
+],
+"bubbles": [
+4,
+25,
+"xW"
+],
+"bubbletimeline": [
+4,
+30,
+"tW"
+],
+"bullet": [
+1,
+8,
+"PuW"
+],
+"bump": [
+3,
+10,
+"tE"
+],
+"calendar": [
+30,
+400,
+"tI"
+],
+"chord": [
+3,
+12,
+"rE"
+],
+"circlepack": [
+6,
+60,
+"hI"
+],
+"clock24": [
+6,
+48,
+"tI"
+],
+"clusterhulls": [
+20,
+300,
+"xE"
+],
+"coinstacks": [
+3,
+8,
+"WI"
+],
+"constellation": [
+8,
+30,
+"xrI"
+],
+"contagion": [
+4,
+15,
+"ruE"
+],
+"crossing": [
+10,
+120,
+"tsP"
+],
+"cycleplot": [
+12,
+96,
+"tE"
+],
+"daystrips": [
+5,
+60,
+"tI"
+],
+"delaunaymosaic": [
+8,
+40,
+"xI"
+],
+"donut": [
+2,
+4,
+"pW"
+],
+"dorling": [
+8,
+60,
+"gW"
+],
+"dotplot": [
+4,
+30,
+"PsW"
+],
+"doublewaterfall": [
+4,
+14,
+"spE"
+],
+"dumbbell": [
+3,
+20,
+"PuW"
+],
+"edgebundle": [
+10,
+60,
+"rIE"
+],
+"euler": [
+2,
+3,
+"pW"
+],
+"fan": [
+6,
+60,
+"tuE"
+],
+"fishbone": [
+5,
+18,
+"hW"
+],
+"floorplan": [
+4,
+12,
+"pWI"
+],
+"forecastline": [
+6,
+60,
+"tuP"
+],
+"funnel": [
+3,
+8,
+"pW"
+],
+"fuzzytimeline": [
+3,
+14,
+"tuW"
+],
+"halftone": [
+20,
+100,
+"xI"
+],
+"heatmap": [
+12,
+200,
+"xP"
+],
+"hemicycle": [
+2,
+8,
+"pW"
+],
+"histogram": [
+30,
+2000,
+"PE"
+],
+"hiveplot": [
+10,
+60,
+"rE"
+],
+"hovmoller": [
+40,
+600,
+"tgE"
+],
+"isobars": [
+16,
+64,
+"xI"
+],
+"isolines": [
+30,
+500,
+"xuIE"
+],
+"isotype": [
+2,
+10,
+"WP"
+],
+"jigsaw": [
+3,
+10,
+"pW"
+],
+"layers": [
+3,
+8,
+"hW"
+],
+"ledger": [
+4,
+15,
+"sWP"
+],
+"ledmeter": [
+3,
+10,
+"WI"
+],
+"lexis": [
+3,
+10,
+"tE"
+],
+"likert": [
+3,
+12,
+"pE"
+],
+"lines": [
+8,
+120,
+"tsP"
+],
+"logtimeline": [
+5,
+25,
+"tW"
+],
+"lollipop": [
+4,
+25,
+"PW"
+],
+"lorenz": [
+6,
+100,
+"pE"
+],
+"magnitudes": [
+3,
+12,
+"PE"
+],
+"marey": [
+3,
+12,
+"tE"
+],
+"marimekko": [
+3,
+10,
+"pE"
+],
+"matrix": [
+5,
+60,
+"rP"
+],
+"maturity": [
+3,
+12,
+"uW"
+],
+"maturitywall": [
+5,
+15,
+"tpE"
+],
+"meander": [
+8,
+40,
+"tI"
+],
+"metro": [
+8,
+30,
+"rW"
+],
+"moonphases": [
+4,
+12,
+"pWI"
+],
+"muller": [
+4,
+12,
+"tpE"
+],
+"nestedcircles": [
+2,
+5,
+"pW"
+],
+"orbits": [
+4,
+12,
+"xI"
+],
+"ownership": [
+4,
+15,
+"rpE"
+],
+"parallel": [
+4,
+40,
+"xE"
+],
+"pedigree": [
+4,
+20,
+"hE"
+],
+"petalglyphs": [
+3,
+12,
+"IW"
+],
+"podium": [
+3,
+8,
+"WP"
+],
+"probtree": [
+4,
+15,
+"upE"
+],
+"probwords": [
+4,
+12,
+"uW"
+],
+"quadrant": [
+5,
+30,
+"xW"
+],
+"radar": [
+3,
+10,
+"IE"
+],
+"radarscreen": [
+8,
+40,
+"IW"
+],
+"raincloud": [
+20,
+300,
+"PuE"
+],
+"ranges": [
+3,
+20,
+"uPW"
+],
+"ridgeline": [
+3,
+15,
+"PE"
+],
+"ringcalendar": [
+10,
+400,
+"tI"
+],
+"riskmatrix": [
+5,
+30,
+"uxW"
+],
+"sankey": [
+5,
+40,
+"rpP"
+],
+"scatter": [
+10,
+500,
+"xsPE"
+],
+"scatter3d": [
+20,
+200,
+"xIE"
+],
+"scatterpies": [
+5,
+15,
+"xpE"
+],
+"seismogram": [
+4,
+30,
+"tIW"
+],
+"sizeddonuts": [
+3,
+8,
+"pE"
+],
+"skyline": [
+4,
+12,
+"WI"
+],
+"slope": [
+3,
+15,
+"PsW"
+],
+"sourcepyramid": [
+3,
+6,
+"uW"
+],
+"sourcespread": [
+2,
+8,
+"uPE"
+],
+"sparkgrid": [
+4,
+24,
+"tsE"
+],
+"sparktable": [
+4,
+15,
+"tsP"
+],
+"spiralheat": [
+18,
+120,
+"tIE"
+],
+"splitflap": [
+2,
+6,
+"WI"
+],
+"stack100": [
+2,
+12,
+"pW"
+],
+"stacked": [
+6,
+100,
+"tpE"
+],
+"stackedbump": [
+4,
+12,
+"tpE"
+],
+"step": [
+4,
+40,
+"tPW"
+],
+"stipple": [
+40,
+2000,
+"xuIE"
+],
+"stippletiles": [
+3,
+9,
+"pIW"
+],
+"strip": [
+4,
+25,
+"uPW"
+],
+"stripes": [
+20,
+200,
+"tsIW"
+],
+"sunburst": [
+6,
+80,
+"hE"
+],
+"sunflower": [
+2,
+8,
+"pIW"
+],
+"sunicicle": [
+6,
+80,
+"hE"
+],
+"swimlane": [
+4,
+25,
+"rW"
+],
+"tailshift": [
+2,
+3,
+"uE"
+],
+"tally": [
+2,
+10,
+"WI"
+],
+"taylor": [
+3,
+12,
+"xE"
+],
+"ternary": [
+5,
+40,
+"xpE"
+],
+"tilegrid": [
+10,
+60,
+"gW"
+],
+"timeline": [
+4,
+20,
+"tW"
+],
+"tornado": [
+4,
+15,
+"sPE"
+],
+"treemap": [
+5,
+60,
+"hpI"
+],
+"treerings": [
+8,
+30,
+"tIW"
+],
+"typecloud": [
+10,
+40,
+"IW"
+],
+"upset": [
+4,
+40,
+"pE"
+],
+"verdictboard": [
+3,
+25,
+"uW"
+],
+"vtimeline": [
+3,
+12,
+"tW"
+],
+"voronoi": [
+5,
+25,
+"xgI"
+],
+"waffle": [
+2,
+6,
+"pW"
+],
+"waterfall": [
+4,
+14,
+"spPW"
+],
+"waveform": [
+20,
+120,
+"tsIW"
+]
+}
+}

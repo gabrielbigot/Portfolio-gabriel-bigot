@@ -1,94 +1,46 @@
 /**
- * Portfolio Data — re-exports from lib/data.ts.
- * All content is hardcoded here; use Claude Code skills to add/edit entries.
+ * Portfolio Data — accès au contenu du site (content/site/*.json) via le chargeur lib/site-content.ts.
+ * Le contenu se modifie dans le studio (/studio) ou directement dans les JSON ; voir ARTICLES.md / STUDIO.md.
  */
+import { getContent } from "@/lib/site-content"
 
-import {
-  personalInfo,
-  socialLinks,
-  workExperience,
-  education,
-  skills,
-  timeline,
-  achievements,
-  interests,
-  companies,
-  projects,
-  blogPosts,
-} from "./data"
+export const getPersonalInfo = () => getContent("personalInfo")
+export const getSocialLinks = () => getContent("socialLinks")
+export const getWorkExperience = () => getContent("workExperience")
+export const getEducation = () => getContent("education")
+export const getSkills = () => getContent("skills")
+export const getTimeline = () => getContent("timeline")
+export const getAchievements = () => getContent("achievements")
+export const getInterests = () => getContent("interests")
+export const getCompanies = () => getContent("companies")
+export const getSiteMetadata = () => getContent("metadata")
 
-export function getPersonalInfo() {
-  return personalInfo
+export async function getCompany(slug: string) {
+  return (await getCompanies()).find((c) => c.slug === slug) ?? null
 }
 
-export function getSocialLinks() {
-  return socialLinks
-}
-
-export function getWorkExperience() {
-  return workExperience
-}
-
-export function getEducation() {
-  return education
-}
-
-export function getSkills() {
-  return skills
-}
-
-export function getTimeline() {
-  return timeline
-}
-
-export function getAchievements() {
-  return achievements
-}
-
-export function getInterests() {
-  return interests
-}
-
-export function getCompanies() {
-  return companies
-}
-
-export function getCompany(slug: string) {
-  return companies.find((c) => c.slug === slug) ?? null
-}
-
-export function getCompanyProjects(companySlug: string, companyName?: string) {
-  const company = companies.find((c) => c.slug === companySlug)
+export async function getCompanyProjects(companySlug: string, companyName?: string) {
+  const company = (await getCompanies()).find((c) => c.slug === companySlug)
   const name = companyName ?? company?.company
   if (!name) return []
-  return projects.filter((p) => p.company === name)
+  return (await getProjects()).filter((p) => p.company === name)
 }
 
-export function getProjects() {
-  return projects
+export const getProjects = () => getContent("projects")
+
+export async function getProject(slug: string) {
+  return (await getProjects()).find((p) => p.slug === slug) ?? null
 }
 
-export function getProject(slug: string) {
-  return projects.find((p) => p.slug === slug) ?? null
+export const getBlogPosts = () => getContent("blogPosts")
+
+export async function getBlogPost(slug: string) {
+  return (await getBlogPosts()).find((p) => p.slug === slug) ?? null
 }
 
-export function getBlogPosts() {
-  return blogPosts
-}
-
-export function getBlogPost(slug: string) {
-  return blogPosts.find((p) => p.slug === slug) ?? null
-}
-
-export function getAllPortfolioData() {
-  return {
-    personalInfo,
-    socialLinks,
-    workExperience,
-    education,
-    skills,
-    timeline,
-    achievements,
-    interests,
-  }
+export async function getAllPortfolioData() {
+  const [personalInfo, socialLinks, workExperience, education, skills, timeline, achievements, interests] = await Promise.all([
+    getPersonalInfo(), getSocialLinks(), getWorkExperience(), getEducation(), getSkills(), getTimeline(), getAchievements(), getInterests(),
+  ])
+  return { personalInfo, socialLinks, workExperience, education, skills, timeline, achievements, interests }
 }

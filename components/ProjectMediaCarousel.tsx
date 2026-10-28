@@ -1,5 +1,6 @@
 "use client"
 
+import { useT } from "@/components/strings-provider"
 import Image from "next/image"
 import { useEffect, useMemo, useState } from "react"
 import { ImageIcon, Play, Video } from "lucide-react"
@@ -34,6 +35,7 @@ function getMediaType(item: ProjectMediaItem) {
 }
 
 export default function ProjectMediaCarousel({ media }: ProjectMediaCarouselProps) {
+  const t = useT("component.ProjectMediaCarousel")
   const [api, setApi] = useState<CarouselApi>()
   const [selectedIndex, setSelectedIndex] = useState(0)
   const items = useMemo(
@@ -65,7 +67,7 @@ export default function ProjectMediaCarousel({ media }: ProjectMediaCarouselProp
   return (
     <section className="space-y-6">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-        <h2 className="text-2xl sm:text-3xl font-light">Médias</h2>
+        <h2 className="text-2xl sm:text-3xl font-light">{t("medias")}</h2>
         <div className="text-sm text-muted-foreground font-mono">
           {String(selectedIndex + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}
         </div>

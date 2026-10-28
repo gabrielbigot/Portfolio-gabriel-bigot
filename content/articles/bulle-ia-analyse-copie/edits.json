@@ -1,0 +1,483 @@
+{
+ "pages": {
+  "": {
+   "order": [
+    "x-intro",
+    "x-le-parallele-troublant-a-1",
+    "x-ce-qui-se-ressemble-2",
+    "x-ce-qui-change-tout-3",
+    "x-novembre-2025-la-correct-4",
+    "x-la-chute-spectaculaire-d-5",
+    "x-michael-burry-ferme-son--6",
+    "x-le-pdg-de-palantir-repon-7",
+    "x-le-systeme-d-investissem-8",
+    "x-l-investissement-croise--9",
+    "x-les-investissements-croi-10",
+    "x-pourquoi-c-est-inquietan-11",
+    "x-la-vraie-fracture-infras-12",
+    "x-l-image-du-gratte-ciel-13",
+    "x-les-facteurs-qui-pourrai-14",
+    "x-alors-bulle-ou-pas-bulle-15",
+    "x-ce-que-ca-change-pour-mo-16"
+   ],
+   "hidden": [],
+   "added": [
+    {
+     "id": "x-intro",
+     "kind": "blocks",
+     "title": "Introduction",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Depuis que j'ai décidé de m'orienter vers l'IA, une question me hante : suis-je en train de monter dans un train qui va dérailler ?"
+      },
+      {
+       "type": "p",
+       "text": "Partout, on parle de bulle de l'IA. Les recherches Google pour \"AI bubble\" ont explosé. Les investisseurs sont nerveux. 54% des gestionnaires de fonds mondiaux pensent qu'on est en territoire de bulle. Même Sam Altman, le PDG d'OpenAI, met en garde contre la surenchère."
+      },
+      {
+       "type": "p",
+       "text": "Alors, sommes-nous vraiment dans une bulle ? Ou est-ce simplement la peur classique face à une révolution technologique majeure ?"
+      },
+      {
+       "type": "p",
+       "text": "Et le signal le plus troublant : Michael Burry, l'investisseur légendaire qui avait prédit le krach des subprimes de 2008, a pris des positions à découvert contre Nvidia et Palantir. Quand celui qui a vu venir 2008 parie sur un krach de l'IA, ça mérite qu'on y prête attention."
+      },
+      {
+       "type": "p",
+       "text": "Mise à jour novembre 2025 : Les prédictions de Burry commencent à se matérialiser. Nvidia a perdu 450 milliards de dollars en seulement 3 jours début novembre, et Burry a fermé son hedge fund Scion Asset Management le 10 novembre 2025, déclarant que \"son estimation de la valeur des titres n'est plus en phase avec les marchés\". Le signal d'alarme est désormais assourdissant."
+      },
+      {
+       "type": "p",
+       "text": "Voici mon analyse mise à jour, après avoir creusé le sujet en profondeur."
+      }
+     ]
+    },
+    {
+     "id": "x-le-parallele-troublant-a-1",
+     "kind": "blocks",
+     "title": "Le parallèle troublant avec l'an 2000",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Difficile de ne pas faire le rapprochement avec la bulle Internet de la fin des années 90."
+      }
+     ]
+    },
+    {
+     "id": "x-ce-qui-se-ressemble-2",
+     "kind": "blocks",
+     "title": "Ce qui se ressemble",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Les valorisations folles : Entre 1995 et 2000, le Nasdaq a quadruplé. Des actions s'achetaient même quand les entreprises n'avaient aucun chiffre d'affaires. Cisco, qui vendait de l'équipement réseau, a vu son action monter de 883% en trois ans."
+      },
+      {
+       "type": "p",
+       "text": "Aujourd'hui ? Des startups d'IA sont valorisées à 250 fois leur chiffre d'affaires annuel. OpenAI était en discussion pour atteindre 300 milliards de dollars de valorisation début 2025."
+      },
+      {
+       "type": "p",
+       "text": "Le même discours : \"Internet va tout changer\" est devenu \"L'IA va tout changer\". Le narratif est identique."
+      },
+      {
+       "type": "p",
+       "text": "Les investissements massifs : L'investissement dans l'équipement informatique et les logiciels représente 4,4% du PIB américain aujourd'hui, presque autant que les 4,6% du pic de la bulle dot-com."
+      },
+      {
+       "type": "p",
+       "text": "Le symbole : Cisco à l'époque, Nvidia aujourd'hui. Nvidia a triplé de valeur depuis début 2024. La moitié de tout l'argent investi dans l'IA finirait dans ses poches."
+      }
+     ]
+    },
+    {
+     "id": "x-ce-qui-change-tout-3",
+     "kind": "blocks",
+     "title": "Ce qui change tout",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Mais attention. La différence fondamentale, c'est la rentabilité."
+      },
+      {
+       "type": "p",
+       "text": "En 2000, seulement 14% des entreprises tech étaient rentables. Aujourd'hui, Microsoft, Google, Nvidia sont déjà extrêmement profitables. Nvidia affiche une marge nette de plus de 52%. Ces entreprises dégagent des milliards de bénéfices, pas des promesses."
+      },
+      {
+       "type": "p",
+       "text": "Le ratio cours/bénéfice du Nasdaq était de 60x en mars 2000. Fin 2023 ? 26x. Deux fois moins extrême."
+      }
+     ]
+    },
+    {
+     "id": "x-novembre-2025-la-correct-4",
+     "kind": "blocks",
+     "title": "Novembre 2025 : La correction commence",
+     "blocks": [
+      {
+       "type": "p",
+       "text": ""
+      }
+     ]
+    },
+    {
+     "id": "x-la-chute-spectaculaire-d-5",
+     "kind": "blocks",
+     "title": "La chute spectaculaire de Nvidia",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Le 29 octobre 2025, Nvidia atteignait un sommet historique à 212,19$ par action, avec une capitalisation boursière de 5,156 trillions de dollars, devenant la première entreprise au monde à franchir ce seuil."
+      },
+      {
+       "type": "p",
+       "text": "Puis tout a basculé."
+      },
+      {
+       "type": "p",
+       "text": "En seulement 3 jours début novembre, Nvidia a perdu 450 milliards de dollars de valorisation. L'action est retombée autour de 188-198$, soit une chute de près de 20% depuis le début de 2025."
+      },
+      {
+       "type": "p",
+       "text": "Ce qui est frappant, ce n'est pas tant la volatilité (normale pour une valeur tech), mais le timing : cela arrive exactement au moment où les doutes sur la rentabilité réelle de l'IA commencent à se matérialiser."
+      }
+     ]
+    },
+    {
+     "id": "x-michael-burry-ferme-son--6",
+     "kind": "blocks",
+     "title": "Michael Burry ferme son hedge fund",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Le 10 novembre 2025, Michael Burry a officiellement désenregistré son hedge fund Scion Asset Management auprès de la SEC. Dans une lettre datée du 27 octobre à ses investisseurs, il écrit :"
+      },
+      {
+       "type": "quote",
+       "text": "\"Mon estimation de la valeur des titres n'est pas, et n'a pas été depuis longtemps, en phase avec les marchés.\"",
+       "cite": ""
+      },
+      {
+       "type": "p",
+       "text": "Ce n'est pas anodin. Burry avait pris des positions short massives contre Nvidia et Palantir pour 1,1 milliard de dollars en put options. Il parie littéralement sur l'effondrement des valorisations de l'IA."
+      },
+      {
+       "type": "p",
+       "text": "Quand l'homme qui a vu venir la crise des subprimes en 2008 ferme boutique en déclarant que le marché est déconnecté de la réalité, ça devrait nous faire réfléchir."
+      }
+     ]
+    },
+    {
+     "id": "x-le-pdg-de-palantir-repon-7",
+     "kind": "blocks",
+     "title": "Le PDG de Palantir répond",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Alex Karp, PDG de Palantir (une des cibles de Burry), a qualifié les positions de Burry de \"complètement dingues\" (bats--- crazy), déclarant sur CNBC :"
+      },
+      {
+       "type": "quote",
+       "text": "\"Les deux entreprises qu'il short sont celles qui font tout l'argent, ce qui est super bizarre.\"",
+       "cite": ""
+      },
+      {
+       "type": "p",
+       "text": "Mais est-ce vraiment bizarre ? Ou est-ce justement parce qu'elles font \"tout l'argent\" qu'elles sont survalorisées ?"
+      }
+     ]
+    },
+    {
+     "id": "x-le-systeme-d-investissem-8",
+     "kind": "blocks",
+     "title": "Le système d'investissement circulaire : comment ça marche vraiment",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Voici le truc qui m'a vraiment interpellé dans mes recherches : le système d'investissement croisé. C'est complexe, alors laissez-moi vous l'expliquer simplement."
+      }
+     ]
+    },
+    {
+     "id": "x-l-investissement-croise--9",
+     "kind": "blocks",
+     "title": "L'investissement croisé, version simple",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Imaginez que vous voulez ouvrir un restaurant, mais que l'équipement de cuisine coûte extrêmement cher. Le fabricant d'équipement de cuisine, au lieu de simplement vous vendre son matériel, décide d'investir dans votre restaurant. En échange, vous vous engagez à acheter tout votre équipement exclusivement chez lui, et à faire la promotion de sa marque."
+      },
+      {
+       "type": "p",
+       "text": "Résultat ? Le fabricant se paie lui-même avec son propre argent. Il investit 1 million dans votre restaurant, et vous lui achetez pour 1 million d'équipement avec cet argent. Sur le papier, il a des revenus en hausse. Mais en réalité, c'est de l'argent qui circule en boucle."
+      },
+      {
+       "type": "p",
+       "text": "C'est exactement ce qui se passe dans l'IA en ce moment."
+      }
+     ]
+    },
+    {
+     "id": "x-les-investissements-croi-10",
+     "kind": "blocks",
+     "title": "Les investissements croisés dans l'IA : le système complet",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Prenons des exemples concrets :"
+      },
+      {
+       "type": "p",
+       "text": "Microsoft et OpenAI : Microsoft a investi plusieurs milliards de dollars dans OpenAI. Mais cet investissement prend une forme particulière : Microsoft fournit à OpenAI des capacités de calcul sur Azure (son cloud). OpenAI utilise donc l'argent de Microsoft pour... acheter des services Microsoft. Et en retour, Microsoft intègre les modèles d'OpenAI dans ses produits (Copilot dans Word, Excel, Bing)."
+      },
+      {
+       "type": "p",
+       "text": "Amazon, Google et Anthropic : Amazon investit 4 milliards dans Anthropic. Google investit 2 milliards. Que fait Anthropic avec cet argent ? Elle achète de la puissance de calcul sur AWS (Amazon) et Google Cloud. L'argent revient aux investisseurs."
+      },
+      {
+       "type": "p",
+       "text": "Nvidia et tout le monde : Nvidia, le fabricant de puces, a investi dans Mistral AI, Inflection, HuggingFace, AI21 Labs, CoreWeave... Que font toutes ces startups avec cet argent ? Elles achètent des GPU Nvidia."
+      }
+     ]
+    },
+    {
+     "id": "x-pourquoi-c-est-inquietan-11",
+     "kind": "blocks",
+     "title": "Pourquoi c'est inquiétant",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Ce système crée une illusion de croissance. Les revenus de Nvidia explosent, mais une partie significative vient d'argent qu'elle a elle-même injecté dans l'écosystème."
+      },
+      {
+       "type": "p",
+       "text": "Plus de 1000 milliards de dollars de partenariats ont été signés par OpenAI en quelques semaines. Des montants colossaux circulent, mais créent-ils vraiment de la valeur ou simplement du mouvement ?"
+      },
+      {
+       "type": "p",
+       "text": "C'est typique des bulles spéculatives : un écosystème qui s'auto-alimente."
+      }
+     ]
+    },
+    {
+     "id": "x-la-vraie-fracture-infras-12",
+     "kind": "blocks",
+     "title": "La vraie fracture : infrastructure vs applications",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Après avoir analysé en profondeur, j'en suis arrivé à cette conclusion : il n'y a pas UNE bulle IA, mais DEUX marchés complètement différents."
+      },
+      {
+       "type": "h3",
+       "text": "1. L'infrastructure : des fondations qui tremblent ?"
+      },
+      {
+       "type": "p",
+       "text": "Les fournisseurs de puissance de calcul (Nvidia, Microsoft, Amazon, Google) ont des fondamentaux économiques solides :"
+      },
+      {
+       "type": "ul",
+       "items": [
+        "Actifs tangibles : Centres de données, serveurs, puces. Ça a une valeur réelle, contrairement aux \"espoirs virtuels\" de l'an 2000.",
+        "Marges colossales : 60% de marge nette pour certains fabricants de puces.",
+        "Cash flow établi : Ces entreprises génèrent des milliards de profits réels, aujourd'hui.",
+        "Utilité prouvée : Que les applications d'IA réussissent ou échouent, la puissance de calcul reste nécessaire pour l'innovation."
+       ]
+      },
+      {
+       "type": "p",
+       "text": "Métaphore : Si l'IA est une ruée vers l'or, Nvidia vend les pelles. Et historiquement, ce sont ceux qui vendent les pelles qui font fortune, pas ceux qui cherchent l'or."
+      },
+      {
+       "type": "p",
+       "text": "Mais attention : La perte de 450 milliards en 3 jours de Nvidia montre que même l'infrastructure n'est pas immunisée contre la correction. Les valorisations, même pour des entreprises profitables, peuvent être déconnectées de la réalité."
+      },
+      {
+       "type": "h3",
+       "text": "2. Les applications : un château de cartes"
+      },
+      {
+       "type": "p",
+       "text": "Les startups d'IA générative, elles, sont dans une situation complètement différente :"
+      },
+      {
+       "type": "ul",
+       "items": [
+        "Valorisations délirantes : 250x leur chiffre d'affaires pour certaines.",
+        "Pas de rentabilité : Une étude du MIT montre que 95% des projets d'IA en entreprise n'ont aucun retour sur investissement.",
+        "Faible adoption réelle : Seulement 10% des entreprises américaines utilisent l'IA activement, malgré les investissements massifs."
+       ]
+      },
+      {
+       "type": "p",
+       "text": "Le problème fondamental : Ces startups brûlent des millions pour créer des modèles que les gens ne sont pas prêts à payer au prix qu'il faudrait pour être rentable."
+      }
+     ]
+    },
+    {
+     "id": "x-l-image-du-gratte-ciel-13",
+     "kind": "blocks",
+     "title": "L'image du gratte-ciel",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "La meilleure analogie que j'ai trouvée : l'économie de l'IA est comme un gratte-ciel."
+      },
+      {
+       "type": "ul",
+       "items": [
+        "Les fondations (l'infrastructure) sont extrêmement solides, en béton armé.",
+        "Mais les étages supérieurs (les applications) sont construits à une vitesse vertigineuse, avec des matériaux fragiles, sans avoir trouvé comment générer assez de revenus pour justifier leur hauteur."
+       ]
+      },
+      {
+       "type": "p",
+       "text": "Le risque ? Pas un effondrement total du bâtiment, mais un effondrement partiel des étages supérieurs."
+      },
+      {
+       "type": "p",
+       "text": "Novembre 2025 : Les premières fissures apparaissent même dans les fondations."
+      }
+     ]
+    },
+    {
+     "id": "x-les-facteurs-qui-pourrai-14",
+     "kind": "blocks",
+     "title": "Les facteurs qui pourraient déclencher la correction",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Plusieurs scénarios pourraient faire exploser la bulle (des applications, et possiblement de l'infrastructure) :"
+      },
+      {
+       "type": "h3",
+       "text": "1. La commoditisation des modèles"
+      },
+      {
+       "type": "p",
+       "text": "Le coût des grands modèles de langage chute de manière exponentielle : jusqu'à 200x par an après janvier 2024."
+      },
+      {
+       "type": "p",
+       "text": "Si tout le monde peut accéder à des modèles puissants pour presque rien, comment les startups vont-elles justifier leurs valorisations stratosphériques ?"
+      },
+      {
+       "type": "h3",
+       "text": "2. La pression réglementaire"
+      },
+      {
+       "type": "p",
+       "text": "L'AI Act européen arrive en 2026, avec des sanctions allant jusqu'à 7% du chiffre d'affaires mondial ou 35 millions d'euros. Les jeunes startups à forte croissance mais faible maturité de gouvernance vont souffrir."
+      },
+      {
+       "type": "h3",
+       "text": "3. La déception des bénéfices"
+      },
+      {
+       "type": "p",
+       "text": "Si les gains de productivité promis par l'IA tardent à arriver (et pour l'instant, 95% des projets échouent), les investisseurs vont décrocher brutalement."
+      },
+      {
+       "type": "p",
+       "text": "C'est en train de se produire : Malgré des résultats financiers solides, Nvidia et Palantir voient leurs actions plonger. Le marché commence à douter."
+      },
+      {
+       "type": "h3",
+       "text": "4. L'effet domino de la concentration"
+      },
+      {
+       "type": "p",
+       "text": "Le marché est ultra-concentré : les 7 plus grandes entreprises du S&P 500 représentent plus de 30% de l'indice. L'IA a généré 75% des gains du S&P 500 depuis ChatGPT. Si un acteur clé comme OpenAI échoue à rentabiliser ses investissements massifs, un effet domino pourrait se propager."
+      },
+      {
+       "type": "h3",
+       "text": "5. Le cygne noir géopolitique ou technologique"
+      },
+      {
+       "type": "p",
+       "text": "Une crise à Taïwan paralysant la production de puces, une percée dans le calcul quantique rendant l'infrastructure actuelle obsolète, une hausse brutale des taux de la Fed... Les déclencheurs potentiels ne manquent pas."
+      }
+     ]
+    },
+    {
+     "id": "x-alors-bulle-ou-pas-bulle-15",
+     "kind": "blocks",
+     "title": "Alors, bulle ou pas bulle ?",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Ma conclusion après tout ce travail d'analyse, mise à jour en novembre 2025 :"
+      },
+      {
+       "type": "p",
+       "text": "Ce n'est plus une hypothèse, c'est en train d'arriver. Nous sommes au début d'une correction industrielle majeure."
+      },
+      {
+       "type": "p",
+       "text": "Voici ce que je retiens :"
+      },
+      {
+       "type": "p",
+       "text": "⚠️ L'infrastructure commence à craquer : La perte de 450 milliards de Nvidia montre que même les fondations solides ne sont pas à l'abri quand les valorisations dépassent la réalité."
+      },
+      {
+       "type": "p",
+       "text": "🚨 La bulle des applications éclate : La majorité des startups d'IA générative sont survalorisées, non rentables, et la correction est inévitable."
+      },
+      {
+       "type": "p",
+       "text": "🎯 L'IA elle-même est réelle : La technologie fonctionne, apporte des gains mesurables dans des cas d'usage précis (j'en ai fait l'expérience avec mes automatisations qui atteignent 85% de gain de temps)."
+      },
+      {
+       "type": "p",
+       "text": "📉 Burry avait raison : Sa décision de fermer son fonds après avoir shorté Nvidia et Palantir est un signal d'alarme majeur. Il préfère sortir du jeu plutôt que de continuer dans un marché qu'il juge irrationnel."
+      }
+     ]
+    },
+    {
+     "id": "x-ce-que-ca-change-pour-mo-16",
+     "kind": "blocks",
+     "title": "Ce que ça change pour mon orientation",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Cette analyse, et surtout les événements de novembre 2025, ne me font pas reculer dans mon choix de me diriger vers l'IA. Au contraire, cela confirme l'importance de bien choisir où positionner mes efforts."
+      },
+      {
+       "type": "p",
+       "text": "Ce qu'il faut absolument éviter : Les startups d'IA générative à la valorisation délirante qui vendent du vent et brûlent du cash sans modèle économique clair. La correction va les balayer."
+      },
+      {
+       "type": "p",
+       "text": "Ce qu'il faut viser : Les projets qui s'appuient sur l'infrastructure (même affaiblie temporairement) pour créer de la valeur concrète et mesurable. Les applications qui ont un ROI clair, pas juste une promesse futuriste."
+      },
+      {
+       "type": "p",
+       "text": "Je veux être du côté de ceux qui construisent des solutions qui résolvent vraiment des problèmes, pas du côté de ceux qui surfent sur une vague spéculative avant qu'elle ne s'écrase."
+      },
+      {
+       "type": "p",
+       "text": "La leçon de Burry : Quand le marché devient irrationnel, les plus intelligents sortent du jeu. Mais cela ne veut pas dire que la technologie sous-jacente n'a pas de valeur. Cela signifie simplement qu'il faut attendre que les valorisations reviennent à la réalité."
+      },
+      {
+       "type": "p",
+       "text": "Parce qu'au final, même si 95% des projets d'IA échouent, les 5% qui réussiront créeront une valeur immense. Et je compte bien faire partie de ces 5%."
+      },
+      {
+       "type": "p",
+       "text": "La bulle éclate en ce moment même. Mais la technologie, elle, restera. Et ceux qui sauront l'utiliser intelligemment, avec des modèles économiques solides, auront toujours leur place."
+      },
+      {
+       "type": "p",
+       "text": "Novembre 2025 est un tournant. La question n'est plus \"y aura-t-il une correction ?\" mais \"comment survivre à la correction qui arrive ?\""
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "figures": {},
+ "evidence": []
+}

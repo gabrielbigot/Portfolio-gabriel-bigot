@@ -1,0 +1,1 @@
+window.VRA_DATA = {"meta":{"slug":"nouveau-dossier","title":"Nouveau dossier","subtitle":"","summary":"","language":"fr","author":"Gabriel Bigot","published":"2026-10-08","updated":"2026-10-08","tags":[],"series":"Dossiers","cover":null,"status":"draft","words":0,"readingMinutes":1,"sourceCount":0,"createdInStudio":true},"evidence":[],"figures":{}};

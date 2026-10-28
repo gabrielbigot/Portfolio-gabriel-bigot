@@ -1,10 +1,23 @@
+import { stripDeep } from "@/lib/studio/stega"
 import type React from "react"
 import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
+import { Newsreader } from "next/font/google"
 import "./globals.css"
-import { metadata as siteMetadata } from "@/lib/data"
+import { getSiteMetadata } from "@/lib/portfolio-data"
+import { getComponentStrings } from "@/lib/strings"
+import { getContent } from "@/lib/site-content"
+import { themeCss } from "@/lib/site-theme"
+import LayoutRules from "@/components/blocks/LayoutRules"
+import { StringsProvider } from "@/components/strings-provider"
+import { studioEnabled } from "@/lib/studio/guard"
+import InlineEditorLoader from "@/components/studio/InlineEditorLoader"
 
-export const metadata: Metadata = {
+const newsreader = Newsreader({ subsets: ["latin"], variable: "--font-newsreader", display: "swap", style: ["normal", "italic"] })
+
+export async function generateMetadata(): Promise<Metadata> {
+  const siteMetadata = await getSiteMetadata()
+  return stripDeep({
   title: siteMetadata.siteTitle,
   description: siteMetadata.siteDescription,
   keywords: siteMetadata.siteKeywords,
@@ -18,13 +31,13 @@ export const metadata: Metadata = {
     url: siteMetadata.siteUrl,
     title: siteMetadata.siteTitle,
     description: siteMetadata.siteDescription,
-    siteName: "Gabriel Bigot Portfolio",
+    siteName: siteMetadata.siteName,
     images: [
       {
         url: siteMetadata.ogImage,
         width: 1200,
         height: 630,
-        alt: "Gabriel Bigot - Développeur d'Automatisations IA",
+        alt: siteMetadata.ogImageAlt,
       },
     ],
   },
@@ -53,16 +66,18 @@ export const metadata: Metadata = {
     // Google Search Console verification - À ajouter plus tard
     // google: "your-google-verification-code",
   },
+  })
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="fr" className={GeistSans.variable}>
-      <body className="font-sans antialiased">{children}</body>
+    <html lang="fr" className={`${GeistSans.variable} ${newsreader.variable}`}>
+      <head><style id="site-theme" dangerouslySetInnerHTML={{ __html: themeCss((await getContent("theme")) as any) }} /></head>
+      <body className="font-sans antialiased"><StringsProvider dict={await getComponentStrings()}><LayoutRules all={((await getContent("layout")) as any).rules} />{children}</StringsProvider>{studioEnabled() && <InlineEditorLoader />}</body>
     </html>
   )
 }

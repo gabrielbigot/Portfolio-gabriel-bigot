@@ -1,14 +1,21 @@
+import ExtraBlocks from "@/components/blocks/ExtraBlocks"
+import { stripDeep } from "@/lib/studio/stega"
+import { getT } from "@/lib/strings"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, Calendar, FileText, Download } from "lucide-react"
 // Note: newsletter cards link directly to static .html files (no embedded viewer)
 import { getNewsletters, formatNewsletterDate } from "@/lib/newsletters-data"
 
-export const metadata = {
-  title: "Actualités IA — Gabriel Bigot",
-  description: "Ma veille hebdomadaire sur l'intelligence artificielle, publiée chaque samedi.",
+export async function generateMetadata() {
+  const t = await getT("page.newsletters")
+  return stripDeep({
+    title: t("actualites-ia-gabriel-bigot"),
+    description: t("ma-veille-hebdomadaire-sur-l-intelligence"),
+  })
 }
 
-export default function NewslettersPage() {
+export default async function NewslettersPage() {
+  const t = await getT("page.newsletters")
   const sorted = getNewsletters()
 
   return (
@@ -20,7 +27,7 @@ export default function NewslettersPage() {
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Retour au portfolio</span>
+            <span>{t("retour-au-portfolio")}</span>
           </Link>
         </div>
       </nav>
@@ -28,25 +35,16 @@ export default function NewslettersPage() {
       <main className="max-w-5xl mx-auto px-6 sm:px-8 py-12 sm:py-20">
         {/* Header */}
         <header className="space-y-6 pb-16 border-b border-border">
-          <div className="text-sm text-muted-foreground font-mono tracking-wider">
-            ACTUALITÉS IA / {new Date().getFullYear()}
+          <div className="text-sm text-muted-foreground font-mono tracking-wider">{t("actualites-ia")}{" "}{new Date().getFullYear()}
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight">
-            Tribune IA hebdomadaire
-          </h1>
-          <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
-            Chaque samedi, je génère automatiquement un journal de veille sur l'intelligence
-            artificielle — modèles, outils, recherche, régulation. Format Wall Street Journal,
-            produit avec n8n et GPT-4.
-          </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight">{t("tribune-ia-hebdomadaire")}</h1>
+          <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">{t("chaque-samedi-je-genere-automatiquement-un")}</p>
           <div className="flex flex-wrap gap-3 text-sm text-muted-foreground">
             <span className="flex items-center gap-1.5">
-              <Calendar className="w-3.5 h-3.5" />
-              Publié chaque samedi
-            </span>
+              <Calendar className="w-3.5 h-3.5" />{t("publie-chaque-samedi")}</span>
             <span className="flex items-center gap-1.5">
               <FileText className="w-3.5 h-3.5" />
-              {sorted.length} édition{sorted.length > 1 ? "s" : ""}
+              {sorted.length}{" "}{t("edition")}{sorted.length > 1 ? "s" : ""}
             </span>
           </div>
         </header>
@@ -55,16 +53,14 @@ export default function NewslettersPage() {
         {sorted.length === 0 ? (
           <div className="py-20 text-center text-muted-foreground">
             <FileText className="w-12 h-12 text-muted-foreground/30 mx-auto mb-4" />
-            <p>Aucune édition disponible pour le moment.</p>
+            <p>{t("aucune-edition-disponible-pour-le-moment")}</p>
           </div>
         ) : (
           <div className="py-12 sm:py-16 space-y-4">
             {/* Latest edition highlight */}
             {sorted[0] && (
               <div className="mb-10">
-                <div className="text-xs font-mono text-muted-foreground tracking-wider mb-4">
-                  DERNIÈRE ÉDITION
-                </div>
+                <div className="text-xs font-mono text-muted-foreground tracking-wider mb-4">{t("derniere-edition")}</div>
                 <a
                   href={`/newsletters/${sorted[0].slug}`}
                   target="_blank"
@@ -74,9 +70,7 @@ export default function NewslettersPage() {
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-5">
                     <div className="space-y-3 flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-2.5">
-                        <span className="px-2.5 py-0.5 text-xs bg-amber-500/10 text-amber-500 border border-amber-500/20 rounded-full">
-                          Dernière édition
-                        </span>
+                        <span className="px-2.5 py-0.5 text-xs bg-amber-500/10 text-amber-500 border border-amber-500/20 rounded-full">{t("derniere-edition-2")}</span>
                         <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
                           <Calendar className="w-3 h-3" />
                           {formatNewsletterDate(sorted[0].date)}
@@ -95,14 +89,14 @@ export default function NewslettersPage() {
                           href={`/newsletters/${sorted[0].slug}.pdf`}
                           download
                           className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 border border-border rounded-lg px-3 py-2"
-                          title="Télécharger le PDF"
+                          title={t("telecharger-le-pdf")}
                         >
                           <Download className="w-3.5 h-3.5" />
-                          <span>PDF</span>
+                          <span>{t("pdf")}</span>
                         </a>
                       )}
                       <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                        <span>Lire</span>
+                        <span>{t("lire")}</span>
                         <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                       </div>
                     </div>
@@ -114,9 +108,7 @@ export default function NewslettersPage() {
             {/* Past editions */}
             {sorted.length > 1 && (
               <>
-                <div className="text-xs font-mono text-muted-foreground tracking-wider mb-4">
-                  ÉDITIONS PRÉCÉDENTES
-                </div>
+                <div className="text-xs font-mono text-muted-foreground tracking-wider mb-4">{t("editions-precedentes")}</div>
                 {sorted.slice(1).map((newsletter) => (
                   <a
                     key={newsletter.slug}
@@ -142,7 +134,7 @@ export default function NewslettersPage() {
                           href={`/newsletters/${newsletter.slug}.pdf`}
                           download
                           className="p-2 text-muted-foreground hover:text-foreground transition-colors duration-200"
-                          title="Télécharger le PDF"
+                          title={t("telecharger-le-pdf")}
                         >
                           <Download className="w-4 h-4" />
                         </a>
@@ -155,13 +147,13 @@ export default function NewslettersPage() {
             )}
           </div>
         )}
+      <ExtraBlocks page={"/newsletters"} />
       </main>
 
       <footer className="border-t border-border py-12">
         <div className="max-w-5xl mx-auto px-6 sm:px-8">
           <div className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Gabriel Bigot • Développeur d'Automatisations IA
-          </div>
+            © {new Date().getFullYear()}{" "}{t("gabriel-bigot-developpeur-d-automatisations-ia")}</div>
         </div>
       </footer>
     </div>

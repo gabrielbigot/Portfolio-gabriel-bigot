@@ -1,0 +1,99 @@
+[
+  {
+    "slug": "adn-potentiel-freelance-2026",
+    "company": "ADN POTENTIEL",
+    "type": "Freelance",
+    "position": "Freelance AI & Full-Stack Developer",
+    "location": "Remote, France",
+    "startDate": "April 2026",
+    "endDate": "May 2026",
+    "current": false,
+    "shortDescription": "Built a custom Next.js 16 web application replacing n8n + Notion, plus prospect enrichment workflows.",
+    "technologies": [
+      "Next.js 16",
+      "TypeScript",
+      "Neon PostgreSQL",
+      "Drizzle ORM",
+      "Vercel",
+      "OpenAI",
+      "Anthropic"
+    ]
+  },
+  {
+    "slug": "adn-potentiel",
+    "company": "ADN POTENTIEL",
+    "type": "Internship",
+    "position": "Business Development & Digital Automation Assistant",
+    "location": "Remote — Lille, France",
+    "startDate": "January 2026",
+    "endDate": "February 2026",
+    "current": false,
+    "shortDescription": "Designed and deployed 3 production n8n workflows to transform business development through AI and API integrations.",
+    "technologies": [
+      "n8n",
+      "Notion",
+      "OpenAI",
+      "Google Gemini",
+      "LinkedIn API",
+      "Pappers API"
+    ]
+  },
+  {
+    "slug": "bigot-materiaux-2025",
+    "company": "BIGOT Materiaux",
+    "type": "Summer work",
+    "position": "HR/Accounting Assistant & Automation Developer",
+    "location": "Etaples, France",
+    "startDate": "July 2025",
+    "endDate": "September 2025",
+    "current": false,
+    "shortDescription": "Built strategic automations to optimize HR and accounting processes in the family-owned SME.",
+    "technologies": [
+      "Python",
+      "Flask",
+      "Supabase",
+      "Excel/VBA",
+      "OCR",
+      "PDF Parsing"
+    ]
+  },
+  {
+    "slug": "texti",
+    "company": "TEXTI",
+    "type": "Summer job",
+    "position": "Sales Assistant",
+    "location": "Le Touquet Paris-Plage, France",
+    "startDate": "July 2024",
+    "endDate": "August 2024",
+    "current": false,
+    "shortDescription": "Summer job in the retail clothing sector, focused on customer relations, checkout, merchandising, and stock management.",
+    "technologies": []
+  },
+  {
+    "slug": "bigot-materiaux-2023",
+    "company": "BIGOT Materiaux",
+    "type": "Summer work",
+    "position": "HR & Accounting Assistant",
+    "location": "Etaples, France",
+    "startDate": "July 2023",
+    "endDate": "July 2023",
+    "current": false,
+    "shortDescription": "First exposure to administrative processes in the family business: HR documents, inventory, accounting entry, and AS400 tools.",
+    "technologies": [
+      "Excel",
+      "Accounting software"
+    ]
+  },
+  {
+    "slug": "tac-hockey",
+    "company": "TAC Hockey",
+    "type": "Coaching",
+    "position": "Youth Camp Leader & Coach",
+    "location": "Le Touquet Paris-Plage, France",
+    "startDate": "July 2022",
+    "endDate": "July 2022",
+    "current": false,
+    "shortDescription": "Supervised young field hockey players and led training sessions.",
+    "technologies": []
+  }
+]

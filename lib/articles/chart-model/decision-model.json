@@ -1,0 +1,1142 @@
+{
+ "version": 1,
+ "note": "Modèle de décision : de la question analytique et de la forme des données vers des formes candidates. Inspiré des grilles usuelles (Visual Vocabulary du FT, Data to Viz, Datawrapper, Stephen Few), réécrit ici ; chaque forme porte une note « quand ». À compléter à chaque nouvelle forme.",
+ "intents": [
+  {
+   "id": "magnitude",
+   "label": "Comparer des grandeurs entre éléments",
+   "ask": "Combien d'éléments ? Une seule mesure ? Des écarts ou des classements ?",
+   "kw": [
+    "comparer",
+    "classement",
+    "combien",
+    "plus gros",
+    "ranking",
+    "compare",
+    "magnitude",
+    "valeurs"
+   ],
+   "options": [
+    [
+     "dotplot",
+     5,
+     "précision, peu d'encre, 6 à 25 éléments"
+    ],
+    [
+     "lollipop",
+     4,
+     "classement léger, probabilités 0–100 %"
+    ],
+    [
+     "bars",
+     3,
+     "base zéro obligatoire ; à éviter par défaut"
+    ],
+    [
+     "podium",
+     3,
+     "3 à 8 éléments, classement ludique"
+    ],
+    [
+     "bullet",
+     4,
+     "valeur contre un repère ou un seuil"
+    ],
+    [
+     "coinstacks",
+     3,
+     "montants en argent, 3 à 8 piles"
+    ],
+    [
+     "skyline",
+     3,
+     "unités concrètes (1 fenêtre = N)"
+    ],
+    [
+     "isotype",
+     4,
+     "compter des unités, grand public"
+    ],
+    [
+     "tally",
+     2,
+     "petits entiers ≤ 60"
+    ],
+    [
+     "balloons",
+     2,
+     "deux mesures : altitude + taille"
+    ],
+    [
+     "bookshelf",
+     3,
+     "catalogues : épaisseur et hauteur"
+    ],
+    [
+     "sizeddonuts",
+     2,
+     "totaux + composition"
+    ],
+    [
+     "ledmeter",
+     3,
+     "scores sur 100 avec zones de seuil"
+    ],
+    [
+     "magnitudes",
+     4,
+     "valeurs sur plusieurs ordres de grandeur"
+    ]
+   ]
+  },
+  {
+   "id": "two-states",
+   "label": "Avant / après, deux états, un écart",
+   "ask": "Deux dates ? Un écart ou une fourchette par ligne ?",
+   "kw": [
+    "avant",
+    "après",
+    "écart",
+    "entre deux",
+    "dumbbell",
+    "change",
+    "variation",
+    "pente"
+   ],
+   "options": [
+    [
+     "slope",
+     5,
+     "deux états, plusieurs lignes"
+    ],
+    [
+     "dumbbell",
+     5,
+     "écart ou fourchette par ligne"
+    ],
+    [
+     "arrowplot",
+     4,
+     "déplacement dans un plan à deux mesures"
+    ],
+    [
+     "doublewaterfall",
+     4,
+     "expliquer l'écart entre deux situations"
+    ],
+    [
+     "ranges",
+     3,
+     "fourchettes basse–haute"
+    ],
+    [
+     "tailshift",
+     3,
+     "déplacement d'une distribution"
+    ],
+    [
+     "waterfall",
+     3,
+     "décomposer une variation"
+    ]
+   ]
+  },
+  {
+   "id": "time",
+   "label": "Évolution dans le temps",
+   "ask": "Série continue ? Combien de périodes ? Valeurs signées ? Prévision ?",
+   "kw": [
+    "temps",
+    "évolution",
+    "série",
+    "tendance",
+    "trend",
+    "time",
+    "années",
+    "mensuel"
+   ],
+   "options": [
+    [
+     "lines",
+     4,
+     "plusieurs séries, tendance"
+    ],
+    [
+     "forecastline",
+     4,
+     "réel puis prévision"
+    ],
+    [
+     "step",
+     4,
+     "valeur constante par paliers (taux, guidance)"
+    ],
+    [
+     "sparkgrid",
+     3,
+     "petits multiples comparables"
+    ],
+    [
+     "sparktable",
+     3,
+     "tableau compact avec tendance"
+    ],
+    [
+     "meander",
+     3,
+     "image d'ensemble, largeur = valeur, 8–40 périodes"
+    ],
+    [
+     "waveform",
+     3,
+     "variations signées, 20–120 périodes"
+    ],
+    [
+     "stripes",
+     3,
+     "dérive sur longue série sans axes"
+    ],
+    [
+     "spiralheat",
+     3,
+     "rythme annuel + dérive, 2–8 ans"
+    ],
+    [
+     "cycleplot",
+     3,
+     "saisonnalité et tendance"
+    ],
+    [
+     "calendar",
+     3,
+     "valeurs par jour sur une année"
+    ],
+    [
+     "ringcalendar",
+     3,
+     "événements par saison"
+    ],
+    [
+     "treerings",
+     3,
+     "croissance annuelle 8–30 ans, image mémorable"
+    ],
+    [
+     "crossing",
+     4,
+     "quand une courbe franchit un seuil"
+    ],
+    [
+     "hovmoller",
+     2,
+     "propagation dans l'espace et le temps"
+    ],
+    [
+     "stacked",
+     3,
+     "composition qui évolue (aires empilées)"
+    ],
+    [
+     "bump",
+     3,
+     "rangs qui changent"
+    ],
+    [
+     "stackedbump",
+     3,
+     "rangs et poids"
+    ]
+   ]
+  },
+  {
+   "id": "events",
+   "label": "Événements datés, chronologie",
+   "ask": "Dates certaines ? Ampleurs ? Plusieurs couloirs ? Échelles très différentes ?",
+   "kw": [
+    "chronologie",
+    "événements",
+    "dates",
+    "timeline",
+    "frise",
+    "calendrier"
+   ],
+   "options": [
+    [
+     "vtimeline",
+     4,
+     "récit vertical, peu d'événements"
+    ],
+    [
+     "timeline",
+     4,
+     "jalons horizontaux"
+    ],
+    [
+     "bubbletimeline",
+     4,
+     "ampleur + couloirs"
+    ],
+    [
+     "fuzzytimeline",
+     5,
+     "dates incertaines"
+    ],
+    [
+     "logtimeline",
+     4,
+     "passé lointain et récent ensemble"
+    ],
+    [
+     "seismogram",
+     3,
+     "chocs datés avec magnitude"
+    ],
+    [
+     "daystrips",
+     3,
+     "plages horaires par jour"
+    ],
+    [
+     "clock24",
+     3,
+     "rythmes sur 24 h"
+    ],
+    [
+     "marey",
+     3,
+     "trajectoires entre étapes"
+    ],
+    [
+     "lexis",
+     4,
+     "cohortes, générations"
+    ],
+    [
+     "swimlane",
+     3,
+     "qui fait quoi, quand"
+    ]
+   ]
+  },
+  {
+   "id": "composition",
+   "label": "Parts d'un tout",
+   "ask": "Combien de parts ? Un ou plusieurs totaux ? Hiérarchie ?",
+   "kw": [
+    "part",
+    "répartition",
+    "composition",
+    "poids",
+    "share",
+    "tout",
+    "total"
+   ],
+   "options": [
+    [
+     "waffle",
+     3,
+     "100 cases, grand public"
+    ],
+    [
+     "stack100",
+     4,
+     "parts comparées entre groupes"
+    ],
+    [
+     "treemap",
+     4,
+     "hiérarchie, surfaces"
+    ],
+    [
+     "floorplan",
+     3,
+     "répartition vue comme un plan"
+    ],
+    [
+     "stippletiles",
+     4,
+     "densité de points = valeur"
+    ],
+    [
+     "sunflower",
+     3,
+     "unités en spirale, 40–400"
+    ],
+    [
+     "hemicycle",
+     4,
+     "deux répartitions d'un même total"
+    ],
+    [
+     "donut",
+     2,
+     "≤ 4 parts seulement"
+    ],
+    [
+     "ternary",
+     4,
+     "trois composantes à 100 %"
+    ],
+    [
+     "nestedcircles",
+     3,
+     "total ⊃ sous-total ⊃ cible"
+    ],
+    [
+     "marimekko",
+     3,
+     "parts × largeur de groupe"
+    ],
+    [
+     "jigsaw",
+     3,
+     "avancement en % par chantier"
+    ],
+    [
+     "moonphases",
+     3,
+     "pourcentages de couverture"
+    ],
+    [
+     "ledger",
+     3,
+     "économie unitaire en ticket"
+    ],
+    [
+     "waterfall",
+     4,
+     "du total aux composantes (pont)"
+    ]
+   ]
+  },
+  {
+   "id": "distribution",
+   "label": "Distribution, dispersion, incertitude",
+   "ask": "Combien d'observations ? Un groupe ou plusieurs ? Montrer chaque point ?",
+   "kw": [
+    "distribution",
+    "dispersion",
+    "incertitude",
+    "variance",
+    "densité",
+    "histogramme",
+    "queue"
+   ],
+   "options": [
+    [
+     "raincloud",
+     5,
+     "densité + quartiles + points, 20–200"
+    ],
+    [
+     "beeswarm",
+     4,
+     "chaque point, un axe"
+    ],
+    [
+     "boxplot",
+     3,
+     "résumé robuste, comparer des groupes"
+    ],
+    [
+     "ridgeline",
+     4,
+     "distributions empilées par groupe"
+    ],
+    [
+     "histogram",
+     3,
+     "une variable"
+    ],
+    [
+     "stipple",
+     4,
+     "nuage dense rendu en pointillé"
+    ],
+    [
+     "isolines",
+     4,
+     "sommets et vallées d'un nuage"
+    ],
+    [
+     "tailshift",
+     4,
+     "risque d'extrêmes si la moyenne bouge"
+    ],
+    [
+     "ranges",
+     3,
+     "fourchettes d'estimations"
+    ],
+    [
+     "fan",
+     3,
+     "cône d'incertitude"
+    ],
+    [
+     "fuzzytimeline",
+     3,
+     "dates incertaines"
+    ],
+    [
+     "probwords",
+     4,
+     "mots de probabilité chiffrés"
+    ],
+    [
+     "lorenz",
+     4,
+     "concentration, inégalité"
+    ],
+    [
+     "strip",
+     3,
+     "toutes les voix sur 0–100 %"
+    ]
+   ]
+  },
+  {
+   "id": "relationship",
+   "label": "Relation entre deux ou trois mesures",
+   "ask": "Deux mesures ? Une troisième en taille ? Des groupes ?",
+   "kw": [
+    "corrélation",
+    "relation",
+    "entre deux",
+    "nuage",
+    "scatter",
+    "quadrant"
+   ],
+   "options": [
+    [
+     "scatter",
+     4,
+     "relation simple"
+    ],
+    [
+     "quadrant",
+     4,
+     "quatre cases lisibles"
+    ],
+    [
+     "bubbles",
+     3,
+     "troisième mesure en taille"
+    ],
+    [
+     "clusterhulls",
+     4,
+     "groupes avec territoires"
+    ],
+    [
+     "scatterpies",
+     3,
+     "composition sur un nuage"
+    ],
+    [
+     "constellation",
+     3,
+     "acteurs sur deux mesures + liens"
+    ],
+    [
+     "delaunaymosaic",
+     3,
+     "mesure interpolée entre points dispersés"
+    ],
+    [
+     "voronoi",
+     3,
+     "territoires d'influence"
+    ],
+    [
+     "scatter3d",
+     2,
+     "trois axes, exploration seulement"
+    ],
+    [
+     "taylor",
+     3,
+     "modèles contre une référence"
+    ],
+    [
+     "parallel",
+     3,
+     "profils multidimensionnels"
+    ],
+    [
+     "radar",
+     2,
+     "profils sur 5–8 axes"
+    ],
+    [
+     "petalglyphs",
+     3,
+     "profils en fleurs"
+    ]
+   ]
+  },
+  {
+   "id": "flow",
+   "label": "Flux, transferts, dépendances",
+   "ask": "Qui envoie à qui ? Valeurs de flux connues ? Étapes ordonnées ?",
+   "kw": [
+    "flux",
+    "transfert",
+    "qui finance",
+    "dépendance",
+    "sankey",
+    "réseau",
+    "flow"
+   ],
+   "options": [
+    [
+     "sankey",
+     5,
+     "flux chiffrés en étapes"
+    ],
+    [
+     "alluvial",
+     4,
+     "catégories qui changent de groupe"
+    ],
+    [
+     "bichord",
+     4,
+     "deux groupes reliés"
+    ],
+    [
+     "chord",
+     3,
+     "flux entre membres d'un seul groupe"
+    ],
+    [
+     "edgebundle",
+     4,
+     "réseaux denses regroupés"
+    ],
+    [
+     "hiveplot",
+     3,
+     "réseau typé sur axes"
+    ],
+    [
+     "contagion",
+     4,
+     "cascade interactive"
+    ],
+    [
+     "metro",
+     4,
+     "filières et correspondances"
+    ],
+    [
+     "swimlane",
+     3,
+     "processus par acteur"
+    ],
+    [
+     "ownership",
+     4,
+     "capital et votes à travers des sociétés"
+    ],
+    [
+     "layers",
+     3,
+     "empilement technique"
+    ],
+    [
+     "matrix",
+     3,
+     "relations en matrice ordonnée"
+    ],
+    [
+     "arc",
+     2,
+     "liens le long d'un axe"
+    ],
+    [
+     "radarscreen",
+     2,
+     "signaux classés par secteur"
+    ]
+   ]
+  },
+  {
+   "id": "hierarchy",
+   "label": "Hiérarchie, arborescence, filiation",
+   "ask": "Combien de niveaux ? Valeurs aux feuilles ?",
+   "kw": [
+    "hiérarchie",
+    "arbre",
+    "niveaux",
+    "filiation",
+    "arborescence"
+   ],
+   "options": [
+    [
+     "treemap",
+     4,
+     "surfaces proportionnelles"
+    ],
+    [
+     "sunburst",
+     3,
+     "anneaux, 2–3 niveaux"
+    ],
+    [
+     "sunicicle",
+     4,
+     "lecture bascule soleil/icicle"
+    ],
+    [
+     "circlepack",
+     3,
+     "cercles imbriqués"
+    ],
+    [
+     "branches",
+     4,
+     "arbre à branches proportionnelles"
+    ],
+    [
+     "pedigree",
+     3,
+     "ascendance sur 3–4 générations"
+    ],
+    [
+     "muller",
+     3,
+     "lignées emboîtées dans le temps"
+    ],
+    [
+     "fishbone",
+     3,
+     "causes d'un effet"
+    ],
+    [
+     "probtree",
+     4,
+     "branches avec probabilités"
+    ],
+    [
+     "bracket",
+     2,
+     "tournoi à élimination"
+    ]
+   ]
+  },
+  {
+   "id": "geo",
+   "label": "Géographie, positions spatiales",
+   "ask": "Carte exacte nécessaire ? Taille des territoires gênante ?",
+   "kw": [
+    "carte",
+    "pays",
+    "région",
+    "géographie",
+    "map",
+    "territoire"
+   ],
+   "options": [
+    [
+     "dorling",
+     4,
+     "cercles proportionnels positionnés"
+    ],
+    [
+     "tilegrid",
+     4,
+     "une case par territoire"
+    ],
+    [
+     "voronoi",
+     3,
+     "zones d'influence"
+    ],
+    [
+     "delaunaymosaic",
+     3,
+     "mesure entre points irréguliers"
+    ],
+    [
+     "isobars",
+     2,
+     "relief 3D d'une grille"
+    ],
+    [
+     "moonphases",
+     2,
+     "%, un par région"
+    ]
+   ]
+  },
+  {
+   "id": "evidence",
+   "label": "Qualité des preuves, sources, vérification",
+   "ask": "Plusieurs sources divergent ? Des affirmations à juger ?",
+   "kw": [
+    "preuve",
+    "source",
+    "vérification",
+    "fiabilité",
+    "affirmation",
+    "verdict",
+    "désaccord"
+   ],
+   "options": [
+    [
+     "sourcespread",
+     5,
+     "sources qui divergent sur une grandeur"
+    ],
+    [
+     "verdictboard",
+     5,
+     "verdicts d'affirmations"
+    ],
+    [
+     "sourcepyramid",
+     4,
+     "niveau de preuve du dossier"
+    ],
+    [
+     "maturity",
+     3,
+     "niveau atteint contre cible"
+    ],
+    [
+     "ranges",
+     3,
+     "fourchettes selon les sources"
+    ],
+    [
+     "probwords",
+     3,
+     "qualificatifs → pourcentages"
+    ]
+   ]
+  },
+  {
+   "id": "sets",
+   "label": "Ensembles et recoupements",
+   "ask": "2 ou 3 ensembles ? Plus ? Quels recoupements ?",
+   "kw": [
+    "ensemble",
+    "recoupement",
+    "intersection",
+    "venn",
+    "commun"
+   ],
+   "options": [
+    [
+     "euler",
+     4,
+     "2–3 ensembles proportionnels"
+    ],
+    [
+     "upset",
+     5,
+     "plus de 3 ensembles"
+    ],
+    [
+     "matrix",
+     3,
+     "présence/absence en matrice"
+    ]
+   ]
+  },
+  {
+   "id": "matrix",
+   "label": "Deux catégories croisées",
+   "ask": "Quelles lignes et colonnes ? Quelle intensité ?",
+   "kw": [
+    "croisé",
+    "matrice",
+    "tableau",
+    "heatmap",
+    "jours heures"
+   ],
+   "options": [
+    [
+     "bubblematrix",
+     4,
+     "intensité par taille de bulle"
+    ],
+    [
+     "heatmap",
+     4,
+     "intensité par couleur"
+    ],
+    [
+     "halftone",
+     4,
+     "intensité par trame de dots, deux séries"
+    ],
+    [
+     "isobars",
+     2,
+     "relief"
+    ],
+    [
+     "clock24",
+     3,
+     "heures × jours en anneaux"
+    ],
+    [
+     "likert",
+     4,
+     "réponses d'enquête divergentes"
+    ]
+   ]
+  },
+  {
+   "id": "process",
+   "label": "Processus, avancement, étapes",
+   "ask": "Étapes ordonnées ? Acteurs ? % d'avancement ?",
+   "kw": [
+    "processus",
+    "avancement",
+    "étapes",
+    "roadmap",
+    "progress",
+    "jalon"
+   ],
+   "options": [
+    [
+     "metro",
+     4,
+     "plusieurs filières avec étapes communes"
+    ],
+    [
+     "swimlane",
+     4,
+     "acteurs et passages de relais"
+    ],
+    [
+     "jigsaw",
+     3,
+     "% réalisé par chantier"
+    ],
+    [
+     "funnel",
+     4,
+     "entonnoir de conversion"
+    ],
+    [
+     "maturity",
+     3,
+     "échelle de maturité"
+    ],
+    [
+     "marey",
+     3,
+     "vitesse de franchissement"
+    ],
+    [
+     "ledmeter",
+     3,
+     "niveaux de préparation"
+    ]
+   ]
+  },
+  {
+   "id": "headline",
+   "label": "Chiffres clés d'ouverture",
+   "ask": "Combien de chiffres ? Besoin de tendance ?",
+   "kw": [
+    "chiffres clés",
+    "ouverture",
+    "synthèse",
+    "headline"
+   ],
+   "options": [
+    [
+     "splitflap",
+     5,
+     "≤ 6 lignes, effet tableau de gare"
+    ],
+    [
+     "sparktable",
+     3,
+     "avec tendance"
+    ],
+    [
+     "ledger",
+     3,
+     "avec sous-totaux"
+    ]
+   ]
+  },
+  {
+   "id": "text",
+   "label": "Textes, termes, corpus",
+   "ask": "Termes avec fréquences ? Catalogue de documents ?",
+   "kw": [
+    "mots",
+    "termes",
+    "corpus",
+    "texte",
+    "mentions",
+    "livres",
+    "documents"
+   ],
+   "options": [
+    [
+     "typecloud",
+     4,
+     "surface du mot ∝ valeur"
+    ],
+    [
+     "bookshelf",
+     4,
+     "catalogue : épaisseur et hauteur"
+    ],
+    [
+     "tally",
+     2,
+     "petits décomptes"
+    ]
+   ]
+  },
+  {
+   "id": "stakes",
+   "label": "Scénarios, risques, décisions",
+   "ask": "Probabilités ? Seuils ? Chocs ?",
+   "kw": [
+    "risque",
+    "scénario",
+    "décision",
+    "probabilité",
+    "seuil",
+    "choc"
+   ],
+   "options": [
+    [
+     "probtree",
+     4,
+     "valeur attendue"
+    ],
+    [
+     "riskmatrix",
+     4,
+     "probabilité × impact"
+    ],
+    [
+     "crossing",
+     4,
+     "franchissement d'un seuil"
+    ],
+    [
+     "seismogram",
+     3,
+     "chocs datés"
+    ],
+    [
+     "maturitywall",
+     4,
+     "échéances contre capacité"
+    ],
+    [
+     "tornado",
+     4,
+     "sensibilité aux hypothèses"
+    ],
+    [
+     "radarscreen",
+     2,
+     "signaux par secteur"
+    ],
+    [
+     "contagion",
+     3,
+     "cascade de défauts"
+    ]
+   ]
+  },
+  {
+   "id": "showpiece",
+   "label": "Pièce visuelle mémorable (ouverture, illustration d'une idée)",
+   "ask": "Quel objet évoque l'idée ? Reste-t-elle exacte ?",
+   "kw": [
+    "mémorable",
+    "image",
+    "illustration",
+    "visuel",
+    "original",
+    "créatif"
+   ],
+   "options": [
+    [
+     "stipple",
+     4,
+     "pointillé de densité"
+    ],
+    [
+     "constellation",
+     4,
+     "écosystème en carte du ciel"
+    ],
+    [
+     "treerings",
+     4,
+     "croissance en cernes"
+    ],
+    [
+     "meander",
+     3,
+     "série en rivière"
+    ],
+    [
+     "moonphases",
+     4,
+     "% en phases de lune"
+    ],
+    [
+     "skyline",
+     3,
+     "unités en fenêtres"
+    ],
+    [
+     "coinstacks",
+     3,
+     "argent en pièces"
+    ],
+    [
+     "floorplan",
+     3,
+     "répartition en plan d'étage"
+    ],
+    [
+     "orbits",
+     3,
+     "distance à une cible"
+    ],
+    [
+     "branches",
+     3,
+     "hiérarchie en arbre"
+    ],
+    [
+     "halftone",
+     3,
+     "matrice en demi-teinte"
+    ],
+    [
+     "radarscreen",
+     3,
+     "signaux sur un radar"
+    ],
+    [
+     "bookshelf",
+     3,
+     "documents en bibliothèque"
+    ],
+    [
+     "jigsaw",
+     3,
+     "avancement en puzzle"
+    ]
+   ]
+  }
+ ]
+}

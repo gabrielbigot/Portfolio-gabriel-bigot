@@ -30,3 +30,5 @@ Le dépôt est **public** : ne jamais y committer de clé, de date de naissance,
 
 ## Documentation
 Les notes de migration Notion et de versionnement des articles sont dans `docs/notion/`.
+
+Le contenu du site est éditable via le studio (`STUDIO.md`) ; les articles sont décrits dans `ARTICLES.md`.

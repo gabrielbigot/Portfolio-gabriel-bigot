@@ -1,8 +1,10 @@
+import ExtraBlocks from "@/components/blocks/ExtraBlocks"
 import PortfolioClient from "@/components/PortfolioClient"
 import { getPortfolioPageData } from "@/lib/portfolio-i18n"
+import { getContent } from "@/lib/site-content"
 
-export default function PortfolioPage() {
-  const { personalInfo, socialLinks, workExperience, skills, projects } = getPortfolioPageData("fr")
+export default async function PortfolioPage() {
+  const { personalInfo, socialLinks, workExperience, skills, projects } = await getPortfolioPageData("fr")
 
   return (
     <PortfolioClient
@@ -12,6 +14,8 @@ export default function PortfolioPage() {
       skills={skills}
       projects={projects as any}
       locale="fr"
+      ui={await getContent("uiPortfolio")}
+      extra={<ExtraBlocks page="/portfolio" />}
     />
   )
 }

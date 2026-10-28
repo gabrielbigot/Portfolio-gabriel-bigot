@@ -1,0 +1,1 @@
+window.VRA_DATA = {"meta":{"slug":"nouvel-essai","title":"Nouvel essai","subtitle":"test","summary":"test","language":"fr","author":"Gabriel Bigot","published":"2026-10-01","updated":"2026-10-01","tags":["Vision"],"series":"Essais","cover":null,"status":"draft","words":0,"readingMinutes":1,"sourceCount":0,"createdInStudio":true},"evidence":[],"figures":{}};

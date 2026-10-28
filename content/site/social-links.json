@@ -1,0 +1,17 @@
+[
+  {
+    "name": "GitHub",
+    "url": "https://github.com/gabrielbigot",
+    "icon": "github"
+  },
+  {
+    "name": "LinkedIn",
+    "url": "https://www.linkedin.com/in/gabriel-bigot-5149ab2a9/",
+    "icon": "linkedin"
+  },
+  {
+    "name": "Email",
+    "url": "mailto:gabriel.bigot2005@gmail.com",
+    "icon": "mail"
+  }
+]

@@ -1,0 +1,33 @@
+{
+ "pages": {
+  "": {
+   "order": [
+    "x-intro"
+   ],
+   "hidden": [],
+   "added": [
+    {
+     "id": "x-intro",
+     "kind": "blocks",
+     "title": "Introduction",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "crée une liste "
+      },
+      {
+       "type": "p",
+       "text": "salut"
+      },
+      {
+       "type": "p",
+       "text": "/"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "figures": {},
+ "evidence": []
+}
