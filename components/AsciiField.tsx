@@ -81,8 +81,14 @@ function step(f: Field, feed: number) {
   f.nv = v
 }
 
+// Apparition du titre : les lettres de #hero-title se forment en caractères « machine », puis se dissolvent dans le champ pendant que le vrai titre apparaît
+const INTRO_GLYPHS = "01#1@0"
+const INTRO_HOLD = 1100 // ms avant la dissolution
+const LENS_RADIUS = 7 // cellules
+
 export default function AsciiField({ className = "" }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const introRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -104,6 +110,8 @@ export default function AsciiField({ className = "" }: { className?: string }) {
     let lastW = 0
     let lastH = 0
     let last: { x: number; y: number } | null = null
+    const lens = { x: 0, y: 0, s: 0 } // loupe : les caractères se précisent autour du curseur, puis la loupe s'éteint
+    let introAbort = false
 
     const onScroll = () => {
       heroProgress = Math.min(1, window.scrollY / window.innerHeight)
@@ -142,6 +150,18 @@ export default function AsciiField({ className = "" }: { className?: string }) {
         const value = v[i]
         levels[i] = value < 0.03 ? 0 : 1 + Math.floor(Math.min(1, (value - 0.03) / 0.35) * 8.99)
       }
+      if (lens.s > 0.02) {
+        const x0 = Math.max(0, Math.floor(lens.x - LENS_RADIUS)), x1 = Math.min(cols - 1, Math.ceil(lens.x + LENS_RADIUS))
+        const y0 = Math.max(0, Math.floor(lens.y - LENS_RADIUS)), y1 = Math.min(rows - 1, Math.ceil(lens.y + LENS_RADIUS))
+        for (let y = y0; y <= y1; y++) {
+          for (let x = x0; x <= x1; x++) {
+            const d = Math.hypot((x - lens.x) * (CELL_W / CELL_H), y - lens.y) / LENS_RADIUS * (CELL_H / CELL_W)
+            if (d >= 1) continue
+            const i = y * cols + x
+            levels[i] = Math.min(GLYPHS.length, levels[i] + Math.round(lens.s * (1 - d) * 6))
+          }
+        }
+      }
       for (let level = 1; level <= GLYPHS.length; level++) {
         ctx.globalAlpha = 0.25 + (0.75 * level) / GLYPHS.length
         const glyph = GLYPHS[level - 1]
@@ -160,6 +180,7 @@ export default function AsciiField({ className = "" }: { className?: string }) {
       if (document.hidden || now - lastTick < 50) return
       lastTick = now
       frame++
+      lens.s *= 0.94
       const feed = COLONY.feed + 0.003 * Math.sin(frame / 160)
       for (let i = 0; i < 5; i++) step(field, feed)
       if (frame % 120 === 0) {
@@ -179,6 +200,9 @@ export default function AsciiField({ className = "" }: { className?: string }) {
       const rect = canvas.getBoundingClientRect()
       const x = (event.clientX - rect.left - (rect.width - field.cols * CELL_W) / 2) / CELL_W
       const y = (event.clientY - rect.top) / CELL_H
+      lens.x = x
+      lens.y = y
+      lens.s = 1
       const from = last ?? { x, y }
       const dist = Math.hypot(x - from.x, y - from.y)
       const n = Math.max(1, Math.ceil(dist / 1.5))
@@ -186,7 +210,100 @@ export default function AsciiField({ className = "" }: { className?: string }) {
       last = { x, y }
     }
 
+    // masque des lettres du titre, en cellules de la grille
+    const buildTitleMask = (): Uint8Array | null => {
+      const el = document.getElementById("hero-title")
+      if (!el) return null
+      const rect = canvas.getBoundingClientRect()
+      const off = document.createElement("canvas")
+      off.width = Math.ceil(rect.width)
+      off.height = Math.ceil(rect.height)
+      const c = off.getContext("2d", { willReadFrequently: true })
+      if (!c) return null
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT)
+      let node: Node | null
+      while ((node = walker.nextNode())) {
+        const text = node.textContent?.trim()
+        if (!text || !node.parentElement) continue
+        const range = document.createRange()
+        range.selectNodeContents(node)
+        const r = range.getBoundingClientRect()
+        const cs = getComputedStyle(node.parentElement)
+        c.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`
+        c.fillStyle = c.strokeStyle = "#000"
+        c.lineJoin = "round"
+        c.lineWidth = parseFloat(cs.fontSize) * 0.07
+        const ascent = c.measureText(text).fontBoundingBoxAscent
+        const x = r.left - rect.left
+        const y = r.top - rect.top + ascent
+        c.strokeText(text, x, y)
+        c.fillText(text, x, y)
+      }
+      const { cols, rows } = field
+      const offX = (rect.width - cols * CELL_W) / 2
+      const data = c.getImageData(0, 0, off.width, off.height).data
+      const mask = new Uint8Array(cols * rows)
+      for (let cy = 0; cy < rows; cy++) {
+        for (let cx = 0; cx < cols; cx++) {
+          let hit = 0
+          for (let sy = 0; sy < 4; sy++) {
+            for (let sx = 0; sx < 3; sx++) {
+              const px = Math.floor(offX + cx * CELL_W + ((sx + 0.5) / 3) * CELL_W)
+              const py = Math.floor(cy * CELL_H + ((sy + 0.5) / 4) * CELL_H)
+              if (px >= 0 && py >= 0 && px < off.width && py < off.height && data[(py * off.width + px) * 4 + 3] > 128) hit++
+            }
+          }
+          if (hit >= 4) mask[cy * cols + cx] = 1
+        }
+      }
+      return mask
+    }
+
+    const runIntro = () => {
+      const ic = introRef.current
+      const ictx = ic?.getContext("2d")
+      if (!ic || !ictx) return
+      const mask = buildTitleMask()
+      if (!mask) return
+      const rect = canvas.getBoundingClientRect()
+      const dpr = Math.min(window.devicePixelRatio || 1, 2)
+      ic.width = Math.round(rect.width * dpr)
+      ic.height = Math.round(rect.height * dpr)
+      ictx.setTransform(dpr, 0, 0, dpr, 0, 0)
+      const { cols } = field
+      const offX = (rect.width - cols * CELL_W) / 2
+      const cells: { x: number; y: number; appear: number; dissolve: number; seed: number }[] = []
+      for (let i = 0; i < mask.length; i++) {
+        if (!mask[i]) continue
+        const r = Math.random()
+        cells.push({ x: i % cols, y: (i / cols) | 0, appear: r * 600, dissolve: INTRO_HOLD + (1 - Math.random()) * 800, seed: (Math.random() * 6) | 0 })
+      }
+      const start = performance.now()
+      const loop = (now: number) => {
+        const t = now - start
+        if (introAbort || t > INTRO_HOLD + 1100) {
+          ictx.clearRect(0, 0, rect.width, rect.height)
+          return
+        }
+        ictx.clearRect(0, 0, rect.width, rect.height)
+        ictx.font = FONT
+        ictx.textAlign = "center"
+        ictx.textBaseline = "middle"
+        ictx.fillStyle = getComputedStyle(ic).color
+        for (const c of cells) {
+          if (t < c.appear) continue
+          const alpha = t < c.dissolve ? 0.85 : 0.85 * Math.max(0, 1 - (t - c.dissolve) / 280)
+          if (alpha <= 0) continue
+          ictx.globalAlpha = alpha
+          ictx.fillText(INTRO_GLYPHS[(c.seed + Math.floor(t / 110)) % INTRO_GLYPHS.length], offX + c.x * CELL_W + CELL_W / 2, c.y * CELL_H + CELL_H / 2)
+        }
+        requestAnimationFrame(loop)
+      }
+      requestAnimationFrame(loop)
+    }
+
     resize()
+    if (!reduceMotion && "fonts" in document) document.fonts.ready.then(() => !introAbort && runIntro())
     let resizeTimer = 0
     const onResize = () => {
       window.clearTimeout(resizeTimer)
@@ -203,6 +320,7 @@ export default function AsciiField({ className = "" }: { className?: string }) {
     }
 
     return () => {
+      introAbort = true
       cancelAnimationFrame(raf)
       window.clearTimeout(resizeTimer)
       window.removeEventListener("resize", onResize)
@@ -212,6 +330,8 @@ export default function AsciiField({ className = "" }: { className?: string }) {
   }, [])
 
   return (
+    <>
+    <canvas ref={introRef} aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 z-0 h-screen w-full text-foreground" />
     <div aria-hidden="true" className={`pointer-events-none ${className}`}>
       <canvas
         ref={canvasRef}
@@ -224,5 +344,6 @@ export default function AsciiField({ className = "" }: { className?: string }) {
         }}
       />
     </div>
+    </>
   )
 }

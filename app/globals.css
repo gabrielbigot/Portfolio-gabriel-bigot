@@ -146,3 +146,13 @@
     }
   }
 }
+
+/* transitions entre pages (navigateurs compatibles) : le titre d'un essai glisse de la liste ou de l'accueil vers sa page */
+@view-transition { navigation: auto; }
+::view-transition-group(*) { animation-duration: 0.5s; animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1); }
+@media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
+
+/* titre de l'accueil : il apparaît pendant que sa version ASCII se dissout (components/AsciiField.tsx) */
+@keyframes title-in { from { opacity: 0; } to { opacity: 1; } }
+.hero-title { animation: title-in 0.9s ease-out 0.95s both; }
+@media (prefers-reduced-motion: reduce) { .hero-title { animation: none; } }

@@ -89,6 +89,8 @@ interface PortfolioClientProps {
   locale?: "fr" | "en"
   /** textes d'interface (content/site/ui-portfolio.json) */
   ui: Record<"fr" | "en", any>
+  /** dernier essai public : l'accueil y renvoie directement (transition de vue vers son titre) */
+  latestEssay?: { slug: string; title: string; summary: string; published: string }
   /** sections ajoutées (content/site/pages.json) */
   extra?: React.ReactNode
 }
@@ -107,6 +109,7 @@ export default function PortfolioClient({
   projects,
   locale = "fr",
   ui,
+  latestEssay,
   extra,
 }: PortfolioClientProps) {
   const t = useT("component.PortfolioClient")
@@ -232,7 +235,7 @@ export default function PortfolioClient({
           <div className="w-full max-w-xl space-y-8 sm:space-y-10">
             <div className="space-y-3 sm:space-y-2">
               <div className="text-sm text-muted-foreground font-mono tracking-wider">{t("portfolio-2026")}</div>
-              <h1 className="font-editorial text-5xl sm:text-6xl lg:text-7xl leading-[0.95]">
+              <h1 id="hero-title" className="hero-title font-editorial text-5xl sm:text-6xl lg:text-7xl leading-[0.95]">
                 {personalInfo.firstName}
                 <br />
                 <span className="text-muted-foreground">{personalInfo.lastName}</span>
@@ -296,14 +299,14 @@ export default function PortfolioClient({
                   {copy.allEssays} <span aria-hidden="true">→</span>
                 </Link>
               </div>
-              <Link href="/articles" className="group lg:col-span-7 block lg:border-l lg:border-border lg:pl-12">
-                <div className="text-xs font-mono tracking-[0.16em] text-muted-foreground uppercase mb-5">{copy.latestEssay} / 2025</div>
-                <h3 className="font-editorial text-3xl sm:text-4xl leading-tight group-hover:text-accent transition-colors duration-300">{t("l-ia-ne-doit-pas-penser")}</h3>
-                <p className="font-editorial mt-5 max-w-xl text-xl leading-[1.65] text-muted-foreground">{t("comment-construire-des-outils-qui-augmentent")}</p>
+              <a href={latestEssay ? `/articles/${latestEssay.slug}` : "/articles"} className="group lg:col-span-7 block lg:border-l lg:border-border lg:pl-12">
+                <div className="text-xs font-mono tracking-[0.16em] text-muted-foreground uppercase mb-5">{copy.latestEssay} / {latestEssay?.published?.slice(0, 4) || "2025"}</div>
+                <h3 style={latestEssay ? { viewTransitionName: `essay-${latestEssay.slug}` } : undefined} className="font-editorial text-3xl sm:text-4xl leading-tight group-hover:text-accent transition-colors duration-300">{latestEssay?.title ?? t("l-ia-ne-doit-pas-penser")}</h3>
+                <p className="font-editorial mt-5 max-w-xl text-xl leading-[1.65] text-muted-foreground">{latestEssay?.summary || t("comment-construire-des-outils-qui-augmentent")}</p>
                 <div className="mt-8 flex items-center gap-3 text-sm text-foreground group-hover:text-accent transition-colors">
                   <span>{copy.readEssay}</span><span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
                 </div>
-              </Link>
+              </a>
             </div>
           </div>
         </section>

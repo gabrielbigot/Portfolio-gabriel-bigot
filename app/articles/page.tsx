@@ -50,7 +50,7 @@ export default async function ArticlesPage() {
                 {a.series && <span>· {a.series}</span>}
                 {a.status === "draft" && <span className="text-amber-600">· Brouillon, visible dans le studio seulement</span>}
               </div>
-              <h2 className="font-editorial mt-3 text-2xl sm:text-3xl leading-tight transition-colors duration-300 group-hover:text-muted-foreground">{a.title}</h2>
+              <h2 style={{ viewTransitionName: `essay-${a.slug}` }} className="font-editorial mt-3 text-2xl sm:text-3xl leading-tight transition-colors duration-300 group-hover:text-muted-foreground">{a.title}</h2>
               {a.subtitle && <p className="font-editorial mt-1 text-lg italic text-muted-foreground">{a.subtitle}</p>}
               {a.summary && a.summary !== a.subtitle && <p className="font-editorial mt-3 max-w-2xl text-lg leading-[1.65] text-muted-foreground">{a.summary}</p>}
               {isStudioMode() && <ArticleDeleteButton slug={a.slug} title={a.title} />}
