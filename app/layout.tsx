@@ -12,6 +12,7 @@ import LayoutRules from "@/components/blocks/LayoutRules"
 import { StringsProvider } from "@/components/strings-provider"
 import { studioEnabled } from "@/lib/studio/guard"
 import InlineEditorLoader from "@/components/studio/InlineEditorLoader"
+import ThemeToggle from "@/components/ThemeToggle"
 
 const newsreader = Newsreader({ subsets: ["latin"], variable: "--font-newsreader", display: "swap", style: ["normal", "italic"] })
 
@@ -75,9 +76,9 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="fr" className={`${GeistSans.variable} ${newsreader.variable}`}>
-      <head><style id="site-theme" dangerouslySetInnerHTML={{ __html: themeCss((await getContent("theme")) as any) }} /></head>
-      <body className="font-sans antialiased"><StringsProvider dict={await getComponentStrings()}><LayoutRules all={((await getContent("layout")) as any).rules} />{children}</StringsProvider>{studioEnabled() && <InlineEditorLoader />}</body>
+    <html lang="fr" className={`${GeistSans.variable} ${newsreader.variable}`} suppressHydrationWarning>
+      <head><script dangerouslySetInnerHTML={{ __html: "try{var s=localStorage,t=s.getItem('theme')||s.getItem('vra-theme');if(t&&!s.getItem('theme'))s.setItem('theme',t);if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}" }} /><style id="site-theme" dangerouslySetInnerHTML={{ __html: themeCss((await getContent("theme")) as any) }} /></head>
+      <body className="font-sans antialiased"><StringsProvider dict={await getComponentStrings()}><LayoutRules all={((await getContent("layout")) as any).rules} />{children}</StringsProvider><ThemeToggle />{studioEnabled() && <InlineEditorLoader />}</body>
     </html>
   )
 }

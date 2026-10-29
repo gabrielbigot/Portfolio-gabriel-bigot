@@ -27,23 +27,24 @@
   /* ---------- thème ---------- */
   function initTheme(root, opts) {
     const mq = matchMedia('(prefers-color-scheme: dark)');
-    let manual = null; try { manual = localStorage.getItem('vra-theme'); } catch (e) { /* stockage indisponible */ }
+    let manual = null; try { manual = localStorage.getItem('theme') || localStorage.getItem('vra-theme'); } catch (e) { /* stockage indisponible */ }
     const hostDark = () => document.documentElement.classList.contains('dark') || document.documentElement.getAttribute('data-theme') === 'dark';
     const apply = () => {
       const folio = !!(window.VRA_AI && window.VRA_AI.base); // intégré au portfolio : clair par défaut (comme le site), sombre seulement si choisi
-      const dark = manual ? manual === 'dark' : (folio ? false : (opts.standalone ? mq.matches : hostDark()));
+      const dark = manual ? manual === 'dark' : (folio ? mq.matches : (opts.standalone ? mq.matches : hostDark()));
       root.setAttribute('data-theme', dark ? 'dark' : 'light');
       if (opts.standalone) { document.documentElement.setAttribute('data-vra-theme', dark ? 'dark' : 'light'); document.documentElement.style.colorScheme = dark ? 'dark' : 'light'; document.documentElement.style.background = dark ? '#4a4a4d' : '#f4f1ea'; }
       root.dispatchEvent(new CustomEvent('vra:theme'));
     };
     apply(); mq.addEventListener && mq.addEventListener('change', apply);
+    addEventListener('pageshow', e => { if (e.persisted) { try { manual = localStorage.getItem('theme') || localStorage.getItem('vra-theme'); } catch (err) { /* ignore */ } apply(); } }); // retour depuis le cache : le choix a pu changer sur une autre page
     new MutationObserver(apply).observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'data-theme'] });
     const btn = root.querySelector('[data-theme-toggle]');
     if (btn) {
       if (!opts.standalone) btn.hidden = true;
       btn.addEventListener('click', () => {
         manual = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        try { localStorage.setItem('vra-theme', manual); } catch (e) { /* ignore */ }
+        try { localStorage.setItem('vra-theme', manual); localStorage.setItem('theme', manual); } catch (e) { /* ignore */ }
         apply(); btn.setAttribute('aria-pressed', manual === 'dark');
       });
     }
