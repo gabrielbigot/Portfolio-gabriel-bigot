@@ -40,7 +40,9 @@
     "languageLabel": "Version anglaise",
     "languageHref": "/en/portfolio",
     "languageCode": "EN",
-    "languageTransition": "Translating portfolio to English"
+    "languageTransition": "Translating portfolio to English",
+    "latestArticle": "Dernier article",
+    "readArticle": "Lire l'article"
   },
   "en": {
     "current": "CURRENTLY",
@@ -83,6 +85,8 @@
     "languageLabel": "Version française",
     "languageHref": "/portfolio",
     "languageCode": "FR",
-    "languageTransition": "Retraduction du portfolio en français"
+    "languageTransition": "Retraduction du portfolio en français",
+    "latestArticle": "Latest article",
+    "readArticle": "Read article"
   }
 }

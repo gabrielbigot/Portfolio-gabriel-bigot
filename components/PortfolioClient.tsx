@@ -89,6 +89,10 @@ interface PortfolioClientProps {
   locale?: "fr" | "en"
   /** textes d'interface (content/site/ui-portfolio.json) */
   ui: Record<"fr" | "en", any>
+  /** dernier essai public : l'accueil y renvoie directement (transition de vue vers son titre) */
+  latestEssay?: { slug: string; title: string; summary: string; published: string }
+  /** dernier article (analyse sourcée) public, s'il y en a un */
+  latestArticle?: { slug: string; title: string; summary: string; published: string }
   /** sections ajoutées (content/site/pages.json) */
   extra?: React.ReactNode
 }
@@ -107,21 +111,18 @@ export default function PortfolioClient({
   projects,
   locale = "fr",
   ui,
+  latestEssay,
+  latestArticle,
   extra,
 }: PortfolioClientProps) {
   const t = useT("component.PortfolioClient")
   const router = useRouter()
   const copy = ui[locale]
-  const [isDark, setIsDark] = useState(true)
   const [activeSection, setActiveSection] = useState("")
   const [isSwitchingLanguage, setIsSwitchingLanguage] = useState(false)
   const [streamedLanguageText, setStreamedLanguageText] = useState("")
   const sectionsRef = useRef<(HTMLElement | null)[]>([])
   const routePrefix = locale === "en" ? "/en" : ""
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDark)
-  }, [isDark])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -143,10 +144,6 @@ export default function PortfolioClient({
 
     return () => observer.disconnect()
   }, [])
-
-  const toggleTheme = () => {
-    setIsDark(!isDark)
-  }
 
   useEffect(() => {
     if (!isSwitchingLanguage) return
@@ -181,7 +178,7 @@ export default function PortfolioClient({
       <Link
         href={copy.languageHref}
         onClick={handleLanguageSwitch}
-        className="fixed right-6 top-6 z-50 inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-foreground/[0.06] backdrop-blur-xl backdrop-saturate-150 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] px-3 py-1.5 text-xs font-mono text-muted-foreground transition-colors duration-300 hover:border-foreground/30 hover:text-foreground"
+        className="fixed right-4 top-12 z-50 inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-foreground/[0.06] backdrop-blur-xl backdrop-saturate-150 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] px-3 py-1.5 text-xs font-mono text-muted-foreground transition-colors duration-300 hover:border-foreground/30 hover:text-foreground"
         aria-label={copy.languageLabel}
       >
         <span>{locale.toUpperCase()}</span>
@@ -232,7 +229,7 @@ export default function PortfolioClient({
           <div className="w-full max-w-xl space-y-8 sm:space-y-10">
             <div className="space-y-3 sm:space-y-2">
               <div className="text-sm text-muted-foreground font-mono tracking-wider">{t("portfolio-2026")}</div>
-              <h1 className="font-editorial text-5xl sm:text-6xl lg:text-7xl leading-[0.95]">
+              <h1 id="hero-title" className="hero-title font-editorial text-5xl sm:text-6xl lg:text-7xl leading-[0.95]">
                 {personalInfo.firstName}
                 <br />
                 <span className="text-muted-foreground">{personalInfo.lastName}</span>
@@ -296,14 +293,24 @@ export default function PortfolioClient({
                   {copy.allEssays} <span aria-hidden="true">→</span>
                 </Link>
               </div>
-              <Link href="/articles" className="group lg:col-span-7 block lg:border-l lg:border-border lg:pl-12">
-                <div className="text-xs font-mono tracking-[0.16em] text-muted-foreground uppercase mb-5">{copy.latestEssay} / 2025</div>
-                <h3 className="font-editorial text-3xl sm:text-4xl leading-tight group-hover:text-accent transition-colors duration-300">{t("l-ia-ne-doit-pas-penser")}</h3>
-                <p className="font-editorial mt-5 max-w-xl text-xl leading-[1.65] text-muted-foreground">{t("comment-construire-des-outils-qui-augmentent")}</p>
+              <a href={latestEssay ? `/articles/${latestEssay.slug}` : "/articles"} className="group lg:col-span-7 block lg:border-l lg:border-border lg:pl-12">
+                <div className="text-xs font-mono tracking-[0.16em] text-muted-foreground uppercase mb-5">{copy.latestEssay} / {latestEssay?.published?.slice(0, 4) || "2025"}</div>
+                <h3 style={latestEssay ? { viewTransitionName: `essay-${latestEssay.slug}` } : undefined} className="font-editorial text-3xl sm:text-4xl leading-tight group-hover:text-accent transition-colors duration-300">{latestEssay?.title ?? t("l-ia-ne-doit-pas-penser")}</h3>
+                <p className="font-editorial mt-5 max-w-xl text-xl leading-[1.65] text-muted-foreground">{latestEssay?.summary || t("comment-construire-des-outils-qui-augmentent")}</p>
                 <div className="mt-8 flex items-center gap-3 text-sm text-foreground group-hover:text-accent transition-colors">
                   <span>{copy.readEssay}</span><span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
                 </div>
-              </Link>
+              </a>
+              {latestArticle && (
+                <a href={`/articles/${latestArticle.slug}`} className="group lg:col-span-12 mt-2 block border-t border-border pt-8">
+                  <div className="text-xs font-mono tracking-[0.16em] text-muted-foreground uppercase mb-3">{copy.latestArticle}</div>
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2">
+                    <h3 style={{ viewTransitionName: `essay-${latestArticle.slug}` }} className="font-editorial text-2xl sm:text-3xl leading-tight group-hover:text-accent transition-colors duration-300">{latestArticle.title}</h3>
+                    <span className="text-sm text-foreground group-hover:text-accent transition-colors">{copy.readArticle} <span aria-hidden="true">→</span></span>
+                  </div>
+                  {latestArticle.summary && <p className="font-editorial mt-2 max-w-2xl text-lg leading-[1.6] text-muted-foreground">{latestArticle.summary}</p>}
+                </a>
+              )}
             </div>
           </div>
         </section>
@@ -577,34 +584,6 @@ export default function PortfolioClient({
             </div>
 
             <div className="flex items-center gap-4">
-              <button
-                onClick={toggleTheme}
-                className="group p-3 rounded-lg border border-border hover:border-muted-foreground/50 transition-all duration-300"
-                aria-label={t("toggle-theme")}
-              >
-                {isDark ? (
-                  <svg
-                    className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors duration-300"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors duration-300"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                  </svg>
-                )}
-              </button>
-
               <button className="group p-3 rounded-lg border border-border hover:border-muted-foreground/50 transition-all duration-300">
                 <svg
                   className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors duration-300"

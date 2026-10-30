@@ -175,8 +175,8 @@
   "page.articles": {
     "retour": "Retour",
     "articles": "ARTICLES",
-    "dossiers-sources": "Essais et dossiers",
-    "des-dossiers-longs-ou-chaque-chiffre": "Des textes longs : essais d'opinion et dossiers où chaque chiffre renvoie à une source datée, où les opinions sont séparées des faits, et où ce qui n'a pas pu être vérifié est dit.",
+    "dossiers-sources": "Essais et articles",
+    "des-dossiers-longs-ou-chaque-chiffre": "Des textes longs, de deux sortes : des essais à ma voix, et des articles sourcés où chaque chiffre renvoie à une source datée.",
     "aucun-article-publie-pour-l-instant": "Aucun article publié pour l'instant.",
     "min": "min",
     "sources": "sources",
@@ -184,7 +184,15 @@
     "de-l-auteur": "de l'auteur",
     "brouillon-visible-en-local-seulement": "Brouillon · visible en local seulement",
     "articles-gabriel-bigot": "Articles — Gabriel Bigot",
-    "dossiers-longs-sources-et-interactifs-ia": "Dossiers longs, sourcés et interactifs : IA, médias, outils. Chaque affirmation chiffrée renvoie à une source datée."
+    "dossiers-longs-sources-et-interactifs-ia": "Dossiers longs, sourcés et interactifs : IA, médias, outils. Chaque affirmation chiffrée renvoie à une source datée.",
+    "tout": "Tout",
+    "essai": "Essai",
+    "article": "Article",
+    "essais": "Essais",
+    "articles-section": "Articles",
+    "essais-intro": "Ce que je crois, ce que je sais et ce que je ne sais pas. Des textes à ma voix, où je dis mon niveau de preuve.",
+    "articles-intro": "Des analyses sourcées et chiffrées : chaque chiffre renvoie à une source datée, les opinions sont séparées des faits.",
+    "sources-n": "sources"
   },
   "page.en-portfolio": {
     "gabriel-bigot-ai-automation-developer": "Gabriel Bigot | AI Automation Developer",

@@ -468,3 +468,112 @@
 .vra figure.art svg { color: var(--vra-ink); }
 .vra figure.art .t { font-family: var(--vra-sans); fill: var(--vra-ink); }
 .vra figure.art .m { fill: var(--vra-mid); font-family: var(--vra-sans); }
+
+/* ---------- essais : lecture simple, une seule colonne, rien d'animé ----------
+ * Même moteur que les dossiers, mais seuls le texte, le sommaire et la date comptent : pas de barre de progression,
+ * pas de repères numérotés, pas d'accent de couleur sur le texte courant. Activé par data-kind="essay" sur <article class="vra">. */
+.vra[data-kind="essay"] { font-size: 1.25rem; line-height: 1.75; }
+.vra[data-kind="essay"] .vra-progress { display: none; }
+.vra[data-kind="essay"] .marker { display: none; }
+
+/* couverture : titre aligné sur la colonne de texte, comme le sommaire à gauche */
+.vra[data-kind="essay"] .vra-cover, .vra[data-kind="essay"] .vra-shell { max-width: 62rem; }
+@media (min-width: 1080px) { .vra[data-kind="essay"] .vra-cover { padding-left: calc(20px + 266px); } }
+.vra[data-kind="essay"] .vra-cover { padding-top: clamp(56px, 9vw, 112px); padding-bottom: clamp(24px, 4vw, 44px); }
+.vra[data-kind="essay"] .vra-kicker { font: 500 .8rem/1.2 var(--vra-sans); letter-spacing: .08em; color: var(--vra-mid); margin-bottom: 1.1rem; }
+.vra[data-kind="essay"] .vra-cover h1 { font: 600 clamp(2rem, 4.4vw, 3rem)/1.12 var(--vra-serif); letter-spacing: -.015em; max-width: 19em; margin-bottom: 1rem; }
+.vra[data-kind="essay"] .vra-dek { font-size: clamp(1.1rem, 2vw, 1.3rem); line-height: 1.5; margin-bottom: 1.3rem; }
+.vra[data-kind="essay"] .vra-byline { margin-bottom: 0; font-size: .875rem; }
+
+/* bascule clair / sombre : discrète, en haut à droite, sans fond */
+.vra[data-kind="essay"] .vra-toolbar { position: fixed; top: 10px; right: 12px; margin: 0; z-index: 70; padding: .1rem .35rem; border-radius: 6px; background: color-mix(in srgb, var(--vra-bg) 96%, transparent); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.vra[data-kind="essay"] .vra-toolbar button { border: 0; background: none; padding: .35rem .2rem; border-radius: 0; font: 500 .8rem/1 var(--vra-sans); color: var(--vra-mid); text-decoration: underline; text-decoration-color: var(--vra-line); text-underline-offset: 4px; }
+.vra[data-kind="essay"] .vra-toolbar button:hover { color: var(--vra-ink); text-decoration-color: var(--vra-ink); }
+
+/* sommaire : texte seul, sans pastille ni filet coloré */
+.vra[data-kind="essay"] .vra-toc { font-size: .875rem; line-height: 1.4; }
+.vra[data-kind="essay"] .vra-toc small { font: 500 .8rem/1 var(--vra-sans); letter-spacing: 0; text-transform: none; color: var(--vra-ink); }
+.vra[data-kind="essay"] .vra-toc ol { border-left: 0; }
+.vra[data-kind="essay"] .vra-toc a { border-left: 0; margin-left: 0; padding: .3rem 0; }
+.vra[data-kind="essay"] .vra-toc a[aria-current="true"] { border-left-color: transparent; font-weight: 600; }
+.vra[data-kind="essay"] .vra-toc-toggle { border: 0; background: none; padding: 0; font: 500 .85rem/1 var(--vra-sans); color: var(--vra-mid); text-decoration: underline; text-underline-offset: 4px; }
+
+/* texte : titres de section sobres, paragraphes aérés, citations sans filet coloré */
+.vra[data-kind="essay"] .vra-main > section { padding-top: clamp(2rem, 4vw, 3rem); }
+.vra[data-kind="essay"] .vra-main h2 { font: 600 clamp(1.5rem, 3vw, 1.9rem)/1.2 var(--vra-serif); letter-spacing: -.01em; margin-bottom: 1rem; }
+.vra[data-kind="essay"] .vra-main h3 { font: italic 600 1.15rem/1.35 var(--vra-serif); margin: 1.8rem 0 .6rem; }
+.vra[data-kind="essay"] .vra-main p { margin-bottom: 1.2em; }
+.vra[data-kind="essay"] .vra-main blockquote { border-left: 2px solid var(--vra-line); }
+.vra[data-kind="essay"] .vra-main ul.prose, .vra[data-kind="essay"] .vra-main ol.prose { max-width: 41rem; }
+
+/* lien de retour : texte simple au lieu d'une pastille */
+body:has(.vra[data-kind="essay"]) .pf-back { top: 10px; left: 12px; padding: .35rem .55rem; border: 0; border-radius: 6px; background: rgba(244,241,234,.96); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); font-weight: 500; font-size: 13px; text-decoration: underline; text-decoration-color: var(--vra-line, #d5d0c5); text-underline-offset: 4px; }
+[data-vra-theme=dark] body:has(.vra[data-kind="essay"]) .pf-back, body:has(.vra[data-vra-theme=dark][data-kind="essay"]) .pf-back, body:has(.vra[data-theme="dark"][data-kind="essay"]) .pf-back { background: rgba(74,74,77,.96); }
+body:has(.vra[data-kind="essay"]) .pf-back:hover { background: rgba(244,241,234,.96); text-decoration-color: currentColor; }
+
+/* rien d'animé dans un essai */
+.vra[data-kind="essay"] *, .vra[data-kind="essay"] *::before, .vra[data-kind="essay"] *::after { animation: none !important; transition: none !important; }
+html:has(.vra[data-kind="essay"]) { scroll-behavior: auto !important; }
+@media (max-width: 1079px) { .vra[data-kind="essay"] .vra-toc > small { display: none; } }
+
+/* essais : lettrine, liens, renvois de source et aperçu au survol */
+.vra[data-kind="essay"] .vra-main > section:first-of-type h2 + p::first-letter { float: left; font: 600 4.35em/.78 var(--vra-serif); padding: .07em .09em 0 0; margin-top: .02em; color: var(--vra-ink); }
+.vra[data-kind="essay"] .vra-main a:not(.src):not(.ev-reg) { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; text-decoration-color: color-mix(in srgb, var(--vra-ink) 38%, transparent); }
+.vra[data-kind="essay"] .vra-main a:not(.src):not(.ev-reg):hover { text-decoration-color: var(--vra-ink); }
+.vra[data-kind="essay"] .vra-main a[href^="http"]:not(.src)::after { content: "\2197"; font: 500 .7em/1 var(--vra-sans); margin-left: .18em; color: var(--vra-mid); text-decoration: none; display: inline-block; }
+.vra[data-kind="essay"] a.src { border: 0; background: none; padding: 0 .1em; margin: 0 .05em; position: relative; top: -.45em; font: 600 .68em/0 var(--vra-sans); color: var(--vra-c1); text-decoration: none; }
+.vra[data-kind="essay"] a.src:hover, .vra[data-kind="essay"] a.src:focus-visible { background: color-mix(in srgb, var(--vra-c1) 14%, transparent); border-radius: 3px; }
+.vra[data-kind="essay"] .vra-main ol.sources { max-width: 41rem; font: 400 .98rem/1.55 var(--vra-sans); color: var(--vra-ink); padding-left: 1.4rem; }
+.vra[data-kind="essay"] .vra-main ol.sources li { margin-bottom: .9em; scroll-margin-top: 24px; }
+.vra[data-kind="essay"] .vra-main ol.sources .src-lim { display: block; color: var(--vra-mid); font-size: .9em; margin-top: .15em; }
+.vra[data-kind="essay"] .vra-main ol.sources li:target { background: color-mix(in srgb, var(--vra-c1) 10%, transparent); }
+.vra-peek { position: fixed; z-index: 95; width: min(22rem, calc(100vw - 20px)); padding: .85rem 1rem; background: var(--vra-bg); color: var(--vra-ink); border: 1px solid var(--vra-line); border-radius: 6px; box-shadow: 0 10px 30px rgb(0 0 0 / .18); font: 400 .84rem/1.45 var(--vra-sans); pointer-events: none; }
+.vra-peek p { margin: 0 0 .45rem; max-width: none; }
+.vra-peek p:last-child { margin: 0; }
+.vra-peek .pk-meta { font: 500 .72rem/1.2 var(--vra-mono); letter-spacing: .04em; color: var(--vra-mid); }
+.vra-peek .pk-name { font: 600 .95rem/1.3 var(--vra-serif); }
+.vra-peek .pk-lim { color: var(--vra-mid); font-size: .8rem; }
+.vra-peek .pk-more { font: 500 .72rem/1.2 var(--vra-sans); color: var(--vra-c1); }
+
+/* essais : figure ASCII de la couverture (calculée une fois à partir du nom de l'essai, voir lib/articles/ascii-art.mjs) */
+.vra[data-kind="essay"] .vra-art { margin: 0 0 1.6rem; max-width: 41rem; overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 85%, transparent); mask-image: linear-gradient(to right, transparent, #000 10%, #000 85%, transparent); }
+.vra[data-kind="essay"] .vra-art pre { margin: 0; font: 400 12px/15px var(--vra-mono); letter-spacing: 1.8px; white-space: pre; color: var(--vra-ink); opacity: .62; user-select: none; }
+@media (max-width: 640px) { .vra[data-kind="essay"] .vra-art pre { font-size: 9px; line-height: 12px; letter-spacing: 1.3px; } }
+
+/* essais : notes en marge à la Tufte */
+.vra[data-kind="essay"] .vra-main { counter-reset: sn; }
+.vra[data-kind="essay"] .sn-num::before { counter-increment: sn; content: counter(sn); }
+.vra[data-kind="essay"] .sn-num { position: relative; top: -.45em; padding: 0 .14em; margin: 0 .04em; font: 600 .68em/0 var(--vra-sans); color: var(--vra-c1); cursor: pointer; border-radius: 3px; }
+.vra[data-kind="essay"] .sn-num:hover, .vra[data-kind="essay"] .sn-num:focus-visible { background: color-mix(in srgb, var(--vra-c1) 14%, transparent); }
+.vra[data-kind="essay"] .sn-body { font: 400 .84rem/1.5 var(--vra-sans); color: var(--vra-mid); }
+.vra[data-kind="essay"] .sn-body::before { content: counter(sn) "\00a0"; color: var(--vra-c1); font-weight: 600; }
+.vra[data-kind="essay"] .sn-body a { color: inherit; }
+.vra[data-kind="essay"][data-js] .sn-body { display: none; }
+.vra[data-kind="essay"][data-js] .sn[data-open] .sn-body { display: block; margin: .5rem 0 1.1rem; padding-left: .9rem; border-left: 2px solid var(--vra-line); max-width: 41rem; }
+@media (min-width: 1260px) {
+  .vra[data-kind="essay"] .vra-shell { max-width: 78rem; }
+  .vra[data-kind="essay"] .vra-cover { max-width: 78rem; }
+  .vra[data-kind="essay"][data-js] .sn-body, .vra[data-kind="essay"][data-js] .sn[data-open] .sn-body { display: block; float: right; clear: right; width: 15rem; margin: .1rem -17.5rem 1rem 0; padding: 0; border: 0; }
+  .vra[data-kind="essay"] .sn-num { cursor: default; }
+}
+
+/* essais : citation mise en valeur (bloc « citation » sans source) */
+.vra[data-kind="essay"] .vra-main blockquote.pull { position: relative; clear: right; max-width: 46rem; margin: 3rem 0 3.1rem; padding: 1.5rem 0 0; border: 0; font: italic 500 clamp(1.65rem, 3vw, 2.5rem)/1.25 var(--vra-serif); letter-spacing: -.01em; color: var(--vra-ink); text-wrap: balance; }
+.vra[data-kind="essay"] .vra-main blockquote.pull::before { content: ""; position: absolute; top: 0; left: 0; width: 3.2rem; height: 2px; background: var(--vra-c1); }
+.vra[data-kind="essay"] .vra-main blockquote.pull p { max-width: none; margin: 0; }
+@media (min-width: 1080px) { .vra[data-kind="essay"] .vra-main blockquote.pull { margin-left: -1.2rem; } }
+@media (max-width: 640px) { .vra[data-kind="essay"] .vra-main blockquote.pull { margin: 2.2rem 0 2.4rem; font-size: 1.45rem; } }
+
+/* essais : les images ont la forme d'un mouchoir ou d'un drapeau dans le vent : contour qui ondule, bords en grain.
+ * Trois variantes se répartissent d'une image à l'autre, pour que deux images voisines n'aient pas le même contour. */
+.vra[data-kind="essay"] { --vra-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 800' preserveAspectRatio='none'%3E%3Cfilter id='f' x='0' y='0' width='1000' height='800' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.0042 .0068' numOctaves='1' seed='7' result='w'/%3E%3CfeColorMatrix in='w' type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 1' result='w2'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w2' scale='125' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeGaussianBlur in='d' stdDeviation='13' result='b'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='2' seed='10' result='t'/%3E%3CfeColorMatrix in='t' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0' result='n'/%3E%3CfeComposite in='b' in2='n' operator='arithmetic' k1='0' k2='1.6' k3='1.1' k4='-0.85' result='m'/%3E%3CfeComponentTransfer in='m'%3E%3CfeFuncA type='discrete' tableValues='0 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect x='95' y='95' width='810' height='610' fill='black' filter='url%28%23f%29'/%3E%3C/svg%3E"); }
+.vra[data-kind="essay"] .vra-main figure.fig.fig-v1 { --vra-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 800' preserveAspectRatio='none'%3E%3Cfilter id='f' x='0' y='0' width='1000' height='800' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.0042 .0068' numOctaves='1' seed='21' result='w'/%3E%3CfeColorMatrix in='w' type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 1' result='w2'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w2' scale='125' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeGaussianBlur in='d' stdDeviation='13' result='b'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='2' seed='24' result='t'/%3E%3CfeColorMatrix in='t' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0' result='n'/%3E%3CfeComposite in='b' in2='n' operator='arithmetic' k1='0' k2='1.6' k3='1.1' k4='-0.85' result='m'/%3E%3CfeComponentTransfer in='m'%3E%3CfeFuncA type='discrete' tableValues='0 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect x='95' y='95' width='810' height='610' fill='black' filter='url%28%23f%29'/%3E%3C/svg%3E"); }
+.vra[data-kind="essay"] .vra-main figure.fig.fig-v2 { --vra-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 800' preserveAspectRatio='none'%3E%3Cfilter id='f' x='0' y='0' width='1000' height='800' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.0042 .0068' numOctaves='1' seed='40' result='w'/%3E%3CfeColorMatrix in='w' type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 1' result='w2'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='w2' scale='125' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeGaussianBlur in='d' stdDeviation='13' result='b'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='2' seed='43' result='t'/%3E%3CfeColorMatrix in='t' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0' result='n'/%3E%3CfeComposite in='b' in2='n' operator='arithmetic' k1='0' k2='1.6' k3='1.1' k4='-0.85' result='m'/%3E%3CfeComponentTransfer in='m'%3E%3CfeFuncA type='discrete' tableValues='0 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect x='95' y='95' width='810' height='610' fill='black' filter='url%28%23f%29'/%3E%3C/svg%3E"); }
+.vra[data-kind="essay"] .vra-main figure.fig > img { filter: grayscale(1) contrast(1.04); display: block; width: auto; max-width: 100%; height: auto; max-height: 78vh; margin: 0 auto; -webkit-mask-image: var(--vra-grain); mask-image: var(--vra-grain); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+.vra[data-kind="essay"] .vra-main figure.fig:has(> img) { max-width: 46rem; }
+
+/* essais : guirlandes dessinées entre les sections (voir ornaments.mjs), couleur du texte, discrètes */
+.vra[data-kind="essay"] .vra-orn { max-width: 41rem; margin: 2.8rem 0 -1.4rem; text-align: center; color: var(--vra-ink); }
+.vra[data-kind="essay"] .vra-orn svg { display: inline-block; width: min(100%, 22rem); height: auto; opacity: .75; }
+.vra[data-kind="essay"] .vra-orn-end { margin-top: 3.8rem; }
+.vra[data-kind="essay"] .vra-orn-end svg { width: min(100%, 30rem); opacity: .85; }

@@ -5,6 +5,7 @@
  */
 (function (global) {
   'use strict';
+  const SCRIPT_URL = (document.currentScript && document.currentScript.src) || (document.baseURI + 'assets/article.js');
   const DATA = global.VRA_DATA || { evidence: [], figures: {} };
   const EV = Object.fromEntries(DATA.evidence.map(e => [e.key, e]));
   const STATE = { actual: 'Réel', estimate: 'Estimation', forecast: 'Prévision', derived: 'Calculé', claim: 'Affirmation orale', gap: 'Lacune' };
@@ -16,6 +17,9 @@
     if (opts.standalone) root.setAttribute('data-standalone', '');
     initTheme(root, opts);
     initEvidence(root);
+    initPeek(root);
+    initNotes(root);
+    initArt(root);
     initFigures(root);
     initNav(root);
   }
@@ -23,26 +27,108 @@
   /* ---------- thème ---------- */
   function initTheme(root, opts) {
     const mq = matchMedia('(prefers-color-scheme: dark)');
-    let manual = null; try { manual = localStorage.getItem('vra-theme'); } catch (e) { /* stockage indisponible */ }
+    let manual = null; try { manual = localStorage.getItem('theme') || localStorage.getItem('vra-theme'); } catch (e) { /* stockage indisponible */ }
     const hostDark = () => document.documentElement.classList.contains('dark') || document.documentElement.getAttribute('data-theme') === 'dark';
     const apply = () => {
       const folio = !!(window.VRA_AI && window.VRA_AI.base); // intégré au portfolio : clair par défaut (comme le site), sombre seulement si choisi
-      const dark = manual ? manual === 'dark' : (folio ? false : (opts.standalone ? mq.matches : hostDark()));
+      const dark = manual ? manual === 'dark' : (folio ? mq.matches : (opts.standalone ? mq.matches : hostDark()));
       root.setAttribute('data-theme', dark ? 'dark' : 'light');
       if (opts.standalone) { document.documentElement.setAttribute('data-vra-theme', dark ? 'dark' : 'light'); document.documentElement.style.colorScheme = dark ? 'dark' : 'light'; document.documentElement.style.background = dark ? '#4a4a4d' : '#f4f1ea'; }
       root.dispatchEvent(new CustomEvent('vra:theme'));
     };
     apply(); mq.addEventListener && mq.addEventListener('change', apply);
+    addEventListener('pageshow', e => { if (e.persisted) { try { manual = localStorage.getItem('theme') || localStorage.getItem('vra-theme'); } catch (err) { /* ignore */ } apply(); } }); // retour depuis le cache : le choix a pu changer sur une autre page
     new MutationObserver(apply).observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'data-theme'] });
     const btn = root.querySelector('[data-theme-toggle]');
     if (btn) {
       if (!opts.standalone) btn.hidden = true;
       btn.addEventListener('click', () => {
         manual = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        try { localStorage.setItem('vra-theme', manual); } catch (e) { /* ignore */ }
+        try { localStorage.setItem('vra-theme', manual); localStorage.setItem('theme', manual); } catch (e) { /* ignore */ }
         apply(); btn.setAttribute('aria-pressed', manual === 'dark');
       });
     }
+  }
+
+  /* ---------- figure ASCII vivante (essais) ----------
+   * La page est servie avec la figure de départ (texte, lisible sans JavaScript). Ici on charge le même module et on poursuit
+   * la simulation : elle évolue lentement, se met en pause hors écran, et le curseur peut y semer une colonie.
+   * Mouvement réduit : la figure reste figée. */
+  function initArt(root) {
+    if (root.getAttribute('data-kind') !== 'essay') return;
+    const pre = root.querySelector('.vra-art pre');
+    if (!pre || (global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+    const slug = (global.VRA_AI && global.VRA_AI.slug) || location.pathname.split('/').filter(Boolean).pop();
+    import(new URL('ascii-art.mjs', SCRIPT_URL).href).then(m => {
+      const st = m.buildState(slug), ROWS = 9;
+      let frame = 0, visible = true, timer = 0;
+      const draw = () => { pre.textContent = m.renderState(st, ROWS).text; };
+      const tick = () => {
+        if (!visible || document.hidden) return;
+        frame++;
+        m.stepState(st, 5, 0.003 * Math.sin(frame / 90));
+        if (frame % 40 === 0 && m.renderState(st, ROWS).density < 0.04) m.seedBlob(st, Math.random() * st.cols, st.top + Math.random() * ROWS, 2);
+        draw();
+      };
+      new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(pre);
+      pre.addEventListener('pointermove', ev => {
+        const cs = getComputedStyle(pre), r = pre.getBoundingClientRect();
+        const cw = parseFloat(cs.fontSize) * 0.6 + (parseFloat(cs.letterSpacing) || 0), chh = parseFloat(cs.lineHeight) || 15;
+        m.seedBlob(st, (ev.clientX - r.left) / cw, st.top + (ev.clientY - r.top) / chh, 1);
+      }, { passive: true });
+      timer = setInterval(tick, 90);
+      addEventListener('pagehide', () => clearInterval(timer));
+    }).catch(() => { /* module indisponible : la figure de départ reste affichée */ });
+  }
+
+  /* ---------- notes en marge (essais) ----------
+   * {{note: …}} devient un numéro dans le texte ; large écran : la note s'affiche dans la marge, à la hauteur de la ligne ;
+   * écran étroit : un clic (ou Entrée) déplie la note sous le paragraphe. */
+  function initNotes(root) {
+    if (root.getAttribute('data-kind') !== 'essay') return;
+    [...root.querySelectorAll('.sn')].forEach((sn, i) => {
+      const num = sn.querySelector('.sn-num'); if (!num) return;
+      num.setAttribute('role', 'button'); num.setAttribute('tabindex', '0'); num.setAttribute('aria-expanded', 'false'); num.setAttribute('aria-label', 'Note ' + (i + 1));
+      const toggle = () => { const open = sn.hasAttribute('data-open'); if (open) sn.removeAttribute('data-open'); else sn.setAttribute('data-open', ''); num.setAttribute('aria-expanded', String(!open)); };
+      num.addEventListener('click', toggle);
+      num.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggle(); } });
+    });
+  }
+
+  /* ---------- aperçu de source au survol (essais) ----------
+   * Les renvois {{K1}} sont affichés en numéros (1, 2…) ; au survol ou au focus, une petite carte résume la source
+   * (type, titre, date, ce qu'elle dit, ses limites). Un clic ouvre toujours la fiche complète. */
+  function initPeek(root) {
+    if (root.getAttribute('data-kind') !== 'essay') return;
+    const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    const refs = [...root.querySelectorAll('a.src[data-src]')].filter(a => !a.closest('#vra-evidence') && EV[a.getAttribute('data-src')]);
+    for (const a of refs) { a.removeAttribute('title'); a.textContent = a.getAttribute('data-src').replace(/^[A-Z]/, ''); a.setAttribute('aria-label', 'Source ' + a.textContent + ' : ' + EV[a.getAttribute('data-src')].sourceName); }
+    const tip = document.createElement('div');
+    tip.className = 'vra-peek'; tip.hidden = true; tip.setAttribute('role', 'tooltip');
+    root.appendChild(tip);
+    let timer = 0, cur = null;
+    const hide = () => { clearTimeout(timer); tip.hidden = true; cur = null; };
+    const show = a => {
+      const e = EV[a.getAttribute('data-src')]; if (!e) return;
+      cur = a;
+      tip.innerHTML = '<p class="pk-meta">' + esc(CLASS[e.sourceClass] || 'Source') + (e.publicationDate ? ' · ' + esc(e.publicationDate) : '') + '</p>'
+        + '<p class="pk-name">' + esc(e.sourceName) + '</p>'
+        + '<p class="pk-fact">' + esc(e.fact) + '</p>'
+        + (e.limitations ? '<p class="pk-lim"><strong>Limites.</strong> ' + esc(e.limitations) + '</p>' : '')
+        + '<p class="pk-more">Clic : fiche complète</p>';
+      tip.hidden = false;
+      const r = a.getBoundingClientRect(), w = tip.offsetWidth, h = tip.offsetHeight, pad = 10;
+      const left = Math.min(Math.max(pad, r.left + r.width / 2 - w / 2), window.innerWidth - w - pad);
+      const above = r.top - h - 10 >= pad;
+      tip.style.left = left + 'px';
+      tip.style.top = (above ? r.top - h - 10 : Math.min(r.bottom + 10, window.innerHeight - h - pad)) + 'px';
+    };
+    root.addEventListener('pointerover', ev => { const a = ev.target.closest && ev.target.closest('a.src[data-src]'); if (a && !a.closest('#vra-evidence') && ev.pointerType !== 'touch') { clearTimeout(timer); timer = setTimeout(() => show(a), 140); } });
+    root.addEventListener('pointerout', ev => { if (ev.target.closest && ev.target.closest('a.src[data-src]')) hide(); });
+    root.addEventListener('focusin', ev => { const a = ev.target.closest && ev.target.closest('a.src[data-src]'); if (a && !a.closest('#vra-evidence')) show(a); });
+    root.addEventListener('focusout', hide);
+    root.addEventListener('keydown', ev => { if (ev.key === 'Escape') hide(); });
+    window.addEventListener('scroll', () => { if (cur) hide(); }, { passive: true });
   }
 
   /* ---------- carte de preuve (source drill-down) ---------- */

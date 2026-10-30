@@ -1,0 +1,398 @@
+{
+ "pages": {
+  "": {
+   "order": [
+    "x-intro",
+    "x-une-revolution-pas-une-d-1",
+    "x-inevitable-mais-pas-deci-2",
+    "x-ni-pour-ni-contre-3",
+    "x-le-piege-du-paradis-sur--4",
+    "x-ce-que-l-ia-fait-a-nos-t-5",
+    "x-deleguer-oui-decider-non-6",
+    "x-le-travail-et-le-partage-7",
+    "x-le-vivant-et-le-cout-cac-8",
+    "x-devenir-sages-9",
+    "x-mes-doutes-10",
+    "x-ce-qui-me-ferait-changer-11",
+    "x-ce-que-j-essaie-d-en-fai-12"
+   ],
+   "hidden": [],
+   "added": [
+    {
+     "id": "x-intro",
+     "kind": "blocks",
+     "title": "Introduction",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Depuis la sortie de ChatGPT, fin 2022, je passe une grande partie de mes journées à suivre, tester et essayer de comprendre l'intelligence artificielle. Je suis étudiant, je n'ai ni laboratoire ni entreprise derrière moi, et aucune légitimité particulière pour dire où va le monde. J'ai pourtant des opinions, parfois tranchées, et j'ai fini par me dire que les garder en tête sans jamais les écrire était une manière de ne pas les éprouver."
+      },
+      {
+       "type": "p",
+       "text": "Ce texte est donc une tentative de tout mettre à plat : ce que je crois, ce que je sais, ce que je ne sais pas, et ce qui pourrait me faire changer d'avis. Je distingue volontairement trois choses. Une **conviction** est une croyance que j'assume sans pouvoir la démontrer entièrement. Une **hypothèse** est une affirmation que je pense vraie mais qu'il faudrait tester. Un **fait** s'appuie sur une source que vous pouvez aller lire. Quand je ne le précise pas, c'est une conviction : lisez-la comme telle."
+      },
+      {
+       "type": "p",
+       "text": "Je ne cherche à convaincre personne d'être pour ou contre l'IA. Je voudrais plutôt expliquer pourquoi je trouve ces deux positions insuffisantes, et à quoi ressemblerait, selon moi, une troisième voie."
+      }
+     ]
+    },
+    {
+     "id": "x-une-revolution-pas-une-d-1",
+     "kind": "blocks",
+     "title": "Une révolution, pas une de plus",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Ma première conviction est celle dont découlent toutes les autres : l'IA n'est pas une innovation parmi d'autres, c'est une révolution de l'ampleur du chemin de fer, de l'électricité ou d'Internet.{{note: C'est une comparaison, pas une mesure. On ne saura que qu'avec le recul si elle tenait.}} Avec une différence qui me frappe. Les révolutions précédentes ont transformé des secteurs, des distances, des façons de communiquer. L'IA touche à ce qui nous a toujours servi à transformer le reste : comprendre, décider, concevoir. Une technologie qui améliore la manière dont on fabrique les technologies change la vitesse de tout le reste. Je crois que c'est le genre de bouleversement qui ne se produit qu'une fois."
+      },
+      {
+       "type": "image",
+       "file": "russell1869.jpg",
+       "caption": "« East and West Shaking Hands at Laying of Last Rail », Andrew J. Russell, 10 mai 1869, Promontory Summit (Utah). Yale University Library, restauration numérique d'Adam Cuerden, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:East_and_West_Shaking_hands_at_the_laying_of_last_rail_Union_Pacific_Railroad_-_Restoration.jpg). Domaine public."
+      },
+      {
+       "type": "p",
+       "text": "Le 10 mai 1869, dans le désert de l'Utah, deux locomotives se font face : celle de l'Union Pacific, qui vient de l'est, et celle de la Central Pacific, qui vient de l'ouest. Pour la première fois, on peut traverser l'Amérique en train. Un voyage de plusieurs mois n'en prendra plus qu'environ une semaine. Personne sur cette photo ne sait encore ce que le rail va changer : les villes, les prix, jusqu'à l'heure elle-même. C'est ce que j'entends par « révolution » : on ne la voit pas depuis l'intérieur. On voit une poignée de main et des bouteilles levées."
+      },
+      {
+       "type": "p",
+       "text": "Mes raisons sont modestes, pas mystiques. Les sommes engagées sont colossales, les usages se répandent plus vite que ceux d'à peu près n'importe quelle technologie précédente, et chaque progrès des modèles sert à fabriquer les suivants. Rien de cela ne prouve que tout ira aussi vite qu'on l'annonce."
+      },
+      {
+       "type": "p",
+       "text": "Mon **hypothèse**, qui est une prévision et pas un fait, est que le monde aura changé de façon considérable d'ici cinq à dix ans : dans la manière de travailler, d'apprendre, de produire, et sans doute de gouverner. Je peux me tromper sur le calendrier. Je serais en revanche très surpris de me tromper sur le sens du mouvement."
+      }
+     ]
+    },
+    {
+     "id": "x-inevitable-mais-pas-deci-2",
+     "kind": "blocks",
+     "title": "Inévitable, mais pas décidé d'avance",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "On me dit parfois : si c'est inévitable, à quoi bon en parler ? Je pense l'inverse. Je crois qu'on ne pourra pas empêcher ces technologies de se répandre à long terme : trop d'argent, trop d'intérêts, trop de pays en concurrence. Ceux qui s'y opposent frontalement ne les arrêteront pas, ils renonceront simplement à les influencer.{{note: Je ne dis pas qu'il ne faut jamais refuser un usage précis. Je dis qu'un refus global n'a pas de prise sur la trajectoire.}}"
+      },
+      {
+       "type": "p",
+       "text": "Mais « ça arrivera » ne dit rien de la façon dont ça arrivera. Qui en profite, qui en subit les coûts, ce qu'on automatise et ce qu'on décide de préserver, qui contrôle les systèmes les plus puissants : rien de tout cela n'est écrit. Je le résume ainsi : on ne peut pas s'opposer à la vague, mais on peut décider comment on la traverse. C'est dans cet espace-là, et seulement là, qu'il me semble y avoir quelque chose à faire."
+      },
+      {
+       "type": "quote",
+       "text": "On ne peut pas s'opposer à la vague, mais on peut décider comment on la traverse.",
+       "cite": ""
+      }
+     ]
+    },
+    {
+     "id": "x-ni-pour-ni-contre-3",
+     "kind": "blocks",
+     "title": "Ni pour, ni contre",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Le débat sur l'IA est souvent binaire, et la France me paraît particulièrement polarisée. D'un côté, l'enthousiasme sans condition : l'IA va tout guérir, tout résoudre, nous libérer du travail. De l'autre, le rejet : c'est un désastre, il faut la freiner ou la fuir. Je n'arrive à me reconnaître dans aucun des deux camps."
+      },
+      {
+       "type": "p",
+       "text": "Je ne crois pas que l'IA va tout guérir. C'est un levier puissant, mais un levier parmi d'autres : les politiques publiques, la coopération internationale, la sobriété, l'éducation et les institutions comptent autant, et aucune technologie ne les remplace. Je ne crois pas non plus qu'elle soit mauvaise en soi : une technologie n'a pas d'intention, ce sont les usages, les règles et les rapports de force qui en font ce qu'elle devient."
+      },
+      {
+       "type": "p",
+       "text": "La formule la plus juste que j'aie trouvée est : **ni pour, ni contre, mais pour des preuves et pour un partage des gains**. Des preuves, parce que les promesses ne coûtent rien. Un partage, parce que la question n'est pas seulement de savoir si l'IA crée de la valeur, mais pour qui."
+      },
+      {
+       "type": "quote",
+       "text": "Ni pour, ni contre, mais pour des preuves et un partage des gains.",
+       "cite": ""
+      }
+     ]
+    },
+    {
+     "id": "x-le-piege-du-paradis-sur--4",
+     "kind": "blocks",
+     "title": "Le piège du paradis sur Terre",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Il y a un récit que je trouve séduisant, et donc dangereux : celui d'un monde où l'IA aurait réglé la maladie, la pénurie et le travail pénible, un paradis sur Terre à portée de main. Je comprends son attrait. Je me méfie de son effet."
+      },
+      {
+       "type": "image",
+       "file": "crystalpalace1851.jpg",
+       "caption": "« The Great Industrial Exhibition of 1851 », planche 3, « The British Nave », lithographie de Joseph Nash d'après son dessin, Dickinson Brothers, 1852. Library of Congress, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:The_great_industrial_exhibition_of_1851._Plate_3._The_British_nave_LCCN2003665158.jpg). Domaine public."
+      },
+      {
+       "type": "p",
+       "text": "Londres, 1851 : sous une immense verrière de fer et de verre, la Grande Exposition rassemble les merveilles de l'industrie, et le public s'y presse en habits de fête. Cette lithographie en garde le ton : confiance, ordre, abondance. Je ne crois pas qu'il faille s'en moquer, cette foi dans le progrès était sincère. Mais regardez ce qui n'est pas dans le cadre : les ateliers qui alimentent ces vitrines. Quand le récit est grand, on regarde le décor."
+      },
+      {
+       "type": "p",
+       "text": "Plus une promesse est grande, plus on est prêt à payer pour qu'elle se réalise. Et le prix, dans ces cas-là, est presque toujours le même : on abandonne des limites qu'on s'était données. On passe sur une règle de prudence parce qu'il faut aller vite, sur un droit parce que le but est noble, sur une voix minoritaire parce qu'elle ralentit. Pour que ce récit devienne réalité, il faudrait que les humains cèdent de plus en plus de précautions, de choix et de contrôle. Je crois que c'est là le vrai risque, davantage que les machines hostiles des films."
+      },
+      {
+       "type": "p",
+       "text": "Je ne dis pas qu'il faut renoncer à l'espoir.{{note: C'est le passage de l'essai où je suis le moins sûr de ma formulation. Si vous voyez mieux comment le dire, écrivez-moi.}} Je dis qu'une technologie aussi puissante ne mérite de croître que si nous restons capables de ne pas être aveuglés par ce qu'elle promet. C'est une exigence de lucidité, pas de pessimisme."
+      }
+     ]
+    },
+    {
+     "id": "x-ce-que-l-ia-fait-a-nos-t-5",
+     "kind": "blocks",
+     "title": "Ce que l'IA fait à nos têtes",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Ma plus grande inquiétude concrète n'est ni la science-fiction ni le chômage. Elle est plus discrète : ce que l'usage régulier de l'IA fait à notre capacité de penser."
+      },
+      {
+       "type": "p",
+       "text": "Voici l'image qui me guide, et que je présente comme une image, pas comme une démonstration. Pendant des siècles, les humains ont eu un corps entretenu par le travail : on se musclait sans y penser, parce que vivre exigeait de l'effort. Puis nous avons mécanisé, et ceux qui veulent un corps en forme doivent aujourd'hui le décider, avec de la discipline. Je crains que la même chose arrive à l'esprit. Nous avons longtemps réfléchi sans y penser, parce que notre travail l'exigeait. Si nous déléguons de plus en plus cette réflexion, nous risquons de perdre ce que nous n'exerçons plus. Et la différence avec le muscle, c'est que l'atrophie de l'esprit est beaucoup plus difficile à voir de l'intérieur."
+      },
+      {
+       "type": "h3",
+       "text": "Ce que disent les études"
+      },
+      {
+       "type": "p",
+       "text": "Il faut être honnête : la preuve est loin d'être faite, et je veux séparer ce que je crains de ce qu'on sait."
+      },
+      {
+       "type": "ul",
+       "items": [
+        "**MIT Media Lab, « Your Brain on ChatGPT » (2025).** Des participants rédigent un texte avec ou sans aide. Le groupe assisté par un modèle de langage montre la connectivité neuronale la plus faible et se sent le moins auteur de son texte{{K1}}. Mais c'est un préprint, sans relecture par des pairs indiquée, sur 54 personnes et une seule tâche, et un commentaire publié depuis recommande d'interpréter ses résultats plus prudemment, notamment à cause de la taille limitée de l'échantillon{{K2}}.",
+        "**METR, essai randomisé (2025).** Seize développeurs expérimentés, 246 tâches réelles : avec l'IA, ils ont mis environ 19 % de temps en plus, alors qu'ils avaient prévu d'aller 24 % plus vite et pensaient, après coup, avoir gagné environ 20 %{{K3}}. Petit échantillon, outils du début 2025, temps déclarés par les participants. Une mise à jour de février 2026 juge que ce protocole ne mesure plus correctement l'effet actuel : ses nouvelles estimations vont plutôt vers un gain, mais leurs intervalles incluent zéro, donc elles ne le prouvent pas non plus{{K4}}. Ce qu'il faut retenir, c'est l'écart entre le ressenti et le mesuré."
+       ]
+      },
+      {
+       "type": "image",
+       "file": "muybridge1878.jpg",
+       "caption": "« The Horse in Motion », Eadweard Muybridge, 1878 : « Sallie Gardner » au galop sur la piste de Palo Alto, le 19 juin 1878. Library of Congress, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:The_Horse_in_Motion_high_res.jpg). Domaine public."
+      },
+      {
+       "type": "p",
+       "text": "En 1878, on se disputait pour savoir si, au galop, un cheval a un instant les quatre pieds en l'air. Personne ne pouvait trancher à l'œil : tout va trop vite. Eadweard Muybridge aligne des appareils le long d'une piste, déclenchés au passage du cheval, et obtient douze images séparées par une fraction de seconde. La réponse tient sur la planche : oui, mais pas dans la posture des tableaux, jambes tendues, plutôt les jambes repliées sous le ventre. Je pense à cette planche quand j'entends « je vais plus vite avec l'IA » ou « elle m'abrutit ». Ce qu'on ressent d'un phénomène rapide et diffus n'est pas ce qu'on mesure quand on l'arrête image par image."
+      },
+      {
+       "type": "p",
+       "text": "Ma lecture : l'inquiétude est plausible et active en recherche, mais à ma connaissance aucune grande étude randomisée n'a mesuré une atrophie durable chez des utilisateurs de modèles de langage. « Atrophie cognitive » est pour l'instant un cadre d'interprétation, pas une grandeur mesurée. Surtout, l'usage compte : déléguer entièrement n'est pas la même chose que vérifier, reformuler et réfléchir avec l'outil."
+      },
+      {
+       "type": "h3",
+       "text": "Ce que j'en tire"
+      },
+      {
+       "type": "p",
+       "text": "Je n'en tire pas qu'il faut s'interdire l'IA. J'en tire qu'il faut mesurer. Si c'est vrai, on devrait pouvoir le vérifier régulièrement, sur la base du volontariat, de façon confidentielle, et sans que cela serve jamais à noter ou sanctionner quelqu'un. Si c'est faux, tant mieux : on l'aura montré au lieu de le supposer. Dans les deux cas, je préfère une réponse mesurée à une peur ou à un enthousiasme."
+      }
+     ]
+    },
+    {
+     "id": "x-deleguer-oui-decider-non-6",
+     "kind": "blocks",
+     "title": "Déléguer, oui. Décider, non.",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Si l'on accepte que l'IA va se répandre et qu'elle peut affaiblir ce qu'on n'exerce plus, une règle de conduite s'impose presque d'elle-même : distinguer ce qu'on délègue de ce qu'on décide."
+      },
+      {
+       "type": "p",
+       "text": "Déléguer une tâche répétitive, un calcul, une recherche, une première version, c'est souvent très bien. Cela libère du temps, et je construis moi-même des outils pour cela. Décider à notre place de ce qui est important, de ce qui est juste, de ce que nous voulons, c'est autre chose. Je veux des machines qui m'aident à mieux voir les conséquences de mes choix, à penser plus loin, à tenir ce que je dis vouloir. Pas des machines qui choisissent pour moi."
+      },
+      {
+       "type": "p",
+       "text": "Il y a une version plus fine de ce principe, qui touche à la liberté. Je ne crois pas qu'une personne, une entreprise ou un État puisse dire à tous ce qu'est une bonne vie. Les gens ne veulent pas tous la même chose de l'IA, et ils ont raison : certains veulent agir avec elle, d'autres l'observer de loin, d'autres s'en passer. Une société bien faite laisse à chacun, acteur ou observateur, le choix de mener sa vie comme il l'entend, et empêche seulement que ce choix lui soit confisqué, par la contrainte ou par la dépendance."
+      },
+      {
+       "type": "p",
+       "text": "Cela implique que l'aide dont une personne a besoin ne devrait jamais lui être retirée à cause de son âge, d'un handicap, d'une maladie ou de la fatigue, et qu'aucun outil ne devrait vivre de la dépendance de ceux qui l'utilisent."
+      },
+      {
+       "type": "p",
+       "text": "Enfin, et c'est la part la plus inconfortable : je pense que ceux qui conçoivent des outils ont le droit, et parfois le devoir, de limiter leurs propres produits quand il y a de bonnes raisons de croire qu'ils nuisent. À condition de le dire, d'expliquer sur quelles preuves, et de laisser autant que possible chacun régler le curseur lui-même."
+      }
+     ]
+    },
+    {
+     "id": "x-le-travail-et-le-partage-7",
+     "kind": "blocks",
+     "title": "Le travail et le partage des gains",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "La question qu'on me pose le plus souvent est celle de l'emploi. Ma réponse est moins catastrophiste que beaucoup, moins rassurante que d'autres : je ne sais pas combien d'emplois disparaîtront, et personne ne le sait vraiment, mais je suis sûr que la manière dont on automatise compte autant que ce qu'on automatise."
+      },
+      {
+       "type": "p",
+       "text": "L'histoire apprend une chose à peu près solide : les gains de productivité ne se répartissent pas tout seuls. Après la révolution industrielle, il a fallu des décennies de luttes, de lois et d'institutions pour que ces gains profitent au plus grand nombre. Je ne vois aucune raison pour qu'il en aille autrement cette fois, sauf si l'on s'y prend à l'avance."
+      },
+      {
+       "type": "image",
+       "file": "hine1910.jpg",
+       "caption": "Addie Card, 12 ans, fileuse à la filature de coton de North Pownal (Vermont), Lewis W. Hine, 1910. National Child Labor Committee Collection, Library of Congress, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Addie_Card%29,_anaemic_little_spinner_in_North_Pownal_Cotton_Mill._See_photo_No._1056_LOC_cph.3a15220.jpg). Domaine public."
+      },
+      {
+       "type": "p",
+       "text": "Elle s'appelle Addie Card, elle a douze ans, et elle surveille des broches dans une filature du Vermont en 1910. Lewis Hine la photographie pour le Comité national contre le travail des enfants, qui veut convaincre le pays par l'image. Les machines derrière elle ont multiplié ce qu'on peut produire ; elles n'ont rien partagé toutes seules. Il faudra près de trente ans après cette photo pour qu'une loi fédérale fixe durablement un âge minimum de travail, en 1938. Voilà ce que j'appelle des décennies de luttes, de lois et d'institutions."
+      },
+      {
+       "type": "p",
+       "text": "Je défends trois idées simples. Que ceux dont le travail est transformé soient consultés et accompagnés avant, pas après. Que l'automatisation ne serve pas d'abord à supprimer des postes, mais à libérer du temps pour ce qui compte, en se demandant sérieusement ce qu'on en fait. Et qu'une part des gains, selon une règle écrite et publique, revienne à ceux qui ont le moins de pouvoir."
+      },
+      {
+       "type": "p",
+       "text": "Je ne prétends pas avoir la formule. Le mécanisme exact reste un problème ouvert, et je me méfie de ceux qui disent l'avoir résolu."
+      }
+     ]
+    },
+    {
+     "id": "x-le-vivant-et-le-cout-cac-8",
+     "kind": "blocks",
+     "title": "Le vivant, et le coût caché",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Je ne veux pas parler de l'IA comme si elle flottait hors du monde. Elle consomme de l'énergie, de l'eau, des métaux, du silicium, et son déploiement massif a un coût que les belles démonstrations masquent. Un discours sur l'IA qui oublie cela n'est pas sérieux."
+      },
+      {
+       "type": "p",
+       "text": "Mais je pense aussi qu'on ne peut pas se contenter de compter ce qu'elle coûte : il faut demander ce qu'elle rend. Je crois que cette technologie devrait contribuer, de façon visible et mesurable, aux conditions de vie humaines et non humaines. Aider à mieux voir les effets de nos décisions sur les milieux dont nous dépendons, faire économiser là où l'on gaspille, soutenir ce qui protège le vivant plutôt que ce qui l'épuise. Si, dans quelques années, l'IA n'a servi qu'à produire plus et plus vite, elle aura échoué."
+      },
+      {
+       "type": "p",
+       "text": "Ma priorité va d'abord aux personnes. Mais je ne veux pas d'un progrès pour les humains qui se ferait contre le vivant, ni contre les milieux dont ils dépendent."
+      }
+     ]
+    },
+    {
+     "id": "x-devenir-sages-9",
+     "kind": "blocks",
+     "title": "Devenir sages",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Nous nous sommes donné le nom d'*Homo sapiens*, l'homme sage. C'est un nom flatteur et, avouons-le, un peu prématuré. Nous avons des raisons d'être fiers, mais aussi de rester modestes : nous répétons nos erreurs, nous repoussons ce que nous savons nécessaire, et nous avons du mal à voir loin."
+      },
+      {
+       "type": "p",
+       "text": "C'est de là que vient mon espoir le plus fort. Je ne demande pas aux machines d'être sages à notre place. Je voudrais qu'elles nous aident à le devenir : à voir plus clairement nos erreurs, à anticiper les conséquences de ce que nous faisons, à tenir les choix que nous disons vouloir. Qu'elles soient des miroirs plus honnêtes, pas des maîtres."
+      },
+      {
+       "type": "p",
+       "text": "Je me méfie moi-même de cette phrase, parce qu'elle sonne vite comme une leçon. Qui décide de ce qu'est la sagesse ? Pas moi, et pas une entreprise. La réponse qui me paraît tenir est collective et transparente : des critères discutés publiquement, révisables, avec une protection pour les voix minoritaires. Si je dois rêver, c'est à ceci : qu'un jour, chaque matin, nous nous levions fiers de notre espèce et de sa contribution à la vie sur Terre. Pas parce qu'on nous l'aurait promis, mais parce que ce serait vrai."
+      }
+     ]
+    },
+    {
+     "id": "x-mes-doutes-10",
+     "kind": "blocks",
+     "title": "Mes doutes",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Je termine par ce qui me fait douter, parce qu'un texte de convictions sans doutes est suspect."
+      },
+      {
+       "type": "ul",
+       "items": [
+        "**Je suis juge et partie.** Je construis des outils d'IA et je m'inquiète de leurs effets sur l'esprit. Cette tension est réelle, et je préfère l'écrire plutôt que de l'enjamber.",
+        "**Je ne fais pas confiance à 100 % aux dirigeants de la tech**, pour la même raison que je ne ferais pas confiance à 100 % à n'importe quel groupe qui concentre autant de pouvoir. Beaucoup ont sans doute de bonnes intentions, mais les intentions ne suffisent pas : il faut des contre-pouvoirs, mis en place tôt.",
+        "**Je risque le ton messianique.** Quand on se sent concerné, on est tenté de se croire en mission. Je veux l'éviter : une personne seule ne peut pas dicter ce qui est bien ou mal.",
+        "**Je suis jeune et étudiant**, et je peux me tromper sur des choses que d'autres savent bien mieux que moi.",
+        "**Sur le calendrier, je n'ai aucune certitude.**"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "x-ce-qui-me-ferait-changer-11",
+     "kind": "blocks",
+     "title": "Ce qui me ferait changer d'avis",
+     "blocks": [
+      {
+       "type": "ul",
+       "items": [
+        "Si de grandes études randomisées, avec des tests différés, montraient que l'usage régulier de l'IA ne fait pas perdre de capacités, je reverrais mon inquiétude cognitive à la baisse.",
+        "Si les gains de productivité se partageaient d'eux-mêmes, sans règle ni pression collective, mon insistance sur le partage serait moins justifiée.",
+        "Si les capacités des modèles plafonnaient durablement, je corrigerais ma prévision d'une révolution à cinq ou dix ans.",
+        "Si l'on me montrait que mes propositions (mesure régulière, limites volontaires) font plus de mal que de bien, par la surveillance ou la culpabilisation par exemple, je les abandonnerais."
+       ]
+      }
+     ]
+    },
+    {
+     "id": "x-ce-que-j-essaie-d-en-fai-12",
+     "kind": "blocks",
+     "title": "Ce que j'essaie d'en faire",
+     "blocks": [
+      {
+       "type": "p",
+       "text": "Pour finir, trois choses concrètes. Je choisis de montrer le réalisable plutôt que de promettre : ce que ces outils permettent déjà de faire est largement sous-utilisé, l'écart grandit entre ceux qui les ont essayés et les autres, et je pense qu'une démonstration honnête, avec ses limites, vaut mieux qu'un grand discours. Je mesure plutôt que d'affirmer, et je dis mon niveau de preuve : conviction, hypothèse ou fait. Et je cherche à être corrigé : si vous pensez que je me trompe, sur un point ou sur tout, écrivez-moi. Ce texte est daté, il changera."
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "figures": {},
+ "evidence": [
+  {
+   "key": "K1",
+   "fact": "Rédaction d'un essai avec un assistant IA, un moteur de recherche ou sans outil : les utilisateurs de l'assistant montrent la connectivité EEG la plus faible et le sentiment d'appropriation le plus bas",
+   "value": "54 participants",
+   "state": "actual",
+   "unit": "",
+   "sourceClass": "paper",
+   "sourceName": "Kosmyna et al., « Your Brain on ChatGPT » (arXiv:2506.08872)",
+   "publicationDate": "2025-06-10",
+   "observationDate": "",
+   "url": "https://arxiv.org/abs/2506.08872",
+   "formula": "",
+   "limitations": "Préprint sur arXiv, sans relecture par des pairs indiquée ; 54 participants aux séances 1 à 3, 18 à la séance 4 ; une seule tâche (la rédaction)."
+  },
+  {
+   "key": "K2",
+   "fact": "Un commentaire salue les données de l'étude mais recommande d'interpréter certains résultats plus prudemment, en raison notamment de la taille limitée de l'échantillon",
+   "value": "",
+   "state": "actual",
+   "unit": "",
+   "sourceClass": "paper",
+   "sourceName": "Stankovic et al., commentaire sur « Your Brain on ChatGPT » (arXiv:2601.00856)",
+   "publicationDate": "2025-12-29",
+   "observationDate": "",
+   "url": "https://arxiv.org/abs/2601.00856",
+   "formula": "",
+   "limitations": "Commentaire de quatre auteurs publié sur arXiv ; je n'en ai lu que la page de présentation."
+  },
+  {
+   "key": "K3",
+   "fact": "Essai randomisé : 16 développeurs expérimentés, 246 tâches réelles, avec ou sans outils d'IA. Les développeurs avaient prévu un gain de 24 % et pensaient, après coup, avoir gagné environ 20 %",
+   "value": "+19 % de temps (IC 95 % : +2 % à +39 %)",
+   "state": "actual",
+   "unit": "",
+   "sourceClass": "paper",
+   "sourceName": "METR, « Measuring the impact of early-2025 AI on experienced open-source developer productivity »",
+   "publicationDate": "2025-07-10",
+   "observationDate": "début 2025",
+   "url": "https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/",
+   "formula": "",
+   "limitations": "Petit échantillon, une seule catégorie de travail (développement logiciel), outils du début 2025 (surtout Cursor Pro avec Claude 3.5 et 3.7), temps déclarés par les participants ; METR indique que ces résultats sont dépassés."
+  },
+  {
+   "key": "K4",
+   "fact": "Nouvelles estimations de la même expérience (fin 2025) : un gain de temps estimé, mais avec des intervalles qui incluent zéro. METR juge que son protocole ne mesure plus l'effet actuel de l'IA et le change",
+   "value": "−18 % (IC −38 % à +9 %) et −4 % (IC −15 % à +9 %) selon les sous-groupes",
+   "state": "estimate",
+   "unit": "",
+   "sourceClass": "paper",
+   "sourceName": "METR, « We are Changing our Developer Productivity Experiment Design »",
+   "publicationDate": "2026-02-24",
+   "observationDate": "fin 2025",
+   "url": "https://metr.org/blog/2026-02-24-uplift-update/",
+   "formula": "",
+   "limitations": "Biais de sélection (des développeurs refusent de travailler sans IA), tâches retenues non représentatives, temps difficile à mesurer quand des agents travaillent en parallèle."
+  }
+ ]
+}

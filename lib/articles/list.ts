@@ -5,6 +5,9 @@ import { getStore, ART_MANIFEST } from "@/lib/studio/store"
 
 export type ArticleEntry = { slug: string; title: string; subtitle?: string; summary?: string; tags?: string[]; series?: string; published?: string; updated?: string; readingMinutes?: number | null; sourceCount?: number | null; status: "draft" | "public" }
 
+/** Un essai est un texte à la voix de l'auteur (série « Essais ») ; le reste (dossiers, articles) est une analyse sourcée. */
+export const isEssay = (a: { series?: string }) => a.series === "Essais"
+
 export async function loadArticles(): Promise<ArticleEntry[]> {
   let list: ArticleEntry[] = (manifest as { articles: ArticleEntry[] }).articles
   if (isStudioMode()) { const b = await getStore().readDraft(ART_MANIFEST); if (b) list = JSON.parse(b.toString("utf8")).articles }
