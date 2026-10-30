@@ -91,6 +91,8 @@ interface PortfolioClientProps {
   ui: Record<"fr" | "en", any>
   /** dernier essai public : l'accueil y renvoie directement (transition de vue vers son titre) */
   latestEssay?: { slug: string; title: string; summary: string; published: string }
+  /** dernier article (analyse sourcée) public, s'il y en a un */
+  latestArticle?: { slug: string; title: string; summary: string; published: string }
   /** sections ajoutées (content/site/pages.json) */
   extra?: React.ReactNode
 }
@@ -110,6 +112,7 @@ export default function PortfolioClient({
   locale = "fr",
   ui,
   latestEssay,
+  latestArticle,
   extra,
 }: PortfolioClientProps) {
   const t = useT("component.PortfolioClient")
@@ -298,6 +301,16 @@ export default function PortfolioClient({
                   <span>{copy.readEssay}</span><span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
                 </div>
               </a>
+              {latestArticle && (
+                <a href={`/articles/${latestArticle.slug}`} className="group lg:col-span-12 mt-2 block border-t border-border pt-8">
+                  <div className="text-xs font-mono tracking-[0.16em] text-muted-foreground uppercase mb-3">{copy.latestArticle}</div>
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2">
+                    <h3 style={{ viewTransitionName: `essay-${latestArticle.slug}` }} className="font-editorial text-2xl sm:text-3xl leading-tight group-hover:text-accent transition-colors duration-300">{latestArticle.title}</h3>
+                    <span className="text-sm text-foreground group-hover:text-accent transition-colors">{copy.readArticle} <span aria-hidden="true">→</span></span>
+                  </div>
+                  {latestArticle.summary && <p className="font-editorial mt-2 max-w-2xl text-lg leading-[1.6] text-muted-foreground">{latestArticle.summary}</p>}
+                </a>
+              )}
             </div>
           </div>
         </section>

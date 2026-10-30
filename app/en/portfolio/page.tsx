@@ -4,7 +4,7 @@ import { getT } from "@/lib/strings"
 import PortfolioClient from "@/components/PortfolioClient"
 import { getPortfolioPageData } from "@/lib/portfolio-i18n"
 import { getContent } from "@/lib/site-content"
-import { loadArticles } from "@/lib/articles/list"
+import { loadArticles, isEssay } from "@/lib/articles/list"
 
 export async function generateMetadata() {
   const t = await getT("page.en-portfolio")
@@ -14,14 +14,16 @@ export async function generateMetadata() {
   })
 }
 
-async function getLatestEssay() {
+async function getLatest() {
   const list = (await loadArticles()).filter((a) => a.status === "public").sort((a, b) => String(b.published).localeCompare(String(a.published)))
-  const a = list.find((x) => x.series === "Essais") ?? list[0]
-  return a ? { slug: a.slug, title: a.title, summary: a.subtitle || a.summary || "", published: a.published || "" } : undefined
+  const pick = (a?: (typeof list)[number]) => (a ? { slug: a.slug, title: a.title, summary: a.subtitle || a.summary || "", published: a.published || "" } : undefined)
+  return { essay: pick(list.find(isEssay) ?? list[0]), article: pick(list.find((a) => !isEssay(a))) }
 }
 
 export default async function EnglishPortfolioPage() {
   const { personalInfo, socialLinks, workExperience, skills, projects } = await getPortfolioPageData("en")
+
+  const latest = await getLatest()
 
   return (
     <PortfolioClient
@@ -32,7 +34,8 @@ export default async function EnglishPortfolioPage() {
       projects={projects as any}
       locale="en"
       ui={await getContent("uiPortfolio")}
-      latestEssay={await getLatestEssay()}
+      latestEssay={latest.essay}
+      latestArticle={latest.article}
       extra={<ExtraBlocks page="/en/portfolio" />}
     />
   )
