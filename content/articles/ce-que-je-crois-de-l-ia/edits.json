@@ -47,6 +47,15 @@
        "text": "Ma première conviction est celle dont découlent toutes les autres : l'IA n'est pas une innovation parmi d'autres, c'est une révolution de l'ampleur du chemin de fer, de l'électricité ou d'Internet.{{note: C'est une comparaison, pas une mesure. On ne saura que qu'avec le recul si elle tenait.}} Avec une différence qui me frappe. Les révolutions précédentes ont transformé des secteurs, des distances, des façons de communiquer. L'IA touche à ce qui nous a toujours servi à transformer le reste : comprendre, décider, concevoir. Une technologie qui améliore la manière dont on fabrique les technologies change la vitesse de tout le reste. Je crois que c'est le genre de bouleversement qui ne se produit qu'une fois."
       },
       {
+       "type": "image",
+       "file": "russell1869.jpg",
+       "caption": "« East and West Shaking Hands at Laying of Last Rail », Andrew J. Russell, 10 mai 1869, Promontory Summit (Utah). Yale University Library, restauration numérique d'Adam Cuerden, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:East_and_West_Shaking_hands_at_the_laying_of_last_rail_Union_Pacific_Railroad_-_Restoration.jpg). Domaine public."
+      },
+      {
+       "type": "p",
+       "text": "Le 10 mai 1869, dans le désert de l'Utah, deux locomotives se font face : celle de l'Union Pacific, qui vient de l'est, et celle de la Central Pacific, qui vient de l'ouest. Pour la première fois, on peut traverser l'Amérique en train. Un voyage de plusieurs mois n'en prendra plus qu'environ une semaine. Personne sur cette photo ne sait encore ce que le rail va changer : les villes, les prix, jusqu'à l'heure elle-même. C'est ce que j'entends par « révolution » : on ne la voit pas depuis l'intérieur. On voit une poignée de main et des bouteilles levées."
+      },
+      {
        "type": "p",
        "text": "Mes raisons sont modestes, pas mystiques. Les sommes engagées sont colossales, les usages se répandent plus vite que ceux d'à peu près n'importe quelle technologie précédente, et chaque progrès des modèles sert à fabriquer les suivants. Rien de cela ne prouve que tout ira aussi vite qu'on l'annonce."
       },
@@ -110,6 +119,15 @@
        "text": "Il y a un récit que je trouve séduisant, et donc dangereux : celui d'un monde où l'IA aurait réglé la maladie, la pénurie et le travail pénible, un paradis sur Terre à portée de main. Je comprends son attrait. Je me méfie de son effet."
       },
       {
+       "type": "image",
+       "file": "crystalpalace1851.jpg",
+       "caption": "« The Great Industrial Exhibition of 1851 », planche 3, « The British Nave », lithographie de Joseph Nash d'après son dessin, Dickinson Brothers, 1852. Library of Congress, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:The_great_industrial_exhibition_of_1851._Plate_3._The_British_nave_LCCN2003665158.jpg). Domaine public."
+      },
+      {
+       "type": "p",
+       "text": "Londres, 1851 : sous une immense verrière de fer et de verre, la Grande Exposition rassemble les merveilles de l'industrie, et le public s'y presse en habits de fête. Cette lithographie en garde le ton : confiance, ordre, abondance. Je ne crois pas qu'il faille s'en moquer, cette foi dans le progrès était sincère. Mais regardez ce qui n'est pas dans le cadre : les ateliers qui alimentent ces vitrines. Quand le récit est grand, on regarde le décor."
+      },
+      {
        "type": "p",
        "text": "Plus une promesse est grande, plus on est prêt à payer pour qu'elle se réalise. Et le prix, dans ces cas-là, est presque toujours le même : on abandonne des limites qu'on s'était données. On passe sur une règle de prudence parce qu'il faut aller vite, sur un droit parce que le but est noble, sur une voix minoritaire parce qu'elle ralentit. Pour que ce récit devienne réalité, il faudrait que les humains cèdent de plus en plus de précautions, de choix et de contrôle. Je crois que c'est là le vrai risque, davantage que les machines hostiles des films."
       },
@@ -146,6 +164,15 @@
         "**MIT Media Lab, « Your Brain on ChatGPT » (2025).** Des participants rédigent un texte avec ou sans aide. Le groupe assisté par un modèle de langage montre la connectivité neuronale la plus faible et se sent le moins auteur de son texte{{K1}}. Mais c'est un préprint, sans relecture par des pairs indiquée, sur 54 personnes et une seule tâche, et un commentaire publié depuis recommande d'interpréter ses résultats plus prudemment, notamment à cause de la taille limitée de l'échantillon{{K2}}.",
         "**METR, essai randomisé (2025).** Seize développeurs expérimentés, 246 tâches réelles : avec l'IA, ils ont mis environ 19 % de temps en plus, alors qu'ils avaient prévu d'aller 24 % plus vite et pensaient, après coup, avoir gagné environ 20 %{{K3}}. Petit échantillon, outils du début 2025, temps déclarés par les participants. Une mise à jour de février 2026 juge que ce protocole ne mesure plus correctement l'effet actuel : ses nouvelles estimations vont plutôt vers un gain, mais leurs intervalles incluent zéro, donc elles ne le prouvent pas non plus{{K4}}. Ce qu'il faut retenir, c'est l'écart entre le ressenti et le mesuré."
        ]
+      },
+      {
+       "type": "image",
+       "file": "muybridge1878.jpg",
+       "caption": "« The Horse in Motion », Eadweard Muybridge, 1878 : « Sallie Gardner » au galop sur la piste de Palo Alto, le 19 juin 1878. Library of Congress, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:The_Horse_in_Motion_high_res.jpg). Domaine public."
+      },
+      {
+       "type": "p",
+       "text": "En 1878, on se disputait pour savoir si, au galop, un cheval a un instant les quatre pieds en l'air. Personne ne pouvait trancher à l'œil : tout va trop vite. Eadweard Muybridge aligne des appareils le long d'une piste, déclenchés au passage du cheval, et obtient douze images séparées par une fraction de seconde. La réponse tient sur la planche : oui, mais pas dans la posture des tableaux, jambes tendues, plutôt les jambes repliées sous le ventre. Je pense à cette planche quand j'entends « je vais plus vite avec l'IA » ou « elle m'abrutit ». Ce qu'on ressent d'un phénomène rapide et diffus n'est pas ce qu'on mesure quand on l'arrête image par image."
       },
       {
        "type": "p",
@@ -200,6 +227,15 @@
       {
        "type": "p",
        "text": "L'histoire apprend une chose à peu près solide : les gains de productivité ne se répartissent pas tout seuls. Après la révolution industrielle, il a fallu des décennies de luttes, de lois et d'institutions pour que ces gains profitent au plus grand nombre. Je ne vois aucune raison pour qu'il en aille autrement cette fois, sauf si l'on s'y prend à l'avance."
+      },
+      {
+       "type": "image",
+       "file": "hine1910.jpg",
+       "caption": "Addie Card, 12 ans, fileuse à la filature de coton de North Pownal (Vermont), Lewis W. Hine, 1910. National Child Labor Committee Collection, Library of Congress, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Addie_Card%29,_anaemic_little_spinner_in_North_Pownal_Cotton_Mill._See_photo_No._1056_LOC_cph.3a15220.jpg). Domaine public."
+      },
+      {
+       "type": "p",
+       "text": "Elle s'appelle Addie Card, elle a douze ans, et elle surveille des broches dans une filature du Vermont en 1910. Lewis Hine la photographie pour le Comité national contre le travail des enfants, qui veut convaincre le pays par l'image. Les machines derrière elle ont multiplié ce qu'on peut produire ; elles n'ont rien partagé toutes seules. Il faudra près de trente ans après cette photo pour qu'une loi fédérale fixe durablement un âge minimum de travail, en 1938. Voilà ce que j'appelle des décennies de luttes, de lois et d'institutions."
       },
       {
        "type": "p",
